@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    background-color: rgb(246, 247, 248);
+    display: flex;
+    height: 100vh;
+  }
+  
+  .mainContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .headerContainer {
+    background-color: white;
+    padding: 20px 40px 20px 348px;
+    width: 1208px;
+    height: 96px;
+  }
+  
+  .sidebarLeft {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    height: 100vh;
+    background-color: rgb(42, 55, 71);
+    color: white;
+    padding: 64px 0px 64px 0px;
+  }
+  
+  .sidebarLogoContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidebarLogo {
+    width: 100.03px;
+    height: 121.97px;
+    cursor: pointer;
+  }
+  
+  .menuContainer {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .singleMenuTab {
+    width: 100%;
+    height: 46px;
+    padding-left: 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #cdcdcd;
+    line-height: 19.2px;
+    cursor: pointer;
+  }
+  
+  .singleMenuTab:hover {
+      background-color: rgb(43, 61, 89);
+      color: white;
+    }
