@@ -1,5 +1,4 @@
-.contentSection {
-    grid-area: content;
+/* .contentSection {
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -7,6 +6,5 @@
     text-align: center; 
     margin-left: 16px;
     margin-right: 16px;
-    overflow: auto;
-}
+} */
 

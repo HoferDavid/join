@@ -11,13 +11,16 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
   grid-template-areas:
-  "header"
-  "content"
-  "menu";
-height: 100vh;
+    "header"
+    "content"
+    "menu";
+  height: 100vh;
 }
 
-
+.contentSection {
+  grid-area: content;
+  overflow: auto;
+}
 
 /*ANCHOR Media Querey
 X-Small devices (portrait phones, less than 576px)
