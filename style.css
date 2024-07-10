@@ -5,12 +5,19 @@
 
 body {
   margin: 0;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   background-color: rgb(246, 247, 248);
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "header"
+  "content"
+  "menu";
+height: 100vh;
 }
+
+
 
 /*ANCHOR Media Querey
 X-Small devices (portrait phones, less than 576px)

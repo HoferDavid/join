@@ -1,39 +1,35 @@
 .menuContainer {
-    height: 80px;
-    background-color: #2a3647;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 8px 0px 8px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-    gap: 16px;
-} 
+  grid-area: menu;
+  height: 80px;
+  background-color: #2a3647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 8px 0px 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  gap: 16px;
+}
 
 .menuSingleTab {
-    height: 76px;
-    width: 76px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #cdcdcd;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.8px;
-    text-decoration: none;
-    border-radius: 8px;
-    padding: 16px 0px 16px 0px;
+  height: 76px;
+  width: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #cdcdcd;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 16px 0px 16px 0px;
 }
 
 .menuSingleTabIcon {
-    height: 22px;
-    width: 22px;
+  height: 22px;
+  width: 22px;
 }
-
-
-
-
-
 
 /* 
   .sidebarLegalContainer {
