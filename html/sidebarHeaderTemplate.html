@@ -6,8 +6,13 @@
     <title>Document</title>
     <link rel="icon" href="resources/icons/logoFavicon.png"/>
 
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style/fonts.css">
     <link rel="stylesheet" href="/style/sidebarHeaderTemplate.css">
+
+    <script src="/script/sidebarHeaderTemplate.js"></script>
 </head>
+
 <body>
 
     <div class="mainContainer">
@@ -18,19 +23,19 @@
           </div>
   
           <div class="sidebarMenuContainer">
-            <a class="sidebarSingleMenuTab" href="/html/summary.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabSummary" href="/html/summary.html">
                 <img src="/resources/icons/summaryIconGrey.svg"/>
                 <div>Summary</div>
             </a>
-            <a class="sidebarSingleMenuTab" href="/html/addtask.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabAddTask" href="/html/addtask.html">
                 <img src="/resources/icons/addtaskIconGrey.svg"/>
                 <div>Add Task</div>
             </a>
-            <a class="sidebarSingleMenuTab" href="/html/board.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabBoard" href="/html/board.html" onclick="openCity(event,'Board')">
                 <img src="/resources/icons/boardIconGrey.svg"/>
                 <div>Board</div>
             </a>
-            <a class="sidebarSingleMenuTab" href="/html/contacts.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabContacts" href="/html/contacts.html">
                 <img src="/resources/icons/contactsIconGrey.svg"/>
                 <div>Contacts</div>
             </a>
@@ -46,11 +51,12 @@
         <section class="headerContainer">
           <div class="headerText">Kanban Project Management Tool</div>
           <div class="headerRightContainer">
-            <div><img src="/resources/icons/help.svg"></div>
+            <a class="headerHelpIcon" href="/html/help.html">
+              <img src="/resources/icons/help.svg">
+            </a>
             <div class="headerUserBadge">G</div>
           </div>
         </section>
-
 
       </div>
     

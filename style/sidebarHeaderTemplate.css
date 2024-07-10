@@ -33,6 +33,10 @@ body {
   gap: 16px;
 }
 
+.headerHelpIcon {
+  cursor: pointer;
+}
+
 .headerUserBadge {
   display: flex;
   align-items: center;
@@ -44,6 +48,7 @@ body {
   font-size: 20px;
   font-weight: 700;
   color: #29abe2;
+  cursor: pointer;
 }
 
 .sidebarLeft {
