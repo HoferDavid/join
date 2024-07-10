@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help</title>
     <link rel="icon" href="/resources/icons/logoBlue.svg"/>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style/fonts.css">
+
+    <script src="/script/includeHTML.js"></script>
 </head>
+
 <body>
+
+    <div w3-include-html="/html/templates/header.html"></div>
+    
+    <section class="contentSection">
+        <h1>Content</h1>
+    </section>
+    
+    <div w3-include-html="/html/templates/menu.html"></div> 
+
+    <script>
+        includeHTML();
+      </script>
     
 </body>
 </html>
