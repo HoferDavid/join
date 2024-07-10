@@ -8,12 +8,6 @@
   justify-content: space-between;
 }
 
-.headerRightContainer {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 .headerUserBadge {
   display: flex;
   align-items: center;
@@ -27,9 +21,3 @@
   color: #29abe2;
   cursor: pointer;
 }
-
-/* .headerText {
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 400;
-  } */
