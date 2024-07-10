@@ -18,8 +18,25 @@
 
     <div w3-include-html="/html/templates/header.html" class="header"></div>
     
-    <section class="content contentSection">
-        <h1>Content</h1> 
+    <section class="content contentSection boardContent">
+
+        <div class="boardHeaderContainer">
+            <div>Board</div>
+            <img src="/resources/icons/plusAddTaskMobile.svg">
+        </div>
+
+        <div class="boardSearchContainer">
+            <div class="boardSearchField">
+                <input id="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                <div class="boardSearchFieldIcons">
+                    <img src="/resources/icons/vector3.png"/>
+                    <img src="/resources/icons/search.svg"/>
+                </div>
+            </div>
+        </div>
+
+        
+
     </section>
         
     <div w3-include-html="/html/templates/menu.html" class="menu"></div> 
