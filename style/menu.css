@@ -1,0 +1,76 @@
+.menuContainer {
+    height: 80px;
+    background-color: #2a3647;
+} 
+
+
+/* .sidebarLeft {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    height: 1024px;
+
+    padding: 64px 0px 64px 0px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebarLogoContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidebarLogo {
+    width: 100px;
+    height: 122px;
+    cursor: pointer;
+  }
+  
+  .sidebarMenuContainer {
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 112px 0px 82px 0px;
+  }
+  
+  .sidebarSingleMenuTab {
+    width: 100%;
+    height: 46px;
+    padding-left: 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #cdcdcd;
+    line-height: 19.2px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .sidebarSingleMenuTab:hover,
+  .sidebarSingleLink:hover {
+    background-color: rgb(43, 61, 89);
+  }
+  
+  .sidebarLegalContainer {
+    width: 100%;
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 244px 0px 0px 0px;
+  }
+  
+  .sidebarSingleLink {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #A8A8A8;
+    line-height: 19.2px;
+    text-decoration: none;
+    cursor: pointer;
+  } */

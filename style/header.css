@@ -1,0 +1,35 @@
+.headerContainer {
+  height: 80px;
+  background-color: white;
+  padding: 20px 16px 20px 16px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerRightContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.headerUserBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border: 2px solid #2a3647;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  color: #29abe2;
+  cursor: pointer;
+}
+
+/* .headerText {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+  } */
