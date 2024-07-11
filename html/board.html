@@ -12,9 +12,11 @@
 
     <script src="../script/templates/includeHTML.js"></script>
     <script src="../script/board.js"></script>
+    <script src="../script/templates/boardtemplate.js"></script>
   </head>
 
-  <body>
+  <body onload="initBoard()">
+
     <div
       w3-include-html="../assets/templates/html/header.html"
       class="header"
@@ -66,34 +68,37 @@
                 <img src="../assets/icons/plusAddTaskMobileWhite.svg">
             </div>
             <div>
-                <div class="taskDragArea" id="toDoTask" ondrop="moveTo('toDoTask')" ondragover="allowDrop(event)"></div>
+                <div class="taskDragArea" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
+
         <div class="boardTaskCategoryContainer">
             <div class="boardTaskCategoryHeader">
                 <div>In progress</div>
                 <img src="../assets/icons/plusAddTaskMobileWhite.svg">
             </div>
             <div>
-                <div class="taskDragArea" id="inProgressCategory" ondrop="moveTo('inProgressCategory')" ondragover="allowDrop(event)"></div>
+                <div class="taskDragArea" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
+
         <div class="boardTaskCategoryContainer">
             <div class="boardTaskCategoryHeader">
                 <div>Await Feedback</div>
                 <img src="../assets/icons/plusAddTaskMobileWhite.svg">
             </div>
             <div>
-                <div class="taskDragArea" id="awaitFeedbackCategory" ondrop="moveTo('awaitFeedbackCategory')" ondragover="allowDrop(event)"></div>
+                <div class="taskDragArea" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
+        
         <div class="boardTaskCategoryContainer">
             <div class="boardTaskCategoryHeader">
                 <div>Done</div>
                 <img src="../assets/icons/plusAddTaskMobileWhite.svg">
             </div>
             <div>
-                <div class="taskDragArea" id="doneCategory" ondrop="moveTo('doneCategory')" ondragover="allowDrop(event)"></div>
+                <div class="taskDragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
             </div>
         </div>
 
