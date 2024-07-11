@@ -25,3 +25,32 @@
   color: #29abe2;
   cursor: pointer;
 }
+
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .headerContainer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .headerContainer {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+}
