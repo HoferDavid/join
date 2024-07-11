@@ -2,7 +2,7 @@ function toggleDisplay() {
     const mobileHeader = document.getElementById('boardHeaderMobile');
     const mobileSearchContainer = document.getElementById('boardSearchContainerMobile');
     const desktopHeader = document.getElementById('boardHeaderDesktop');
-    const desktopSearchContainer = document.getElementById('boardSearchContainerDesktop');
+    const desktopSearchContainer = document.getElementById('boardHeaderSearchContainerDesktop');
 
     if (window.innerWidth >= 768) {
         mobileHeader.style.display = 'none';

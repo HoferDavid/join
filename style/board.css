@@ -29,6 +29,7 @@
 .boardHeaderSearchContainer {
   display: flex;
   justify-content: center;
+  gap: 32px;
 }
 
 .boardSearchField {
@@ -68,6 +69,7 @@ input:focus {
   display: flex;
   align-items: center;
   width: 160px;
+  height: 48px;
   gap: 4px;
   border-radius: 10px;
   border-width: 1px;
@@ -79,12 +81,13 @@ input:focus {
 
 .boardAddTaskBtnText {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 25.2px;
   background-color: #2a3647;
   border: 0;
 }
+
 
 /* Media Queries */
 
@@ -103,25 +106,16 @@ input:focus {
     margin-right: 48px;
   }
 
-  #boardHeaderMobile {
-    display: none;
-  }
-
   #boardSearchContainerMobile {
     display: none;
-  }
-
-  #boardHeaderDesktop {
-    display: flex;
   }
 
   #boardSearchContainerDesktop {
     display: flex;
   }
 
-  .boardHeaderSection {
-    flex-direction: row;
-    justify-content: space-between;
+  .boardSearchField {
+    width: 312px;
   }
 }
 
