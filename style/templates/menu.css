@@ -31,6 +31,40 @@
   width: 22px;
 }
 
+
+@media (max-width: 375px) {
+  .menuContainer {
+    padding: 0px 2px 0px 2px;
+    gap: 2px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .menuContainer {
+    gap: 32px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .menuContainer {
+    gap: 48px;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+}
+
 /* 
   .sidebarLegalContainer {
     width: 100%;

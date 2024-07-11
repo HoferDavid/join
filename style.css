@@ -22,6 +22,7 @@ body {
   overflow: auto;
 }
 
+
 /*ANCHOR Media Querey
 X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
