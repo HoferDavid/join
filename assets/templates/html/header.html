@@ -9,24 +9,28 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../assets/templates/css/header.css" />
+
+    <script src="../js/header.js"></script>
   </head>
 
-  <body>
+  <body onload="toggleHeader()">
 
-    <div class="headerContainer">
+    <div class="headerContainerMobile" id="headerContainerMobile">
       <img src="/assets/icons/logoBlue.svg" />
       <div class="headerUserBadge">G</div>
     </div>
 
-
-          <!-- <div>
-        <div>
-          <div>Kanban Project Management Tool</div>
-          <a class="headerHelpIcon" href="/html/help.html"><img src="../assets/icons/help.svg"></a>
+    <div class="headerContainerDesktop" id="headerContainerDesktop" style="display: none;">
+      <div class="headerContainerContent">
+        <div class="headerText">Kanban Project Management Tool</div>
+        <div class="headerRightContainer">
+          <div><img src="../assets/icons/help.svg"></div><a class="headerHelpIcon" href="/html/help.html">
+          </a>
+          <div class="headerUserBadge">G</div>
         </div>
-  
-        <div class="headerUserBadge">G</div>
-      </div> -->
+      </div>
+
+    </div>
 
   </body>
 </html>

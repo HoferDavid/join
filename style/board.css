@@ -16,6 +16,7 @@
   justify-content: space-between;
   margin-bottom: 32px;
   gap: 40px;
+  max-width: 1440px;
 }
 
 .boardHeaderTopContainer {
@@ -245,8 +246,8 @@ input:focus {
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   .boardContent {
-    margin-left: 48px;
-    margin-right: 48px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 
   #boardSearchContainerMobile {

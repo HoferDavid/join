@@ -1,4 +1,4 @@
-.headerContainer {
+.headerContainerMobile {
   height: 80px;
   background-color: white;
   padding: 20px 16px 20px 16px;
@@ -26,10 +26,41 @@
   cursor: pointer;
 }
 
+.headerContainerDesktop {
+  background-color: white;
+  height: 96px;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.headerContainerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  padding: 20px 40px 20px 116px;
+}
+
+.headerText {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.headerRightContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.headerHelpIcon {
+  cursor: pointer;
+}
+
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .headerContainer {
+  .headerContainerMobile {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -37,9 +68,9 @@
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .headerContainer {
-    padding-left: 48px;
-    padding-right: 48px;
+  .headerContainerMobile {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
@@ -49,9 +80,6 @@
 
 /*X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-  .headerContainer {
-    height: 96px;
-  }
 }
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
