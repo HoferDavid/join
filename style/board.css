@@ -1,3 +1,7 @@
+.dNone {
+  display: none;
+}
+
 .boardContent {
   display: flex;
   flex-direction: column;
@@ -82,8 +86,6 @@ input:focus {
   border: 0;
 }
 
-
-
 /* Media Queries */
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -101,7 +103,25 @@ input:focus {
     margin-right: 48px;
   }
 
+  #boardHeaderMobile {
+    display: none;
+  }
+
+  #boardSearchContainerMobile {
+    display: none;
+  }
+
+  #boardHeaderDesktop {
+    display: flex;
+  }
+
+  #boardSearchContainerDesktop {
+    display: flex;
+  }
+
   .boardHeaderSection {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
