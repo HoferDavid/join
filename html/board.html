@@ -18,6 +18,7 @@
 
     <div w3-include-html="/assets/templates/html/header.html" class="header"></div>
     
+    <!-- Mobile -->
     <section class="content contentSection boardContent">
 
         <div class="boardHeaderContainer">
@@ -35,8 +36,38 @@
             </div>
         </div>
 
-        
+        <!-- Desktop -->
+        <div class="boardHeaderContainerDesktop">
+            <div>Board</div>
 
+            <div class="boardHeaderContainerDesktopRight">
+                <div class="boardSearchContainerDesktop">
+                    <div class="boardSearchField">
+                        <input id="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                        <div class="boardSearchFieldIcons">
+                            <img src="/assets/icons/vector3.png"/>
+                            <img src="/assets/icons/search.svg"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="boardAddTaskBtn">
+                    <button class="boardAddTaskBtnText">Add task</button>
+                    <img src="/assets/icons/add.svg" />
+                  </div>
+            </div>
+    
+            <div class="boardSearchContainer">
+                <div class="boardSearchField">
+                    <input id="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                    <div class="boardSearchFieldIcons">
+                        <img src="/assets/icons/vector3.png"/>
+                        <img src="/assets/icons/search.svg"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     </section>
         
     <div w3-include-html="/assets/templates/html/menu.html" class="menu"></div> 

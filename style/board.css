@@ -52,6 +52,43 @@ input:focus {
   gap: 16px;
 }
 
+.boardHeaderContainerDesktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 72px;
+  margin-top: 96px;
+}
+
+.boardHeaderContainerDesktopRight {
+  display: flex;
+  gap: 32px;
+}
+
+
+
+.boardAddTaskBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 8px 16px 8px 16px;
+  background-color: #2a3647;
+  cursor: pointer;
+}
+
+.boardAddTaskBtnText {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.2px;
+  background-color: #2a3647;
+}
+
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
@@ -61,11 +98,25 @@ input:focus {
   }
 }
 
+@media (max-width: 767px) {
+  .boardHeaderContainerDesktop {
+    display: none;
+  }
+}
+
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   .boardContent {
     margin-left: 48px;
     margin-right: 48px;
+  }
+
+  .boardHeaderContainer {
+    display: none;
+  }
+
+  .boardSearchContainer {
+    display: none;
   }
 }
 
