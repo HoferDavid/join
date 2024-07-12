@@ -13,6 +13,11 @@
   padding: 0px 8px 0px 8px;
 }
 
+.menuSingleTab {
+  height: 76px; 
+  width: 80px;
+}
+ 
 .menuBtn {
   height: 76px;
   width: 76px;
@@ -21,11 +26,12 @@
   justify-content: center;
   align-items: center;
   color: #cdcdcd;
+  background-color: #2a3647;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.8px;
   text-decoration: none;
-  border-radius: 8px;
+  border-width: 0;
   padding: 16px 0px 16px 0px;
 }
 
@@ -72,6 +78,12 @@
   .menuBtnContainer {
     padding: 0px 2px 0px 2px;
     gap: 2px;
+  }
+
+  .menuSingleTab {
+    height: 76px;
+    width: 72px;
+    padding: 8px 0px 8px 0px;
   }
 }
 
