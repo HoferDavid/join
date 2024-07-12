@@ -17,6 +17,33 @@ body {
   height: 100vh;
 }
 
+
+* {
+  --sb-track-color: transparent;
+  --sb-thumb-color: #a8a8a8;
+  --sb-size: 4px;
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
 .contentSection {
   grid-area: content;
   overflow: auto;
@@ -39,8 +66,7 @@ No media query for `xs` since this is the default in Bootstrap*/
 @media (min-width: 576px) {}
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {}

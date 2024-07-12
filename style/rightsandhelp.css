@@ -1,5 +1,6 @@
 .imprint,
-.privacy {
+.privacy,
+.help {
   position: relative;
   padding: 16px;
 }
@@ -34,10 +35,30 @@ a:hover {
   border-radius: 20px;
 }
 
+.help ol {
+  list-style-position: outside;
+  padding-left: 0px;
+  list-style: none;
+}
+
+.help ol li {
+  display: flex;
+  gap: 36px;
+}
+
+.help ol li p {
+  margin-top: 0;
+}
+
+.help ol li h3 {
+  margin-bottom: 0;
+}
+
 @media (min-width: 768px) {
 
   .imprint,
-  .privacy {
+  .privacy,
+  .help {
     padding: 96px;
   }
 
