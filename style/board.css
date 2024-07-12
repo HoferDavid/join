@@ -273,11 +273,49 @@ input:focus {
 /*X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .boardContent {
-    max-width: 1208px;
-    margin: 0px;
-    padding-left: 64px;
-    padding-right: 80px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
+
+  .boardHeaderSection {
+    width: 100%;
+    max-width: 1208px;
+    padding: 96px 40px 20px 116px;
+  }
+
+  .boardTaskSection {
+    flex-direction: row;
+  }
+
+  .taskDragArea {
+    width: 100%;
+    height: 100%;
+    display: block;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+    overflow-y: hidden;
+  }
+
+  .boardTaskCategoryContainer {
+    width: 256px;
+    align-items: center;
+  }
+
+  .boardTaskCategoryHeader {
+    width: 244px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #42526E;
+  }
+
+  .boardTaskCategoryIcon {
+    height: 24px;
+    width: 24px;
+    color: #2A3647;
+  }
+
 }
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
