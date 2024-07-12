@@ -8,12 +8,12 @@ body {
   font-family: "Inter", sans-serif;
   background-color: rgb(246, 247, 248);
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 1fr;
+  grid-template-rows: 80px auto 80px;
+  grid-template-columns: 232px auto;
   grid-template-areas:
-    "header"
-    "content"
-    "menu";
+    "header header"
+    "content content"
+    "menu menu";
   height: 100vh;
 }
 
@@ -22,27 +22,37 @@ body {
   overflow: auto;
 }
 
+.header {
+  grid-area: header;
+}
+
+.menu {
+  grid-area: menu;
+}
+
 
 /*ANCHOR Media Querey
 X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-}
+@media (min-width: 576px) {}
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
+  body {
+    grid-template-areas:
+      "menu header"
+      "menu content"
+      "menu content";
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-}
+@media (min-width: 992px) {}
 
 /*X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1400px) {
-}
+@media (min-width: 1400px) {}
