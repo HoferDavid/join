@@ -31,11 +31,6 @@
   width: 22px;
 }
 
-
-
-
-
-
 .menuContainerDesktop {
   grid-area: menu;
   flex-direction: column;
@@ -105,9 +100,8 @@
 
 
 
-
 @media (max-width: 375px) {
-  .menuContainer {
+  .menuContainerMobile {
     padding: 0px 2px 0px 2px;
     gap: 2px;
   }
@@ -115,14 +109,14 @@
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .menuContainer {
+  .menuContainerMobile {
     gap: 32px;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .menuContainer {
+  .menuContainerMobile {
     gap: 48px;
   }
 }
