@@ -4,43 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="icon" href="resources/icons/logoFavicon.png" />
+    <link rel="icon" href="../assets/icons/logoBlue.svg" />
 
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/style/fonts.css" />
-    <link rel="stylesheet" href="/assets/templates/css/menu.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style/fonts.css" />
+    <link rel="stylesheet" href="../assets/templates/css/menu.css" />
   </head>
 
   <body>
 
-    <section class="menuContainer">
-      
-      <a class="menuSingleTab" href="/html/summary.html">
-        <img class="menuSingleTabIcon" src="/assets/icons/summaryIconGrey.svg"/>
+    <div class="menuContainerMobile" style="display: none;">
+      <a class="menuSingleTab" href="../html/summary.html">
+        <img class="menuSingleTabIcon" src="../assets/icons/summaryIconGrey.svg"/>
         <div>Summary</div>
       </a>
-      <a class="menuSingleTab" href="/html/board.html">
-        <img class="menuSingleTabIcon" src="/assets/icons/boardIconGrey.svg"/>
+      <a class="menuSingleTab" href="../html/board.html">
+        <img class="menuSingleTabIcon" src="../assets/icons/boardIconGrey.svg"/>
         <div>Board</div>
       </a>
-      <a class="menuSingleTab" href="/html/addtask.html">
-        <img class="menuSingleTabIcon" src="/assets/icons/addtaskIconGrey.svg"/>
+      <a class="menuSingleTab" href="../html/addtask.html">
+        <img class="menuSingleTabIcon" src="../assets/icons/addtaskIconGrey.svg"/>
         <div>Add Task</div>
       </a>
-      <a class="menuSingleTab" href="/html/contacts.html">
-        <img class="menuSingleTabIcon" src="/assets/icons/contactsIconGrey.svg"/>
+      <a class="menuSingleTab" href="../html/contacts.html">
+        <img class="menuSingleTabIcon" src="../assets/icons/contactsIconGrey.svg"/>
         <div>Contacts</div>
       </a>
+    </div>
 
-    </section>
 
-    <!-- <section class="sidebarLeft">
+    
+    <div class="menuContainerDesktop">
+  
+          <div class="sidebarLogoContainer">
+            <img class="sidebarLogo" src="../assets/icons/logowhite.svg" />
+          </div>
 
-        <div class="sidebarLegalContainer">
-          <a class="sidebarSingleLink" href="/html/privacy.html">Privacy Policy</a>
-          <a class="sidebarSingleLink" href="/html/imprint.html">Legal notice</a>
+          <div class="sidebarMenuContainer">
+            <a class="sidebarSingleMenuTab" href="../html/summary.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabSummary" href="../html/summary.html">
+                <img src="../assets/icons/summaryIconGrey.svg"/>
+                <div>Summary</div>
+            </a>
+            <a class="sidebarSingleMenuTab" href="../html/addtask.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabAddTask" href="../html/addtask.html">
+                <img src="../assets/icons/addtaskIconGrey.svg"/>
+                <div>Add Task</div>
+            </a>
+            <a class="sidebarSingleMenuTab" href="../html/board.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabBoard" href="../html/board.html" onclick="openCity(event,'Board')">
+                <img src="../assets/icons/boardIconGrey.svg"/>
+                <div>Board</div>
+            </a>
+            <a class="sidebarSingleMenuTab" href="../html/contacts.html">
+            <a class="sidebarSingleMenuTab" id="sidebarSingleMenuTabContacts" href="../html/contacts.html">
+                <img src="../assets/icons/contactsIconGrey.svg"/>
+                <div>Contacts</div>
+            </a>
+          </div>
+          <div class="sidebarLegalContainer">
+            <a class="sidebarSingleLink" href="../html/privacy.html">Privacy Policy</a>
+            <a class="sidebarSingleLink" href="../html/imprint.html">Legal notice</a>
+          </div>
+  
         </div>
-
-      </section> -->
   </body>
 </html>

@@ -11,7 +11,7 @@
 
 .boardHeaderSection {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   height: 232px;
   justify-content: space-between;
   margin-bottom: 32px;
@@ -234,6 +234,12 @@ input:focus {
 
 
 /* Media Queries */
+
+@media (max-width: 427px) {
+  .boardTaskCategoryHeader {
+    width: 260px;
+  }
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
