@@ -1,12 +1,32 @@
-let BASE_URL = 'https://taskstest-a5c3d-default-rtdb.europe-west1.firebasedatabase.app/';
+let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
 let tasks = [];
 let currentDraggedElement;
+
+
+// Function only for Testing
+async function pushToFirebaseTest() {
+    await postDataToFirebase('tasks',  {
+        "assignedTo": ["Laura Hoffmann", "Max Mustermann", "Erika Musterfrau", "Hans Meier"],
+        "category": "Technical Task",
+        "description": "Planen und starten Sie die neue Marketingkampagne.",
+        "date": "10/08/2024",
+        "prio": "urgent",
+        "subtasks": [
+            "Strategie entwickeln",
+            "Materialien erstellen",
+            "Kampagne starten"
+        ],
+        "title": "Marketingkampagne",
+        "status": "toDo"
+    });
+}
 
 
 async function initBoard() {
     try {
         await getDataFromFirebase();
-        // await postDataToFirebase('tasks', {'description': "rewfrewfe", "title": "title",  "status": "toDo", "category": "User Story", "assignedTo": {"name": "vorname", "surname": "secname"}, "date": "05/09/24", "prio": "urgent", "subtasks": {"one": "one", "two": "two"}});
+        // pushToFirebaseTest();
+        // await postDataToFirebase('tasks', {'description': "Planen und starten", "title": "Marketingkampagne",  "status": "toDo", "category": "User Story", "assignedTo": {"0": "Laura Hoffmann", "1": "Steve Jobs"}, "date": "05/11/24", "prio": "urgent", "subtasks": {"0": "Marketingkampagne", "1": "Materialien erstellen", "2": "Kampagne starten"}});
         await pushDataToArray();
         initDragDrop();
     } catch (error) {

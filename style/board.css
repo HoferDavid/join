@@ -140,6 +140,7 @@ input:focus {
   font-weight: 400;
   color: #a8a8a8;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  margin: 16px 8px;
 }
 
 .todoContainer {
