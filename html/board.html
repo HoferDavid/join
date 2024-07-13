@@ -47,9 +47,6 @@
 
 
 
-
-
-
         <section class="boardTaskSection" id="boardTaskSection">
 
             <div class="boardTaskCategoryContainer" id="boardTaskCategoryContainer">
@@ -57,9 +54,7 @@
                     <div>To do</div>
                     <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div>
-                    <div class="taskDragArea" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
-                </div>
+                <div class="taskDragArea" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
             </div>
 
             <div class="boardTaskCategoryContainer">
@@ -67,10 +62,7 @@
                     <div>In progress</div>
                     <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div>
-                    <div class="taskDragArea" id="inProgress" ondrop="moveTo('inProgress')"
-                        ondragover="allowDrop(event)"></div>
-                </div>
+                <div class="taskDragArea" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
             </div>
 
             <div class="boardTaskCategoryContainer">
@@ -78,19 +70,12 @@
                     <div>Await Feedback</div>
                     <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div>
-                    <div class="taskDragArea" id="awaitFeedback" ondrop="moveTo('awaitFeedback')"
-                        ondragover="allowDrop(event)"></div>
-                </div>
+                <div class="taskDragArea" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"></div>
             </div>
 
             <div class="boardTaskCategoryContainer">
-                <div class="boardTaskCategoryHeader">
-                    <div>Done</div>
-                </div>
-                <div>
-                    <div class="taskDragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
-                </div>
+                <div class="boardTaskCategoryHeader"><div>Done</div></div>
+                <div class="taskDragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
             </div>
 
         </section>

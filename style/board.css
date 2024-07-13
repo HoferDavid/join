@@ -108,7 +108,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 27px;
+  font-size: 28px;
   font-weight: 700;
   line-height: 32.4px;
   color: #2a3647;
@@ -142,6 +142,7 @@ input:focus {
   font-weight: 400;
   color: #a8a8a8;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  margin: 8px 8px;
 }
 
 .todoContainer {
@@ -154,9 +155,8 @@ input:focus {
   padding: 16px;
   gap: 10px;
   width: 252px;
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-  padding: 8px;
-  margin: 8px;
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.08);
+  margin: 8px 8px;
 }
 
 .toDoContent {
@@ -164,6 +164,7 @@ input:focus {
   flex-direction: column;
   width: 220px;
   gap: 20px;
+  padding: 4px;
 }
 
 .userStoryBadge {
@@ -308,5 +309,10 @@ input:focus {
     height: 24px;
     width: 24px;
     color: #2a3647;
+  }
+
+  .todoContainer,
+  .noTaskPlaceholder {
+    margin: 16px 8px;
   }
 }
