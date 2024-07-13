@@ -1,16 +1,28 @@
 .contentSection {
   padding: 0 16px;
   position: relative;
+  overflow-x: hidden;
 }
 
 .contactsDetail {
   position: relative;
 }
 
+.fs24 {
+  font-size: 20px;
+}
+
+.tt100 {
+  transform: translateX(150%);
+}
+
+.tt0 {
+  transform: translateX(0);
+}
+
 a {
   color: rgb(0, 124, 238);
   text-decoration: none;
-
 }
 
 a[href^='tel:+'] {
@@ -49,9 +61,6 @@ h1 {
   margin: 24px 0;
 }
 
-.fs24 {
-  font-size: 20px;
-}
 
 p {
   margin: 0;

@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="icon" href="../assets/icons/logoBlue.svg" />
+<head>
+  <link rel="stylesheet" href="../assets/templates/css/header.css" />
+  <script src="../js/header.js"></script>
+</head>
 
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../style/fonts.css" />
-    <link rel="stylesheet" href="../assets/templates/css/header.css" />
+<body onload="toggleHeader()">
 
-    <script src="../js/header.js"></script>
-  </head>
+  <div class="headerContainerMobile" id="headerContainerMobile">
+    <img src="../assets/icons/logoBlue.svg" />
+    <div class="headerUserBadge">G</div>
+  </div>
 
-  <body onload="toggleHeader()">
-
-    <div class="headerContainerMobile" id="headerContainerMobile">
-      <img src="../assets/icons/logoBlue.svg" />
-      <div class="headerUserBadge">G</div>
-    </div>
-
-    <div class="headerContainerDesktop" id="headerContainerDesktop" style="display: none;">
-      <div class="headerContainerContent">
-        <div class="headerText">Kanban Project Management Tool</div>
-        <div class="headerRightContainer">
-          <div><img src="../assets/icons/help.svg"></div><a class="headerHelpIcon" href="/html/help.html">
-          </a>
-          <div class="headerUserBadge">SM</div>
-        </div>
+  <div class="headerContainerDesktop" id="headerContainerDesktop" style="display: none;">
+    <div class="headerContainerContent">
+      <div class="headerText">Kanban Project Management Tool</div>
+      <div class="headerRightContainer">
+        <div><img src="../assets/icons/help.svg"></div><a class="headerHelpIcon" href="/html/help.html">
+        </a>
+        <div class="headerUserBadge">SM</div>
       </div>
-
     </div>
 
-  </body>
-</html>
+  </div>
