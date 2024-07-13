@@ -17,7 +17,6 @@ body {
   height: 100dvh;
 }
 
-
 * {
   --sb-track-color: transparent;
   --sb-thumb-color: #a8a8a8;
@@ -57,33 +56,6 @@ body {
   grid-area: menu;
 }
 
-/*ANCHOR Media Query
-X-Small devices (portrait phones, less than 576px)
-No media query for `xs` since this is the default in Bootstrap*/
-
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {}
-
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
-
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  body {
-    grid-template-areas:
-      "menu header"
-      "menu content"
-      "menu content";
-  }
-}
-
-/*X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-}
-
-/*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1400px) {}
-
 /* Header */
 .headerContainerMobile {
   height: 80px;
@@ -118,7 +90,7 @@ No media query for `xs` since this is the default in Bootstrap*/
   height: 96px;
   background-color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-  display: flex;
+  display: none;
   align-items: center;
   position: sticky;
   top: 0;
@@ -150,30 +122,6 @@ No media query for `xs` since this is the default in Bootstrap*/
   cursor: pointer;
 }
 
-@media (min-width: 576px) {
-  .headerContainerMobile {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-@media (min-width: 768px) {
-  .headerContainerMobile {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-
-@media (min-width: 992px) {
-  .headerUserBadge {
-    height: 56px;
-    width: 56px;
-    border: 3px solid #2a3647;
-    font-size: 24px;
-  }
-}
-
-
 /* Menu */
 .menuContainer {
   grid-area: menu;
@@ -185,16 +133,16 @@ No media query for `xs` since this is the default in Bootstrap*/
 .menuBtnContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 0px 8px 0px 8px;
+  justify-content: space-evenly;
+  gap: 4px;
+  padding: 0;
 }
 
 .menuSingleTab {
-  height: 76px; 
+  height: 76px;
   width: 80px;
 }
- 
+
 .menuBtn {
   height: 76px;
   width: 76px;
@@ -218,7 +166,7 @@ No media query for `xs` since this is the default in Bootstrap*/
 }
 
 .menuLogoContainer {
-  display: flex;
+  display: none;
   justify-content: center;
 }
 
@@ -231,7 +179,7 @@ No media query for `xs` since this is the default in Bootstrap*/
 .menuLegalContainer {
   width: 100%;
   gap: 4px;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 244px 0px 0px 0px;
 }
@@ -250,43 +198,48 @@ No media query for `xs` since this is the default in Bootstrap*/
   cursor: pointer;
 }
 
-
-@media (max-width: 375px) {
-  .menuBtnContainer {
-    padding: 0px 2px 0px 2px;
-    gap: 2px;
-  }
-
-  .menuSingleTab {
-    height: 76px;
-    width: 72px;
-    padding: 8px 0px 8px 0px;
-  }
-}
+/*ANCHOR Media Query
+X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap*/
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
   .menuBtnContainer {
-    gap: 32px;
+    padding: 0 8px;
+  }
+
+  .headerContainerMobile {
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .menuBtnContainer {
-    gap: 48px;
+  .headerContainerMobile {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
-@media (max-width: 991px) {
-  .menuLogoContainer,
-  .menuLegalContainer {
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  body {
+    grid-template-rows: 96px auto 80px;
+    grid-template-areas:
+      "menu header"
+      "menu content"
+      "menu content";
+  }
+
+  .headerContainerDesktop {
+    display: flex;
+  }
+
+  .headerContainerMobile {
     display: none;
   }
-}
 
-/*X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: 992px) {
   .menuContainer {
     padding: 64px 0px;
     display: flex;
@@ -312,5 +265,29 @@ No media query for `xs` since this is the default in Bootstrap*/
     height: 30px;
     width: 30px;
   }
+
+  .headerUserBadge {
+    height: 56px;
+    width: 56px;
+    border: 3px solid #2a3647;
+    font-size: 24px;
+  }
+
+  .menuLogoContainer,
+  .menuLegalContainer {
+    display: flex;
+  }
 }
 
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {}
+
+/*ANCHOR - Klären mit David was das macht
+  .menuSingleTab {
+    height: 76px;
+    width: 72px;
+    padding: 8px 0px 8px 0px;
+  }*/

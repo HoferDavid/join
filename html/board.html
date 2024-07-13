@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
@@ -13,10 +14,9 @@
     <script src="../assets/templates/js/includeHTML.js"></script>
     <script src="../script/board.js"></script>
     <script src="../assets/templates/js/boardtemplate.js"></script>
-    <script src="../assets/templates/js/header.js"></script>
-  </head>
+</head>
 
-  <body onload="initBoard()">
+<body onload="initBoard()">
 
     <div w3-include-html="../assets/templates/html/header.html" class="header"></div>
 
@@ -30,7 +30,8 @@
             </div>
             <div class="boardHeaderSearchContainer" id="boardSearchContainerMobile">
                 <div class="boardSearchField">
-                    <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                    <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task"
+                        maxlength="20" />
                     <div class="boardSearchFieldIcons">
                         <img src="../assets/icons/vector3.png" />
                         <img src="../assets/icons/search.svg" />
@@ -46,7 +47,8 @@
                 <div>Board</div>
                 <div class="boardHeaderSearchContainer" id="boardHeaderSearchContainerDesktop">
                     <div class="boardSearchField">
-                        <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                        <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task"
+                            maxlength="20" />
                         <div class="boardSearchFieldIcons">
                             <img src="../assets/icons/vector3.png" />
                             <img src="../assets/icons/search.svg" />
@@ -63,48 +65,50 @@
 
 
 
-      <section class="boardTaskSection">
+        <section class="boardTaskSection">
 
-        <div class="boardTaskCategoryContainer">
-            <div class="boardTaskCategoryHeader">
-                <div>To do</div>
-                <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+            <div class="boardTaskCategoryContainer">
+                <div class="boardTaskCategoryHeader">
+                    <div>To do</div>
+                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                </div>
+                <div>
+                    <div class="taskDragArea" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
+                </div>
             </div>
-            <div>
-                <div class="taskDragArea" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"></div>
-            </div>
-        </div>
 
-        <div class="boardTaskCategoryContainer">
-            <div class="boardTaskCategoryHeader">
-                <div>In progress</div>
-                <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+            <div class="boardTaskCategoryContainer">
+                <div class="boardTaskCategoryHeader">
+                    <div>In progress</div>
+                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                </div>
+                <div>
+                    <div class="taskDragArea" id="inProgress" ondrop="moveTo('inProgress')"
+                        ondragover="allowDrop(event)"></div>
+                </div>
             </div>
-            <div>
-                <div class="taskDragArea" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
-            </div>
-        </div>
 
-        <div class="boardTaskCategoryContainer">
-            <div class="boardTaskCategoryHeader">
-                <div>Await Feedback</div>
-                <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+            <div class="boardTaskCategoryContainer">
+                <div class="boardTaskCategoryHeader">
+                    <div>Await Feedback</div>
+                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                </div>
+                <div>
+                    <div class="taskDragArea" id="awaitFeedback" ondrop="moveTo('awaitFeedback')"
+                        ondragover="allowDrop(event)"></div>
+                </div>
             </div>
-            <div>
-                <div class="taskDragArea" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"></div>
-            </div>
-        </div>
-        
-        <div class="boardTaskCategoryContainer">
-            <div class="boardTaskCategoryHeader">
-                <div>Done</div>
-            </div>
-            <div>
-                <div class="taskDragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
-            </div>
-        </div>
 
-      </section>
+            <div class="boardTaskCategoryContainer">
+                <div class="boardTaskCategoryHeader">
+                    <div>Done</div>
+                </div>
+                <div>
+                    <div class="taskDragArea" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+                </div>
+            </div>
+
+        </section>
 
 
     </section>
@@ -112,8 +116,9 @@
     <div w3-include-html="../assets/templates/html/menu.html" class="menu"></div>
 
     <script>
-      includeHTML();
+        includeHTML();
     </script>
 
-  </body>
+</body>
+
 </html>
