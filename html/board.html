@@ -14,6 +14,7 @@
     <script src="../assets/templates/js/includeHTML.js"></script>
     <script src="../script/board.js"></script>
     <script src="../assets/templates/js/boardtemplate.js"></script>
+    <script src="../assets/templates/js/header.js"></script>
 </head>
 
 <body onload="initBoard()">
@@ -22,42 +23,24 @@
 
     <section class="content contentSection boardContent">
 
-        <!-- Desktop Header -->
-        <div class="boardHeaderSectionMobile">
-            <div class="boardHeaderMobile" id="boardHeaderMobile">
+        <div class="boardHeaderContainer">
+            <div class="headerPlusBtn">
                 <div>Board</div>
-                <img src="../assets/icons/plusAddTaskMobile.svg" />
+                <img class="boardAddTaskBtnMobile" src="../assets/icons/plusAddTaskMobile.svg" />
             </div>
-            <div class="boardHeaderSearchContainer" id="boardSearchContainerMobile">
+
+            <div class="boardSearchBtnContainer">
                 <div class="boardSearchField">
-                    <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task"
-                        maxlength="20" />
+                    <input id="boardInputField" class="boardInputField" oninput="searchTasks()" type="text"
+                        placeholder="Find Task" maxlength="20" />
                     <div class="boardSearchFieldIcons">
                         <img src="../assets/icons/vector3.png" />
                         <img src="../assets/icons/search.svg" />
                     </div>
                 </div>
-            </div>
-        </div>
-
-
-        <!-- Mobile Header -->
-        <div class="boardHeaderSectionDesktop">
-            <div class="boardHeaderDesktop" id="boardHeaderDesktop" style="display: none;">
-                <div>Board</div>
-                <div class="boardHeaderSearchContainer" id="boardHeaderSearchContainerDesktop">
-                    <div class="boardSearchField">
-                        <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task"
-                            maxlength="20" />
-                        <div class="boardSearchFieldIcons">
-                            <img src="../assets/icons/vector3.png" />
-                            <img src="../assets/icons/search.svg" />
-                        </div>
-                    </div>
-                    <div class="boardAddTaskBtn">
-                        <button class="boardAddTaskBtnText">Add task</button>
-                        <img src="../assets/icons/add.svg" />
-                    </div>
+                <div class="boardAddTaskBtnDesktop">
+                    <div class="boardAddTaskBtnDesktopText">Add task</div>
+                    <img src="../assets/icons/add.svg" />
                 </div>
             </div>
         </div>
@@ -65,9 +48,11 @@
 
 
 
-        <section class="boardTaskSection">
 
-            <div class="boardTaskCategoryContainer">
+
+        <section class="boardTaskSection" id="boardTaskSection">
+
+            <div class="boardTaskCategoryContainer" id="boardTaskCategoryContainer">
                 <div class="boardTaskCategoryHeader">
                     <div>To do</div>
                     <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">

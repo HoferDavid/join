@@ -6,7 +6,7 @@
   max-width: 1208px;
 }
 
-.boardHeaderSectionMobile {
+.boardHeaderContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   gap: 32px;
 }
 
-.boardHeaderMobile {
+.headerPlusBtn {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,20 +24,10 @@
   line-height: 56.4px;
 }
 
-.boardHeaderDesktop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1056px;
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 73.2px;
-  padding-bottom: 40px;
-}
-
-.boardHeaderSearchContainer {
+.boardSearchBtnContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 32px;
 }
 
@@ -74,27 +64,30 @@ input:focus {
   gap: 16px;
 }
 
-.boardAddTaskBtn {
+.boardAddTaskBtnMobile {
+  cursor: pointer;
+}
+
+.boardAddTaskBtnDesktop {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 160px;
   height: 48px;
   gap: 4px;
   border-radius: 10px;
   border-width: 1px;
   border-style: solid;
-  padding: 8px 16px 8px 16px;
   background-color: #2a3647;
   cursor: pointer;
 }
 
-.boardAddTaskBtnText {
+.boardAddTaskBtnDesktopText {
   color: white;
   font-size: 18px;
   font-weight: 700;
   line-height: 25.2px;
-  background-color: #2a3647;
-  border: 0;
+  cursor: pointer;
 }
 
 .boardTaskSection {
@@ -111,7 +104,7 @@ input:focus {
 }
 
 .boardTaskCategoryHeader {
-  width: 396px;
+  max-width: 396px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,6 +112,10 @@ input:focus {
   font-weight: 700;
   line-height: 32.4px;
   color: #2a3647;
+}
+
+.boardTaskCategoryIcon {
+  cursor: pointer;
 }
 
 .taskDragArea {
@@ -235,30 +232,40 @@ input:focus {
 
 
 /* Media Queries */
-@media (max-width: 427px) {
-  .boardTaskCategoryHeader {
-    width: 260px;
-  }
-}
-
 @media (min-width: 576px) {
 }
 
+@media (max-width: 765px) {
+}
+
 @media (min-width: 768px) {
-  #boardSearchContainerMobile {
+}
+
+@media (max-width: 991px) {
+  .boardAddTaskBtnDesktop {
     display: none;
-  }
-
-  #boardSearchContainerDesktop {
-    display: flex;
-  }
-
-  .boardSearchField {
-    width: 312px;
   }
 }
 
 @media (min-width: 992px) {
+  .boardHeaderContainer {
+    flex-direction: row;
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .boardAddTaskBtnMobile {
+    display: none;
+  }
+
+  .boardSearchField {
+    max-width: 312px;
+  }
+
+  .headerPlusBtn {
+    font-size: 60px;
+    line-height: 73.2px;
+  }
 }
 
 @media (min-width: 1200px) {

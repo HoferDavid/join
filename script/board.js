@@ -176,20 +176,6 @@ async function moveTo(status) {
     }
 }
 
-function toggleDisplay() {
-    const mobileHeader = document.getElementById('boardHeaderMobile');
-    const mobileSearchContainer = document.getElementById('boardSearchContainerMobile');
-    const desktopHeader = document.getElementById('boardHeaderDesktop');
-    const desktopSearchContainer = document.getElementById('boardHeaderSearchContainerDesktop');
 
-    if (window.innerWidth >= 768) {
-        switchUiToDesktop(mobileHeader, mobileSearchContainer, desktopHeader, desktopSearchContainer);
-    } else {
-        switchUiToMobile(mobileHeader, mobileSearchContainer, desktopHeader, desktopSearchContainer);
-    }
-}
-
-window.addEventListener('load', toggleDisplay);
-window.addEventListener('resize', toggleDisplay);
 
 
