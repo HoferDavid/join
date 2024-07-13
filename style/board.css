@@ -1,8 +1,8 @@
 .boardContent {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .boardHeaderSection {
@@ -236,16 +236,16 @@ input:focus {
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
   .boardContent {
-    margin-left: 32px;
-    margin-right: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
   .boardContent {
-    margin-left: 40px;
-    margin-right: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   .boardHeaderSection {
@@ -273,14 +273,14 @@ input:focus {
 /*X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .boardContent {
-    margin-left: 0px;
-    margin-right: 0px;
   }
 
   .boardHeaderSection {
     width: 100%;
     max-width: 1208px;
-    padding: 96px 40px 20px 116px;
+    /* padding: 80px 0px 0px 0px;
+    margin-top: 40px; */
+    /* padding: 96px 40px 20px 116px; */
   }
 
   .boardTaskSection {
@@ -319,5 +319,10 @@ input:focus {
 }
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1400px) {
+@media (min-width: 1440px) {
+  .boardContent {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
 }
