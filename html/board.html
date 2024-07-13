@@ -24,8 +24,9 @@
 
     <section class="content contentSection boardContent">
 
-      <section class="boardHeaderSection">
-            <div class="boardHeaderTopContainer" id="boardHeaderMobile">
+        <!-- Desktop Header -->
+        <div class="boardHeaderSectionMobile">
+            <div class="boardHeaderMobile" id="boardHeaderMobile">
                 <div>Board</div>
                 <img src="../assets/icons/plusAddTaskMobile.svg" />
             </div>
@@ -38,13 +39,16 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Desktop Header -->
-            <div class="boardHeaderTopContainer" id="boardHeaderDesktop" style="display: none;">
+
+        <!-- Mobile Header -->
+        <div class="boardHeaderSectionDesktop">
+            <div class="boardHeaderDesktop" id="boardHeaderDesktop" style="display: none;">
                 <div>Board</div>
                 <div class="boardHeaderSearchContainer" id="boardHeaderSearchContainerDesktop">
                     <div class="boardSearchField">
-                    <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
+                        <input id="boardInputField" class="boardInputField" type="text" placeholder="Find Task" maxlength="20"/>
                         <div class="boardSearchFieldIcons">
                             <img src="../assets/icons/vector3.png" />
                             <img src="../assets/icons/search.svg" />
@@ -56,7 +60,10 @@
                     </div>
                 </div>
             </div>
-      </section>
+        </div>
+
+
+
 
       <section class="boardTaskSection">
 

@@ -3,25 +3,36 @@
   flex-direction: column;
   padding-left: 16px;
   padding-right: 16px;
+  max-width: 1208px;
 }
 
-.boardHeaderSection {
+.boardHeaderSectionMobile {
   display: flex;
-  flex-direction: column; 
-  height: 232px;
+  flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 32px;
-  gap: 40px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  gap: 32px;
 }
 
-.boardHeaderTopContainer {
+.boardHeaderMobile {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 48px;
   font-weight: 700;
   line-height: 56.4px;
-  margin-top: 48px;
+}
+
+.boardHeaderDesktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1056px;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 73.2px;
+  padding-bottom: 40px;
 }
 
 .boardHeaderSearchContainer {
@@ -90,7 +101,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .boardTaskCategoryContainer {
@@ -107,7 +118,7 @@ input:focus {
   font-size: 27px;
   font-weight: 700;
   line-height: 32.4px;
-  color: #2A3647;
+  color: #2a3647;
 }
 
 .taskDragArea {
@@ -126,14 +137,14 @@ input:focus {
   align-items: center;
   width: 252px;
   height: 48px;
-  background-color: #E7E7E7;
-  border: 1px dashed #A8A8A8;
+  background-color: #e7e7e7;
+  border: 1px dashed #a8a8a8;
   border-radius: 10px;
   gap: 10px;
   font-size: 16px;
   font-weight: 400;
-  color: #A8A8A8;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.16);
+  color: #a8a8a8;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
 }
 
 .todoContainer {
@@ -146,7 +157,7 @@ input:focus {
   padding: 16px;
   gap: 10px;
   width: 252px;
-  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.08);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   padding: 8px;
   margin: 8px;
 }
@@ -162,7 +173,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0038FF;
+  background-color: #0038ff;
   color: white;
   font-size: 16px;
   line-height: 19.2px;
@@ -177,7 +188,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1FD7C1;
+  background-color: #1fd7c1;
   color: white;
   font-size: 16px;
   line-height: 19.2px;
@@ -223,36 +234,17 @@ input:focus {
 }
 
 
-
-
 /* Media Queries */
-
 @media (max-width: 427px) {
   .boardTaskCategoryHeader {
     width: 260px;
   }
 }
 
-/*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .boardContent {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
 }
 
-/*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .boardContent {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  .boardHeaderSection {
-    height: 128px;
-    margin-bottom: 32px;
-  }
-
   #boardSearchContainerMobile {
     display: none;
   }
@@ -266,25 +258,20 @@ input:focus {
   }
 }
 
-/*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
 }
 
-/*X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-  .boardContent {
-  }
+}
 
-  .boardHeaderSection {
-    width: 100%;
-    max-width: 1208px;
-    /* padding: 80px 0px 0px 0px;
-    margin-top: 40px; */
-    /* padding: 96px 40px 20px 116px; */
+@media (min-width: 1440px) {
+  .boardContent {
+    padding: 0px 64px;
   }
 
   .boardTaskSection {
     flex-direction: row;
+    padding-bottom: 64px;
   }
 
   .taskDragArea {
@@ -307,22 +294,12 @@ input:focus {
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
-    color: #42526E;
+    color: #42526e;
   }
 
   .boardTaskCategoryIcon {
     height: 24px;
     width: 24px;
-    color: #2A3647;
+    color: #2a3647;
   }
-
-}
-
-/*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1440px) {
-  .boardContent {
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-
 }

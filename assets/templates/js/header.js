@@ -2,7 +2,7 @@ function toggleHeader() {
     const headerContainerMobile = document.getElementById('headerContainerMobile');
     const headerContainerDesktop = document.getElementById('headerContainerDesktop');
 
-    if (window.innerWidth >= 1200) {
+    if (window.innerWidth >= 992) {
         switchHeaderToDesktop(headerContainerDesktop, headerContainerMobile);
     } else {
         switchHeaderToMobile(headerContainerDesktop, headerContainerMobile);
