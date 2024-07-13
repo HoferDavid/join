@@ -2,13 +2,30 @@
   padding: 0 16px;
   position: relative;
   overflow-x: hidden;
+  transition: all 125ms ease-in-out;
 }
 
-.contactsDetail {
+#contactsDetail {
+  position: fixed;
+  top: 80px;
+  bottom: 80px;
+  left: 0;
+  padding: 0 16px;
+  z-index: 2;
+  background-color: #f0f0f0;
+  height: auto;
+  width: 100%;
+}
+
+.contactsGeneral {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  padding: 16px 0px;
 }
 
-.fs24 {
+.fs20 {
   font-size: 20px;
 }
 
@@ -71,9 +88,9 @@ h4 {
 }
 
 .moreIcon {
-  position: absolute;
+  position: fixed;
   right: 16px;
-  bottom: 24px;
+  bottom: 96px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,16 +102,45 @@ h4 {
 }
 
 .moreIcon:hover {
-  background-color: rgba(41, 171, 226, 0.9);
+  background-color: #29abe2;
 }
 
 .backArrow {
   position: absolute;
-  top: 16px;
+  top: 48px;
   right: 16px;
   height: 32px;
   width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.contactList {
+  list-style: none;
+  margin-bottom: 32px;
+  padding: 0;
+  border-top: 1px solid #d1d1d1;
+}
+
+.contactLetter>p:first-child {
+  margin-left: 32px;
+}
+
+.contactList li {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.contactList li:hover {
+  background-color: #2a3647;
+  color: white;
+  border-radius: 20px;
+}
+
+.contactList li:hover a:hover {
+  background-color: unset;
 }
