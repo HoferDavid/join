@@ -1,8 +1,6 @@
 .boardContent {
   display: flex;
   flex-direction: column;
-   /* padding-left: 16px;
-  padding-right: 16px;*/
   max-width: 1208px;
 }
 
@@ -10,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 48px 16px 32px 16px;
+  padding: 48px 16px 0px 16px;
   gap: 32px;
 }
 
@@ -92,13 +90,14 @@ input:focus {
 .boardTaskSection {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-bottom: 40px;
+  gap: 4px;
+  padding: 48px 16px 40px 16px;
 }
 
 .boardTaskCategoryContainer {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .boardTaskCategoryHeader {
@@ -261,7 +260,11 @@ input:focus {
 /* Media Queries */
 @media (min-width: 576px) {
   .boardHeaderContainer {
-    padding: 48px 24px 32px 24px;
+    padding: 48px 24px 0px 32px;
+  }
+
+  .boardTaskSection {
+    padding: 48px 16px 32px 32px;
   }
 }
 
@@ -274,8 +277,6 @@ input:focus {
 @media (min-width: 992px) {
   .boardHeaderContainer {
     flex-direction: row;
-    padding-top: 64px;
-    padding-bottom: 40px;
   }
 
   .boardAddTaskBtnMobile {
@@ -293,22 +294,16 @@ input:focus {
 }
 
 @media (min-width: 1440px) {
-  /* .boardContent {
-    padding: 0px 64px;
-  } */
-
-  .boardHeaderContainer {
-    /* padding: 48px 64px 32px 64px; */
+.boardHeaderContainer {
     display: flex;
-    width: 1056px;
-    left: 296px;
+    padding: 48px 0px 0px 64px;
+    width: 1120px;
   }
 
   .boardTaskSection {
     flex-direction: row;
     padding-bottom: 64px;
-    justify-content: center;
-    gap: 24px;
+    padding: 48px 16px 32px 64px;
   }
 
   .taskDragArea {
@@ -316,21 +311,25 @@ input:focus {
   }
 
   .boardTaskCategoryContainer {
-    width: 252px;
+    width: 268px;
+    align-items: center;
   }
 
   .boardTaskCategoryHeader {
-    width: 252px;
+    width: 244px;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
     color: #42526e;
-    padding: 0px 12px;
   }
 
   .boardTaskCategoryIcon {
     height: 24px;
     width: 24px;
     color: #2a3647;
+  }
+
+  .boardSearchField {
+    width: 312px;
   }
 }

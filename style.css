@@ -215,10 +215,6 @@ No media query for `xs` since this is the default in Bootstrap*/
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .headerContainerMobile {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
 }
 
 /*Large devices (desktops, 992px and up)*/
