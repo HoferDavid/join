@@ -1,6 +1,7 @@
 let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
 let tasks = [];
 let currentDraggedElement;
+let currentSearchInput = '';
 
 
 // Function only for Testing
@@ -29,6 +30,7 @@ async function initBoard() {
         // await postDataToFirebase('tasks', {'description': "Planen und starten", "title": "Marketingkampagne",  "status": "toDo", "category": "User Story", "assignedTo": {"0": "Laura Hoffmann", "1": "Steve Jobs"}, "date": "05/11/24", "prio": "urgent", "subtasks": {"0": "Marketingkampagne", "1": "Materialien erstellen", "2": "Kampagne starten"}});
         await pushDataToArray();
         initDragDrop();
+        applyCurrentSearchFilter();
     } catch (error) {
         console.error('dh Initialisation error:', error);
     }
@@ -49,7 +51,7 @@ async function getDataFromFirebase(path = '') {
 async function pushDataToArray() {
     try {
         let tasksData = await getDataFromFirebase('tasks');
-        console.log('notes Firebase: ', tasksData);
+        // console.log('notes Firebase: ', tasksData);
         for (const key in tasksData) {
             const singleTask = tasksData[key];
             let task = {
@@ -192,10 +194,29 @@ async function moveTo(status) {
     if (task) {
         task.status = status;
         initDragDrop();
+        applyCurrentSearchFilter();
         await updateTaskInFirebase(task.id, task);
     }
 }
 
 
+function searchTasks(inputValue) {
+    currentSearchInput = inputValue.toLowerCase();
+    const taskCards = document.querySelectorAll('.todoContainer');
+    taskCards.forEach(taskCard => {
+        const titleElement = taskCard.querySelector('.toDoHeader');
+        if (titleElement) {
+            const title = titleElement.textContent.trim().toLowerCase();
+            const isVisible = title.includes(currentSearchInput);
+            taskCard.style.display = isVisible ? 'block' : 'none';
+        }
+    });
+}
 
+
+function applyCurrentSearchFilter() {
+    if (currentSearchInput) {
+        searchTasks(currentSearchInput);
+    }
+}
 

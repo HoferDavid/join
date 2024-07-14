@@ -8,10 +8,10 @@ function generateTodoHTML(element) {
   let prioHTML = generatePrioHTML(element.prio);
 
   return /*html*/ `
-        <div draggable="true" touch-action: auto; id="${element.id}" class="todoContainer">
+        <div draggable="true" id="${element.id}" class="todoContainer">
             <div class="toDoContent">
                 ${categoryHTML}
-                <div>${element.title}</div>
+                <div class="toDoHeader">${element.title}</div>
                 <div>${element.description}</div>
                 ${subtasksHTML}
                 <div class="toDoContentBottomContainer">
