@@ -1,8 +1,8 @@
 .boardContent {
   display: flex;
   flex-direction: column;
-  padding-left: 16px;
-  padding-right: 16px;
+   /* padding-left: 16px;
+  padding-right: 16px;*/
   max-width: 1208px;
 }
 
@@ -10,8 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 48px;
-  padding-bottom: 32px;
+  padding: 48px 16px 32px 16px;
   gap: 32px;
 }
 
@@ -120,11 +119,17 @@ input:focus {
 .taskDragArea {
   width: 100%;
   height: 100%;
+  min-height: 40px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   overflow: auto;
   overflow-y: hidden;
+}
+
+::-webkit-scrollbar{
+  height: 2px;
+  background: transparent;
 }
 
 .noTaskPlaceholder {
@@ -160,6 +165,26 @@ input:focus {
   flex-direction: column;
   width: 220px;
   gap: 20px;
+}
+
+.toDoHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toDoHeader {
+  font-size: 16px;
+  line-height: 19.2px;
+  font-weight: 700;
+  color: #2A3647;
+}
+
+.toDoDescription {
+  font-size: 16px;
+  line-height: 19.2px;
+  font-weight: 400;
+  color: #A8A8A8;
 }
 
 .userStoryBadge {
@@ -202,7 +227,8 @@ input:focus {
   display: flex;
 }
 
-.assignedToBadge {
+.assignedToBadge,
+.assignedToMoreBadge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,6 +241,11 @@ input:focus {
   font-size: 12px;
   font-weight: 400;
   line-height: 14.4px;
+  gap: 24px;
+}
+
+.assignedToMoreBadge {
+  background-color: rgb(42, 55, 72);
 }
 
 .assignedToBadge:first-child {
@@ -228,6 +259,12 @@ input:focus {
 
 
 /* Media Queries */
+@media (min-width: 576px) {
+  .boardHeaderContainer {
+    padding: 48px 24px 32px 24px;
+  }
+}
+
 @media (max-width: 991px) {
   .boardAddTaskBtnDesktop {
     display: none;
@@ -256,8 +293,15 @@ input:focus {
 }
 
 @media (min-width: 1440px) {
-  .boardContent {
+  /* .boardContent {
     padding: 0px 64px;
+  } */
+
+  .boardHeaderContainer {
+    /* padding: 48px 64px 32px 64px; */
+    display: flex;
+    width: 1056px;
+    left: 296px;
   }
 
   .boardTaskSection {
@@ -273,15 +317,15 @@ input:focus {
 
   .boardTaskCategoryContainer {
     width: 252px;
-    align-items: center;
   }
 
   .boardTaskCategoryHeader {
-    width: 244px;
+    width: 252px;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
     color: #42526e;
+    padding: 0px 12px;
   }
 
   .boardTaskCategoryIcon {

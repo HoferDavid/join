@@ -284,9 +284,7 @@ No media query for `xs` since this is the default in Bootstrap*/
 /*XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {}
 
-/*ANCHOR - Klären mit David was das macht
-  .menuSingleTab {
-    height: 76px;
-    width: 72px;
-    padding: 8px 0px 8px 0px;
-  }*/
+
+
+
+

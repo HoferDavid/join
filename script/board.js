@@ -205,9 +205,12 @@ function searchTasks(inputValue) {
     const taskCards = document.querySelectorAll('.todoContainer');
     taskCards.forEach(taskCard => {
         const titleElement = taskCard.querySelector('.toDoHeader');
-        if (titleElement) {
+        const descriptionElement = taskCard.querySelector('.toDoDescription');
+
+        if (titleElement || descriptionElement) {
             const title = titleElement.textContent.trim().toLowerCase();
-            const isVisible = title.includes(currentSearchInput);
+            const description = descriptionElement.textContent.trim().toLowerCase();
+            const isVisible = title.includes(currentSearchInput) || description.includes(currentSearchInput);
             taskCard.style.display = isVisible ? 'block' : 'none';
         }
     });
