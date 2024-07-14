@@ -8,12 +8,69 @@
 
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="login.css"
 
     <script src="../script/templates/includeHTML.js"></script>
 
 </head>
 <body>
+    <div class="rotate-warning">             
+    </div>
+    <img id="logo" src="./assets/icons/logoBlue.svg" alt="Logo">
 
+
+    <div id="login-form-container">
+        <main>
+            <div>
+                <div class="signup-section-upside">
+                    <span>Not a Join user?</span>
+                    <button class="signup-button">
+                        Sign Up
+                    </button>
+                </div>
+
+                <div class="form-container">
+                    <form id="login-form">
+                        <div class="headline">
+                            <h1>Log in</h1>
+                            <div class="underline"></div>
+                        </div>
+
+                        <div class="maincontainer-inputfield">
+                            <div class="login-field">
+                                <input id="emailInput" required type="email" placeholder="Email" autocomplete="email">
+                                <input id="passwordInput" required type="password" placeholder="Password"
+                                    autocomplete="current-password">
+                            </div>
+                        </div>
+
+                        <div id="error-message" style="color: red; display: none;">Ups, wrong e-mail adress or password!
+                            Try again.</div>
+
+                        <label class="checkbox">
+                            <input type="checkbox"><span>Remember me</span>
+                        </label>
+                        <div class="button-section-for-entry">
+                            <button type="button" class="login-signup-button">Log in</button>
+                            <button type="button" class="guest-login-button">Guest Log in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <div class="signup-section-lowside">
+            <span>Not a Join user?</span>
+            <button class="signup-button">
+                Sign Up
+            </button>
+        </div>
+
+        <footer>
+            <a href="./html/privacy.html">Privacy Policy</a>
+            <a href="./html/imprint.html">Legal Notice</a>
+        </footer>
+    </div>
     
 </body>
 </html>
