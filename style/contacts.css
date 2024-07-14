@@ -28,11 +28,11 @@
 .workContact {
   z-index: 3;
   height: auto;
-  width: 90%;
+  width: 98%;
   position: fixed;
-  top: 80px;
-  bottom: 80px;
-  left: 5%;
+  top: 88px;
+  bottom: 88px;
+  left: 1%;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -47,8 +47,12 @@
   font-size: 20px;
 }
 
-.tt100 {
+.ttx100 {
   transform: translateX(150%);
+}
+
+.tty100 {
+  transform: translateY(150%);
 }
 
 .tt0 {
@@ -250,6 +254,11 @@ h4 {
   cursor: pointer;
 }
 
+.closeX:hover {
+  background-color: #29abe2;
+  border-radius: 50%;
+}
+
 .up>h2 {
   font-size: 36px;
   font-weight: bold;
@@ -374,3 +383,22 @@ form>div>button:first-child:hover {
   border: 1px solid #29abe2;
   color: #29abe2;
 }
+
+/*ANCHOR Media Query
+X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {}
