@@ -110,15 +110,15 @@ body {
   }
   
   #passwordInput {
-    background-image: url(./assets/icons/password_input.png);
+    background-image: url(../assets/icons/password_input.png);
   }
   
   #passwordInput:focus {
-    background-image: url(./assets/icons/password_off.png);
+    background-image: url(../assets/icons/password_off.png);
   }
   
   #emailInput {
-    background-image: url(./assets/icons/mail.svg);
+    background-image: url(../assets/icons/mail.svg);
   }
   
   #error-message {

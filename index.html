@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style/fonts.css">
-    <link rel="stylesheet" href="login.css"
+    <link rel="stylesheet" href="../style/login.css"
 
     <script src="../script/templates/includeHTML.js"></script>
 
@@ -16,7 +16,7 @@
 <body>
     <div class="rotate-warning">             
     </div>
-    <img id="logo" src="./assets/icons/logoBlue.svg" alt="Logo">
+    <img id="logo" src="./assets/icons/logoBlue.svg">
 
 
     <div id="login-form-container">
@@ -24,7 +24,7 @@
             <div>
                 <div class="signup-section-upside">
                     <span>Not a Join user?</span>
-                    <button class="signup-button">
+                    <button class="signup-button" onclick="window.location.href='html/register.html';">
                         Sign Up
                     </button>
                 </div>
@@ -44,9 +44,6 @@
                             </div>
                         </div>
 
-                        <div id="error-message" style="color: red; display: none;">Ups, wrong e-mail adress or password!
-                            Try again.</div>
-
                         <label class="checkbox">
                             <input type="checkbox"><span>Remember me</span>
                         </label>
@@ -61,7 +58,7 @@
 
         <div class="signup-section-lowside">
             <span>Not a Join user?</span>
-            <button class="signup-button">
+            <button class="signup-button" onclick="window.location.href='html/register.html';">
                 Sign Up
             </button>
         </div>
