@@ -110,11 +110,11 @@ body {
   }
   
   #passwordInput {
-    background-image: url(./assets/icons/lock-password-input.png);
+    background-image: url(./assets/icons/password_input.png);
   }
   
   #passwordInput:focus {
-    background-image: url(./assets/icons/visibility_off_password.png);
+    background-image: url(./assets/icons/password_off.png);
   }
   
   #emailInput {
