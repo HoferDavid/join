@@ -18,11 +18,11 @@
 
 <body onload="initBoard()">
 
-    <div w3-include-html="../assets/templates/html/header.html" class="header"></div>
+    <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
 
-    <section class="content contentSection boardContent">
+    <main class="content contentSection boardContentSection">
 
-        <div class="boardHeaderContainer">
+        <section class="boardHeaderSection">
             <div class="headerPlusBtn">
                 <div>Board</div>
                 <img class="boardAddTaskBtnMobile" src="../assets/icons/plusAddTaskMobile.svg" />
@@ -42,8 +42,7 @@
                     <img src="../assets/icons/add.svg" />
                 </div>
             </div>
-        </div>
-
+        </section>
 
 
         <section class="boardTaskSection" id="boardTaskSection">
@@ -77,9 +76,9 @@
             </div>
         </section>
 
-    </section>
+    </main>
 
-    <div w3-include-html="../assets/templates/html/menu.html" class="menu"></div>
+    <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
 
     <script>
         includeHTML();

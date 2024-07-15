@@ -61,12 +61,12 @@ function generateDescriptionHTML(description) {
 
 
 function generateSubtasksHTML(subtasks) {
-  let subtasksHTML = "";
-  if (subtasks && Object.keys(subtasks).length > 1) {
-    subtasksHTML = `${Object.keys(subtasks).length} Subtasks`;
+    let subtasksHTML = "";
+    if (subtasks && Object.keys(subtasks).length > 1) {
+      subtasksHTML = `${Object.keys(subtasks).length} Subtasks`;
+    }
+    return subtasksHTML;
   }
-  return subtasksHTML;
-}
 
 
 function generateAssignedToHTML(assignedTo) {
