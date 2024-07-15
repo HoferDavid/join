@@ -5,20 +5,48 @@
   padding: 48px 0px 32px 16px;
 }
 
-.addTaskSection {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 16px 0px 16px;
+.fs16 {
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
 }
 
-.addTaskInputContainer {
+.fs20 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.2px;
+  color: white;
+}
+
+.addTaskSection {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  padding: 0px 16px 0px 16px;
+}
+
+.inputContainerTop {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.inputContainerBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.singleInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   max-width: 396px;
+}
+
+.descriptionInput {
+  height: 88px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .addTaskForm {
@@ -27,34 +55,90 @@
   gap: 16px;
 }
 
-input {
+input,
+textarea {
   background-color: white;
-  width: 90%;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   padding: 10px 20px 10px 20px;
 }
 
+textarea {
+  height: 88px;
+  resize: none;
+}
+
+input[type="date"]:invalid::-webkit-datetime-edit {
+  color: #d1d1d1;
+  font-size: 16px;
+  line-height: 19.2px;
+  font-weight: 400;
+}
+
 ::placeholder {
   color: #d1d1d1;
+  font-family: "Inter";
 }
 
 input:focus {
   outline: none;
 }
 
-.redStarAfter:after {
-    content:"*";
-    color: red;
+.redStarAfter:after,
+.redStarBefore:before {
+  content: "*";
+  color: red;
 }
 
-.redStarBefore:before {
-    content:"*";
-    color: red;
+.addTaskPrioContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.prioBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 396px;
 }
 
 .prioBtn {
-    height: 40px;
-    padding: 18px 10px;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 120px;
+  gap: 8px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.bottomContainer {
+  display: flex;
+  position: sticky;
+  bottom: 0px;
+  padding: 16px 0px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f6f7f8;
+}
+
+.bottomContainerText {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.createTaskBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a3647;
+  border-radius: 10px;
+  border: 0;
+  padding: 16px;
+  gap: 4px;
+  cursor: pointer;
 }

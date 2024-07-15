@@ -24,52 +24,67 @@
         <div class="addTaskHeader">Add Task</div>
 
 
-        <section class="addTaskSection">
+        <section class="addTaskSection fs16">
 
             <form onsubmit="addTask()" class="addTaskForm">
-                <div class="addTaskInputContainer">
-                    <div class="redStarAfter">Title</div>
-                    <input type="text" placeholder="Enter a title" required>
-                </div>
-                <div class="addTaskInputContainer">
-                    <div>Description</div>
-                    <input type="text" placeholder="Enter a Description">
-                </div>
-                <div class="addTaskInputContainer">
-                    <div>Assigned to</div>
-                    <input type="text">
-                </div>
-    
-    
-                <div>
-                    <div class="addTaskInputContainer">
-                        <div class="redStarAfter">Due date</div>
-                        <input type="date" placeholder="dd/mm/yyyy" required>
+                <div class="inputContainerTop">
+                    <div class="singleInputContainer">
+                        <div class="redStarAfter">Title</div>
+                        <input type="text" placeholder="Enter a title" required maxlength="50">
                     </div>
-                    <div>
+                    <div class="singleInputContainer">
+                        <div>Description</div>
+                        <textarea class="" placeholder="Enter a Description"></textarea>
+                    </div>
+                    <div class="singleInputContainer">
+                        <div>Assigned to</div>
+                        <input type="text">
+                    </div>
+                </div>
+    
+    
+                <div class="inputContainerBottom">
+                    <div class="singleInputContainer">
+                        <div class="redStarAfter">Due date</div>
+                        <input id="dateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
+                    </div>
+                    <div class="addTaskPrioContainer">
                         <div>Prio</div>
-                        <div>
-                            <div class="prioBtn">Urgent</div>
-                            <div>Medium</div>
-                            <div>Low</div>
+                        <div class="prioBtnContainer">
+                            <div class="prioBtn fs16">
+                                <div>Urgent</div>
+                                <img src="../assets/icons/priourgentsmall.svg">
+                            </div>
+                            <div class="prioBtn fs16">
+                                <div>Medium</div>
+                                <img src="../assets/icons/priomediumsmall.svg">
+                            </div>
+                            <div class="prioBtn fs16">
+                                <div>Low</div>
+                                <img src="../assets/icons/priolowsmall.svg">
+                            </div>
+
                         </div>
                     </div>
-                    <div class="addTaskInputContainer">
+                    <div class="singleInputContainer">
                         <div>Category</div>
                         <input type="text">
                     </div>
-                    <div class="addTaskInputContainer">
+                    <div class="singleInputContainer">
                         <div>Subtasks</div>
                         <input type="text" placeholder="Add new subtask">
                     </div>
                 </div>
 
 
-                <div>
+                <div class="bottomContainer">
                     <div class="redStarBefore">This field is required</div>
                     <div>
-                        <div>Clear</div>
-                        <button>Create Task</button>
+                        <div style="display: none;">Clear</div>
+                        <button class="createTaskBtn fs20">
+                            <div>Create Task</div>
+                            <img src="../assets/icons/check.svg" alt="">
+                        </button>
                     </div>
                 </div>
             </form>
