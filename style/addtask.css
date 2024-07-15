@@ -5,23 +5,13 @@
   padding: 48px 0px 32px 16px;
 }
 
-.fs16 {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19.2px;
-}
-
-.fs20 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 25.2px;
-  color: white;
-}
-
 .addTaskSection {
   display: flex;
   flex-direction: column;
   padding: 0px 16px 0px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
 }
 
 .inputContainerTop {
@@ -102,6 +92,9 @@ input:focus {
   justify-content: space-between;
   gap: 16px;
   max-width: 396px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
 }
 
 .prioBtn {
@@ -140,5 +133,119 @@ input:focus {
   border: 0;
   padding: 16px;
   gap: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.2px;
+  color: white;
   cursor: pointer;
+}
+
+.seperatorLine {
+  width: 2px;
+  height: 424px;
+  background-color: #d1d1d1;
+}
+
+
+
+@media (max-width: 374px) {
+  .createTaskBtn {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .createTaskBtn img {
+    display: none;
+  }
+
+  .addTaskSection {
+    padding: 0px 8px 0px 8px;
+  }
+
+  .prioBtn {
+    gap: 4px;
+  }
+}
+
+@media (min-width: 429px) {
+  .addTaskSection {
+    align-items: center;
+  }
+
+  .addTaskHeader {
+    display: flex;
+    justify-content: center;
+    padding: 48px 0px 32px 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  .addTaskHeader {
+    font-size: 60px;
+    line-height: 73.2px;
+  }
+}
+
+@media (max-width: 1439px) {
+  .seperatorLine {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .addTaskSection {
+    padding: 0px;
+    align-items: flex-start;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .inputContainerBottom,
+  .inputContainerTop {
+    width: 440px;
+  }
+
+  .singleInputContainer {
+    max-width: 440px;
+  }
+
+  .addTaskHeader {
+    justify-content: flex-start;
+    margin: 48px 0px 32px 96px;
+  }
+
+  .addTaskForm {
+    flex-direction: row;
+    gap: 48px;
+    padding-left: 96px;
+  }
+
+  .prioBtnContainer {
+    max-width: 440px;
+  }
+
+  .prioBtn {
+    height: 56px;
+    width: 136px;
+  }
+
+  input {
+    height: 48px;
+  }
+
+  input,
+  textarea,
+  .prioBtnContainer,
+  ::placeholder {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  .bottomContainer {
+    display: flex;
+    position: fixed;
+    padding: 0px 0px 96px 0px;
+    width: 978px;
+  }
 }
