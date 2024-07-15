@@ -9,43 +9,76 @@
 
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/addtask.css">
 
     <script src="../assets/templates/js/includeHTML.js"></script>
+    <script src="../script/addTask.js"></script>
 </head>
 
 <body>
 
     <div w3-include-html="../assets/templates/html/header.html" class="header"></div>
 
-    <section class="content contentSection ">
-        <h1>Content</h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quae sequi deserunt odio quaerat laudantium
-        enim officiis voluptatibus unde quibusdam voluptate, consequatur reiciendis consequuntur molestiae sit ducimus
-        iste aperiam aliquid?
+    <section class="content contentSection addTaskContent">
+
+        <div class="addTaskHeader">Add Task</div>
+
+
+        <section class="addTaskSection">
+
+            <form onsubmit="addTask()" class="addTaskForm">
+                <div class="addTaskInputContainer">
+                    <div class="redStarAfter">Title</div>
+                    <input type="text" placeholder="Enter a title" required>
+                </div>
+                <div class="addTaskInputContainer">
+                    <div>Description</div>
+                    <input type="text" placeholder="Enter a Description">
+                </div>
+                <div class="addTaskInputContainer">
+                    <div>Assigned to</div>
+                    <input type="text">
+                </div>
+    
+    
+                <div>
+                    <div class="addTaskInputContainer">
+                        <div class="redStarAfter">Due date</div>
+                        <input type="date" placeholder="dd/mm/yyyy" required>
+                    </div>
+                    <div>
+                        <div>Prio</div>
+                        <div>
+                            <div class="prioBtn">Urgent</div>
+                            <div>Medium</div>
+                            <div>Low</div>
+                        </div>
+                    </div>
+                    <div class="addTaskInputContainer">
+                        <div>Category</div>
+                        <input type="text">
+                    </div>
+                    <div class="addTaskInputContainer">
+                        <div>Subtasks</div>
+                        <input type="text" placeholder="Add new subtask">
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="redStarBefore">This field is required</div>
+                    <div>
+                        <div>Clear</div>
+                        <button>Create Task</button>
+                    </div>
+                </div>
+            </form>
+
+        </section>
+
+
+
+
     </section>
 
     <div w3-include-html="../assets/templates/html/menu.html" class="menu"></div>
