@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 48px 16px 0px 16px;
+  padding: 48px 16px;
   gap: 32px;
 }
 
@@ -88,10 +88,7 @@ input:focus {
 }
 
 .boardTaskSection {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 48px 16px 40px 16px;
+  padding: 0px 16px 40px 16px;
 }
 
 .boardTaskCategoryContainer {
@@ -259,12 +256,8 @@ input:focus {
 
 /* Media Queries */
 @media (min-width: 576px) {
-  .boardHeaderSection {
-    padding: 48px 24px 0px 32px;
-  }
-
   .boardTaskSection {
-    padding: 48px 16px 32px 32px;
+    padding: 0px 16px 32px 16px;
   }
 }
 
@@ -296,22 +289,21 @@ input:focus {
 @media (min-width: 1200px) {
   .boardHeaderSection {
     display: flex;
-    padding: 48px 0px 0px 64px;
-    width: 1120px;
+    width: 964px;
   }
 
   .boardTaskSection {
-    flex-direction: row;
+    display: flex;
     padding-bottom: 64px;
-    padding: 48px 16px 32px 64px;
   }
 
   .taskDragArea {
     display: block;
+    overflow: unset;
+    overflow-y: unset;
   }
 
   .boardTaskCategoryContainer {
-    width: 268px;
     align-items: center;
   }
 
@@ -343,14 +335,14 @@ input:focus {
 @media (min-width: 1440px) {
 .boardHeaderSection {
     display: flex;
-    padding: 48px 0px 0px 64px;
+    padding: 48px 0px 48px 64px;
     width: 1120px;
   }
 
   .boardTaskSection {
     flex-direction: row;
     padding-bottom: 64px;
-    padding: 48px 16px 32px 64px;
+    padding: 0px 16px 32px 64px;
   }
 
   .taskDragArea {

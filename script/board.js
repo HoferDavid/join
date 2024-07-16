@@ -28,13 +28,18 @@ async function initBoard() {
     try {
         await getDataFromFirebase();
         // pushToFirebaseTest();
-        // await postDataToFirebase('tasks', {'description': "Planen und starten", "title": "Marketingkampagne",  "status": "toDo", "category": "User Story", "assignedTo": {"0": "Laura Hoffmann", "1": "Steve Jobs"}, "date": "05/11/24", "prio": "urgent", "subtasks": {"0": "Marketingkampagne", "1": "Materialien erstellen", "2": "Kampagne starten"}});
         await pushDataToArray();
+        updateAllTaskCategories();
         initDragDrop();
         applyCurrentSearchFilter();
     } catch (error) {
         console.error('dh Initialisation error:', error);
     }
+}
+
+function initDragDrop() {
+    updateAllTaskCategories();
+    dragDrop();
 }
 
 
@@ -107,15 +112,6 @@ async function updateTaskInFirebase(id, updatedTask) {
 }
 
 
-function initDragDrop() {
-    updateToDo();
-    updateInProgress();
-    updateAwaitFeedback();
-    updateDone();
-    dragDrop();
-}
-
-
 function dragDrop() {
     document.querySelectorAll('.todoContainer').forEach(todoContainer => {
         todoContainer.addEventListener('dragstart', (e) => {
@@ -136,47 +132,25 @@ function dragDrop() {
 }
 
 
-function updateToDo() {
-    let toDo = tasks.filter(t => t['status'] == 'toDo');
-    document.getElementById('toDo').innerHTML = '';
-    if (toDo.length > 0) {
-        toDo.forEach(element => { document.getElementById('toDo').innerHTML += generateTodoHTML(element); });
+function updateTaskCategories(status, categoryId, noTaskMessage) {
+    let taskForSection = tasks.filter(t => t['status'] === status);
+    let categoryElement = document.getElementById(categoryId);
+    categoryElement.innerHTML = '';
+    if (taskForSection.length > 0) {
+        taskForSection.forEach(element => {
+            categoryElement.innerHTML += generateTodoHTML(element);
+        });
     } else {
-        document.getElementById('toDo').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
+        categoryElement.innerHTML = `<div class="noTaskPlaceholder">${noTaskMessage}</div>`;
     }
 }
 
 
-function updateInProgress() {
-    let inProgress = tasks.filter(t => t['status'] == 'inProgress');
-    document.getElementById('inProgress').innerHTML = '';
-    if (inProgress.length > 0) {
-        inProgress.forEach(element => { document.getElementById('inProgress').innerHTML += generateTodoHTML(element); });
-    } else {
-        document.getElementById('inProgress').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
-    }
-}
-
-
-function updateAwaitFeedback() {
-    let awaitFeedback = tasks.filter(t => t['status'] == 'awaitFeedback');
-    document.getElementById('awaitFeedback').innerHTML = '';
-    if (awaitFeedback.length > 0) {
-        awaitFeedback.forEach(element => { document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element); });
-    } else {
-        document.getElementById('awaitFeedback').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
-    }
-}
-
-
-function updateDone() {
-    let done = tasks.filter(t => t['status'] == 'done');
-    document.getElementById('done').innerHTML = '';
-    if (done.length > 0) {
-        done.forEach(element => { document.getElementById('done').innerHTML += generateTodoHTML(element); });
-    } else {
-        document.getElementById('done').innerHTML = `<div class="noTaskPlaceholder">No tasks Done</div>`;
-    }
+function updateAllTaskCategories() {
+    updateTaskCategories('toDo', 'toDo', 'No tasks To do');
+    updateTaskCategories('inProgress', 'inProgress', 'No tasks in progress');
+    updateTaskCategories('awaitFeedback', 'awaitFeedback', 'No tasks await Feedback');
+    updateTaskCategories('done', 'done', 'No tasks Done');
 }
 
 
@@ -202,12 +176,12 @@ async function moveTo(status) {
 
 
 function searchTasks(inputValue) {
+    emptyDragAreaWhileSearching();
     currentSearchInput = inputValue.toLowerCase();
     const taskCards = document.querySelectorAll('.todoContainer');
     taskCards.forEach(taskCard => {
         const titleElement = taskCard.querySelector('.toDoHeader');
         const descriptionElement = taskCard.querySelector('.toDoDescription');
-
         if (titleElement || descriptionElement) {
             const title = titleElement.textContent.trim().toLowerCase();
             const description = descriptionElement.textContent.trim().toLowerCase();
@@ -224,3 +198,13 @@ function applyCurrentSearchFilter() {
     }
 }
 
+
+function emptyDragAreaWhileSearching() {
+    let dragAreas = document.querySelectorAll('.noTaskPlaceholder');
+    dragAreas.forEach(dragArea => {
+        if (dragArea.classList.contains('noTaskPlaceholder')) {
+            dragArea.classList.remove('noTaskPlaceholder');
+            dragArea.innerHTML = '';
+        } 
+    });
+}
