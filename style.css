@@ -148,7 +148,7 @@ body {
 
 
 .menuBtn {
-  height: 80px;
+  height: 76px;
   width: 80px;
   display: flex;
   flex-direction: column;
@@ -234,6 +234,12 @@ body {
 /*ANCHOR Media Query
 X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
+
+@media (max-width: 427px) {
+  .menuBtnContainer {
+    gap: 0px;
+  }
+}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {

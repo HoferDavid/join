@@ -293,6 +293,53 @@ input:focus {
   }
 }
 
+@media (min-width: 1200px) {
+  .boardHeaderSection {
+    display: flex;
+    padding: 48px 0px 0px 64px;
+    width: 1120px;
+  }
+
+  .boardTaskSection {
+    flex-direction: row;
+    padding-bottom: 64px;
+    padding: 48px 16px 32px 64px;
+  }
+
+  .taskDragArea {
+    display: block;
+  }
+
+  .boardTaskCategoryContainer {
+    width: 268px;
+    align-items: center;
+  }
+
+  .boardTaskCategoryHeader {
+    width: 244px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #42526e;
+  }
+
+  .boardTaskCategoryIcon {
+    height: 24px;
+    width: 24px;
+    color: #2a3647;
+  }
+
+  .boardSearchField {
+    width: 312px;
+  }
+
+  .noTaskPlaceholder {
+    width: 252px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
 @media (min-width: 1440px) {
 .boardHeaderSection {
     display: flex;
@@ -331,5 +378,11 @@ input:focus {
 
   .boardSearchField {
     width: 312px;
+  }
+
+  .noTaskPlaceholder {
+    width: 252px;
+    margin-left: 8px;
+    margin-right: 8px;
   }
 }
