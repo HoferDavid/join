@@ -32,7 +32,9 @@
 .workContact {
   z-index: 3;
   height: auto;
+  max-height: 600px;
   width: 98%;
+  max-width: 1200px;
   position: fixed;
   top: 88px;
   bottom: 88px;
@@ -52,11 +54,11 @@
 }
 
 .ttx100 {
-  transform: translateX(150%);
+  transform: translateX(100vw);
 }
 
 .tty100 {
-  transform: translateY(150%);
+  transform: translateY(100vh);
 }
 
 .tt0 {
@@ -115,6 +117,7 @@ h1 {
 
 .contactOverview h2 {
   font-size: 36px;
+  font-weight: 500;
   margin: 24px 0;
 }
 
@@ -287,6 +290,10 @@ h4 {
   color: white;
 }
 
+.up>img:nth-child(n+2) {
+  display: none;
+}
+
 .workContact>img {
   position: absolute;
   top: 0;
@@ -358,6 +365,11 @@ h4 {
   padding: 0 16px;
 }
 
+.down button img {
+  width: 24px;
+  height: 24px;
+}
+
 .addContactButton {
   width: 200px;
   background-color: #2a3647;
@@ -397,6 +409,14 @@ form>div {
 form>div>button:first-child:hover {
   border: 1px solid #29abe2;
   color: #29abe2;
+}
+
+#addContact form>div>button:first-child {
+  display: none;
+}
+
+#addContact form>div>button:first-child>img:last-child {
+  display: none;
 }
 
 /*ANCHOR Media Query
@@ -504,10 +524,27 @@ No media query for `xs` since this is the default in Bootstrap*/
     font-weight: bold;
     margin-bottom: 16px;
   }
+
+  .workContact {
+    left: 240px;
+    width: 65%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
 }
 
 /*X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
+  #contactsDetail>p:first-of-type {
+    margin-bottom: 64px;
+  }
+
+  #contactsDetail>h4 {
+    margin: 24px 0;
+  }
+
   .contactsGeneral {
     padding: 16px 32px;
   }
@@ -517,7 +554,148 @@ No media query for `xs` since this is the default in Bootstrap*/
     width: 100%;
     padding: 16px 32px;
   }
+
+  .contactsHeader {
+    margin-bottom: 64px;
+  }
+
+  .contactsHeader h1 {
+    padding-right: 32px;
+    font-size: 60px;
+  }
+
+  .contactsHeader p {
+    padding-left: 32px;
+    font-size: 28px;
+  }
+
+  .contactOverview {
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+
+  .contactOverview h2 {
+    font-size: 64px;
+  }
+
+  .workContact {
+    left: 240px;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .workContactContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-right: 16px;
+    width: 40%;
+    height: 100%;
+  }
+
+  .up {
+    padding-left: 48px;
+    gap: 8px;
+    border-radius: 30px 0 0 30px;
+  }
+
+  .up>img:nth-child(n+2) {
+    display: block;
+  }
+
+  .up>img:nth-child(1) {
+    display: none;
+  }
+
+  .up>img:nth-child(3) {
+    height: 68px;
+    position: absolute;
+    left: 48px;
+    top: 25%;
+  }
+
+  .up>h2 {
+    font-size: 48px;
+    top: 4%;
+    position: relative;
+  }
+
+  .up>p {
+    font-size: 20px;
+  }
+
+  .down {
+    border-radius: 0 30px 30px 0;
+    padding-right: 48px;
+  }
+
+  .down form {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .down input {
+    width: 100%;
+    height: 50px;
+  }
+
+  .down input[type="text"] {
+    background: url('../assets/icons/person.svg') no-repeat right 12px top 12px;
+    background-size: 24px 24px;
+  }
+
+  .down input[type="tel"] {
+    background: url('../assets/icons/call.svg') no-repeat right 12px top 12px;
+    background-size: 24px 24px;
+  }
+
+  .down input[type="mail"] {
+    background: url('../assets/icons/mail.svg') no-repeat right 12px top 12px;
+    background-size: 24px 24px;
+  }
+
+  #addContact form>div>button:first-child {
+    display: flex;
+  }
+
+  #addContact form>div>button:first-child:hover>img:last-child {
+    display: block;
+  }
+
+  #addContact form>div>button:first-child:hover>img:first-child {
+    display: none;
+  }
+
+  .down button {
+    height: 56px;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  form>div {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 32px;
+  }
 }
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+
+  .up>h2 {
+    font-size: 60px;
+    top: 4%;
+    position: relative;
+  }
+
+  .up>p {
+    font-size: 24px;
+  }
+
+}

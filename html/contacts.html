@@ -22,10 +22,12 @@
 
     <main class="content contentSection ">
         <div id="contactsDetail" class="ttx100">
-            <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')"><img
-                    src="../assets/icons/more_vert.svg" alt="3 points vert"></div>
-            <a class="backArrow" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')"><img
-                    src="../assets/icons/arrow-left-line.svg" alt="arrow left line"></a>
+            <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')">
+                <img src="../assets/icons/more_vert.svg" alt="3 points vert">
+            </div>
+            <a class="backArrow" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
+                <img src="../assets/icons/arrow-left-line.svg" alt="arrow left line">
+            </a>
             <div class="contactsHeader">
                 <h1>Contacts</h1>
                 <p class="bordered fs20">Better with a Team</p>
@@ -152,6 +154,9 @@
             <div class="workContactContainer up">
                 <img class="closeX" src="../assets/icons/close.svg" alt="close X"
                     onclick="toggleClass('addContact', 'tt0', 'tty100')">
+                <img class="closeX" src="../assets/icons/closeGrey.svg" alt="close X"
+                    onclick="toggleClass('addContact', 'tt0', 'tty100')">
+                <img src="../assets/icons/logowhite.svg" alt="logo white">
                 <h2>Add contact</h2>
                 <p class="bordered">Tasks are better with a team!</p>
             </div>
@@ -161,8 +166,15 @@
                     <input type="text" placeholder="Name">
                     <input type="mail" placeholder="Email">
                     <input type="tel" placeholder="Phone">
-                    <button type="submit" class="addContactButton">Create Contact <img src="../assets/icons/check.svg"
-                            alt=""></button>
+                    <div class="editButtonContainer">
+                        <button class="deleteContactButton">Cancel
+                            <img src="../assets/icons/closeGrey.svg" alt="close X">
+                            <img src="../assets/icons/closeBlue.svg" alt="close X">
+                        </button>
+                        <button type="submit" class="addContactButton">Create Contact
+                            <img src="../assets/icons/check.svg" alt="check">
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -170,9 +182,12 @@
             <div class="workContactContainer up">
                 <img class="closeX" src="../assets/icons/close.svg" alt="close X"
                     onclick="toggleClass('editContact', 'tt0', 'tty100')">
+                <img class="closeX" src="../assets/icons/closeGrey.svg" alt="close X"
+                    onclick="toggleClass('editContact', 'tt0', 'tty100')">
+                <img src="../assets/icons/logowhite.svg" alt="logo white">
                 <h2 class="bordered">Edit contact</h2>
             </div>
-            <img src="../assets/img/contacts/Anton.svg" alt="empty Profil Picture">
+            <img src="../assets/img/contacts/Anton.svg" alt="Profil Picture">
             <div class="workContactContainer down">
                 <form onsubmit="" class="contactForm">
                     <input type="text" placeholder="Name" value="Anton Mayer">
