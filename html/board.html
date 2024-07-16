@@ -24,61 +24,63 @@
 
     <main class="content contentSection boardContentSection">
 
-        <section class="boardHeaderSection">
+        <section class="headerSection">
             <div class="headerPlusBtn">
                 <div>Board</div>
-                <img class="boardAddTaskBtnMobile" src="../assets/icons/plusAddTaskMobile.svg" />
+                <img class="addTaskBtnMobile" src="../assets/icons/plusAddTaskMobile.svg" />
             </div>
 
-            <div class="boardSearchBtnContainer">
-                <div class="boardSearchField">
-                    <input id="boardInputField" class="boardInputField" oninput="searchTasks(this.value)" type="text"
+            <div class="searchBtnContainer">
+                <div class="searchField">
+                    <input id="boardInputField" class="inputField" oninput="searchTasks(this.value)" type="text"
                         placeholder="Find Task" maxlength="20" />
-                    <div class="boardSearchFieldIcons">
+                    <div class="searchFieldIcons">
                         <img src="../assets/icons/vector3.png" />
                         <img src="../assets/icons/search.svg" />
                     </div>
                 </div>
-                <div class="boardAddTaskBtnDesktop">
-                    <div class="boardAddTaskBtnDesktopText">Add task</div>
+                <div class="addTaskBtnDesktop">
+                    <div class="addTaskBtnDesktopText">Add task</div>
                     <img src="../assets/icons/add.svg" />
                 </div>
             </div>
         </section>
 
 
-        <section class="boardTaskSection" id="boardTaskSection">
-            <div class="boardTaskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
-                <div class="boardTaskCategoryHeader">
+        <section class="taskSection" id="boardTaskSection">
+            <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+                <div class="taskCategoryHeader">
                     <div>To do</div>
-                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="toDo"></div>
             </div>
 
-            <div class="boardTaskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
-                <div class="boardTaskCategoryHeader">
+            <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+                <div class="taskCategoryHeader">
                     <div>In progress</div>
-                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="inProgress"></div>
             </div>
 
-            <div class="boardTaskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
-                <div class="boardTaskCategoryHeader">
+            <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
+                <div class="taskCategoryHeader">
                     <div>Await Feedback</div>
-                    <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="awaitFeedback"></div>
             </div>
 
-            <div class="boardTaskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                <div class="boardTaskCategoryHeader">
+            <div class="taskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                <div class="taskCategoryHeader">
                     <div>Done</div>
                 </div>
                 <div class="taskDragArea" id="done"></div>
             </div>
         </section>
+
+        <div id="overlay"></div>
 
     </main>
 

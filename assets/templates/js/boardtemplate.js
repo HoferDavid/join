@@ -1,5 +1,10 @@
-const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)', 'rgb(255, 187, 43)', 'rgb(252, 113, 255)', 'rgb(110, 82, 255)', 'rgb(148, 38, 255)', 'rgb(255, 69, 70)'];
+// Dummy Codes to visualize User Badges
+function getRandomColor(badgeColors) {
+    return badgeColors[Math.floor(Math.random() * badgeColors.length)];
+}
 
+const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)', 'rgb(255, 187, 43)', 'rgb(252, 113, 255)', 'rgb(110, 82, 255)', 'rgb(148, 38, 255)', 'rgb(255, 69, 70)'];
+// Code above onöy for testing purposes
 
 function generateTodoHTML(element) {
   let categoryHTML = generateCategoryHTML(element.category);
@@ -10,7 +15,7 @@ function generateTodoHTML(element) {
   let prioHTML = generatePrioHTML(element.prio);
 
   return /*html*/ `
-        <div draggable="true" id="${element.id}" class="todoContainer">
+        <div draggable="true" id="${element.id}" class="todoContainer" onclick="openOverlay('${element.id}')">
             <div class="toDoContent">
                 ${categoryHTML}
                 <div class="toDoHeaderContainer">
@@ -71,7 +76,6 @@ function generateSubtasksHTML(subtasks) {
 
 function generateAssignedToHTML(assignedTo) {
     let assignedToHTML = '';
-
     for (let i = 0; i < Math.min(assignedTo.length, 4); i++) {
         const color = getRandomColor(badgeColors);
         const initials = assignedTo[i].match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
@@ -97,10 +101,88 @@ function generatePrioHTML(prio) {
 }
 
 
-function getRandomColor(badgeColors) {
-    return badgeColors[Math.floor(Math.random() * badgeColors.length)];
+function generateModalAssignedToHTML(assignedTo) {
+    let modalAssignedToHTML = '';
+    for (let i = 0; i < assignedTo.length; i++) {
+        const initials = assignedTo[i].match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+        const color = getRandomColor(badgeColors);
+        modalAssignedToHTML += /*html*/ `
+            <div class="modalAssignedToSingle">
+                <div class="modalAssignedToBadge" style="background-color: ${color};">${initials}</div>
+                <div>${assignedTo[i]}</div>
+            </div>
+        `;
+    }
+    return modalAssignedToHTML;
 }
 
 
+function generateModalSubtasksHTML(subtasks) {
+    let modalSubtasksHTML = "";
+
+    for (let i = 0; i < subtasks.length; i++) {
+        modalSubtasksHTML += /*html*/ `
+            <label class="modalSubtasksSingle">
+                <img src="../assets/icons/checkbox.svg">
+                <div>${subtasks[i]}</div>
+    </label>
+        `;
+    }
+    return modalSubtasksHTML;
+  }
 
 
+function generateOpenOverlayHTML(element) {
+    let categoryHTML = generateCategoryHTML(element.category);
+    let priority = element.prio.charAt(0).toUpperCase() + element.prio.slice(1);
+    let modalAssignedToHTML = generateModalAssignedToHTML(element.assignedTo);
+    let modalSubtasksHTML = generateModalSubtasksHTML(element.subtasks);
+
+    return /*html*/ `
+    <div class="modalContainer">
+        <div class="modalToDoContainer">
+            <div class="modalToDoContent">
+                <div class="modalCategoryContainer">
+                    ${categoryHTML}
+                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+                </div>
+                <div class="modalScrollbarWrapper">
+                    <div class="modalHeader">${element.title}</div>
+                    <div class="modalDescription">${element.description}</div>
+                    <div class="modalDateContainer">
+                        <div class="modalDateText">Due date:</div>
+                        <div>${element.date}</div>
+                    </div>
+                    <div class="modalPrioContainer">
+                        <div class="modalPrioText">Priority:</div>
+                        <div class="modalPrioIconContainer">
+                            <div>${priority}</div>
+                            <img src="../assets/icons/prio${element.prio}small.svg">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="modalAssignedToText">Assigned To:</div>
+                        <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
+                    </div>
+                    <div>
+                        <div class="modalSubtasksText">Subtasks</div>
+                        <div class="modalSubtasksContainer">${modalSubtasksHTML}</div>
+                    </div>
+                    <div class="modalBottomContainer">
+                        <div class="modalBottomDeleteContainer">
+                            <img src="../assets/icons/deleteDarkBlue.svg">
+                            <div>Delete</div>
+                        </div>
+                        <div class="modalBottomSeparator"></div>
+                        <div class="modalBottomEditContainer">
+                            <img src="../assets/icons/pencilDarkBlue.svg">
+                            <div>Edit</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    `;
+  }
