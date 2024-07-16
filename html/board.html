@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/board.css" />
 
-    <script src="../assets/templates/js/includeHTML.js"></script>
     <script src="../script/board.js"></script>
     <script src="../assets/templates/js/boardtemplate.js"></script>
+    <script src="../script.js"></script>
+
 </head>
 
 <body onload="initBoard()">
@@ -46,7 +47,7 @@
 
 
         <section class="boardTaskSection" id="boardTaskSection">
-            <div class="boardTaskCategoryContainer"  ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+            <div class="boardTaskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
                 <div class="boardTaskCategoryHeader">
                     <div>To do</div>
                     <img class="boardTaskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
@@ -71,7 +72,9 @@
             </div>
 
             <div class="boardTaskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                <div class="boardTaskCategoryHeader"><div>Done</div></div>
+                <div class="boardTaskCategoryHeader">
+                    <div>Done</div>
+                </div>
                 <div class="taskDragArea" id="done"></div>
             </div>
         </section>
@@ -79,11 +82,6 @@
     </main>
 
     <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
-
-    <script>
-        includeHTML();
-    </script>
-
 </body>
 
 </html>

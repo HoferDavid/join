@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="../style/fonts.css">
     <link rel="stylesheet" href="../style/contacts.css">
 
-    <script src="../assets/templates/js/includeHTML.js"></script>
     <script src="../script/contacts.js"></script>
+    <script src="../script.js"></script>
+
 </head>
 
-<body>
+<body onload="init()">
 
     <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
 
@@ -189,11 +190,6 @@
     </main>
 
     <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
-
-    <script>
-        includeHTML();
-    </script>
-
 </body>
 
 </html>

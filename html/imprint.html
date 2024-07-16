@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="../style/fonts.css">
     <link rel="stylesheet" href="../style/rightsandhelp.css">
 
-    <script src="../assets/templates/js/includeHTML.js"></script>
+    <script src="../script.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="init()">
 
-    <div w3-include-html="../assets/templates/html/header.html" class="header"></div>
+    <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
 
-    <section class="content contentSection ">
+    <main class="content contentSection ">
         <div class='imprint'>
             <h1>Legal Notice</h1>
             <h2>Imprint</h2>
@@ -95,9 +95,9 @@
         </div>
 
 
-    </section>
+    </main>
 
-    <div w3-include-html="../assets/templates/html/menu.html" class="menu"></div>
+    <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
 </body>
 
 </html>

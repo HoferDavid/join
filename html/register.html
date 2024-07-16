@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,11 @@
     <link rel="stylesheet" href="../style/register.css">
     <link rel="stylesheet" href="../style/fonts.css">
 
+    <script src="../script.js"></script>
+
 </head>
-<body>
+
+<body onload="init()">
     <header>
         <img class="logo" src="../assets/icons/logoBlue.svg">
     </header>
@@ -24,43 +28,49 @@
                 <div class="signup-headline">
                     <h1>Sign up</h1>
                     <div class="underline-header"></div>
-                    </div>
                 </div>
-                <form id="signupForm">
-                    <div class="inputfield">
-                        <input class="font-size-sign-up" id="userName" required type="text" placeholder="Name" autocomplete="name" class="username">
-                        <input class="font-size-sign-up" id="userEmail" required type="email" placeholder="Email" autocomplete="username">
-                        <input class="font-size-sign-up" id="password" required type="password" placeholder="Password" autocomplete="new-password">
-                        <input class="font-size-sign-up" id="confirmPassword" required type="password" placeholder="Confirm Password" autocomplete="new-password" class="input-field-confirm-pw">
-                        </div>
+            </div>
+            <form id="signupForm">
+                <div class="inputfield">
+                    <input class="font-size-sign-up" id="userName" required type="text" placeholder="Name"
+                        autocomplete="name" class="username">
+                    <input class="font-size-sign-up" id="userEmail" required type="email" placeholder="Email"
+                        autocomplete="username">
+                    <input class="font-size-sign-up" id="password" required type="password" placeholder="Password"
+                        autocomplete="new-password">
+                    <input class="font-size-sign-up" id="confirmPassword" required type="password"
+                        placeholder="Confirm Password" autocomplete="new-password" class="input-field-confirm-pw">
+                </div>
 
-                        <span id="errorMessage" class="error">Ups! Your password don't match</span>
-                        <span id="criteriaMessage" class="error">Password must contain at least one uppercase letter, one number, and one special character.</span>
-                        <span id="emailExistsMessage" class="error">This email address is already registered.</span>                
-        
-                        <div class="accept-policy">
-                            <input type="checkbox" id="privacy-policy" required>
-                            <label for="privacy-policy">I accept the <a href="privacy.html">Privacy policy</a></label>
-                        </div>
-        
-                        <div class="signup-btn-headsection">
-                            <button type="submit" class="signup-btn">Sign up</button>
-                        </div>
-                    </form>
-                </main>
-            </div>
-        
-            <div id="successPopup" class="popup">
-                <div class="popup-content">
-                    <p>You Signed up succesfully</p>
+                <span id="errorMessage" class="error">Ups! Your password don't match</span>
+                <span id="criteriaMessage" class="error">Password must contain at least one uppercase letter, one
+                    number, and one special character.</span>
+                <span id="emailExistsMessage" class="error">This email address is already registered.</span>
+
+                <div class="accept-policy">
+                    <input type="checkbox" id="privacy-policy" required>
+                    <label for="privacy-policy">I accept the <a href="privacy.html">Privacy policy</a></label>
                 </div>
-            </div>
-        
-            <footer class="footer">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="imprint.html">Legal Notice</a>
-            </footer>
+
+                <div class="signup-btn-headsection">
+                    <button type="submit" class="signup-btn">Sign up</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <div id="successPopup" class="popup">
+        <div class="popup-content">
+            <p>You Signed up succesfully</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="imprint.html">Legal Notice</a>
+    </footer>
 
 
 </body>
+
 </html>

@@ -128,24 +128,28 @@ body {
   height: 100%;
   background-color: #2a3647;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  gap: 128px;
 }
 
 .menuBtnContainer {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 4px;
   padding: 0;
 }
 
-.menuSingleTab {
-  height: 76px;
-  width: 80px;
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: inherit;
 }
 
+
 .menuBtn {
-  height: 76px;
-  width: 76px;
+  height: 80px;
+  width: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -157,7 +161,33 @@ body {
   line-height: 16.8px;
   text-decoration: none;
   border-width: 0;
-  padding: 16px 0px 16px 0px;
+}
+
+.menuBtn img:last-of-type {
+  display: none;
+}
+
+.menuBtn:hover {
+  background-color: #2a3d59;
+  border-radius: 8px;
+}
+
+.menuBtnActive {
+  background-color: #091931;
+  border-radius: 8px;
+  color: white;
+}
+
+.menuBtnActive:hover {
+  background-color: #091931;
+}
+
+.menuBtnActive img:first-of-type {
+  display: none;
+}
+
+.menuBtnActive img:last-of-type {
+  display: block;
 }
 
 .menuBtnIcon {
@@ -187,8 +217,7 @@ body {
   width: 100%;
   height: 36px;
   display: flex;
-  justify-content: center;
-  padding: 8px;
+  padding: 8px 8px 8px 48px;
   font-size: 16px;
   font-weight: 400;
   color: #A8A8A8;
@@ -197,15 +226,17 @@ body {
   cursor: pointer;
 }
 
+.menuLegalLinks:hover {
+  background-color: unset;
+  color: #29abe2;
+}
+
 /*ANCHOR Media Query
 X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  .menuBtnContainer {
-    padding: 0 8px;
-  }
 
   .headerContainerMobile {
     padding-left: 32px;
@@ -214,8 +245,7 @@ No media query for `xs` since this is the default in Bootstrap*/
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
@@ -244,7 +274,6 @@ No media query for `xs` since this is the default in Bootstrap*/
 
   .menuBtnContainer {
     flex-direction: column;
-    padding: 8px 0px 8px 56px;
     gap: 20px;
   }
 
@@ -254,6 +283,12 @@ No media query for `xs` since this is the default in Bootstrap*/
     flex-direction: row;
     justify-content: flex-start;
     gap: 8px;
+    padding-left: 48px;
+  }
+
+  .menuBtn:hover,
+  .menuBtnActive {
+    border-radius: 0;
   }
 
   .menuBtnIcon {
@@ -279,8 +314,3 @@ No media query for `xs` since this is the default in Bootstrap*/
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {}
-
-
-
-
-

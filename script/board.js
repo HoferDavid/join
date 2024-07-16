@@ -6,7 +6,7 @@ let currentSearchInput = '';
 
 // Function only for Testing
 async function pushToFirebaseTest() {
-    await postDataToFirebase('tasks',  {
+    await postDataToFirebase('tasks', {
         "assignedTo": ["Laura Hoffmann", "Max Mustermann", "Erika Musterfrau", "Hans Meier"],
         "category": "Technical Task",
         "description": "Planen und starten Sie die neue Marketingkampagne.",
@@ -24,6 +24,7 @@ async function pushToFirebaseTest() {
 
 
 async function initBoard() {
+    init();
     try {
         await getDataFromFirebase();
         // pushToFirebaseTest();
@@ -79,7 +80,7 @@ async function postDataToFirebase(path = '', data = {}) {
         let response = await fetch(BASE_URL + path + '.json', {
             method: 'POST',
             header: {
-                'Content-Type':' application/json',
+                'Content-Type': ' application/json',
             },
             body: JSON.stringify(data)
         });
@@ -95,7 +96,7 @@ async function updateTaskInFirebase(id, updatedTask) {
         let response = await fetch(`${BASE_URL}tasks/${id}.json`, {
             method: 'PUT',
             header: {
-                'Content-Type':' application/json',
+                'Content-Type': ' application/json',
             },
             body: JSON.stringify(updatedTask)
         });
@@ -139,7 +140,7 @@ function updateToDo() {
     let toDo = tasks.filter(t => t['status'] == 'toDo');
     document.getElementById('toDo').innerHTML = '';
     if (toDo.length > 0) {
-        toDo.forEach(element => {document.getElementById('toDo').innerHTML += generateTodoHTML(element);});
+        toDo.forEach(element => { document.getElementById('toDo').innerHTML += generateTodoHTML(element); });
     } else {
         document.getElementById('toDo').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
     }
@@ -150,7 +151,7 @@ function updateInProgress() {
     let inProgress = tasks.filter(t => t['status'] == 'inProgress');
     document.getElementById('inProgress').innerHTML = '';
     if (inProgress.length > 0) {
-        inProgress.forEach(element => {document.getElementById('inProgress').innerHTML += generateTodoHTML(element);});
+        inProgress.forEach(element => { document.getElementById('inProgress').innerHTML += generateTodoHTML(element); });
     } else {
         document.getElementById('inProgress').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
     }
@@ -161,7 +162,7 @@ function updateAwaitFeedback() {
     let awaitFeedback = tasks.filter(t => t['status'] == 'awaitFeedback');
     document.getElementById('awaitFeedback').innerHTML = '';
     if (awaitFeedback.length > 0) {
-        awaitFeedback.forEach(element => {document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);});
+        awaitFeedback.forEach(element => { document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element); });
     } else {
         document.getElementById('awaitFeedback').innerHTML = `<div class="noTaskPlaceholder">No tasks To do</div>`;
     }
@@ -172,7 +173,7 @@ function updateDone() {
     let done = tasks.filter(t => t['status'] == 'done');
     document.getElementById('done').innerHTML = '';
     if (done.length > 0) {
-        done.forEach(element => {document.getElementById('done').innerHTML += generateTodoHTML(element);});
+        done.forEach(element => { document.getElementById('done').innerHTML += generateTodoHTML(element); });
     } else {
         document.getElementById('done').innerHTML = `<div class="noTaskPlaceholder">No tasks Done</div>`;
     }
