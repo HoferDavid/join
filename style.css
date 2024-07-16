@@ -142,7 +142,7 @@ body {
 .menuLinks {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   height: inherit;
 }
 
@@ -312,6 +312,10 @@ No media query for `xs` since this is the default in Bootstrap*/
   .menuLogoContainer,
   .menuLegalContainer {
     display: flex;
+  }
+
+  .menuLinks {
+    justify-content: space-between;
   }
 }
 
