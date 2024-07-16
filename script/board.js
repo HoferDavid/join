@@ -231,6 +231,12 @@ window.onclick = function (event) {
 };
 
 
+function closeModal() {
+    overlay.style.display = "none";
+    document.body.classList.remove("modalOpen");
+}
+
+
 function openOverlay(elementId) {
   let element = tasks.find((task) => task.id === elementId);
   let overlay = document.getElementById("overlay");
