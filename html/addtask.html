@@ -27,6 +27,7 @@
         <section class="addTaskSection">
 
             <form onsubmit="addTask()" class="addTaskForm">
+
                 <div class="inputContainerTop">
                     <div class="singleInputContainer">
                         <div class="redStarAfter">Title</div>
@@ -40,27 +41,7 @@
                         <div>Assigned to</div>
                         <input type="text">
                     </div>
-
-
-                    <!-- <div class="singleInputContainer">
-                        <div>Category</div>
-                        <select name="bla" id="blub">
-                            <option value="0">Select task category</option>
-                            <option value="User1">Technical Task</option>
-                            <option value="user2">User Story</option>
-                        </select>
-                    </div>
-                </div> -->
-
-                <!-- <div class="custom-select" style="width:200px;">
-                    <select>
-                        <option value="0">Select task category</option>
-                        <option value="1">Technical Task</option>
-                        <option value="2">User Story</option>
-                    </select>
-                </div> -->
-
-
+                </div>
 
 
                 <div class="seperatorLine"></div>
@@ -91,12 +72,6 @@
                     </div>
 
 
-
-
-
-
-
-
                     <div class="singleInputContainer">
                         <div>Category</div>
                         <input type="text">
@@ -110,8 +85,12 @@
 
                 <div class="bottomContainer">
                     <div class="redStarBefore">This field is required</div>
-                    <div>
-                        <div style="display: none;">Clear</div>
+                    <div class="btnContainer">
+                        <button class="clearBtn">
+                            <div>Clear</div>
+                            <img src="../assets/icons/clearIcon.svg" alt="">
+                        </button>
+
                         <button class="createTaskBtn">
                             <div>Create Task</div>
                             <img src="../assets/icons/check.svg" alt="">

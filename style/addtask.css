@@ -118,10 +118,28 @@ input:focus {
   background-color: #f6f7f8;
 }
 
+.btnContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.clearBtn,
 .bottomContainerText {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2A3647;
+  border-radius: 10px;
+  height: 56px;
+  width: 110px;
+  background-color: #F6F7F8;
+  gap: 4px;
 }
 
 .createTaskBtn {
@@ -186,16 +204,17 @@ input:focus {
   }
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1199px) {
+  .clearBtn,
   .seperatorLine {
     display: none;
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1200px) {
   .addTaskSection {
     padding: 0px;
-    align-items: flex-start;
+    align-items: center;
     font-size: 20px;
     line-height: 24px;
   }
@@ -210,14 +229,12 @@ input:focus {
   }
 
   .addTaskHeaderSection {
-    justify-content: flex-start;
-    margin: 48px 0px 32px 96px;
+    margin: 48px 0px 32px 24px;
   }
 
   .addTaskForm {
     flex-direction: row;
-    gap: 48px;
-    padding-left: 96px;
+    gap: 24px;
   }
 
   .prioBtnContainer {
@@ -246,8 +263,29 @@ input:focus {
     display: flex;
     position: fixed;
     padding: 0px 0px 96px 0px;
-    width: 978px;
+    width: 930px;
   }
+}
+
+@media (min-width: 1440px) {
+  .addTaskSection {
+    align-items: flex-start;
+  }
+
+  .addTaskHeaderSection {
+    justify-content: flex-start;
+    margin: 48px 0px 32px 96px;
+  }
+
+  .addTaskForm {
+    justify-content: flex-start;
+    padding-left: 96px;
+    gap: 48px;
+}
+
+.bottomContainer {
+  width: 978px;
+}
 }
 
 
