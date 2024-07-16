@@ -10,7 +10,7 @@ function generateTodoHTML(element) {
   let prioHTML = generatePrioHTML(element.prio);
 
   return /*html*/ `
-        <div draggable="true" id="${element.id}" class="todoContainer">
+        <div draggable="true" id="${element.id}" class="todoContainer" onclick="openOverlay('${element.id}')">
             <div class="toDoContent">
                 ${categoryHTML}
                 <div class="toDoHeaderContainer">
@@ -104,3 +104,57 @@ function getRandomColor(badgeColors) {
 
 
 
+
+
+
+
+function generateOpenOverlayHTML(element) {
+    let categoryHTML = generateCategoryHTML(element.category);
+    let subtasksHTML = generateSubtasksHTML(element.subtasks);
+    let assignedToHTML = generateAssignedToHTML(element.assignedTo);
+    let priority = element.prio.charAt(0).toUpperCase() + element.prio.slice(1);
+
+    return /*html*/ `
+    <div class="modalContainer">
+        <div class="modalToDoContainer">
+            <div class="modalToDoContent">
+                <div class="modalCategoryContainer">
+                    ${categoryHTML}
+                    <img src="../assets/icons/clearIcon.svg" alt="">
+                </div>
+                <div class="modalHeader">${element.title}</div>
+                <div class="modalDescription">${element.description}</div>
+                <div class="modalDateContainer">
+                    <div class="modalDateText">Due date:</div>
+                    <div>${element.date}</div>
+                </div>
+                <div class="modalPrioContainer">
+                    <div class="modalPrioText">Priority:</div>
+                    <div class="modalPrioIconContainer">
+                        <div>${priority}</div>
+                        <img src="../assets/icons/prio${element.prio}small.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+      `;
+  }
+  
+
+
+//   <div class="modalTodoContainer">
+//   <div class="modalToDoContent">
+//       ${categoryHTML}
+//       <div class="toDoHeaderContainer">
+//           ${titleHTML}
+//           ${descriptionHTML}
+//       </div>
+//       ${subtasksHTML}
+//       <div class="toDoContentBottomContainer">
+//           <div class="assignedToBadgeContainer">${assignedToHTML}</div>
+//           ${prioHTML}
+//       </div>
+//   </div>
+// </div>
