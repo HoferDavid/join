@@ -140,49 +140,47 @@ function generateOpenOverlayHTML(element) {
 
     return /*html*/ `
     <div class="modalContainer">
-        <div class="modalToDoContainer">
-            <div class="modalToDoContent">
-                <div class="modalCategoryContainer">
-                    ${categoryHTML}
-                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+        <div class="modalToDoContent">
+            <div class="modalCategoryContainer">
+                ${categoryHTML}
+                <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+            </div>
+            <div class="modalScrollbarWrapper">
+                <div class="modalHeader">${element.title}</div>
+                <div class="modalDescription">${element.description}</div>
+                <div class="modalDateContainer">
+                    <div class="modalDateText">Due date:</div>
+                    <div>${element.date}</div>
                 </div>
-                <div class="modalScrollbarWrapper">
-                    <div class="modalHeader">${element.title}</div>
-                    <div class="modalDescription">${element.description}</div>
-                    <div class="modalDateContainer">
-                        <div class="modalDateText">Due date:</div>
-                        <div>${element.date}</div>
-                    </div>
-                    <div class="modalPrioContainer">
-                        <div class="modalPrioText">Priority:</div>
-                        <div class="modalPrioIconContainer">
-                            <div>${priority}</div>
-                            <img src="../assets/icons/prio${element.prio}small.svg">
-                        </div>
-                    </div>
-                    <div>
-                        <div class="modalAssignedToText">Assigned To:</div>
-                        <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
-                    </div>
-                    <div>
-                        <div class="modalSubtasksText">Subtasks</div>
-                        <div class="modalSubtasksContainer">${modalSubtasksHTML}</div>
-                    </div>
-                    <div class="modalBottomContainer">
-                        <div class="modalBottomDeleteContainer">
-                            <img src="../assets/icons/deleteDarkBlue.svg">
-                            <div>Delete</div>
-                        </div>
-                        <div class="modalBottomSeparator"></div>
-                        <div class="modalBottomEditContainer">
-                            <img src="../assets/icons/pencilDarkBlue.svg">
-                            <div>Edit</div>
-                        </div>
+                <div class="modalPrioContainer">
+                    <div class="modalPrioText">Priority:</div>
+                    <div class="modalPrioIconContainer">
+                        <div>${priority}</div>
+                        <img src="../assets/icons/prio${element.prio}small.svg">
                     </div>
                 </div>
-
+                <div>
+                    <div class="modalAssignedToText">Assigned To:</div>
+                    <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
+                </div>
+                <div>
+                    <div class="modalSubtasksText">Subtasks</div>
+                    <div class="modalSubtasksContainer">${modalSubtasksHTML}</div>
+                </div>
+            </div>
+            <div class="modalBottomContainer">
+                <div class="modalBottomDeleteContainer">
+                    <img src="../assets/icons/deleteDarkBlue.svg">
+                    <div>Delete</div>
+                </div>
+                <div class="modalBottomSeparator"></div>
+                <div class="modalBottomEditContainer">
+                    <img src="../assets/icons/pencilDarkBlue.svg">
+                    <div>Edit</div>
+                </div>
             </div>
         </div>
     </div>
     `;
+
   }

@@ -407,8 +407,9 @@ input:focus {
 
 .modalContainer {
   display: flex;
-  height: 724px;
-  max-height: 956px;
+  flex-direction: column;
+  max-height: 724px;
+  width: 396px;
   background-color: white;
   color: black;
   position: absolute;
@@ -418,28 +419,34 @@ input:focus {
   border-radius: 30px;
   padding: 32px 24px;
   gap: 16px;
+  word-wrap: break-word;
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.16);
-} 
+  overflow: hidden;
+}
 
 .modalCategoryContainer {
   display: flex;
   justify-content: space-between;
   width: 348px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
 }
 
 .modalScrollbarWrapper {
   display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    gap: 16px;
-    flex: 1;
-    padding: 0 1px;
-    --sb-track-color: transparent !important;
-    --sb-thumb-color: transparent !important;
-    --sb-size: 2px !important;
-    scrollbar-width: var(--sb-size) !important;
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color) !important;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 16px;
+  flex: 1;
+  padding: 0 1px;
+  --sb-track-color: transparent !important;
+  --sb-thumb-color: transparent !important;
+  --sb-size: 2px !important;
+  scrollbar-width: var(--sb-size) !important;
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color) !important;
 }
 
 .modalCloseIcon {
@@ -450,12 +457,16 @@ input:focus {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .modalHeader {
   font-size: 36px;
   line-height: 43.2px;
   font-weight: 700;
+  top: 40px;
+  background-color: white;
 }
 
 .modalDescription,
@@ -529,17 +540,17 @@ input:focus {
   padding: 6px 16px;
 }
 
-
 .modalBottomContainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
   position: sticky;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
+  background-color: white;
+  z-index: 10;
 }
-
 
 .modalBottomDeleteContainer,
 .modalBottomEditContainer {
