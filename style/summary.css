@@ -79,3 +79,148 @@
     color: #FFFFFF;
     transform: scale(1.03);
 }
+
+.how-many-done{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.summ-toDO-info .summ-pencil-toDO{
+    display: block;
+
+}
+
+.summ-toDO-info .summ-pencil-unvisible{
+    display: none;
+}
+
+.summ-toDO-info:hover .summ-pencil-toDO{
+    display: none;
+}
+
+.summ-toDO-info:hover .summ-pencil-unvisible{
+    display: block;
+}
+
+.summ-done-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    width: 264px;
+    height: 168px;
+    transition: transform 200ms ease-in-out;
+}
+
+.summ-done-info:hover{
+    cursor: pointer;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    transform: scale(1.03);
+}
+
+.summ-done-info .summ-todo-cheking{
+    display: block;
+}
+
+.summ-done-info .summ-todo-hover-cheking{
+    display: none;
+}
+
+.summ-done-info:hover .summ-todo-cheking{
+    display: none;
+}
+
+.summ-done-info:hover .summ-todo-hover-cheking{
+    display: block;
+}
+
+.summ-open-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.how-many-dones{
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 76.8px;
+    text-align: center;
+}
+
+.how-many-done{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.summ-stats-urgent{
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 168px;
+    gap: 61px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 61px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    transition: transform 200ms ease-in-out;
+    padding-top: 28px;
+    padding-right: 48px;
+    padding-bottom: 28px;
+    padding-left: 48px;
+    box-sizing: border-box;
+}
+
+.summ-stats-urgent:hover,
+.summ-stats-urgent:hover .summ-urgent-date,
+.summ-stats-urgent:hover .summ-urgent-date-deadline{
+    cursor: pointer;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    transform: scale(1.03);
+}
+
+.summ-info-urgent{
+    display: flex;
+    align-items: center;
+    width: 130px;
+    height: 96px;
+    gap: 18px;
+}
+
+.summ-urgent-seperate{
+    border: 2px solid #D1D1D1;
+    height: 102.02px;
+}
+
+.summ-urgent-date-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.summ-urgent-date{
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
+    text-align: left;
+    color: #2A3647;
+}
+
+.summ-urgent-date-deadline{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    color: #2A3647;
+}

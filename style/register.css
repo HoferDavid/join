@@ -215,8 +215,8 @@ footer a {
     background-repeat: no-repeat;
 }
 
-.userName {
-    background-image: url('../assets/icons/addtaskIconGrey.svg');
+#userName {
+    background-image: url('..//assets/icons/person.png');
 }
 
 #userEmail {
