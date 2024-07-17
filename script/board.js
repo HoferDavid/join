@@ -1,4 +1,4 @@
-let BASE_URL = "https://join-273-default-rtdb.europe-west1.firebasedatabase.app/";
+let BASE_TASKS_URL = "https://join-273-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks = [];
 let currentDraggedElement;
 let currentSearchInput = "";
@@ -51,7 +51,7 @@ function initDragDrop() {
 
 async function getDataFromFirebase(path = "") {
   try {
-    let response = await fetch(BASE_URL + path + ".json");
+    let response = await fetch(BASE_TASKS_URL + path + ".json");
     let responseAsJson = await response.json();
     return responseAsJson;
   } catch (error) {
@@ -88,7 +88,7 @@ async function pushDataToArray() {
 
 async function postDataToFirebase(path = "", data = {}) {
   try {
-    let response = await fetch(BASE_URL + path + ".json", {
+    let response = await fetch(BASE_TASKS_URL + path + ".json", {
       method: "POST",
       header: {
         "Content-Type": " application/json",
@@ -104,7 +104,7 @@ async function postDataToFirebase(path = "", data = {}) {
 
 async function updateTaskInFirebase(id, updatedTask) {
   try {
-    let response = await fetch(`${BASE_URL}tasks/${id}.json`, {
+    let response = await fetch(`${BASE_TASKS_URL}tasks/${id}.json`, {
       method: "PUT",
       header: {
         "Content-Type": " application/json",
@@ -153,14 +153,10 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 
 
 function updateAllTaskCategories() {
-  updateTaskCategories("toDo", "toDo", "No tasks To do");
+  updateTaskCategories("toDo", "toDo", "No tasks fo do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
-  updateTaskCategories(
-    "awaitFeedback",
-    "awaitFeedback",
-    "No tasks await Feedback"
-  );
-  updateTaskCategories("done", "done", "No tasks Done");
+  updateTaskCategories("awaitFeedback", "awaitFeedback","No tasks await feedback");
+  updateTaskCategories("done", "done", "No tasks done");
 }
 
 

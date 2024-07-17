@@ -31,21 +31,13 @@
             </div>
 
             <div class="searchBtnContainer">
-                <div class="searchField">
-                    <input id="boardInputField" class="inputField" oninput="searchTasks(this.value)" type="text"
-                        placeholder="Find Task" maxlength="20" />
-                    <div class="searchFieldIcons">
-                        <img src="../assets/icons/vector3.png" />
-                        <img src="../assets/icons/search.svg" />
-                    </div>
-                </div>
+                <input class="searchInput" oninput="searchTasks(this.value)" maxlength="20" type="text" placeholder="Find Task">
                 <div class="addTaskBtnDesktop">
                     <div class="addTaskBtnDesktopText">Add task</div>
                     <img src="../assets/icons/add.svg" />
                 </div>
             </div>
         </section>
-
 
         <section class="taskSection" id="boardTaskSection">
             <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">

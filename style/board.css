@@ -28,37 +28,32 @@
   gap: 32px;
 }
 
-.searchField {
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
+.searchInput {
+  background: url(../assets/icons/search.svg) no-repeat right 12px top 12px;
+  background-size: 18px 18px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #a8a8a8;
+  padding: 11px 16px 11px 16px;
   width: 100%;
   max-width: 396px;
   border-radius: 10px;
-  border: 1px solid #a8a8a8;
-  padding: 8px 16px 8px 16px;
-  gap: 10px;
-}
-
-.inputField {
-  border: 0;
-  width: 90%;
+  background-color: white;
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
 }
 
-.inputField::placeholder {
+.searchInput:focus {
+  border: 1px solid #29ABE2;
+}
+
+.searchInput::placeholder {
   color: #d1d1d1;
 }
 
 input:focus {
-  outline: none;
-}
-
-.searchFieldIcons {
-  display: flex;
-  gap: 16px;
+  outline: #29ABE2;
 }
 
 .addTaskBtnMobile {
@@ -71,12 +66,19 @@ input:focus {
   justify-content: center;
   width: 160px;
   height: 48px;
+  padding: 12px 16px;
   gap: 4px;
   border-radius: 10px;
   border-width: 1px;
   border-style: solid;
   background-color: #2a3647;
   cursor: pointer;
+}
+
+.addTaskBtnDesktop:hover {
+  background-color: #29ABE2;
+  border: none;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
 }
 
 .addTaskBtnDesktopText {
@@ -155,6 +157,7 @@ input:focus {
   padding: 16px;
   box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.08);
   margin: 16px 8px;
+  cursor: pointer;
 }
 
 .toDoContent {
@@ -263,7 +266,7 @@ input:focus {
 }
 
 @media (max-width: 991px) {
-  .addTaskBtnDesktopText {
+  .addTaskBtnDesktop {
     display: none;
   }
 }
@@ -277,7 +280,11 @@ input:focus {
     display: none;
   }
 
-  .searchField {
+  .searchBtnContainer {
+    width: 504px;
+  }
+
+  .searchInput {
     max-width: 312px;
   }
 
@@ -322,10 +329,6 @@ input:focus {
     color: #2a3647;
   }
 
-  .searchField {
-    width: 312px;
-  }
-
   .noTaskPlaceholder {
     width: 252px;
     margin-left: 8px;
@@ -367,10 +370,6 @@ input:focus {
     height: 24px;
     width: 24px;
     color: #2a3647;
-  }
-
-  .searchField {
-    width: 312px;
   }
 
   .noTaskPlaceholder {
