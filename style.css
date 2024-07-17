@@ -4,6 +4,7 @@
 }
 
 body {
+  position: relative;
   margin: 0;
   font-family: "Inter", sans-serif;
   background-color: rgb(246, 247, 248);
@@ -44,6 +45,14 @@ body {
   }
 }
 
+.ts0 {
+  transform: scale(0);
+}
+
+.ts1 {
+  transform: scale(1);
+}
+
 .contentSection {
   grid-area: content;
   overflow: auto;
@@ -69,10 +78,11 @@ body {
   grid-area: header;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 50;
 }
 
 .headerUserBadge {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,6 +94,11 @@ body {
   font-weight: 700;
   color: #29abe2;
   cursor: pointer;
+}
+
+.headerUserBadge:hover {
+  background-color: rgba(12, 46, 98, 0.12);
+  border-radius: 50%;
 }
 
 .headerContainerDesktop {
@@ -104,7 +119,7 @@ body {
   width: 100%;
   max-width: 1208px;
   padding: 20px 40px 20px 116px;
-  z-index: 1000;
+  z-index: 50;
 }
 
 .headerText {
@@ -121,6 +136,38 @@ body {
 
 .headerHelpIcon {
   cursor: pointer;
+}
+
+.headerHelpIcon:hover>img {
+  transform: scale(1.1);
+}
+
+.headerMenuContainer {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 16px;
+  height: 200px;
+  width: 150px;
+  background-color: #2a3647;
+  border-radius: 20px 0 20px 20px;
+  transform-origin: top right;
+  transition: transform 125ms ease-in-out;
+  z-index: 99;
+}
+
+.headerMenuContainer a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: #cdcdcd;
+}
+
+.headerMenuContainer a:hover {
+  color: #29abe2;
 }
 
 /* Menu */
@@ -249,6 +296,12 @@ No media query for `xs` since this is the default in Bootstrap*/
     padding-left: 32px;
     padding-right: 32px;
   }
+
+  .headerMenuContainer {
+    position: absolute;
+    top: 50px;
+    right: 70px;
+  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -317,6 +370,12 @@ No media query for `xs` since this is the default in Bootstrap*/
 
   .menuLinks {
     justify-content: space-between;
+  }
+
+  .headerMenuContainer {
+    position: absolute;
+    top: 65px;
+    right: 90px;
   }
 }
 

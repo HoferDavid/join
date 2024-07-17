@@ -2,6 +2,10 @@ body {
   max-width: 1440px;
 }
 
+.contentSection {
+  position: relative;
+}
+
 .imprint,
 .privacy,
 .help {
@@ -29,12 +33,20 @@ p {
   width: 100%;
 }
 
-a {
+.backArrow:hover>img {
+  transform: scale(1.2);
+}
+
+.backArrow:hover {
+  background-color: unset;
+}
+
+main a {
   text-decoration: none;
   color: #29ABE2;
 }
 
-a:hover {
+main a:hover {
   background-color: rgba(41, 171, 226, 0.2);
   border-radius: 20px;
 }

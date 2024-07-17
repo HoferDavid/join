@@ -65,14 +65,6 @@
   transform: unset;
 }
 
-.ts0 {
-  transform: scale(0);
-}
-
-.ts1 {
-  transform: scale(1);
-}
-
 a {
   color: rgb(0, 124, 238);
   text-decoration: none;

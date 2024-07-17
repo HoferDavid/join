@@ -1,6 +1,6 @@
 <div class="headerContainerMobile" id="headerContainerMobile">
   <img src="../assets/icons/logoBlue.svg" />
-  <div class="headerUserBadge">G</div>
+  <div class="headerUserBadge" onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1')">G</div>
 </div>
 
 <div class="headerContainerDesktop" id="headerContainerDesktop">
@@ -8,7 +8,14 @@
     <div class="headerText">Kanban Project Management Tool</div>
     <div class="headerRightContainer">
       <a class="headerHelpIcon" href="/html/help.html"><img src="../assets/icons/help.svg"></a>
-      <div class="headerUserBadge">SM</div>
+      <div class="headerUserBadge" onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1')">SM</div>
     </div>
   </div>
+</div>
+
+<div id="headerMenuContainer" class="headerMenuContainer ts0">
+  <a href="/html/help.html">Help</a>
+  <a href="/html/imprint.html">Legal Notice</a>
+  <a href="/html/privacy.html">Privacy Policy</a>
+  <a href="">Log Out</a>
 </div>
