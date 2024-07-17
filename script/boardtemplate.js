@@ -101,6 +101,17 @@ function generatePrioHTML(prio) {
 }
 
 
+function generateModalCategoryHTML(category) {
+    let modalCategoryHTML = '';
+    if (category == 'User Story') {
+        modalCategoryHTML = `<div class="modalUserStoryBadge">User Story</div>`;
+    } else {
+        modalCategoryHTML = `<div class="modalTechnicalTaskBadge">Technical Task</div>`;
+    }
+    return modalCategoryHTML;
+}
+
+
 function generateModalAssignedToHTML(assignedTo) {
     let modalAssignedToHTML = '';
     for (let i = 0; i < assignedTo.length; i++) {
@@ -133,7 +144,7 @@ function generateModalSubtasksHTML(subtasks) {
 
 
 function generateOpenOverlayHTML(element) {
-    let categoryHTML = generateCategoryHTML(element.category);
+    let modalCategoryHTML = generateModalCategoryHTML(element.category);
     let priority = element.prio.charAt(0).toUpperCase() + element.prio.slice(1);
     let modalAssignedToHTML = generateModalAssignedToHTML(element.assignedTo);
     let modalSubtasksHTML = generateModalSubtasksHTML(element.subtasks);
@@ -142,7 +153,7 @@ function generateOpenOverlayHTML(element) {
     <div class="modalContainer">
         <div class="modalToDoContent">
             <div class="modalCategoryContainer">
-                ${categoryHTML}
+                ${modalCategoryHTML}
                 <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
             </div>
             <div class="modalScrollbarWrapper">
@@ -159,7 +170,7 @@ function generateOpenOverlayHTML(element) {
                         <img src="../assets/icons/prio${element.prio}small.svg">
                     </div>
                 </div>
-                <div>
+                <div class="modalAssignedToContainer">
                     <div class="modalAssignedToText">Assigned To:</div>
                     <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
                 </div>
