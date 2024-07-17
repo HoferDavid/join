@@ -1,4 +1,6 @@
-let activeTab = sessionStorage.getItem("activeTab") || '';
+let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
+let activeTab = sessionStorage.getItem('activeTab') || '';
+let contacts = sessionStorage.getItem('contact') || [];
 
 async function init() {
   await includeHTML();
@@ -39,4 +41,10 @@ function toggleClass(menu, className1, className2) {
   let edit = document.getElementById(menu);
   edit.classList.toggle(className1);
   edit.classList.toggle(className2);
+}
+
+async function loadData(path = '') {
+  let response = await fetch(BASE_URL + path + '.json');
+  let responseToJson = await response.json();
+  return responseToJson;
 }
