@@ -28,12 +28,13 @@
         <section class="headerSection">
             <div class="headerPlusBtn">
                 <div>Board</div>
-                <img class="addTaskBtnMobile" src="../assets/icons/plusAddTaskMobile.svg" />
+                <a href="../html/addtask.html" class="addTaskBtnMobile">
+                    <img src="../assets/icons/add.svg" /></a>
             </div>
 
             <div class="searchBtnContainer">
                 <input class="searchInput" oninput="searchTasks(this.value)" maxlength="20" type="text" placeholder="Find Task">
-                <div class="addTaskBtnDesktop">
+                <div class="addTaskBtnDesktop" onclick="openAddTaskOverlay()">
                     <div class="addTaskBtnDesktopText">Add task</div>
                     <img src="../assets/icons/add.svg" />
                 </div>
@@ -74,6 +75,8 @@
         </section>
 
         <div id="overlay"></div>
+
+        <div id="addTaskOverlay"></div>
 
     </main>
 

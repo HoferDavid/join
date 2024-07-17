@@ -128,15 +128,15 @@ function generateModalAssignedToHTML(assignedTo) {
 }
 
 
-function generateModalSubtasksHTML(subtasks) {
+function generateModalSubtasksHTML(element) {
     let modalSubtasksHTML = "";
 
-    for (let i = 0; i < subtasks.length; i++) {
+    for (let i = 0; i < element.subtasks.length; i++) {
         modalSubtasksHTML += /*html*/ `
-            <label class="modalSubtasksSingle">
+            <label id="('${element.subtasks[i].key}')" class="modalSubtasksSingle">
                 <img src="../assets/icons/checkbox.svg">
-                <div>${subtasks[i]}</div>
-    </label>
+                <div>${element.subtasks[i]}</div>
+            </label>
         `;
     }
     return modalSubtasksHTML;
@@ -147,7 +147,7 @@ function generateOpenOverlayHTML(element) {
     let modalCategoryHTML = generateModalCategoryHTML(element.category);
     let priority = element.prio.charAt(0).toUpperCase() + element.prio.slice(1);
     let modalAssignedToHTML = generateModalAssignedToHTML(element.assignedTo);
-    let modalSubtasksHTML = generateModalSubtasksHTML(element.subtasks);
+    let modalSubtasksHTML = generateModalSubtasksHTML(element);
 
     return /*html*/ `
     <div class="modalContainer">
@@ -193,5 +193,5 @@ function generateOpenOverlayHTML(element) {
         </div>
     </div>
     `;
-
   }
+

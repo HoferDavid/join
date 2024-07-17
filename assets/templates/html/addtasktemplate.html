@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style/fonts.css">
+<link rel="stylesheet" href="../style/addtask.css">
+
+<!-- Content -->
+<section class="addTaskHeaderSection">Add Task</section>
+
+<section class="addTaskSection">
+
+    <form onsubmit="addTask()" class="addTaskForm">
+
+        <div class="inputContainerTop">
+            <div class="singleInputContainer">
+                <div class="redStarAfter">Title</div>
+                <input type="text" placeholder="Enter a title" required maxlength="50">
+            </div>
+            <div class="singleInputContainer">
+                <div>Description</div>
+                <textarea class="" placeholder="Enter a Description"></textarea>
+            </div>
+            <div class="singleInputContainer">
+                <div>Assigned to</div>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="seperatorLine"></div>
+
+        <div class="inputContainerBottom">
+            <div class="singleInputContainer">
+                <div class="redStarAfter">Due date</div>
+                <input id="dateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
+            </div>
+            <div class="addTaskPrioContainer">
+                <div>Prio</div>
+                <div class="prioBtnContainer">
+                    <div class="prioBtn">
+                        <div>Urgent</div>
+                        <img src="../assets/icons/priourgentsmall.svg">
+                    </div>
+                    <div class="prioBtn">
+                        <div>Medium</div>
+                        <img src="../assets/icons/priomediumsmall.svg">
+                    </div>
+                    <div class="prioBtn">
+                        <div>Low</div>
+                        <img src="../assets/icons/priolowsmall.svg">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="singleInputContainer">
+                <div>Category</div>
+                <input type="text">
+            </div>
+            <div class="singleInputContainer">
+                <div>Subtasks</div>
+                <input type="text" placeholder="Add new subtask">
+            </div>
+        </div>
+
+        <div class="bottomContainer">
+            <div class="redStarBefore">This field is required</div>
+            <div class="btnContainer">
+                <button class="clearBtn">
+                    <div>Clear</div>
+                    <img src="../assets/icons/clearIcon.svg" alt="">
+                </button>
+
+                <button class="createTaskBtn">
+                    <div>Create Task</div>
+                    <img src="../assets/icons/check.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </form>
+
+</section>

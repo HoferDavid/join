@@ -1,4 +1,3 @@
-let BASE_TASKS_URL = "https://join-273-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks = [];
 let currentDraggedElement;
 let currentSearchInput = "";
@@ -51,7 +50,7 @@ function initDragDrop() {
 
 async function getDataFromFirebase(path = "") {
   try {
-    let response = await fetch(BASE_TASKS_URL + path + ".json");
+    let response = await fetch(BASE_URL + path + ".json");
     let responseAsJson = await response.json();
     return responseAsJson;
   } catch (error) {
@@ -88,7 +87,7 @@ async function pushDataToArray() {
 
 // async function postDataToFirebase(path = "", data = {}) {
 //   try {
-//     let response = await fetch(BASE_TASKS_URL + path + ".json", {
+//     let response = await fetch(BASE_URL + path + ".json", {
 //       method: "POST",
 //       header: {
 //         "Content-Type": " application/json",
@@ -104,7 +103,7 @@ async function pushDataToArray() {
 
 async function updateTaskInFirebase(id, updatedTask) {
   try {
-    let response = await fetch(`${BASE_TASKS_URL}tasks/${id}.json`, {
+    let response = await fetch(`${BASE_URL}tasks/${id}.json`, {
       method: "PUT",
       header: {
         "Content-Type": " application/json",
@@ -118,16 +117,8 @@ async function updateTaskInFirebase(id, updatedTask) {
 }
 
 
-async function deleteDataFromFirebase(path='') {
-  let response = await fetch(BASE_URL + path + '.json', {
-      method: 'DELETE',
-  });
-  return responseToJson = await response.json();
-}
-
-
 async function deleteTask(id) {
-  await deleteDataFromFirebase(`tasks/${id}`);
+  await deleteData(`tasks/${id}`);
   tasks = tasks.filter(task => task.id !== id);
   closeModal();
   initDragDrop();
@@ -139,11 +130,6 @@ function toggleVisibility(id) {
   document.getElementById(id).classList.toggle('dNone');
   return document.getElementById(id);
 }
-
-
-
-
-
 
 
 function dragDrop() {
@@ -248,8 +234,9 @@ function emptyDragAreaWhileSearching() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == overlay) {
+  if (event.target == overlay || event.target == addTaskOverlay) {
     overlay.style.display = "none";
+    addTaskOverlay.style.display = "none";
     document.body.classList.remove("modalOpen");
   }
 };
@@ -267,3 +254,25 @@ function openOverlay(elementId) {
   overlay.innerHTML = generateOpenOverlayHTML(element);
   overlay.style.display = "block";
 }
+
+
+async function openAddTaskOverlay() {
+  let addTaskOverlay = document.getElementById("addTaskOverlay");
+  addTaskOverlay.innerHTML = await fetchAddTaskTemplate();
+  addTaskOverlay.style.display = "block";
+}
+
+
+async function fetchAddTaskTemplate() {
+    let response = await fetch('../assets/templates/html/addtasktemplate.html');
+    let html = await response.text();
+    return `
+      <div class="addTaskModalContainer">
+        ${html}
+      </div>
+    `;
+}
+
+
+
+

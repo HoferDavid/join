@@ -7,18 +7,14 @@ function addTask() {
  * Updates the minimum date in the 'Due date' (id = dateInput) input field to the actual date
  * 
  */
-document.addEventListener("DOMContentLoaded", function() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("dateInput").setAttribute("min", today);
-});
-
-
-
-
+// document.addEventListener("DOMContentLoaded", function() {
+//     var today = new Date();
+//     var dd = String(today.getDate()).padStart(2, '0');
+//     var mm = String(today.getMonth() + 1).padStart(2, '0');
+//     var yyyy = today.getFullYear();
+//     today = yyyy + '-' + mm + '-' + dd;
+//     document.getElementById("dateInput").setAttribute("min", today);
+// });
 
 
 var x, i, j, l, ll, selElmnt, a, b, c;

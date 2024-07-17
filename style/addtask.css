@@ -134,11 +134,11 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #2A3647;
+  border: 1px solid #2a3647;
   border-radius: 10px;
   height: 56px;
   width: 110px;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   gap: 4px;
 }
 
@@ -163,8 +163,6 @@ input:focus {
   height: 424px;
   background-color: #d1d1d1;
 }
-
-
 
 @media (max-width: 374px) {
   .createTaskBtn {
@@ -281,46 +279,10 @@ input:focus {
     justify-content: flex-start;
     padding-left: 96px;
     gap: 48px;
-}
-
-.bottomContainer {
-  width: 978px;
-}
-}
-
-
-
-
-
-/* select {
-  width: 396px;
-  height: 38px;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  font-size: 16px;
-  line-height: 19.2px;
-  font-weight: 400;
-  display: flex;
-  padding: 0px 16px 0px 16px;
-  background-color: white;
-}
-
-option {
-  color: aqua;
-}
-
-select {
-  padding: 0.5em 0.5em;
-
-  &.different {
-    @include background-up-down(purple);
-    appearance: none;
-    background-origin: content-box;
-    background-position: right -1em center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    box-sizing: border-box;
-    padding-right: 1.5em;
   }
-} */
+
+  .bottomContainer {
+    width: 978px;
+  }
+}
+
