@@ -213,6 +213,12 @@
   background-color: #d1d1d1;
 }
 
+.addTaskModalContainer .addTaskHeaderSection {
+    display: flex;
+    justify-content: space-between;
+    margin: 48px 32px 32px 32px;
+}
+
 .addTaskModalContainer .addTaskSection {
     padding: 0px;
     align-items: center;
@@ -239,6 +245,18 @@
     display: flex;
     position: fixed;
     padding: 0px 0px 96px 0px;
+    background-color: white;
+  }
+
+  .addTaskModalContainer .prioBtn {
+    height: 56px;
+    width: 136px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .addTaskModalClose {
+    display: flex;
+    width: 14px;
   }
  
 @media (max-width: 427px) {
@@ -340,13 +358,24 @@
   .addTaskModalContainer .seperatorLine {
     display: flex;
   }
+
+  .addTaskModalContainer .addTaskForm {
+    padding-left: 0;
+}
+
+  .addTaskModalContainer .bottomContainer {
+    width: 928px;
+}
 }
 
 @media (min-width: 1200px) {
+    .addTaskModalContainer .addTaskHeaderSection {
+        margin: 48px 96px 32px 96px;
+    }
+
     .addTaskModalContainer {
         width: 1116px;
       }
 }
 
-@media (min-width: 1400px) {
-}
+

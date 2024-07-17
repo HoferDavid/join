@@ -244,6 +244,7 @@ window.onclick = function (event) {
 
 function closeModal() {
     overlay.style.display = "none";
+    addTaskOverlay.style.display = "none";
     document.body.classList.remove("modalOpen");
 }
 
