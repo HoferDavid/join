@@ -63,7 +63,7 @@ async function getDataFromFirebase(path = "") {
 async function pushDataToArray() {
   try {
     let tasksData = await getDataFromFirebase("tasks");
-    // console.log('notes Firebase: ', tasksData);
+    console.log('tasks Firebase: ', tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
       let task = {
@@ -86,20 +86,20 @@ async function pushDataToArray() {
 }
 
 
-async function postDataToFirebase(path = "", data = {}) {
-  try {
-    let response = await fetch(BASE_TASKS_URL + path + ".json", {
-      method: "POST",
-      header: {
-        "Content-Type": " application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return await response.json();
-  } catch (error) {
-    console.error("dh Error posting data:", error);
-  }
-}
+// async function postDataToFirebase(path = "", data = {}) {
+//   try {
+//     let response = await fetch(BASE_TASKS_URL + path + ".json", {
+//       method: "POST",
+//       header: {
+//         "Content-Type": " application/json",
+//       },
+//       body: JSON.stringify(data),
+//     });
+//     return await response.json();
+//   } catch (error) {
+//     console.error("dh Error posting data:", error);
+//   }
+// }
 
 
 async function updateTaskInFirebase(id, updatedTask) {
@@ -116,6 +116,34 @@ async function updateTaskInFirebase(id, updatedTask) {
     console.error("dh Error putting data:", error);
   }
 }
+
+
+async function deleteDataFromFirebase(path='') {
+  let response = await fetch(BASE_URL + path + '.json', {
+      method: 'DELETE',
+  });
+  return responseToJson = await response.json();
+}
+
+
+async function deleteTask(id) {
+  await deleteDataFromFirebase(`tasks/${id}`);
+  tasks = tasks.filter(task => task.id !== id);
+  closeModal();
+  initDragDrop();
+}
+
+
+
+function toggleVisibility(id) {
+  document.getElementById(id).classList.toggle('dNone');
+  return document.getElementById(id);
+}
+
+
+
+
+
 
 
 function dragDrop() {
@@ -153,7 +181,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 
 
 function updateAllTaskCategories() {
-  updateTaskCategories("toDo", "toDo", "No tasks fo do");
+  updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
   updateTaskCategories("awaitFeedback", "awaitFeedback","No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");

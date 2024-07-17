@@ -169,7 +169,7 @@ function generateOpenOverlayHTML(element) {
                 </div>
             </div>
             <div class="modalBottomContainer">
-                <div class="modalBottomDeleteContainer">
+                <div class="modalBottomDeleteContainer" onclick="deleteTask('${element.id}')">
                     <img src="../assets/icons/deleteDarkBlue.svg">
                     <div>Delete</div>
                 </div>
