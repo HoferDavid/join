@@ -5,6 +5,10 @@
   padding: 48px 0px 32px 16px;
 }
 
+.addTaskModalClose {
+  display: none;
+}
+
 .addTaskSection {
   display: flex;
   flex-direction: column;
@@ -32,6 +36,76 @@
   gap: 16px;
   max-width: 396px;
 }
+
+
+
+/* .categoryMain {
+  background: url(../assets/icons/dropdown.svg) no-repeat right 12px top 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 396px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+}
+
+.categoryDropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 16px;
+  max-width: 396px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 10px 20px 10px 20px;
+} */
+
+
+
+
+/* .dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+}
+
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 200px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.dropdown-content .dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown.show .dropdown-content {
+  display: block;
+} */
+
+
 
 .descriptionInput {
   height: 88px;
@@ -106,6 +180,7 @@ input:focus {
   gap: 8px;
   background-color: white;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .bottomContainer {
@@ -140,6 +215,7 @@ input:focus {
   width: 110px;
   background-color: #f6f7f8;
   gap: 4px;
+  cursor: pointer;
 }
 
 .createTaskBtn {
@@ -163,6 +239,11 @@ input:focus {
   height: 424px;
   background-color: #d1d1d1;
 }
+
+
+
+
+
 
 @media (max-width: 374px) {
   .createTaskBtn {
