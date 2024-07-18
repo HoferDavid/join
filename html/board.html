@@ -43,7 +43,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>To do</div>
-                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="openAddTaskOverlay()" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="toDo"></div>
             </div>
@@ -51,7 +51,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>In progress</div>
-                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="openAddTaskOverlay()" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="inProgress"></div>
             </div>
@@ -59,7 +59,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>Await Feedback</div>
-                    <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="openAddTaskOverlay()" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="awaitFeedback"></div>
             </div>

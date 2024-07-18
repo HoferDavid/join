@@ -38,36 +38,6 @@
 }
 
 
-
-/* .categoryMain {
-  background: url(../assets/icons/dropdown.svg) no-repeat right 12px top 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 396px;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  padding: 10px 20px 10px 20px;
-  background-color: white;
-}
-
-.categoryDropdown {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  gap: 16px;
-  max-width: 396px;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  padding: 10px 20px 10px 20px;
-} */
-
-
-
-
-
-
 .descriptionInput {
   height: 88px;
   display: flex;
@@ -152,30 +122,37 @@ input:focus {
   cursor: pointer;
 }
 
-.prioBtnUrgent:hover,
-.prioBtnMedium:hover,
-.prioBtnLow:hover {
+.prioBtnContainer > div:hover {
   box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 }
 
-.priourgentsmallWhite {
+.priourgentsmallWhite,
+.priomediumsmallWhite,
+.priolowsmallWhite {
   display: none;
 }
 
-/* .prioBtnUrgent:hover .priourgentsmallWhite {
-  display: block;
-} */
-
-/* .prioBtnUrgent:hover .priourgentsmall {
-  display: none;
-} */
-
-
-.prioUrgentBtnClicked {
-  background-color: #FF3D00;
+.prioBtnUrgentActive,
+.prioBtnMediumActive,
+.prioBtnLowActive {
   color: white;
   box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
 }
+
+.prioBtnUrgentActive {
+  background-color: #FF3D00;
+}
+
+.prioBtnMediumActive {
+  background-color: #FFA800;
+}
+
+.prioBtnLowActive {
+  background-color: #7AE229;
+}
+
+
+
 
 
 

@@ -10,16 +10,16 @@
 
 <section class="addTaskSection">
 
-    <form onsubmit="addTask()" class="addTaskForm">
+    <form onsubmit="return pushNewTask(event)" class="addTaskForm">
 
         <div class="inputContainerTop">
             <div class="singleInputContainer">
                 <div class="redStarAfter">Title</div>
-                <input type="text" placeholder="Enter a title" required maxlength="50">
+                <input id="taskTitle" type="text" placeholder="Enter a title" required maxlength="50">
             </div>
             <div class="singleInputContainer">
                 <div>Description</div>
-                <textarea class="" placeholder="Enter a Description"></textarea>
+                <textarea id="taskDescription" placeholder="Enter a Description"></textarea>
             </div>
             <div class="singleInputContainer">
                 <div>Assigned to</div>
@@ -37,18 +37,20 @@
             <div class="addTaskPrioContainer">
                 <div>Prio</div>
                 <div class="prioBtnContainer">
-                    <div class="prioBtnUrgent">
+                    <div class="prioBtn prioBtnUrgent" onclick="setPrio(this)" data-prio="urgent">
                         <div>Urgent</div>
                         <img class="priourgentsmallWhite" src="../assets/icons/priourgentsmallWhite.svg">
                         <img class="priourgentsmall" src="../assets/icons/priourgentsmall.svg">
                     </div>
-                    <div class="prioBtnMedium">
+                    <div class="prioBtn prioBtnMedium" onclick="setPrio(this)" data-prio="medium">
                         <div>Medium</div>
-                        <img src="../assets/icons/priomediumsmall.svg">
+                        <img class="priomediumsmallWhite" src="../assets/icons/priomediumsmallWhite.svg">
+                        <img class="priomediumsmall" src="../assets/icons/priomediumsmall.svg">
                     </div>
-                    <div class="prioBtnLow">
+                    <div class="prioBtn prioBtnLow" onclick="setPrio(this)" data-prio="low">
                         <div>Low</div>
-                        <img src="../assets/icons/priolowsmall.svg">
+                        <img class="priolowsmallWhite" src="../assets/icons/priolowsmallWhite.svg">
+                        <img class="priolowsmall" src="../assets/icons/priolowsmall.svg">
                     </div>
 
                 </div>
@@ -73,7 +75,7 @@
                     <img class="clearFormIconBlue" src="../assets/icons/clearIconBlue.svg" alt="">
                 </button>
 
-                <button class="createTaskBtn">
+                <button type="submit" class="createTaskBtn">
                     <div>Create Task</div>
                     <img src="../assets/icons/check.svg" alt="">
                 </button>

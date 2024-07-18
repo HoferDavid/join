@@ -3,35 +3,11 @@ let currentDraggedElement;
 let currentSearchInput = "";
 
 
-// Function only for Testing
-async function pushToFirebaseTest() {
-  await postDataToFirebase("tasks", {
-    "assignedTo": [
-      "Laura Hoffmann",
-      "Max Mustermann",
-      "Erika Musterfrau",
-      "Hans Meier",
-    ],
-    "category": "Technical Task",
-    "description": "Planen und starten Sie die neue Marketingkampagne.",
-    "date": "10/08/2024",
-    "prio": "urgent",
-    "subtasks": [
-      "Strategie entwickeln",
-      "Materialien erstellen",
-      "Kampagne starten",
-    ],
-    "title": "Marketingkampagne",
-    "status": "toDo",
-  });
-}
-
-
 async function initBoard() {
   init();
   try {
-    await getDataFromFirebase();
-    // pushToFirebaseTest();
+    await loadData();
+    // await pushToFirebaseTest();
     await pushDataToArray();
     updateAllTaskCategories();
     initDragDrop();
@@ -48,20 +24,9 @@ function initDragDrop() {
 }
 
 
-async function getDataFromFirebase(path = "") {
-  try {
-    let response = await fetch(BASE_URL + path + ".json");
-    let responseAsJson = await response.json();
-    return responseAsJson;
-  } catch (error) {
-    console.error("dh Error fetching data:", error);
-  }
-}
-
-
 async function pushDataToArray() {
   try {
-    let tasksData = await getDataFromFirebase("tasks");
+    let tasksData = await loadData("tasks");
     console.log('tasks Firebase: ', tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
@@ -83,22 +48,6 @@ async function pushDataToArray() {
   }
   console.log("tasks Array: ", tasks);
 }
-
-
-// async function postDataToFirebase(path = "", data = {}) {
-//   try {
-//     let response = await fetch(BASE_URL + path + ".json", {
-//       method: "POST",
-//       header: {
-//         "Content-Type": " application/json",
-//       },
-//       body: JSON.stringify(data),
-//     });
-//     return await response.json();
-//   } catch (error) {
-//     console.error("dh Error posting data:", error);
-//   }
-// }
 
 
 async function updateTaskInFirebase(id, updatedTask) {
@@ -123,7 +72,6 @@ async function deleteTask(id) {
   closeModal();
   initDragDrop();
 }
-
 
 
 function toggleVisibility(id) {

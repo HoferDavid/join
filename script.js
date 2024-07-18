@@ -6,6 +6,7 @@ let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
 async function init() {
   await includeHTML();
   setActive();
+  setActualDate();
 }
 
 
@@ -49,10 +50,19 @@ function toggleClass(menu, className1, className2) {
 }
 
 
+function getId(id) {
+  return document.getElementById(id).value;
+}
+
+
 async function loadData(path = '') {
-  let response = await fetch(BASE_URL + path + '.json');
-  let responseToJson = await response.json();
-  return responseToJson;
+  try {
+    let response = await fetch(BASE_URL + path + ".json");
+    let responseAsJson = await response.json();
+    return responseAsJson;
+  } catch (error) {
+    console.error("dh Error fetching data:", error);
+  }
 }
 
 
@@ -61,4 +71,20 @@ async function deleteData(path = '') {
     method: 'DELETE',
   });
   return responseToJson = await response.json();
+}
+
+
+async function postData(path = "", data = {}) {
+  try {
+    let response = await fetch(BASE_URL + path + ".json", {
+      method: "POST",
+      header: {
+        "Content-Type": " application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("dh Error posting data:", error);
+  }
 }
