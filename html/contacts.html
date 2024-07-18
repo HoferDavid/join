@@ -11,145 +11,24 @@
     <link rel="stylesheet" href="../style/fonts.css">
     <link rel="stylesheet" href="../style/contacts.css">
 
+    <script src="../script/contactsTemplate.js"></script>
     <script src="../script/contacts.js"></script>
     <script src="../script.js"></script>
 
 </head>
 
-<body onload="init()">
+<body onload="initContacts()">
 
     <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
 
     <main class="content contentSection ">
         <div id="contactsDetail" class="ttx100">
-            <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')">
-                <img src="../assets/icons/more_vert.svg" alt="3 points vert">
-            </div>
-            <a class="backArrow" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                <img src="../assets/icons/arrow-left-line.svg" alt="arrow left line">
-            </a>
             <div class="contactsHeader">
                 <h1>Contacts</h1>
                 <p class="bordered fs20">Better with a Team</p>
             </div>
-            <div class="contactOverview">
-                <img class="contactBig" src="../assets/img/contacts/contact1.svg" alt="contact Picture">
-                <div>
-                    <h2>Anton Mayer</h2>
-                    <div id="editMenu" class="editMenu ts0" onmouseleave="toggleClass('editMenu', 'ts0', 'ts1')">
-                        <div class="editMenuItem" onclick="toggleClass('editContact', 'tt0', 'tty100')">
-                            <img class="editMenuButton" src="../assets/icons/edit.svg" alt="pencil">
-                            <img class="editMenuButton hoverEffectIcon" src="../assets/icons/editBlue.svg"
-                                alt="blue pencil">
-                            <p>Edit</p>
-                        </div>
-                        <div class="editMenuItem" onclick="toggleClass('editContact', 'tt0', 'tty100')">
-                            <img class="editMenuButton" src="../assets/icons/delete.svg" alt="trashcan">
-                            <img class="editMenuButton hoverEffectIcon" src="../assets/icons/deleteBlue.svg"
-                                alt="blue trashcan">
-                            <p>Delete</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="fs20">Contact Information</p>
-            <h4>Email</h4>
-            <p><a href="mailto:antom@gmail.com">antom@gmail.com</a></p>
-            <h4>Phone</h4>
-            <p><a href="tel:+49 1111 111 11 1">+49 1111 111 11 1</a></p>
         </div>
-        <div id="contactsGeneral" class="contactsGeneral">
-            <div class="moreIcon" onclick="toggleClass('addContact', 'tt0', 'tty100')">
-                <p>Add new contact</p>
-                <img src="../assets/icons/person_add.svg" alt="person add">
-            </div>
-            <div id="contactLetterA" class="contactLetter">
-                <p class="fs20">A</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Anton.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Anton Mayer</p>
-                            <p><a>antom@gmail.com</a></p>
-                        </div>
-                    </li>
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Anja.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Anja Schulz</p>
-                            <p><a>schulz@hotmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="contactLetterB" class="contactLetter">
-                <p class="fs20">B</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Benedikt.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Benedikt Ziegler</p>
-                            <p><a>benedikt@gmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="contactLetterD" class="contactLetter">
-                <p class="fs20">D</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/David.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">David Eisenberg</p>
-                            <p><a>davidberg@gmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="contactLetterE" class="contactLetter">
-                <p class="fs20">E</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Eva.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Eva Fischer</p>
-                            <p><a>eva@gmail.com</a></p>
-                        </div>
-                    </li>
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Emmanuel.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Emmanuel Mauer</p>
-                            <p><a>emmanuelma@gmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="contactLetterM" class="contactLetter">
-                <p class="fs20">M</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Marcel.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Marcel Bauer</p>
-                            <p><a>bauer@gmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="contactLetterT" class="contactLetter">
-                <p class="fs20">T</p>
-                <ul class="contactList">
-                    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
-                        <img class="contactSmall" src="../assets/img/contacts/Tatjana.svg" alt="contact Picture">
-                        <div>
-                            <p class="fs20">Tatjana Wolf</p>
-                            <p><a>davidberg@gmail.com</a></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div id="contactsGeneral" class="contactsGeneral"></div>
         <div id="addContact" class="workContact tty100">
             <div class="workContactContainer up">
                 <img class="closeX" src="../assets/icons/close.svg" alt="close X"

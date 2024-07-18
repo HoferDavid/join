@@ -1,6 +1,6 @@
 let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
 let activeTab = sessionStorage.getItem('activeTab') || '';
-let contacts = sessionStorage.getItem('contact') || [];
+let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
 
 
 async function init() {
@@ -58,7 +58,7 @@ async function loadData(path = '') {
 
 async function deleteData(path = '') {
   let response = await fetch(BASE_URL + path + '.json', {
-      method: 'DELETE',
+    method: 'DELETE',
   });
   return responseToJson = await response.json();
 }

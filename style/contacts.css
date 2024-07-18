@@ -1,5 +1,4 @@
 .contentSection {
-  padding: 0 16px;
   position: relative;
   overflow-x: hidden;
   display: flex;
@@ -25,7 +24,7 @@
   flex-direction: column;
   width: 100%;
   z-index: 1;
-  padding: 32px 0;
+  padding: 32px 16px;
   overflow-y: auto;
 }
 
@@ -63,6 +62,13 @@
 
 .tt0 {
   transform: unset;
+}
+
+.profilePic {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+
 }
 
 a {
@@ -105,6 +111,11 @@ h1 {
 .contactBig {
   height: 80px;
   width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .contactOverview h2 {
@@ -166,6 +177,9 @@ h4 {
 .contactSmall {
   height: 42px;
   width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contactLetter>p:first-child {
@@ -176,9 +190,13 @@ h4 {
   padding: 16px 20px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
   cursor: pointer;
   margin: 4px 0;
+}
+
+.contactList li a {
+  font-size: 12px;
 }
 
 .contactList li:hover {
@@ -416,7 +434,15 @@ X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+  .contactList li {
+    gap: 24px;
+  }
+
+  .contactList li a {
+    font-size: 16px;
+  }
+}
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {}
@@ -429,19 +455,19 @@ No media query for `xs` since this is the default in Bootstrap*/
 
   #contactsDetail {
     position: initial;
-    padding: 16px;
+    padding: 16px 0 0 16px;
     height: 100%;
-    width: 60%;
+    width: 55%;
     transform: translate(0);
     z-index: 0;
     background-color: unset;
   }
 
   .contactsGeneral {
-    width: 40%;
-    max-width: 400px;
+    width: 45%;
+    max-width: 456px;
     box-shadow: 4px 0 6px 0 rgba(0, 0, 0, 0.1);
-    padding: 16px;
+    padding: 8px;
   }
 
   #contactsDetail>.moreIcon,
@@ -499,6 +525,11 @@ No media query for `xs` since this is the default in Bootstrap*/
     display: block;
   }
 
+  .contactList li {
+    gap: 16px;
+    padding: 16px 10px;
+  }
+
   .contactsGeneral .moreIcon {
     position: sticky;
     top: 0;
@@ -544,21 +575,22 @@ No media query for `xs` since this is the default in Bootstrap*/
   #contactsDetail {
     flex: 1;
     width: 100%;
-    padding: 16px 32px;
+    padding: 16px 0 0 32px;
   }
 
   .contactsHeader {
     margin-bottom: 64px;
+    margin-top: 96px;
   }
 
   .contactsHeader h1 {
-    padding-right: 32px;
-    font-size: 60px;
+    padding-right: 16px;
+    font-size: 52px;
   }
 
   .contactsHeader p {
-    padding-left: 32px;
-    font-size: 28px;
+    padding-left: 16px;
+    font-size: 20px;
   }
 
   .contactOverview {
@@ -680,6 +712,16 @@ No media query for `xs` since this is the default in Bootstrap*/
 /*XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {
 
+  .contactsHeader h1 {
+    padding-right: 32px;
+    font-size: 60px;
+  }
+
+  .contactsHeader p {
+    padding-left: 32px;
+    font-size: 28px;
+  }
+
   .up>h2 {
     font-size: 60px;
     top: 4%;
@@ -688,6 +730,10 @@ No media query for `xs` since this is the default in Bootstrap*/
 
   .up>p {
     font-size: 24px;
+  }
+
+  .contactList li {
+    gap: 24px;
   }
 
 }
