@@ -169,7 +169,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
-  updateTaskCategories("awaitFeedback", "awaitFeedback","No tasks await feedback");
+  updateTaskCategories("awaitFeedback", "awaitFeedback", "No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");
 }
 
@@ -243,9 +243,9 @@ window.onclick = function (event) {
 
 
 function closeModal() {
-    overlay.style.display = "none";
-    addTaskOverlay.style.display = "none";
-    document.body.classList.remove("modalOpen");
+  overlay.style.display = "none";
+  addTaskOverlay.style.display = "none";
+  document.body.classList.remove("modalOpen");
 }
 
 
@@ -265,9 +265,9 @@ async function openAddTaskOverlay() {
 
 
 async function fetchAddTaskTemplate() {
-    let response = await fetch('../assets/templates/html/addtasktemplate.html');
-    let html = await response.text();
-    return `
+  let response = await fetch('../assets/templates/html/addtasktemplate.html');
+  let html = await response.text();
+  return `
       <div class="addTaskModalContainer">
         ${html}
       </div>
