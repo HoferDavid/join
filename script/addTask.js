@@ -3,6 +3,13 @@ function addTask() {
 }
 
 
+// function setDateMin() {
+//   const today = new Date().toISOString().split('T')[0];
+//   document.getElementById('dateInput').setAttribute('min', today);
+//   document.getElementById('update-date') && document.getElementById('update-date').setAttribute('min', today);
+// }
+
+
 /**
  * Updates the minimum date in the 'Due date' (id = dateInput) input field to the actual date
  * 

@@ -4,7 +4,8 @@ function getRandomColor(badgeColors) {
 }
 
 const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)', 'rgb(255, 187, 43)', 'rgb(252, 113, 255)', 'rgb(110, 82, 255)', 'rgb(148, 38, 255)', 'rgb(255, 69, 70)'];
-// Code above onöy for testing purposes
+// Code above only for testing purposes
+
 
 function generateTodoHTML(element) {
   let categoryHTML = generateCategoryHTML(element.category);

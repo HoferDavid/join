@@ -66,45 +66,6 @@
 
 
 
-/* .dropdown {
-  position: relative;
-  display: inline-block;
-  margin: 20px;
-}
-
-.dropbtn {
-  background-color: white;
-  color: black;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  width: 200px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 200px;
-  border: 1px solid #ccc;
-  z-index: 1;
-}
-
-.dropdown-content .dropdown-item {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.dropdown-content .dropdown-item:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown.show .dropdown-content {
-  display: block;
-} */
-
 
 
 .descriptionInput {
@@ -125,11 +86,17 @@ textarea {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   padding: 10px 20px 10px 20px;
+  outline: none;
 }
 
 textarea {
   height: 88px;
   resize: none;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #29ABE2;
 }
 
 input[type="date"]:invalid::-webkit-datetime-edit {
@@ -171,7 +138,9 @@ input:focus {
   line-height: 19.2px;
 }
 
-.prioBtn {
+.prioBtnUrgent,
+.prioBtnMedium,
+.prioBtnLow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,6 +151,34 @@ input:focus {
   border-radius: 10px;
   cursor: pointer;
 }
+
+.prioBtnUrgent:hover,
+.prioBtnMedium:hover,
+.prioBtnLow:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+}
+
+.priourgentsmallWhite {
+  display: none;
+}
+
+/* .prioBtnUrgent:hover .priourgentsmallWhite {
+  display: block;
+} */
+
+/* .prioBtnUrgent:hover .priourgentsmall {
+  display: none;
+} */
+
+
+.prioUrgentBtnClicked {
+  background-color: #FF3D00;
+  color: white;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+}
+
+
+
 
 .bottomContainer {
   display: flex;
@@ -218,6 +215,23 @@ input:focus {
   cursor: pointer;
 }
 
+.clearBtn:hover {
+  border-color: #29ABE2;
+  color: #29ABE2;
+}
+
+.clearFormIconBlue {
+  display: none;
+}
+
+.clearBtn:hover .clearFormIcon {
+  display: none;
+}
+
+.clearBtn:hover .clearFormIconBlue {
+  display: block;
+}
+
 .createTaskBtn {
   display: flex;
   align-items: center;
@@ -232,6 +246,12 @@ input:focus {
   line-height: 25.2px;
   color: white;
   cursor: pointer;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+}
+
+.createTaskBtn:hover {
+  background-color: #29ABE2;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
 }
 
 .seperatorLine {
@@ -259,7 +279,9 @@ input:focus {
     padding: 0px 8px 0px 8px;
   }
 
-  .prioBtn {
+.prioBtnUrgent,
+.prioBtnMedium,
+.prioBtnLow {
     gap: 4px;
   }
 }
@@ -320,7 +342,9 @@ input:focus {
     max-width: 440px;
   }
 
-  .prioBtn {
+  .prioBtnUrgent,
+.prioBtnMedium,
+.prioBtnLow {
     height: 56px;
     width: 136px;
   }
