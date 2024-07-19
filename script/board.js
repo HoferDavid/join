@@ -10,8 +10,8 @@ async function initBoard() {
     // await pushToFirebaseTest();
     await pushDataToArray();
     updateAllTaskCategories();
-    initDragDrop();
     applyCurrentSearchFilter();
+    dragDrop();
   } catch (error) {
     console.error("dh Initialisation error:", error);
   }
@@ -20,6 +20,7 @@ async function initBoard() {
 
 function initDragDrop() {
   updateAllTaskCategories();
+  applyCurrentSearchFilter();
   dragDrop();
 }
 
@@ -82,21 +83,77 @@ function toggleVisibility(id) {
 
 function dragDrop() {
   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
-    todoContainer.addEventListener("dragstart", (e) => {
-      e.target.classList.add("tilted");
-      startDragging(e.target.id);
-    });
-    todoContainer.addEventListener("dragend", (e) => {
-      e.target.classList.remove("tilted");
-    });
+    todoContainer.addEventListener("dragstart", event => startDragging(event));
+    todoContainer.addEventListener("dragend", event => endDragging(event));
   });
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.addEventListener("dragover", allowDrop);
-    zone.addEventListener("drop", (e) => {
-      e.preventDefault();
-      moveTo(zone.id);
-    });
+  document.querySelectorAll(".taskDragArea").forEach((zone) => {
+    zone.addEventListener("dragover", event => overDragging(event));
+    zone.addEventListener('dragleave', event => leaveDragging(event));
+    zone.addEventListener("drop", event => dropDragging(event));
   });
+  document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
+    todoContainer.removeEventListener("dragstart", event => startDragging(event));
+    todoContainer.removeEventListener("dragend", event => endDragging(event));
+  });
+  document.querySelectorAll('.taskDragArea').forEach((zone) => {
+    zone.removeEventListener("dragover", event => overDragging(event));
+    zone.removeEventListener('dragleave', event => leaveDragging(event));
+    zone.removeEventListener("drop", event => dropDragging(event));
+  });
+}
+
+
+function startDragging(e) {
+  let vw = window.innerWidth || document.documentElement.clientWidth;
+  let maxVw = 1200;
+  e.target.classList.add("tilted");
+  currentDraggedElement = e.target.id;
+  if (vw < maxVw) {
+    document.querySelectorAll('.todoContainer, .headerSection, .noTaskPlaceholder').forEach(todo => todo.style.display = 'none');
+
+    document.querySelectorAll('.taskDragArea').forEach(zone => zone.classList.add('dropZoneHighlight'));
+  }
+};
+
+
+function endDragging(e) {
+  let vw = window.innerWidth || document.documentElement.clientWidth;
+  let maxVw = 1200;
+  e.target.classList.remove("tilted");
+  if (vw < maxVw) {
+    document.querySelectorAll('.todoContainer, .headerSection, .noTaskPlaceholder').forEach(todo => todo.style.display = '');
+    document.querySelectorAll('.taskDragArea').forEach(zone => zone.classList.remove('dropZoneHighlight'));
+  }
+}
+
+
+function overDragging(e) {
+  let vw = window.innerWidth || document.documentElement.clientWidth;
+  let maxVw = 1200;
+  e.preventDefault();
+  if (vw < maxVw) {
+    e.currentTarget.classList.add('dropZoneHighlightAbove');
+  }
+}
+
+
+function leaveDragging(e) {
+  let vw = window.innerWidth || document.documentElement.clientWidth;
+  let maxVw = 1200;
+  if (vw < maxVw) {
+    e.currentTarget.classList.remove('dropZoneHighlightAbove');
+  }
+}
+
+
+function dropDragging(e) {
+  let vw = window.innerWidth || document.documentElement.clientWidth;
+  let maxVw = 1200;
+  e.preventDefault();
+  moveTo(e.target.title);
+  if (vw < maxVw) {
+    e.currentTarget.classList.remove("dropZoneHighlightAbove");
+  }
 }
 
 
@@ -117,28 +174,16 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
-  updateTaskCategories("awaitFeedback", "awaitFeedback","No tasks await feedback");
+  updateTaskCategories("awaitFeedback", "awaitFeedback", "No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");
 }
-
-
-function startDragging(id) {
-  currentDraggedElement = id;
-}
-
-
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
 
 async function moveTo(status) {
   let task = tasks.find((task) => task.id == currentDraggedElement);
   if (task && status != '') {
     task.status = status;
-    initDragDrop();
-    applyCurrentSearchFilter();
     await updateTaskInFirebase(task.id, task);
+    initDragDrop();
   }
 }
 
@@ -156,7 +201,7 @@ function searchTasks(inputValue) {
       const isVisible =
         title.includes(currentSearchInput) ||
         description.includes(currentSearchInput);
-      taskCard.style.display = isVisible ? "block" : "none";
+      taskCard.style.display = isVisible ? "flex" : "none";
     }
   });
 }
@@ -191,9 +236,9 @@ window.onclick = function (event) {
 
 
 function closeModal() {
-    overlay.style.display = "none";
-    addTaskOverlay.style.display = "none";
-    document.body.classList.remove("modalOpen");
+  overlay.style.display = "none";
+  addTaskOverlay.style.display = "none";
+  document.body.classList.remove("modalOpen");
 }
 
 
@@ -213,15 +258,11 @@ async function openAddTaskOverlay() {
 
 
 async function fetchAddTaskTemplate() {
-    let response = await fetch('../assets/templates/html/addtasktemplate.html');
-    let html = await response.text();
-    return `
+  let response = await fetch('../assets/templates/html/addtasktemplate.html');
+  let html = await response.text();
+  return `
       <div class="addTaskModalContainer">
         ${html}
       </div>
     `;
 }
-
-
-
-

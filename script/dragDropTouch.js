@@ -435,14 +435,14 @@ var DragDropTouch;
   }());
     /*private*/ DragDropTouch._instance = new DragDropTouch(); // singleton
   // constants
-  DragDropTouch._THRESHOLD = 5; // pixels to move before drag starts
+  DragDropTouch._THRESHOLD = 15; // pixels to move before drag starts
   DragDropTouch._OPACITY = 0.5; // drag image opacity
   DragDropTouch._DBLCLICK = 500; // max ms between clicks in a double click
   DragDropTouch._CTXMENU = 900; // ms to hold before raising 'contextmenu' event
   DragDropTouch._ISPRESSHOLDMODE = false; // decides of press & hold mode presence
   DragDropTouch._PRESSHOLDAWAIT = 400; // ms to wait before press & hold is detected
-  DragDropTouch._PRESSHOLDMARGIN = 25; // pixels that finger might shiver while pressing
-  DragDropTouch._PRESSHOLDTHRESHOLD = 0; // pixels to move before drag starts
+  DragDropTouch._PRESSHOLDMARGIN = 55; // pixels that finger might shiver while pressing
+  DragDropTouch._PRESSHOLDTHRESHOLD = 10; // pixels to move before drag starts
   // copy styles/attributes from drag source to drag image element
   DragDropTouch._rmvAtts = 'id,class,style,draggable'.split(',');
   // synthesize and dispatch an event
