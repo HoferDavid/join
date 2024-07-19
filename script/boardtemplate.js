@@ -57,10 +57,10 @@ function generateTitleHTML(title) {
 
 function generateDescriptionHTML(description) {
     let descriptionHTML = '';
-    if (description.length < 50) {
+    if (description.length < 60) {
         descriptionHTML = `<div class="toDoDescription">${description}</div>`;
     } else {
-        descriptionHTML = `<div class="toDoDescription">${description.substring(0, 44) + '...'}</div>`;
+        descriptionHTML = `<div class="toDoDescription">${description.substring(0, 40) + '...'}</div>`;
     }
     return descriptionHTML;
 }

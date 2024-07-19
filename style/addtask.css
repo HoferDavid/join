@@ -1,3 +1,7 @@
+.dNone {
+  display: none;
+}
+
 .addTaskHeaderSection {
   font-size: 48px;
   font-weight: 700;
@@ -43,56 +47,11 @@
   display: flex;
   justify-content: flex-start;
 }
-
-
-
-/* .subtasksInputContainer {
-  position: relative;
-  display: inline-block;
-  max-width: 396px;
-} */
-
-input[type="text"] {
-  padding-right: 40px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 40px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.svg-container {
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 5px;
-}
-
-.hidden {
-  display: none;
-}
-
-.focus-svg {
-  display: none;
-}
-
-input[type="text"]:focus ~ .svg-container .initial-svg {
-  display: none;
-}
-
-input[type="text"]:focus ~ .svg-container .focus-svg {
-  display: block;
-}
-
-
-
 .addTaskForm {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 input,
 textarea {
   background-color: white;
@@ -101,29 +60,24 @@ textarea {
   padding: 10px 20px 10px 20px;
   outline: none;
 }
-
 textarea {
   height: 88px;
   resize: none;
 }
-
 input:focus,
 textarea:focus {
   border: 1px solid #29abe2;
 }
-
 input[type="date"]:invalid::-webkit-datetime-edit {
   color: #d1d1d1;
   font-size: 16px;
   line-height: 19.2px;
   font-weight: 400;
 }
-
 ::placeholder {
   color: #d1d1d1;
   font-family: "Inter";
 }
-
 input:focus {
   outline: none;
 }
@@ -222,7 +176,8 @@ input:focus {
 }
 
 .clearBtn,
-.bottomContainerText {
+.bottomContainerText,
+.taskAddedBtn {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -285,6 +240,41 @@ input:focus {
   height: 424px;
   background-color: #d1d1d1;
 }
+
+.taskAddedBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 326px;
+  height: 74px;
+  background-color: #2A3647;
+  color: white;
+  border-radius: 20px;
+  gap: 16px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 0.5s ease-out;
+}
+
+.taskAddedBtnIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.taskAddedBtn.show {
+  display: flex;
+  bottom: 50%; 
+}
+
+.taskAddedBtn.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
 
 @media (max-width: 374px) {
   .createTaskBtn {

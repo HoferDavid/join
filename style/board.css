@@ -199,6 +199,7 @@ input:focus {
   line-height: 19.2px;
   font-weight: 400;
   color: #A8A8A8;
+  word-break: break-word;
 }
 
 .userStoryBadge {

@@ -1,5 +1,5 @@
-let currentPrio = '';
-let taskStatus = '';
+let currentPrio = 'medium';
+let taskStatus = 'toDo';
 
 
 async function pushNewTask(event) {
@@ -23,6 +23,7 @@ async function pushNewTask(event) {
     ],
 
   });
+  closeAddTaskModal();
 }
 
 
@@ -66,21 +67,35 @@ function clearAddTaskForm() {
 }
 
 
+function showTaskAddedAnimation() {
+  if (window.location.href.endsWith('addtask.html')) {
+    const taskAddedBtn = document.getElementById('taskAddedBtn');
+    taskAddedBtn.classList.remove('dNone');
+    taskAddedBtn.classList.add('show');
+    setTimeout(() => {
+        taskAddedBtn.classList.add('fade-out');
+        return window.location.href = "../html/board.html";
+    }, 1000);
+  } else {
+    showTaskAddedAnimationModal(taskAddedBtn);
+  }
+}
 
 
+function showTaskAddedAnimationModal(taskAddedBtn) {
+  taskAddedBtn.classList.remove('dNone');
+  taskAddedBtn.classList.add('show');
+  setTimeout(() => {
+      // taskAddedBtn.classList.add('fade-out');
+      closeModal();
+  }, 1000);
+} 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const input = document.getElementById('customInput');
-  const initialSvg = document.querySelector('.initial-svg');
-  const focusSvgs = document.querySelectorAll('.focus-svg');
 
-  input.addEventListener('focus', function() {
-      initialSvg.classList.add('hidden');
-      focusSvgs.forEach(svg => svg.classList.remove('hidden'));
-  });
-
-  input.addEventListener('blur', function() {
-      initialSvg.classList.remove('hidden');
-      focusSvgs.forEach(svg => svg.classList.add('hidden'));
-  });
-});
+async function closeAddTaskModal() {
+  showTaskAddedAnimation();
+  tasks = [];
+  await pushDataToArray();
+  updateAllTaskCategories();
+  initDragDrop();
+}
