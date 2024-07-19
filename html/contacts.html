@@ -41,12 +41,15 @@
             </div>
             <img src="../assets/img/contacts/emptyProfilPic.svg" alt="empty Profil Picture">
             <div class="workContactContainer down">
-                <form onsubmit="" class="contactForm">
-                    <input type="text" placeholder="Name">
-                    <input type="mail" placeholder="Email">
-                    <input type="tel" placeholder="Phone">
+                <form onsubmit="addContacts()" class="contactForm">
+                    <input id="addName" type="text" placeholder="Name Lastname" value="" required>
+                    <input id="addMail" type="email" placeholder="example@example.com" value="" required>
+                    <input id="addTel" type="tel" placeholder="+49 1111 111111"
+                        pattern="[+][0-9]{2,3} [0-9]{4,5} [0-9]{3,9}"
+                        title="Telephon number must have country prefix, phone prefix and phone number. Example: +12 3456 7890"
+                        minlength="10" maxlength="17" value="" required>
                     <div class="editButtonContainer">
-                        <button class="deleteContactButton">Cancel
+                        <button onclick="toggleClass('addContact', 'tt0', 'tty100')" class="deleteContactButton">Cancel
                             <img src="../assets/icons/closeGrey.svg" alt="close X">
                             <img src="../assets/icons/closeBlue.svg" alt="close X">
                         </button>
@@ -66,16 +69,21 @@
                 <img src="../assets/icons/logowhite.svg" alt="logo white">
                 <h2 class="bordered">Edit contact</h2>
             </div>
-            <img src="../assets/img/contacts/Anton.svg" alt="Profil Picture">
+            <div id="editProfilePic" class="profilePic">
+                <svg></svg>
+            </div>
             <div class="workContactContainer down">
-                <form onsubmit="" class="contactForm">
-                    <input type="text" placeholder="Name" value="Anton Mayer">
-                    <input type="mail" placeholder="Email" value="antom@gmail.com">
-                    <input type="tel" placeholder="Phone" value="+49 1111 111 11 1">
+                <form onsubmit="editContact()" class="contactForm">
+                    <input id="editName" type="text" placeholder="Name Lastname" value="" required>
+                    <input id="editMail" type="email" placeholder="example@example.com" value="" required>
+                    <input id="editTel" type="tel" placeholder="+49 1111 111111"
+                        pattern="[+][0-9]{2,3} [0-9]{4,5} [0-9]{3,9}"
+                        title="Telephon number must have country prefix, phone prefix and phone number." minlength="10"
+                        maxlength="17" value="" required>
                     <div class="editButtonContainer">
-                        <button class="deleteContactButton">Delete</button>
+                        <button onclick="openDeleteContacts()" class="deleteContactButton">Delete</button>
                         <button type="submit" class="editContactButton">Save <img src="../assets/icons/check.svg"
-                                alt=""></button>
+                                alt="check icon"></button>
                     </div>
                 </form>
             </div>

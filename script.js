@@ -88,3 +88,14 @@ async function postData(path = "", data = {}) {
     console.error("dh Error posting data:", error);
   }
 }
+
+async function updateData(path = '', data = {}) {
+  let response = await fetch(BASE_URL + path + '.json', {
+    method: 'PUT',
+    header: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  console.log(response);
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+}
