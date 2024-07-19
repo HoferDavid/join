@@ -20,10 +20,11 @@
     
 
     <main class="content contentSection "></main>
-    <main class="summ-main"></main>
+    <div id="greetingSummaryMobile"></div>
+    <main class="summ-main">
 
 
-    <div class="summary-2">
+    <div class="summ-2">
         <div class="headline-summ">
             <h2 class="headline-summ-h2">Join 360</h2>
             <div class="summ-seperate"></div>
@@ -59,45 +60,38 @@
                         <span class="how-many-todos">Urgent</span>
                     </div>
                 </div>
+    
                 <div class="summ-urgent-seperate"></div>
                 <div class="summ-urgent-date-container">
                     <span id="summUrgentDate" class="summ-urgent-date"></span>
                     <span class="summ-urgent-date-deadline">Upcoming Deadline</span>
                 </div>
             </div>
+            <div class="summ-stats-under">
+                <div class="summ-stats-under-container"> 
+                    <span id="howManyTaskInBoard" class="summ-stats-under-howmany">5</span>
+                    <span class="summ-stats-under-tasks">Task in Progress</span>
+                </div>
+                <div class="summ-stats-under-container">
+                    <span id="howManyInProgess" class="summ-stats-under-howmany">2</span>
+                    <span class="summ-stats-under-tasks">Tasks in Progress</span>
+                </div>
+                <div class="summ-stats-under-container">
+                    <span id="howManyAwaitFeedback" class="summ-stats-under-howmany">2</span>
+                    <span class="summ-stats-under-tasks">Awaiting Feedback</span>
+                </div>
+            </div>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="rotate-warning">
+        </div>
+    </div>
+    <div class="summ-greeting">
+        <h3 id="greetingSumm" class="summ-day-greeting">Good Day</h3>
+        <span class="summ-person-greeting">Guest</span>
+    </div>
+</main>
+    
 <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
     
 </body>
