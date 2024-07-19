@@ -30,19 +30,62 @@
   gap: 16px;
 }
 
-.singleInputContainer {
+.singleInputContainer,
+.subtasksInputContainer {
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-width: 396px;
 }
 
-
 .descriptionInput {
   height: 88px;
   display: flex;
   justify-content: flex-start;
 }
+
+
+
+/* .subtasksInputContainer {
+  position: relative;
+  display: inline-block;
+  max-width: 396px;
+} */
+
+input[type="text"] {
+  padding-right: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.svg-container {
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.focus-svg {
+  display: none;
+}
+
+input[type="text"]:focus ~ .svg-container .initial-svg {
+  display: none;
+}
+
+input[type="text"]:focus ~ .svg-container .focus-svg {
+  display: block;
+}
+
+
 
 .addTaskForm {
   display: flex;
@@ -66,7 +109,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border: 1px solid #29ABE2;
+  border: 1px solid #29abe2;
 }
 
 input[type="date"]:invalid::-webkit-datetime-edit {
@@ -123,7 +166,7 @@ input:focus {
 }
 
 .prioBtnContainer > div:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .priourgentsmallWhite,
@@ -136,19 +179,19 @@ input:focus {
 .prioBtnMediumActive,
 .prioBtnLowActive {
   color: white;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .prioBtnUrgentActive {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
 }
 
 .prioBtnMediumActive {
-  background-color: #FFA800;
+  background-color: #ffa800;
 }
 
 .prioBtnLowActive {
-  background-color: #7AE229;
+  background-color: #7ae229;
 }
 
 .prioBtnUrgentActive .priourgentsmall,
@@ -199,8 +242,8 @@ input:focus {
 }
 
 .clearBtn:hover {
-  border-color: #29ABE2;
-  color: #29ABE2;
+  border-color: #29abe2;
+  color: #29abe2;
 }
 
 .clearFormIconBlue {
@@ -229,12 +272,12 @@ input:focus {
   line-height: 25.2px;
   color: white;
   cursor: pointer;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .createTaskBtn:hover {
-  background-color: #29ABE2;
-  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .seperatorLine {
@@ -242,11 +285,6 @@ input:focus {
   height: 424px;
   background-color: #d1d1d1;
 }
-
-
-
-
-
 
 @media (max-width: 374px) {
   .createTaskBtn {
@@ -262,9 +300,9 @@ input:focus {
     padding: 0px 8px 0px 8px;
   }
 
-.prioBtnUrgent,
-.prioBtnMedium,
-.prioBtnLow {
+  .prioBtnUrgent,
+  .prioBtnMedium,
+  .prioBtnLow {
     gap: 4px;
   }
 }
@@ -308,7 +346,8 @@ input:focus {
     width: 440px;
   }
 
-  .singleInputContainer {
+  .singleInputContainer,
+  .subtasksInputContainer {
     max-width: 440px;
   }
 
@@ -326,8 +365,8 @@ input:focus {
   }
 
   .prioBtnUrgent,
-.prioBtnMedium,
-.prioBtnLow {
+  .prioBtnMedium,
+  .prioBtnLow {
     height: 56px;
     width: 136px;
   }
@@ -373,4 +412,3 @@ input:focus {
     width: 978px;
   }
 }
-

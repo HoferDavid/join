@@ -65,3 +65,22 @@ function clearAddTaskForm() {
   updatePrioActiveBtn('');
 }
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('customInput');
+  const initialSvg = document.querySelector('.initial-svg');
+  const focusSvgs = document.querySelectorAll('.focus-svg');
+
+  input.addEventListener('focus', function() {
+      initialSvg.classList.add('hidden');
+      focusSvgs.forEach(svg => svg.classList.remove('hidden'));
+  });
+
+  input.addEventListener('blur', function() {
+      initialSvg.classList.remove('hidden');
+      focusSvgs.forEach(svg => svg.classList.add('hidden'));
+  });
+});

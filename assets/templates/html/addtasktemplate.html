@@ -60,10 +60,31 @@
                 <div>Category</div>
                 <input type="text">
             </div>
-            <div class="singleInputContainer">
+            <div class="">
                 <div>Subtasks</div>
-                <input type="text" placeholder="Add new subtask">
+
+                <!-- <div class="subtaskInputContainer">
+                    <input id="subtasksInputField" type="text" placeholder="Add new subtask" maxlength="50">
+                    <img src="../assets/icons/addBlack.svg">
+                </div> -->
+
+
+                <div class="subtasksInputContainer">
+                    <input type="text" id="customInput" placeholder="Enter text here...">
+                    <div class="svg-container">
+                        <img class="initial-svg" src="initial.svg" alt="Initial Icon">
+                        <img class="focus-svg hidden" src="../assets/icons/addBlack.svg">
+                        <img class="focus-svg hidden" src="focus2.svg">
+                        <img class="focus-svg hidden" src="focus3.svg">
+                    </div>
+                </div>
+
             </div>
+
+            <!-- <div class="searchContainer">
+                <img id="searchIcon" src="../assets/icons/addBlack.svg">
+                <input id="subtasksInputField" type="text" placeholder="Add new subtask" maxlength="50">
+              </div> -->
         </div>
 
         <div class="bottomContainer">
