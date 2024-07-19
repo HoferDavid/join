@@ -7,15 +7,15 @@ const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)'
 // Code above onöy for testing purposes
 
 function generateTodoHTML(element) {
-  let categoryHTML = generateCategoryHTML(element.category);
-  let titleHTML = generateTitleHTML(element.title);
-  let descriptionHTML = generateDescriptionHTML(element.description);
-  let subtasksHTML = generateSubtasksHTML(element.subtasks);
-  let assignedToHTML = generateAssignedToHTML(element.assignedTo);
-  let prioHTML = generatePrioHTML(element.prio);
+    let categoryHTML = generateCategoryHTML(element.category);
+    let titleHTML = generateTitleHTML(element.title);
+    let descriptionHTML = generateDescriptionHTML(element.description);
+    let subtasksHTML = generateSubtasksHTML(element.subtasks);
+    let assignedToHTML = generateAssignedToHTML(element.assignedTo);
+    let prioHTML = generatePrioHTML(element.prio);
 
-  return /*html*/ `
-        <div draggable="true" id="${element.id}" class="todoContainer" onclick="openOverlay('${element.id}')">
+    return /*html*/ `
+        <div draggable="true" id="${element.id}" class="todoContainer" dragstart="startDragging(event)" onclick="openOverlay('${element.id}')">
             <div class="toDoContent">
                 ${categoryHTML}
                 <div class="toDoHeaderContainer">
@@ -68,10 +68,10 @@ function generateDescriptionHTML(description) {
 function generateSubtasksHTML(subtasks) {
     let subtasksHTML = "";
     if (subtasks && Object.keys(subtasks).length > 1) {
-      subtasksHTML = `${Object.keys(subtasks).length} Subtasks`;
+        subtasksHTML = `${Object.keys(subtasks).length} Subtasks`;
     }
     return subtasksHTML;
-  }
+}
 
 
 function generateAssignedToHTML(assignedTo) {
@@ -93,10 +93,10 @@ function generatePrioHTML(prio) {
     if (prio == 'urgent') {
         prioHTML = `<img src="../assets/icons/priourgent.png">`;
     } else if (prio == 'medium') {
-            prioHTML = `<img src="../assets/icons/priomedium.png">`;
-        } else {
-            prioHTML = `<img src="../assets/icons/priolow.png">`;
-        }
+        prioHTML = `<img src="../assets/icons/priomedium.png">`;
+    } else {
+        prioHTML = `<img src="../assets/icons/priolow.png">`;
+    }
     return prioHTML;
 }
 
@@ -140,7 +140,7 @@ function generateModalSubtasksHTML(element) {
         `;
     }
     return modalSubtasksHTML;
-  }
+}
 
 
 function generateOpenOverlayHTML(element) {
@@ -193,5 +193,5 @@ function generateOpenOverlayHTML(element) {
         </div>
     </div>
     `;
-  }
+}
 

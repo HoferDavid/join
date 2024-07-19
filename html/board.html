@@ -43,35 +43,35 @@
         </section>
 
         <section class="taskSection" id="boardTaskSection">
-            <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+            <div class="taskCategoryContainer" title="toDo">
                 <div class="taskCategoryHeader">
                     <div>To do</div>
                     <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div class="taskDragArea" id="toDo"></div>
+                <div class="taskDragArea" id="toDo" title="toDo"></div>
             </div>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+            <div class="taskCategoryContainer" title="inProgress">
                 <div class="taskCategoryHeader">
                     <div>In progress</div>
                     <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div class="taskDragArea" id="inProgress"></div>
+                <div class="taskDragArea" id="inProgress" title="inProgress"></div>
             </div>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
+            <div class="taskCategoryContainer" title="awaitFeedback">
                 <div class="taskCategoryHeader">
                     <div>Await Feedback</div>
                     <img class="taskCategoryIcon" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
-                <div class="taskDragArea" id="awaitFeedback"></div>
+                <div class="taskDragArea" id="awaitFeedback" title="awaitFeedback"></div>
             </div>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+            <div class="taskCategoryContainer" title="done">
                 <div class="taskCategoryHeader">
                     <div>Done</div>
                 </div>
-                <div class="taskDragArea" id="done"></div>
+                <div class="taskDragArea" id="done" title="done"></div>
             </div>
         </section>
 
