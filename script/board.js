@@ -134,7 +134,7 @@ function allowDrop(ev) {
 
 async function moveTo(status) {
   let task = tasks.find((task) => task.id == currentDraggedElement);
-  if (task) {
+  if (task && status != '') {
     task.status = status;
     initDragDrop();
     applyCurrentSearchFilter();

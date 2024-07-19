@@ -151,11 +151,17 @@ input:focus {
   background-color: #7AE229;
 }
 
+.prioBtnUrgentActive .priourgentsmall,
+.prioBtnMediumActive .priomediumsmall,
+.prioBtnLowActive .priolowsmall {
+  display: none;
+}
 
-
-
-
-
+.prioBtnUrgentActive .priourgentsmallWhite,
+.prioBtnMediumActive .priomediumsmallWhite,
+.prioBtnLowActive .priolowsmallWhite {
+  display: block;
+}
 
 .bottomContainer {
   display: flex;

@@ -6,7 +6,13 @@ let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
 async function init() {
   await includeHTML();
   setActive();
-  setActualDate();
+}
+
+
+function setActualDate() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('dateInput').setAttribute('min', today);
+  document.getElementById('update-date') && document.getElementById('update-date').setAttribute('min', today);
 }
 
 
@@ -87,4 +93,9 @@ async function postData(path = "", data = {}) {
   } catch (error) {
     console.error("dh Error posting data:", error);
   }
+}
+
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
