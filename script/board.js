@@ -31,11 +31,11 @@ async function initBoard() {
   init();
   try {
     await getDataFromFirebase();
-    // pushToFirebaseTest();
+    /*FIXME - Delete?    // pushToFirebaseTest();*/
     await pushDataToArray();
     updateAllTaskCategories();
     applyCurrentSearchFilter();
-    dragDrop();
+    /*FIXME -     //  dragDrop();*/
   } catch (error) {
     console.error("dh Initialisation error:", error);
   }
@@ -45,7 +45,7 @@ async function initBoard() {
 function initDragDrop() {
   updateAllTaskCategories();
   applyCurrentSearchFilter();
-  dragDrop();
+  /*FIXME - Delete?  // dragDrop();*/
 }
 
 
@@ -132,26 +132,26 @@ function toggleVisibility(id) {
 }
 
 
-function dragDrop() {
-  document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
-    todoContainer.addEventListener("dragstart", event => startDragging(event));
-    todoContainer.addEventListener("dragend", event => endDragging(event));
-  });
-  document.querySelectorAll(".taskDragArea").forEach((zone) => {
-    zone.addEventListener("dragover", event => overDragging(event));
-    zone.addEventListener('dragleave', event => leaveDragging(event));
-    zone.addEventListener("drop", event => dropDragging(event));
-  });
-  document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
-    todoContainer.removeEventListener("dragstart", event => startDragging(event));
-    todoContainer.removeEventListener("dragend", event => endDragging(event));
-  });
-  document.querySelectorAll('.taskDragArea').forEach((zone) => {
-    zone.removeEventListener("dragover", event => overDragging(event));
-    zone.removeEventListener('dragleave', event => leaveDragging(event));
-    zone.removeEventListener("drop", event => dropDragging(event));
-  });
-}
+// function dragDrop() {
+//   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
+//     todoContainer.addEventListener("dragstart", event => startDragging(event));
+//     todoContainer.addEventListener("dragend", event => endDragging(event));
+//   });
+//   document.querySelectorAll(".taskDragArea").forEach((zone) => {
+//     zone.addEventListener("dragover", event => overDragging(event));
+//     zone.addEventListener('dragleave', event => leaveDragging(event));
+//     zone.addEventListener("drop", event => dropDragging(event));
+//   });
+//   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
+//     todoContainer.removeEventListener("dragstart", event => startDragging(event));
+//     todoContainer.removeEventListener("dragend", event => endDragging(event));
+//   });
+//   document.querySelectorAll('.taskDragArea').forEach((zone) => {
+//     zone.removeEventListener("dragover", event => overDragging(event));
+//     zone.removeEventListener('dragleave', event => leaveDragging(event));
+//     zone.removeEventListener("drop", event => dropDragging(event));
+//   });
+// }
 
 
 function startDragging(e) {
@@ -231,7 +231,7 @@ function updateAllTaskCategories() {
 
 async function moveTo(status) {
   let task = tasks.find((task) => task.id == currentDraggedElement);
-  if (task) {
+  if (task && status != '') {
     task.status = status;
     await updateTaskInFirebase(task.id, task);
     initDragDrop();

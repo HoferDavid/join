@@ -15,7 +15,7 @@ function generateTodoHTML(element) {
     let prioHTML = generatePrioHTML(element.prio);
 
     return /*html*/ `
-        <div draggable="true" id="${element.id}" class="todoContainer" dragstart="startDragging(event)" onclick="openOverlay('${element.id}')">
+        <div draggable="true" id="${element.id}" class="todoContainer" ondragstart="startDragging(event)" ondragend="endDragging(event)" onclick="openOverlay('${element.id}')">
             <div class="toDoContent">
                 ${categoryHTML}
                 <div class="toDoHeaderContainer">
