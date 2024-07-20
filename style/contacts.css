@@ -362,7 +362,8 @@ h4 {
   outline: unset;
 }
 
-.down button {
+.down button,
+.deleteQuestion button {
   height: 40px;
   border-radius: 10px;
   border: none;
@@ -427,6 +428,55 @@ form>div>button:first-child:hover {
 
 #addContact form>div>button:first-child>img:last-child {
   display: none;
+}
+
+.deleteResponse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100dvw;
+  z-index: 99;
+  background-color: rgba(42, 54, 71, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 125ms ease-in-out;
+}
+
+.deleteQuestion {
+  height: 200px;
+  width: 300px;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15%;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.deleteQuestion p {
+  font-size: 20px;
+  text-align: center;
+}
+
+.deleteQuestion form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5%
+}
+
+.deleteQuestion button {
+  width: 40%;
+  background-color: #2a3647;
+  color: white;
+}
+
+.deleteQuestion button:hover {
+  background-color: #29abe2
 }
 
 /*ANCHOR Media Query

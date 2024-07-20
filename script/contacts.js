@@ -23,10 +23,6 @@ async function setContactsArray(loadItem) {
   }
 }
 
-function setContactsData() {
-
-}
-
 async function initContacts() {
   init();
   await getContactsData();
@@ -88,13 +84,13 @@ async function editContacts(id = editId) {
 }
 
 function openDeleteContacts(id = editId) {
-  /*TODO - Build modal for delete */
-  toggleClass('editContact', 'tt0', 'tty100');
+  editId = id;
+  toggleClass('deleteResponse', 'ts0', 'ts1');
 }
 
-async function deleteContacts(id) {
+async function deleteContacts(id = editId) {
   contacts.splice(contacts.findIndex(c => c.id == id), 1);
-  await updateData('contacts' + '/' + id);
+  await deleteData('contacts' + '/' + id);
 }
 
 function openAddContacts() {
@@ -134,4 +130,3 @@ async function generateSvgCircleWithInitials(name, width, height) {
 
 /*TODO - Check if new contact is user */
 /*TODO - check if mail is doubled */
-/*TODO - Delete user feedback */
