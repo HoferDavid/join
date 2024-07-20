@@ -548,3 +548,91 @@
     }
 }
 
+@media (max-width: 480px){
+    .summ-seperate{
+        display: none;
+    }
+
+    .headline-summ{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .summ-seperate-mobile{
+        display: block;
+    }
+}
+
+@media (max-width: 440px){
+    .summ-person-greeting{
+        font-size: 40px;
+        white-space: nowrap;
+    }
+
+    .headline-summ{
+        margin-top: 20px;
+    }
+
+    .summ-stats{
+        max-width: 320px;
+    }
+
+    .how-many-dones{
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .summ-stats-under-howmany{
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .how-many-todos{
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .summ-done-info{
+        width: 140px;
+        height: 108px;
+    }
+
+    .summ-toDO-info{
+        width: 140px;
+        height: 108px;
+    }
+
+    .summ-stats-under-container{
+        width: 90px;
+        height: 108px;
+        padding: 15px;
+    }
+
+    .summ-stats-under-tasks{
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .summ-stats-urgent{
+        gap: 20px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 399px){
+    .summ-info-urgent{
+        width: 120px;
+    }
+
+    .summ-done-info{
+        width: 140px;
+    }
+
+    .summ-toDO-info{
+        width: 140px;
+    }
+
+    .summ-stats{
+        max-width: 300px;
+    }
+}
