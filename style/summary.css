@@ -1,15 +1,3 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-body {
-    display: flex;
-    margin: 0;
-}
-
 .summ.main{
     display: flex;
 }

@@ -263,6 +263,7 @@
   cursor: pointer;
 }
 
+
 @media (max-width: 427px) {
   .modalContainer {
     max-height: 480px;
