@@ -1,3 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    margin: 0;
+}
+
 .summ.main{
     display: flex;
 }
@@ -206,11 +218,17 @@
 
 .summ-stats-urgent:hover,
 .summ-stats-urgent:hover .summ-urgent-date,
-.summ-stats-urgent:hover .summ-urgent-date-deadline{
+.summ-stats-urgent:hover .summ-urgent-date-deadline,
+.summ-stats-urgent:hover #howManyUrgent,
+.summ-stats-urgent:hover .how-many-todos{
     cursor: pointer;
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.03);
+}
+
+.summ-stats-urgent:hover #howManyUrgent {
+    color: #FFFFFF;
 }
 
 .summ-info-urgent{
@@ -221,9 +239,17 @@
     gap: 18px;
 }
 
+.summ-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .summ-urgent-seperate{
-    border: 2px solid #D1D1D1;
-    height: 102.02px;
+    margin-left: 20px;
+    height: 60px;
+    border: 1px solid #29abe2;
+    
 }
 
 .summ-urgent-date-container{
@@ -300,7 +326,7 @@
 .summary-greeting-mobile{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     left: 500px;
     margin-left: 100px;
@@ -331,16 +357,17 @@
     font-size: 47px;
     font-weight: 500;
     line-height: 56.4px;
-    text-align: left;
+    text-align: right;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    margin: 0;
 }
 
 .summ-person-greeting{
     font-size: 64px;
     font-weight: 700;
     margin-right: 10px;
-    text-align: left;
+    text-align: right;
     color: #29ABE2;
 }
 
