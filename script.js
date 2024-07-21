@@ -109,6 +109,14 @@ async function updateData(path = '', data = {}) {
 }
 
 
+async function deleteTask(id) {
+  await deleteData(`tasks/${id}`);
+  tasks = tasks.filter((task) => task.id !== id);
+  closeModal();
+  initDragDrop();
+}
+
+
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }

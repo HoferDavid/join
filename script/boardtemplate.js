@@ -137,12 +137,12 @@ function generateModalAssignedToHTML(assignedTo) {
 
 function generateModalSubtasksHTML(element) {
     let modalSubtasksHTML = "";
-
     for (let i = 0; i < element.subtasks.length; i++) {
         let subtask = element.subtasks[i];
+        let checked = subtask.status === 'checked' ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
         modalSubtasksHTML += /*html*/ `
-            <label class="modalSubtasksSingle" onclick='updateSubtaskStatus(${JSON.stringify(subtask)}, this)'>
-                <img id="subtaskCheckbox${i}" src="../assets/icons/checkbox.svg" alt="Checkbox">
+            <label class="modalSubtasksSingle" onclick="updateSubtaskStatus('${element.id}', ${i})">
+                <img id="subtaskCheckbox${i}" src="${checked}" alt="Checkbox">
                 <div>${subtask.text}</div>
             </label>
         `;
@@ -201,55 +201,10 @@ function generateOpenOverlayHTML(element) {
             </div>
         </div>
     `;
-  }
+}
 
 
-  function generateTaskEditHTML(element) {
-  }
-
-
-
-
-
-//   function generateTaskEditHTML(element) {
-//     return /*html*/ `
-//         <div class="modalContainer" id="modalContainer">
-//             <div class="modalToDoContent">
-//                 <div class="modalCategoryContainer">
-//                     <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
-//                 </div>
-//                 <form onsubmit="return saveTaskChanges(event, '${element.id}')" class="addTaskForm modalScrollbarWrapper">
-//                     <div class="singleInputContainer">
-//                         <div class="redStarAfter">Title</div>
-//                         <input id="taskTitle${element.id}" type="text" value="${element.title || ''}" required maxlength="40">
-//                     </div>
-//                     <div class="singleInputContainer">
-//                         <div>Description</div>
-//                         <textarea id="taskDescription${element.id}" required maxlength="200">${element.description || ''}</textarea>
-//                     </div>
-//                     <div class="modalDateContainer">
-//                         <div class="modalDateText">Due date:</div>
-//                         <input type="date" id="taskDueDate${element.id}" value="${element.date || ''}">
-//                     </div>
-//                     <div class="modalPrioContainer">
-//                         <div class="modalPrioText">Priority:</div>
-//                         <select id="taskPrio${element.id}">
-//                             <option value="urgent" ${element.prio === 'urgent' ? 'selected' : ''}>Urgent</option>
-//                             <option value="medium" ${element.prio === 'medium' ? 'selected' : ''}>Medium</option>
-//                             <option value="low" ${element.prio === 'low' ? 'selected' : ''}>Low</option>
-//                         </select>
-//                     </div>
-//                     <div class="modalBottomDeleteContainer">
-//                         <div class="saveTaskEditBtn" onclick="">
-//                             <div>Ok</div>
-//                             <img src="../assets/icons/check.svg">
-//                         </div>
-//                     </div>
-//                 </form>
-//             </div>
-//         </div>
-//     `;
-// }
-
+function generateTaskEditHTML(element) {
+}
 
 
