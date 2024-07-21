@@ -1,6 +1,6 @@
 function htmlRenderAddContact() {
   return /*html*/`
-    <div class="moreIcon" onclick="toggleClass('addContact', 'tt0', 'tty100')">
+    <div class="moreIcon" onclick="openAddContacts()">
       <p>Add new contact</p>
       <img src="../assets/icons/person_add.svg" alt="person add">
     </div>
@@ -50,12 +50,12 @@ function htmlRenderContactDetails(id) {
       <div>
         <h2>${contacts[id].name}</h2>
         <div id="editMenu" class="editMenu ts0" onmouseleave="toggleClass('editMenu', 'ts0', 'ts1')">
-          <div class="editMenuItem" onclick="toggleClass('editContact', 'tt0', 'tty100')">
+          <div class="editMenuItem" onclick="openEditContacts(${id})">
             <img class="editMenuButton" src="../assets/icons/edit.svg" alt="pencil">
             <img class="editMenuButton hoverEffectIcon" src="../assets/icons/editBlue.svg" alt="blue pencil">
             <p>Edit</p>
           </div>
-          <div class="editMenuItem" onclick="toggleClass('editContact', 'tt0', 'tty100')">
+          <div class="editMenuItem" onclick="openDeleteContacts(${id})">
             <img class="editMenuButton" src="../assets/icons/delete.svg" alt="trashcan">
             <img class="editMenuButton hoverEffectIcon" src="../assets/icons/deleteBlue.svg" alt="blue trashcan">
             <p>Delete</p>

@@ -96,6 +96,17 @@ async function postData(path = "", data = {}) {
   }
 }
 
+async function updateData(path = '', data = {}) {
+  let response = await fetch(BASE_URL + path + '.json', {
+    method: 'PUT',
+    header: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  console.log(response);
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+}
+
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
