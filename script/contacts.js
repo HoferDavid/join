@@ -59,27 +59,39 @@ function renderContactsDetails(id) {
   details.innerHTML = htmlRenderContactDetails(id);
 }
 
+async function createContact(contact) {
+  return {
+    'id': contact.id,
+    'name': contact.name,
+    'mail': contact.email,
+    'number': contact.phone,
+    'profilePic': contact.profilePic ? contact.profilePic : await generateSvgCircleWithInitials(contact.name, 120, 120),
+    'isUser': contact.isUser == false ? true : false
+  };
+}
+
 function openEditContacts(id) {
   editId = id;
   let name = document.getElementById('editName');
-  let email = document.getElementById('editEmail');
+  let email = document.getElementById('editMail');
   let tel = document.getElementById('editTel');
   let profilePic = document.getElementById('editProfilePic');
   name.value = contacts[contacts.findIndex(c => c.id == id)].name;
   email.value = contacts[contacts.findIndex(c => c.id == id)].email;
-  tel.value = contacts[contacts.findIndex(c => c.id == id)].tel;
+  tel.value = contacts[contacts.findIndex(c => c.id == id)].phone;
   profilePic.innerHTML = contacts[contacts.findIndex(c => c.id == id)].profilePic;
   toggleClass('editContact', 'tt0', 'tty100');
 }
 
 async function editContacts(id = editId) {
   let editName = document.getElementById('editName').value;
-  let editEmail = document.getElementById('editEmail').value;
+  let editEmail = document.getElementById('editMail').value;
   let editTel = document.getElementById('editTel').value;
   contacts[contacts.findIndex(c => c.id == id)].name = editName;
   contacts[contacts.findIndex(c => c.id == id)].email = editEmail;
   contacts[contacts.findIndex(c => c.id == id)].phone = editTel;
-  await updateData('contacts' + '/' + id, contacts[contacts.findIndex(c => c.id == id)]);
+  let contact = await createContact(contacts[contacts.findIndex(c => c.id == id)]);
+  await updateData('contacts/' + id, contact);
   toggleClass('editContact', 'tt0', 'tty100');
 }
 
@@ -96,17 +108,17 @@ async function deleteContacts(id = editId) {
 function openAddContacts() {
   editId = contacts[contacts.length - 1].id + 1;
   let name = document.getElementById('addName');
-  let email = document.getElementById('addEmail');
+  let email = document.getElementById('addMail');
   let tel = document.getElementById('addTel');
   name.value = '';
   email.value = '';
   tel.value = '';
-  toggleClass('editContact', 'tt0', 'tty100');
+  toggleClass('addContact', 'tt0', 'tty100');
 }
 
 async function addContacts(id = editId) {
   let addName = document.getElementById('addName').value;
-  let addEmail = document.getElementById('addEmail').value;
+  let addEmail = document.getElementById('addMail').value;
   let addTel = document.getElementById('addTel').value;
   let newContact = {
     'id': id,
@@ -116,7 +128,7 @@ async function addContacts(id = editId) {
     'profilePic': await generateSvgCircleWithInitials(addName, 120, 120),
     'isUser': false
   };
-  await updateData('contacts' + '/' + id, newContact);
+  await updateData('contacts/' + id, newContact);
   toggleClass('editContact', 'tt0', 'tty100');
 }
 
