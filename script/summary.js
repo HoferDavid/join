@@ -130,6 +130,10 @@ async function initSummary() {
   showUrgentTask();  
 }
 
+function nextPage() {
+  window.location.href = 'board.html';
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
   initSummary();
 });
