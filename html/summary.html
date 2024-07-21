@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="../style/summary.css">
 
     <script src="../script.js"></script>
+    <script src="../script/summary.js"></script>
+    <script src="../script/board.js"></script>
+    <script src="../script/boardtemplate.js"></script>
+    <script src="../script/dragDropTouch.js"></script>
+    <script src="../script/addTask.js"></script>
+
 </head>
 
 <body onload="init()">
@@ -21,7 +27,7 @@
     <main class="content contentSection">
         <div id="greetingSummaryMobile"></div>
 
-        <div class="summ-main">
+        <div class="summ-main" id="summaryMain">
             <div class="summ-2">
                 <div class="headline-summ">
                     <h2 class="headline-summ-h2">Join 360</h2>
@@ -31,30 +37,30 @@
                 </div>
                 <div class="summ-stats">
                     <div style="display: flex; justify-content: space-between;">
-                        <div class="summ-toDO-info">
+                        <div class="summ-toDO-info" onclick="nextPage()">
                             <img class="summ-pencil-toDO" src="../assets/icons/summary-pencil.png">
                             <img class="summ-pencil-unvisible" src="..//assets/icons/summary-pencil-unvisiable.png">
 
                             <div class="summ-open-info">
-                                <span id="howManyTodos" class="how-many-dones">1</span>
+                                <span id="howManyTodos" class="how-many-dones">0</span>
                                 <span class="how-many-done">To-do</span>
                             </div>
                         </div>
-                        <div class="summ-done-info">
+                        <div class="summ-done-info" onclick="nextPage()">
                             <img class="summ-todo-cheking" src="..//assets/icons/summary-check.png">
                             <img class="summ-todo-hover-cheking" src="..//assets/icons/summary-hover-check.png">
                             <div class="summ-open-info">
-                                <span id="howManyDone" class="how-many-dones">1</span>
+                                <span id="howManyDone" class="how-many-dones">0</span>
                                 <span class="how-many-done">Done</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="summ-stats-urgent">
+                    <div class="summ-stats-urgent"onclick="nextPage()" >
                         <div class="summ-info-urgent">
                             <img src="../assets/icons/summary-urgent-logo.png">
                             <div class="summ-info">
-                                <span id="howManyUrgent" class="how-many-dones">1</span>
+                                <span id="howManyUrgent" class="how-many-dones">0</span>
                                 <span class="how-many-todos">Urgent</span>
                             </div>
                         </div>
@@ -66,16 +72,16 @@
                         </div>
                     </div>
                     <div class="summ-stats-under">
-                        <div class="summ-stats-under-container"> 
-                            <span id="howManyTaskInBoard" class="summ-stats-under-howmany">5</span>
-                            <span class="summ-stats-under-tasks">Task in Progress</span>
+                        <div class="summ-stats-under-container" onclick="nextPage()"> 
+                            <span id="howManyTaskInBoard" class="summ-stats-under-howmany">0</span>
+                            <span class="summ-stats-under-tasks">Tasks in board</span>
                         </div>
-                        <div class="summ-stats-under-container">
-                            <span id="howManyInProgess" class="summ-stats-under-howmany">2</span>
+                        <div class="summ-stats-under-container"onclick="nextPage()" >
+                            <span id="howManyInProgress" class="summ-stats-under-howmany">0</span>
                             <span class="summ-stats-under-tasks">Tasks in Progress</span>
                         </div>
-                        <div class="summ-stats-under-container">
-                            <span id="howManyAwaitFeedback" class="summ-stats-under-howmany">2</span>
+                        <div class="summ-stats-under-container" onclick="nextPage()">
+                            <span id="howManyAwaitFeedback" class="summ-stats-under-howmany">0</span>
                             <span class="summ-stats-under-tasks">Awaiting Feedback</span>
                         </div>
                     </div>
