@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
@@ -11,74 +10,111 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/board.css" />
     <link rel="stylesheet" href="../style/boardmodals.css" />
-    <link rel="stylesheet" href="../style/addtask.css">
+    <link rel="stylesheet" href="../style/addtask.css" />
 
     <script src="../script/board.js"></script>
     <script src="../script/boardtemplate.js"></script>
     <script src="../script/dragDropTouch.js"></script>
     <script src="../script.js"></script>
     <script src="../script/addTask.js"></script>
+  </head>
 
-</head>
-
-<body onload="initBoard()">
-
-    <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
+  <body onload="initBoard()">
+    <header
+      w3-include-html="../assets/templates/html/header.html"
+      class="header"
+    ></header>
 
     <main class="content contentSection boardContentSection">
+      <section class="headerSection">
+        <div class="headerPlusBtn">
+          <div>Board</div>
+          <a href="../html/addtask.html" class="addTaskBtnMobile"
+            ><img src="../assets/icons/add.svg"
+          /></a>
+        </div>
+        <div class="searchBtnContainer">
+          <input
+            class="searchInput"
+            oninput="searchTasks(this.value)"
+            maxlength="20"
+            type="text"
+            placeholder="Find Task"
+          />
+          <div class="addTaskBtnDesktop" onclick="openAddTaskOverlay()">
+            <div class="addTaskBtnDesktopText">Add task</div>
+          </div>
+        </div>
+      </section>
 
-        <section class="headerSection">
-            <div class="headerPlusBtn">
-                <div>Board</div>
-                <a href="../html/addtask.html" class="addTaskBtnMobile"><img src="../assets/icons/add.svg" /></a>
-            </div>
-            <div class="searchBtnContainer">
-                <input class="searchInput" oninput="searchTasks(this.value)" maxlength="20" type="text" placeholder="Find Task">
-                <div class="addTaskBtnDesktop" onclick="openAddTaskOverlay()">
-                    <div class="addTaskBtnDesktopText">Add task</div>
-                </div>
-            </div>
-        </section>
+      <section class="taskSection" id="boardTaskSection">
+        <div
+          class="taskCategoryContainer"
+          ondrop="moveTo('toDo')"
+          ondragover="allowDrop(event)"
+        >
+          <div class="taskCategoryHeader">
+            <div>To do</div>
+            <img
+              class="taskCategoryIcon"
+              onclick="checkScreenWidth('toDo')"
+              src="../assets/icons/plusAddTaskMobileWhite.svg"
+            />
+          </div>
+          <div class="taskDragArea" id="toDo"></div>
+        </div>
 
-        <section class="taskSection" id="boardTaskSection">
-            <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
-                <div class="taskCategoryHeader">
-                    <div>To do</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth('toDo')" src="../assets/icons/plusAddTaskMobileWhite.svg">
-                </div>
-                <div class="taskDragArea" id="toDo"></div>
-            </div>
+        <div
+          class="taskCategoryContainer"
+          ondrop="moveTo('inProgress')"
+          ondragover="allowDrop(event)"
+        >
+          <div class="taskCategoryHeader">
+            <div>In progress</div>
+            <img
+              class="taskCategoryIcon"
+              onclick="checkScreenWidth('inProgress')"
+              src="../assets/icons/plusAddTaskMobileWhite.svg"
+            />
+          </div>
+          <div class="taskDragArea" id="inProgress"></div>
+        </div>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
-                <div class="taskCategoryHeader">
-                    <div>In progress</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth('inProgress')" src="../assets/icons/plusAddTaskMobileWhite.svg">
-                </div>
-                <div class="taskDragArea" id="inProgress"></div>
-            </div>
+        <div
+          class="taskCategoryContainer"
+          ondrop="moveTo('awaitFeedback')"
+          ondragover="allowDrop(event)"
+        >
+          <div class="taskCategoryHeader">
+            <div>Await Feedback</div>
+            <img
+              class="taskCategoryIcon"
+              onclick="checkScreenWidth('awaitFeedback')"
+              src="../assets/icons/plusAddTaskMobileWhite.svg"
+            />
+          </div>
+          <div class="taskDragArea" id="awaitFeedback"></div>
+        </div>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
-                <div class="taskCategoryHeader">
-                    <div>Await Feedback</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth('awaitFeedback')" src="../assets/icons/plusAddTaskMobileWhite.svg">
-                </div>
-                <div class="taskDragArea" id="awaitFeedback"></div>
-            </div>
+        <div
+          class="taskCategoryContainer"
+          ondrop="moveTo('done')"
+          ondragover="allowDrop(event)"
+        >
+          <div class="taskCategoryHeader">
+            <div>Done</div>
+          </div>
+          <div class="taskDragArea" id="done"></div>
+        </div>
+      </section>
 
-            <div class="taskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                <div class="taskCategoryHeader">
-                    <div>Done</div>
-                </div>
-                <div class="taskDragArea" id="done"></div>
-            </div>
-        </section>
-
-        <div id="overlay" class="overlay"></div>
-        <div id="addTaskOverlay" class="addTaskOverlay"></div>
-
+      <div id="overlay" class="overlay"></div>
+      <div id="addTaskOverlay" class="addTaskOverlay"></div>
     </main>
 
-    <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
-</body>
-
+    <nav
+      w3-include-html="../assets/templates/html/menu.html"
+      class="menu"
+    ></nav>
+  </body>
 </html>

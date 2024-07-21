@@ -1,7 +1,3 @@
-let currentPrio = 'medium';
-let taskStatus = 'toDo';
-
-
 async function pushNewTask(event) {
   event.preventDefault();
   await postData("tasks", {

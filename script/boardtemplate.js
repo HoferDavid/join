@@ -69,10 +69,16 @@ function generateDescriptionHTML(description) {
 function generateSubtasksHTML(subtasks) {
     let subtasksHTML = "";
     if (subtasks && Object.keys(subtasks).length > 1) {
-      subtasksHTML = `${Object.keys(subtasks).length} Subtasks`;
+      subtasksHTML = /*html*/ `
+        <div class="toDoSubtasksContainer">
+            <div class="subtasksProgressbar">
+                <div class="subtasksProgressbarProgress" style="width: 50%;"></div>
+            </div>
+            <div>/${Object.keys(subtasks).length} Subtasks</div>
+        </div>`;
     }
     return subtasksHTML;
-  }
+}
 
 
 function generateAssignedToHTML(assignedTo) {
@@ -133,15 +139,16 @@ function generateModalSubtasksHTML(element) {
     let modalSubtasksHTML = "";
 
     for (let i = 0; i < element.subtasks.length; i++) {
+        let subtask = element.subtasks[i];
         modalSubtasksHTML += /*html*/ `
-            <label id="('${element.subtasks[i].key}')" class="modalSubtasksSingle">
-                <img src="../assets/icons/checkbox.svg">
-                <div>${element.subtasks[i]}</div>
+            <label class="modalSubtasksSingle" onclick='updateSubtaskStatus(${JSON.stringify(subtask)}, this)'>
+                <img id="subtaskCheckbox${i}" src="../assets/icons/checkbox.svg" alt="Checkbox">
+                <div>${subtask.text}</div>
             </label>
         `;
     }
     return modalSubtasksHTML;
-  }
+}
 
 
 function generateOpenOverlayHTML(element) {
@@ -198,27 +205,51 @@ function generateOpenOverlayHTML(element) {
 
 
   function generateTaskEditHTML(element) {
-
-    return /*html*/ `
-        <div class="modalContainer" id="modalContainer">
-            <div class="modalToDoContent">
-                <div class="modalCategoryContainer">
-                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
-                </div>
-
-                <form onsubmit="return pushNewTask(event)" class="addTaskForm modalScrollbarWrapper">
-
-                    <div class="modalBottomDeleteContainer" onclick="">
-                        <div class="saveTaskEditBtn" onclick="">
-                            <div>Ok</div>
-                            <img src="../assets/icons/check.svg">
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    `;
   }
+
+
+
+
+
+//   function generateTaskEditHTML(element) {
+//     return /*html*/ `
+//         <div class="modalContainer" id="modalContainer">
+//             <div class="modalToDoContent">
+//                 <div class="modalCategoryContainer">
+//                     <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+//                 </div>
+//                 <form onsubmit="return saveTaskChanges(event, '${element.id}')" class="addTaskForm modalScrollbarWrapper">
+//                     <div class="singleInputContainer">
+//                         <div class="redStarAfter">Title</div>
+//                         <input id="taskTitle${element.id}" type="text" value="${element.title || ''}" required maxlength="40">
+//                     </div>
+//                     <div class="singleInputContainer">
+//                         <div>Description</div>
+//                         <textarea id="taskDescription${element.id}" required maxlength="200">${element.description || ''}</textarea>
+//                     </div>
+//                     <div class="modalDateContainer">
+//                         <div class="modalDateText">Due date:</div>
+//                         <input type="date" id="taskDueDate${element.id}" value="${element.date || ''}">
+//                     </div>
+//                     <div class="modalPrioContainer">
+//                         <div class="modalPrioText">Priority:</div>
+//                         <select id="taskPrio${element.id}">
+//                             <option value="urgent" ${element.prio === 'urgent' ? 'selected' : ''}>Urgent</option>
+//                             <option value="medium" ${element.prio === 'medium' ? 'selected' : ''}>Medium</option>
+//                             <option value="low" ${element.prio === 'low' ? 'selected' : ''}>Low</option>
+//                         </select>
+//                     </div>
+//                     <div class="modalBottomDeleteContainer">
+//                         <div class="saveTaskEditBtn" onclick="">
+//                             <div>Ok</div>
+//                             <img src="../assets/icons/check.svg">
+//                         </div>
+//                     </div>
+//                 </form>
+//             </div>
+//         </div>
+//     `;
+// }
+
 
 

@@ -183,6 +183,11 @@
   padding: 6px 16px;
 }
 
+.modalSubtasksSingle:hover {
+  background-color: rgb(245, 245, 245);
+  border-radius: 12px;
+}
+
 .modalBottomContainer {
   display: flex;
   align-items: center;

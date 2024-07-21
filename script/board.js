@@ -244,3 +244,26 @@ function enableTaskEdit(element) {
 }
 
 
+// function updateSubtaskStatus(subtask, labelElement) {
+//   try {
+//     // Ändern Sie den Status des Subtasks
+//     subtask.status = subtask.status === 'unchecked' ? 'checked' : 'unchecked';
+
+//     // Finden Sie das Bild-Element
+//     let subtaskCheckbox = labelElement.querySelector('img');
+
+//     if (!subtaskCheckbox) {
+//       console.error('Bild-Element nicht gefunden');
+//       return;
+//     }
+
+//     // Setzen Sie das Bild-Attribut entsprechend des neuen Status
+//     let newSrc = subtask.status === 'checked' ? '../assets/icons/checkbox.svg' : '../assets/icons/checkboxunchecked.svg';
+//     console.log(`Neuer Bildpfad: ${newSrc}`);
+//     subtaskCheckbox.setAttribute('src', newSrc);
+
+//     console.log(`Subtask Status: ${subtask.status}`);
+//   } catch (error) {
+//     console.error('Fehler beim Aktualisieren des Subtask-Status:', error);
+//   }
+// }
