@@ -1,4 +1,3 @@
-let tasks = [];
 let currentDraggedElement;
 let currentSearchInput = "";
 
@@ -7,7 +6,6 @@ async function initBoard() {
   init();
   try {
     await loadData();
-    // await pushToFirebaseTest();
     await pushDataToArray();
     updateAllTaskCategories();
     initDragDrop();
@@ -27,7 +25,7 @@ function initDragDrop() {
 async function pushDataToArray() {
   try {
     let tasksData = await loadData("tasks");
-    console.log('tasks Firebase: ', tasksData);
+    console.log("tasks Firebase: ", tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
       let task = {
@@ -68,14 +66,14 @@ async function updateTaskInFirebase(id, updatedTask) {
 
 async function deleteTask(id) {
   await deleteData(`tasks/${id}`);
-  tasks = tasks.filter(task => task.id !== id);
+  tasks = tasks.filter((task) => task.id !== id);
   closeModal();
   initDragDrop();
 }
 
 
 function toggleVisibility(id) {
-  document.getElementById(id).classList.toggle('dNone');
+  document.getElementById(id).classList.toggle("dNone");
   return document.getElementById(id);
 }
 
@@ -117,7 +115,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
-  updateTaskCategories("awaitFeedback", "awaitFeedback","No tasks await feedback");
+  updateTaskCategories("awaitFeedback", "awaitFeedback", "No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");
 }
 
@@ -134,7 +132,7 @@ function allowDrop(ev) {
 
 async function moveTo(status) {
   let task = tasks.find((task) => task.id == currentDraggedElement);
-  if (task) {
+  if (task && status != "") {
     task.status = status;
     initDragDrop();
     applyCurrentSearchFilter();
@@ -182,18 +180,24 @@ function emptyDragAreaWhileSearching() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == overlay || event.target == addTaskOverlay) {
-    overlay.style.display = "none";
-    addTaskOverlay.style.display = "none";
-    document.body.classList.remove("modalOpen");
+  const overlay = document.getElementById('overlay');
+  const addTaskOverlay = document.getElementById('addTaskOverlay');
+  if (event.target === overlay || event.target === addTaskOverlay) {
+      closeModal();
   }
 };
 
 
 function closeModal() {
-    overlay.style.display = "none";
-    addTaskOverlay.style.display = "none";
-    document.body.classList.remove("modalOpen");
+  const overlay = document.getElementById('overlay');
+  const addTaskOverlay = document.getElementById('addTaskOverlay');
+  if (overlay) {
+      overlay.style.display = "none";
+  }
+  if (addTaskOverlay) {
+      addTaskOverlay.style.display = "none";
+  }
+  document.body.classList.remove("modalOpen");
 }
 
 
@@ -213,9 +217,9 @@ async function openAddTaskOverlay() {
 
 
 async function fetchAddTaskTemplate() {
-    let response = await fetch('../assets/templates/html/addtasktemplate.html');
-    let html = await response.text();
-    return `
+  let response = await fetch("../assets/templates/html/addtasktemplate.html");
+  let html = await response.text();
+  return `
       <div class="addTaskModalContainer">
         ${html}
       </div>
@@ -223,5 +227,20 @@ async function fetchAddTaskTemplate() {
 }
 
 
+function checkScreenWidth(category) {
+  const screenWidth = window.innerWidth;
+  taskStatus = category;
+  if (screenWidth < 992) {
+    return window.location.href = "../html/addtask.html";
+  } else {
+    openAddTaskOverlay();
+  }
+}
+
+
+function enableTaskEdit(element) {
+  let modalContainer = document.getElementById('modalContainer');
+  modalContainer.innerHTML = generateTaskEditHTML(element);
+}
 
 

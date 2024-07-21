@@ -18,87 +18,81 @@
     
     <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
     
+    <main class="content contentSection">
+        <div id="greetingSummaryMobile"></div>
 
-    <main class="content contentSection "></main>
-    <main class="summ-main"></main>
+        <div class="summ-main">
+            <div class="summ-2">
+                <div class="headline-summ">
+                    <h2 class="headline-summ-h2">Join 360</h2>
+                    <div class="summ-seperate"></div>
+                    <span class="summ-info">Key Merricas at a Glance</span>
+                    <div class="summ-seperate-mobile"></div>
+                </div>
+                <div class="summ-stats">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="summ-toDO-info">
+                            <img class="summ-pencil-toDO" src="../assets/icons/summary-pencil.png">
+                            <img class="summ-pencil-unvisible" src="..//assets/icons/summary-pencil-unvisiable.png">
 
+                            <div class="summ-open-info">
+                                <span id="howManyTodos" class="how-many-dones">1</span>
+                                <span class="how-many-done">To-do</span>
+                            </div>
+                        </div>
+                        <div class="summ-done-info">
+                            <img class="summ-todo-cheking" src="..//assets/icons/summary-check.png">
+                            <img class="summ-todo-hover-cheking" src="..//assets/icons/summary-hover-check.png">
+                            <div class="summ-open-info">
+                                <span id="howManyDone" class="how-many-dones">1</span>
+                                <span class="how-many-done">Done</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="summary-2">
-        <div class="headline-summ">
-            <h2 class="headline-summ-h2">Join 360</h2>
-            <div class="summ-seperate"></div>
-            <span class="summ-info">Key Merricas at a Glance</span>
-            <div class="summ-seperate-mobile"></div>
+                    <div class="summ-stats-urgent">
+                        <div class="summ-info-urgent">
+                            <img src="../assets/icons/summary-urgent-logo.png">
+                            <div class="summ-info">
+                                <span id="howManyUrgent" class="how-many-dones">1</span>
+                                <span class="how-many-todos">Urgent</span>
+                            </div>
+                        </div>
+            
+                        <div class="summ-urgent-seperate"></div>
+                        <div class="summ-urgent-date-container">
+                            <span id="summUrgentDate" class="summ-urgent-date"></span>
+                            <span class="summ-urgent-date-deadline">Upcoming Deadline</span>
+                        </div>
+                    </div>
+                    <div class="summ-stats-under">
+                        <div class="summ-stats-under-container"> 
+                            <span id="howManyTaskInBoard" class="summ-stats-under-howmany">5</span>
+                            <span class="summ-stats-under-tasks">Task in Progress</span>
+                        </div>
+                        <div class="summ-stats-under-container">
+                            <span id="howManyInProgess" class="summ-stats-under-howmany">2</span>
+                            <span class="summ-stats-under-tasks">Tasks in Progress</span>
+                        </div>
+                        <div class="summ-stats-under-container">
+                            <span id="howManyAwaitFeedback" class="summ-stats-under-howmany">2</span>
+                            <span class="summ-stats-under-tasks">Awaiting Feedback</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rotate-warning">
+                </div>
+            </div>
+            <div class="greeting-container">
+            <div class="summ-greeting">
+                <h3 id="greetingSumm" class="summ-day-greeting">Good Day,</h3>
+                <span class="summ-person-greeting">Guest</span>
+            </div>
         </div>
-        <div class="summ-stats">
-            <div style="display: flex; justify-content: space-between;">
-                <div class="summ-toDO-info">
-                    <img class="summ-pencil-toDO" src="../assets/icons/summary-pencil.png">
-                    <img class="summ-pencil-unvisible" src="..//assets/icons/summary-pencil-unvisiable.png">
+    </main>
 
-                    <div class="summ-open-info">
-                        <span id="howManyTodos" class="how-many-dones">1</span>
-                        <span class="how-many-done">To-do</span>
-                    </div>
-                </div>
-                <div class="summ-done-info">
-                    <img class="summ-todo-cheking" src="..//assets/icons/summary-check.png">
-                    <img class="summ-todo-hover-cheking" src="..//assets/icons/summary-hover-check.png">
-                    <div class="summ-open-info">
-                        <span id="howManyDone" class="how-many-dones">1</span>
-                        <span class="how-many-done">Done</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="summ-stats-urgent">
-                <div class="summ-info-urgent">
-                    <img src="../assets/icons/summary-urgent-logo.png">
-                    <div class="summ-info">
-                        <span id="howManyUrgent" class="how-many-dones">1</span>
-                        <span class="how-many-todos">Urgent</span>
-                    </div>
-                </div>
-                <div class="summ-urgent-seperate"></div>
-                <div class="summ-urgent-date-container">
-                    <span id="summUrgentDate" class="summ-urgent-date"></span>
-                    <span class="summ-urgent-date-deadline">Upcoming Deadline</span>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
+    <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
     
 </body>
 

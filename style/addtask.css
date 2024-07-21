@@ -1,3 +1,7 @@
+.dNone {
+  display: none;
+}
+
 .addTaskHeaderSection {
   font-size: 48px;
   font-weight: 700;
@@ -30,26 +34,24 @@
   gap: 16px;
 }
 
-.singleInputContainer {
+.singleInputContainer,
+.subtasksInputContainer {
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-width: 396px;
 }
 
-
 .descriptionInput {
   height: 88px;
   display: flex;
   justify-content: flex-start;
 }
-
 .addTaskForm {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
-
 input,
 textarea {
   background-color: white;
@@ -58,29 +60,24 @@ textarea {
   padding: 10px 20px 10px 20px;
   outline: none;
 }
-
 textarea {
   height: 88px;
   resize: none;
 }
-
 input:focus,
 textarea:focus {
-  border: 1px solid #29ABE2;
+  border: 1px solid #29abe2;
 }
-
 input[type="date"]:invalid::-webkit-datetime-edit {
   color: #d1d1d1;
   font-size: 16px;
   line-height: 19.2px;
   font-weight: 400;
 }
-
 ::placeholder {
   color: #d1d1d1;
   font-family: "Inter";
 }
-
 input:focus {
   outline: none;
 }
@@ -123,7 +120,7 @@ input:focus {
 }
 
 .prioBtnContainer > div:hover {
-  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .priourgentsmallWhite,
@@ -136,26 +133,32 @@ input:focus {
 .prioBtnMediumActive,
 .prioBtnLowActive {
   color: white;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .prioBtnUrgentActive {
-  background-color: #FF3D00;
+  background-color: #ff3d00;
 }
 
 .prioBtnMediumActive {
-  background-color: #FFA800;
+  background-color: #ffa800;
 }
 
 .prioBtnLowActive {
-  background-color: #7AE229;
+  background-color: #7ae229;
 }
 
+.prioBtnUrgentActive .priourgentsmall,
+.prioBtnMediumActive .priomediumsmall,
+.prioBtnLowActive .priolowsmall {
+  display: none;
+}
 
-
-
-
-
+.prioBtnUrgentActive .priourgentsmallWhite,
+.prioBtnMediumActive .priomediumsmallWhite,
+.prioBtnLowActive .priolowsmallWhite {
+  display: block;
+}
 
 .bottomContainer {
   display: flex;
@@ -173,7 +176,8 @@ input:focus {
 }
 
 .clearBtn,
-.bottomContainerText {
+.bottomContainerText,
+.taskAddedBtn {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -193,8 +197,8 @@ input:focus {
 }
 
 .clearBtn:hover {
-  border-color: #29ABE2;
-  color: #29ABE2;
+  border-color: #29abe2;
+  color: #29abe2;
 }
 
 .clearFormIconBlue {
@@ -223,12 +227,12 @@ input:focus {
   line-height: 25.2px;
   color: white;
   cursor: pointer;
-  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .createTaskBtn:hover {
-  background-color: #29ABE2;
-  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .seperatorLine {
@@ -237,9 +241,39 @@ input:focus {
   background-color: #d1d1d1;
 }
 
+.taskAddedBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 326px;
+  height: 74px;
+  background-color: #2A3647;
+  color: white;
+  border-radius: 20px;
+  gap: 16px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: bottom 0.5s ease-out;
+}
 
+.taskAddedBtnIcon {
+  width: 30px;
+  height: 30px;
+}
 
+.taskAddedBtn.show {
+  display: flex;
+  bottom: 50%; 
+}
 
+.taskAddedBtn.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
 
 
 @media (max-width: 374px) {
@@ -256,9 +290,9 @@ input:focus {
     padding: 0px 8px 0px 8px;
   }
 
-.prioBtnUrgent,
-.prioBtnMedium,
-.prioBtnLow {
+  .prioBtnUrgent,
+  .prioBtnMedium,
+  .prioBtnLow {
     gap: 4px;
   }
 }
@@ -302,7 +336,8 @@ input:focus {
     width: 440px;
   }
 
-  .singleInputContainer {
+  .singleInputContainer,
+  .subtasksInputContainer {
     max-width: 440px;
   }
 
@@ -320,8 +355,8 @@ input:focus {
   }
 
   .prioBtnUrgent,
-.prioBtnMedium,
-.prioBtnLow {
+  .prioBtnMedium,
+  .prioBtnLow {
     height: 56px;
     width: 136px;
   }
@@ -367,4 +402,3 @@ input:focus {
     width: 978px;
   }
 }
-

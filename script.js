@@ -1,12 +1,19 @@
 let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
 let activeTab = sessionStorage.getItem('activeTab') || '';
 let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
+let tasks = [];
 
 
 async function init() {
   await includeHTML();
   setActive();
-  setActualDate();
+}
+
+
+function setActualDate() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('dateInput').setAttribute('min', today);
+  document.getElementById('update-date') && document.getElementById('update-date').setAttribute('min', today);
 }
 
 
@@ -98,4 +105,9 @@ async function updateData(path = '', data = {}) {
   console.log(response);
   let responseToJson = await response.json();
   console.log(responseToJson);
+}
+
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

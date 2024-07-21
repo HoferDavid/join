@@ -57,10 +57,10 @@ function generateTitleHTML(title) {
 
 function generateDescriptionHTML(description) {
     let descriptionHTML = '';
-    if (description.length < 50) {
+    if (description.length < 60) {
         descriptionHTML = `<div class="toDoDescription">${description}</div>`;
     } else {
-        descriptionHTML = `<div class="toDoDescription">${description.substring(0, 44) + '...'}</div>`;
+        descriptionHTML = `<div class="toDoDescription">${description.substring(0, 40) + '...'}</div>`;
     }
     return descriptionHTML;
 }
@@ -151,48 +151,74 @@ function generateOpenOverlayHTML(element) {
     let modalSubtasksHTML = generateModalSubtasksHTML(element);
 
     return /*html*/ `
-    <div class="modalContainer">
-        <div class="modalToDoContent">
-            <div class="modalCategoryContainer">
-                ${modalCategoryHTML}
-                <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
-            </div>
-            <div class="modalScrollbarWrapper">
-                <div class="modalHeader">${element.title}</div>
-                <div class="modalDescription">${element.description}</div>
-                <div class="modalDateContainer">
-                    <div class="modalDateText">Due date:</div>
-                    <div>${element.date}</div>
+        <div class="modalContainer" id="modalContainer">
+            <div class="modalToDoContent">
+                <div class="modalCategoryContainer">
+                    ${modalCategoryHTML}
+                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
                 </div>
-                <div class="modalPrioContainer">
-                    <div class="modalPrioText">Priority:</div>
-                    <div class="modalPrioIconContainer">
-                        <div>${priority}</div>
-                        <img src="../assets/icons/prio${element.prio}small.svg">
+                <div class="modalScrollbarWrapper">
+                    <div class="modalHeader">${element.title}</div>
+                    <div class="modalDescription" id="modalDescription">${element.description}</div>
+                    <div class="modalDateContainer">
+                        <div class="modalDateText">Due date:</div>
+                        <div>${element.date}</div>
+                    </div>
+                    <div class="modalPrioContainer">
+                        <div class="modalPrioText">Priority:</div>
+                        <div class="modalPrioIconContainer">
+                            <div>${priority}</div>
+                            <img src="../assets/icons/prio${element.prio}small.svg">
+                        </div>
+                    </div>
+                    <div class="modalAssignedToContainer">
+                        <div class="modalAssignedToText">Assigned To:</div>
+                        <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
+                    </div>
+                    <div>
+                        <div class="modalSubtasksText">Subtasks</div>
+                        <div class="modalSubtasksContainer">${modalSubtasksHTML}</div>
                     </div>
                 </div>
-                <div class="modalAssignedToContainer">
-                    <div class="modalAssignedToText">Assigned To:</div>
-                    <div class="modalAssignedToContainer">${modalAssignedToHTML}</div>
-                </div>
-                <div>
-                    <div class="modalSubtasksText">Subtasks</div>
-                    <div class="modalSubtasksContainer">${modalSubtasksHTML}</div>
-                </div>
-            </div>
-            <div class="modalBottomContainer">
-                <div class="modalBottomDeleteContainer" onclick="deleteTask('${element.id}')">
-                    <img src="../assets/icons/deleteDarkBlue.svg">
-                    <div>Delete</div>
-                </div>
-                <div class="modalBottomSeparator"></div>
-                <div class="modalBottomEditContainer">
-                    <img src="../assets/icons/pencilDarkBlue.svg">
-                    <div>Edit</div>
+                <div class="modalBottomContainer">
+                    <div class="modalBottomDeleteContainer" onclick="deleteTask('${element.id}')">
+                        <img src="../assets/icons/deleteDarkBlue.svg">
+                        <div>Delete</div>
+                    </div>
+                    <div class="modalBottomSeparator"></div>
+                    <div class="modalBottomEditContainer" onclick="enableTaskEdit('${element.id}')">
+                        <img src="../assets/icons/pencilDarkBlue.svg">
+                        <div>Edit</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     `;
   }
+
+
+  function generateTaskEditHTML(element) {
+
+    return /*html*/ `
+        <div class="modalContainer" id="modalContainer">
+            <div class="modalToDoContent">
+                <div class="modalCategoryContainer">
+                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+                </div>
+
+                <form onsubmit="return pushNewTask(event)" class="addTaskForm modalScrollbarWrapper">
+
+                    <div class="modalBottomDeleteContainer" onclick="">
+                        <div class="saveTaskEditBtn" onclick="">
+                            <div>Ok</div>
+                            <img src="../assets/icons/check.svg">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    `;
+  }
+
 
