@@ -1,4 +1,3 @@
-
 let currentDraggedElement;
 let currentSearchInput = "";
 
@@ -228,11 +227,20 @@ async function fetchAddTaskTemplate() {
 }
 
 
-function checkScreenWidth() {
+function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
+  taskStatus = category;
   if (screenWidth < 992) {
     return window.location.href = "../html/addtask.html";
   } else {
     openAddTaskOverlay();
   }
 }
+
+
+function enableTaskEdit(element) {
+  let modalContainer = document.getElementById('modalContainer');
+  modalContainer.innerHTML = generateTaskEditHTML(element);
+}
+
+

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/board.css" />
     <link rel="stylesheet" href="../style/boardmodals.css" />
+    <link rel="stylesheet" href="../style/addtask.css">
 
     <script src="../script/board.js"></script>
     <script src="../script/boardtemplate.js"></script>
@@ -43,7 +44,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>To do</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth()" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="checkScreenWidth('toDo')" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="toDo"></div>
             </div>
@@ -51,7 +52,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>In progress</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth()" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="checkScreenWidth('inProgress')" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="inProgress"></div>
             </div>
@@ -59,7 +60,7 @@
             <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
                 <div class="taskCategoryHeader">
                     <div>Await Feedback</div>
-                    <img class="taskCategoryIcon" onclick="checkScreenWidth()" src="../assets/icons/plusAddTaskMobileWhite.svg">
+                    <img class="taskCategoryIcon" onclick="checkScreenWidth('awaitFeedback')" src="../assets/icons/plusAddTaskMobileWhite.svg">
                 </div>
                 <div class="taskDragArea" id="awaitFeedback"></div>
             </div>
