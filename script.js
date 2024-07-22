@@ -5,6 +5,7 @@ let tasks = [];
 let currentPrio = 'medium';
 let taskStatus = 'toDo';
 
+
 async function init() {
   await includeHTML();
   setActive();
@@ -97,6 +98,7 @@ async function postData(path = "", data = {}) {
   }
 }
 
+
 async function updateData(path = '', data = {}) {
   let response = await fetch(BASE_URL + path + '.json', {
     method: 'PUT',
@@ -106,6 +108,14 @@ async function updateData(path = '', data = {}) {
   console.log(response);
   let responseToJson = await response.json();
   console.log(responseToJson);
+}
+
+
+async function deleteTask(id) {
+  await deleteData(`tasks/${id}`);
+  tasks = tasks.filter((task) => task.id !== id);
+  closeModal();
+  initDragDrop();
 }
 
 

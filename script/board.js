@@ -41,34 +41,26 @@ async function pushDataToArray() {
       };
       tasks.push(task);
     }
+    console.log("tasks Array: ", tasks);
   } catch (error) {
     console.error("dh Error pushing tasks to array:", error);
   }
-  console.log("tasks Array: ", tasks);
 }
 
 
 async function updateTaskInFirebase(id, updatedTask) {
   try {
     let response = await fetch(`${BASE_URL}tasks/${id}.json`, {
-      method: "PUT",
-      header: {
-        "Content-Type": " application/json",
-      },
-      body: JSON.stringify(updatedTask),
-    });
-    return await response.json();
+        method: "PUT",
+        header: {
+            "Content-Type": " application/json",
+        },
+        body: JSON.stringify(updatedTask),
+      });
+      return await response.json();
   } catch (error) {
-    console.error("dh Error putting data:", error);
+      console.error("dh Error putting data:", error);
   }
-}
-
-
-async function deleteTask(id) {
-  await deleteData(`tasks/${id}`);
-  tasks = tasks.filter((task) => task.id !== id);
-  closeModal();
-  initDragDrop();
 }
 
 
@@ -99,12 +91,14 @@ function dragDrop() {
 
 
 function updateTaskCategories(status, categoryId, noTaskMessage) {
-  let taskForSection = tasks.filter((t) => t["status"] === status);
+  let taskForSection = tasks.filter((t) => t['status'] === status);
   let categoryElement = document.getElementById(categoryId);
-  categoryElement.innerHTML = "";
+  categoryElement.innerHTML = '';
   if (taskForSection.length > 0) {
-    taskForSection.forEach((element) => {
-      categoryElement.innerHTML += generateTodoHTML(element);
+    taskForSection.forEach((element) => { categoryElement.innerHTML += generateTodoHTML(element); 
+      if (element.subtasks && element.subtasks.length > 0) {
+        updateSubtasksProgressBar(element.subtasks, element.id);
+      }
     });
   } else {
     categoryElement.innerHTML = `<div class="noTaskPlaceholder">${noTaskMessage}</div>`;
@@ -238,32 +232,38 @@ function checkScreenWidth(category) {
 }
 
 
+async function updateSubtaskStatus(taskId, subtaskIndex) {
+  let task = tasks.find((task) => task.id === taskId);
+  if (task) {
+      let subtask = task.subtasks[subtaskIndex];
+      if (subtask) {
+          subtask.status = subtask.status === 'checked' ? 'unchecked' : 'checked';
+          let subtaskCheckbox = document.getElementById(`subtaskCheckbox${subtaskIndex}`);
+          if (subtaskCheckbox) {
+              subtaskCheckbox.src = subtask.status === 'checked' ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+          }
+          updateSubtasksProgressBar(task.subtasks, taskId);
+          await updateTaskInFirebase(taskId, task);
+      }
+  }
+}
+
+
+function updateSubtasksProgressBar(subtasks, taskId) {
+  let checkedAmt = subtasks.filter(subtask => subtask.status === 'checked').length;
+  let percent = Math.round((checkedAmt / subtasks.length) * 100);
+  document.getElementById(`subtasksProgressbarProgress${taskId}`).style.width = `${percent}%`;
+  document.getElementById(`subtasksProgressbarText${taskId}`).innerHTML = `${checkedAmt}/${subtasks.length} Subtasks`;
+}
+
+
+
+// Function to open task edit overlay
 function enableTaskEdit(element) {
   let modalContainer = document.getElementById('modalContainer');
   modalContainer.innerHTML = generateTaskEditHTML(element);
 }
 
 
-// function updateSubtaskStatus(subtask, labelElement) {
-//   try {
-//     // Ändern Sie den Status des Subtasks
-//     subtask.status = subtask.status === 'unchecked' ? 'checked' : 'unchecked';
-
-//     // Finden Sie das Bild-Element
-//     let subtaskCheckbox = labelElement.querySelector('img');
-
-//     if (!subtaskCheckbox) {
-//       console.error('Bild-Element nicht gefunden');
-//       return;
-//     }
-
-//     // Setzen Sie das Bild-Attribut entsprechend des neuen Status
-//     let newSrc = subtask.status === 'checked' ? '../assets/icons/checkbox.svg' : '../assets/icons/checkboxunchecked.svg';
-//     console.log(`Neuer Bildpfad: ${newSrc}`);
-//     subtaskCheckbox.setAttribute('src', newSrc);
-
-//     console.log(`Subtask Status: ${subtask.status}`);
-//   } catch (error) {
-//     console.error('Fehler beim Aktualisieren des Subtask-Status:', error);
-//   }
-// }
+function generateTaskEditHTML(element) {
+}
