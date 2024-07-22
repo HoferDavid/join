@@ -41,10 +41,10 @@ async function pushDataToArray() {
       };
       tasks.push(task);
     }
+    console.log("tasks Array: ", tasks);
   } catch (error) {
     console.error("dh Error pushing tasks to array:", error);
   }
-  console.log("tasks Array: ", tasks);
 }
 
 
@@ -91,12 +91,15 @@ function dragDrop() {
 
 
 function updateTaskCategories(status, categoryId, noTaskMessage) {
-  let taskForSection = tasks.filter((t) => t["status"] === status);
+  let taskForSection = tasks.filter((t) => t['status'] === status);
   let categoryElement = document.getElementById(categoryId);
-  categoryElement.innerHTML = "";
-
+  categoryElement.innerHTML = '';
   if (taskForSection.length > 0) {
-    taskForSection.forEach((element) => { categoryElement.innerHTML += generateTodoHTML(element); });
+    taskForSection.forEach((element) => { categoryElement.innerHTML += generateTodoHTML(element); 
+      if (element.subtasks && element.subtasks.length > 0) {
+        updateSubtasksProgressBar(element.subtasks, element.id);
+      }
+    });
   } else {
     categoryElement.innerHTML = `<div class="noTaskPlaceholder">${noTaskMessage}</div>`;
   }
@@ -239,14 +242,28 @@ async function updateSubtaskStatus(taskId, subtaskIndex) {
           if (subtaskCheckbox) {
               subtaskCheckbox.src = subtask.status === 'checked' ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
           }
+          updateSubtasksProgressBar(task.subtasks, taskId);
           await updateTaskInFirebase(taskId, task);
       }
   }
 }
 
 
+function updateSubtasksProgressBar(subtasks, taskId) {
+  let checkedAmt = subtasks.filter(subtask => subtask.status === 'checked').length;
+  let percent = Math.round((checkedAmt / subtasks.length) * 100);
+  document.getElementById(`subtasksProgressbarProgress${taskId}`).style.width = `${percent}%`;
+  document.getElementById(`subtasksProgressbarText${taskId}`).innerHTML = `${checkedAmt}/${subtasks.length} Subtasks`;
+}
+
+
+
 // Function to open task edit overlay
 function enableTaskEdit(element) {
   let modalContainer = document.getElementById('modalContainer');
   modalContainer.innerHTML = generateTaskEditHTML(element);
+}
+
+
+function generateTaskEditHTML(element) {
 }

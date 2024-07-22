@@ -213,7 +213,7 @@ input:focus {
 
 .subtasksProgressbar {
   width: 128px;
-  height: 4px;
+  height: 8px;
   border-radius: 8px;
   background-color: #F4F4F4;
 }
@@ -222,6 +222,7 @@ input:focus {
   height: 100%;
   background-color: #4589FF;
   border-radius: 16px;
+  transition: width 0.2s ease-in-out;
 }
 
 .userStoryBadge {

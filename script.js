@@ -5,6 +5,7 @@ let tasks = [];
 let currentPrio = 'medium';
 let taskStatus = 'toDo';
 
+
 async function init() {
   await includeHTML();
   setActive();
@@ -96,6 +97,7 @@ async function postData(path = "", data = {}) {
     console.error("dh Error posting data:", error);
   }
 }
+
 
 async function updateData(path = '', data = {}) {
   let response = await fetch(BASE_URL + path + '.json', {

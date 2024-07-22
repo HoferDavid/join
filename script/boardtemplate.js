@@ -8,14 +8,14 @@ const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)'
 
 
 function generateTodoHTML(element) {
-  let categoryHTML = generateCategoryHTML(element.category);
-  let titleHTML = generateTitleHTML(element.title);
-  let descriptionHTML = generateDescriptionHTML(element.description);
-  let subtasksHTML = generateSubtasksHTML(element.subtasks);
-  let assignedToHTML = generateAssignedToHTML(element.assignedTo);
-  let prioHTML = generatePrioHTML(element.prio);
+    let categoryHTML = generateCategoryHTML(element.category);
+    let titleHTML = generateTitleHTML(element.title);
+    let descriptionHTML = generateDescriptionHTML(element.description);
+    let subtasksHTML = generateSubtasksHTML(element.subtasks, element.id);
+    let assignedToHTML = generateAssignedToHTML(element.assignedTo);
+    let prioHTML = generatePrioHTML(element.prio);
 
-  return /*html*/ `
+    return /*html*/ `
         <div draggable="true" id="${element.id}" class="todoContainer" onclick="openOverlay('${element.id}')">
             <div class="toDoContent">
                 ${categoryHTML}
@@ -66,15 +66,15 @@ function generateDescriptionHTML(description) {
 }
 
 
-function generateSubtasksHTML(subtasks) {
+function generateSubtasksHTML(subtasks, id) {
     let subtasksHTML = "";
-    if (subtasks && Object.keys(subtasks).length > 1) {
+    if (subtasks && subtasks.length > 0) {
       subtasksHTML = /*html*/ `
         <div class="toDoSubtasksContainer">
             <div class="subtasksProgressbar">
-                <div class="subtasksProgressbarProgress" style="width: 50%;"></div>
+                <div id="subtasksProgressbarProgress${id}" class="subtasksProgressbarProgress" style="width: 0%;" role="progressbar"></div>
             </div>
-            <div>/${Object.keys(subtasks).length} Subtasks</div>
+            <div id="subtasksProgressbarText${id}">0/${subtasks.length} Subtasks</div>
         </div>`;
     }
     return subtasksHTML;
@@ -137,15 +137,19 @@ function generateModalAssignedToHTML(assignedTo) {
 
 function generateModalSubtasksHTML(element) {
     let modalSubtasksHTML = "";
-    for (let i = 0; i < element.subtasks.length; i++) {
-        let subtask = element.subtasks[i];
-        let checked = subtask.status === 'checked' ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
-        modalSubtasksHTML += /*html*/ `
-            <label class="modalSubtasksSingle" onclick="updateSubtaskStatus('${element.id}', ${i})">
-                <img id="subtaskCheckbox${i}" src="${checked}" alt="Checkbox">
-                <div>${subtask.text}</div>
-            </label>
-        `;
+    if (element.subtasks) {
+        for (let i = 0; i < element.subtasks.length; i++) {
+            let subtask = element.subtasks[i];
+            let checked = subtask.status === 'checked' ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+            modalSubtasksHTML += /*html*/ `
+                <label class="modalSubtasksSingle" onclick="updateSubtaskStatus('${element.id}', ${i})">
+                    <img id="subtaskCheckbox${i}" src="${checked}" alt="Checkbox">
+                    <div>${subtask.text}</div>
+                </label>
+            `;
+        }
+    } else {
+        modalSubtasksHTML = 'No subtasks available!';
     }
     return modalSubtasksHTML;
 }
@@ -203,8 +207,5 @@ function generateOpenOverlayHTML(element) {
     `;
 }
 
-
-function generateTaskEditHTML(element) {
-}
 
 
