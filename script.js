@@ -99,7 +99,7 @@ async function postData(path = "", data = {}) {
 
 async function updateData(path = '', data = {}) {
   let response = await fetch(BASE_URL + path + '.json', {
-    method: 'PATCH',
+    method: 'PUT',
     header: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });

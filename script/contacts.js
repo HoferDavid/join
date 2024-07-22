@@ -66,7 +66,7 @@ async function createContact(contact) {
     'mail': contact.email,
     'number': contact.phone,
     'profilePic': contact.profilePic ? contact.profilePic : await generateSvgCircleWithInitials(contact.name, 120, 120),
-    'isUser': contact.isUser == false ? true : false
+    'isUser': contact.isUser ? true : false
   };
 }
 
