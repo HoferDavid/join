@@ -7,17 +7,24 @@ async function pushNewTask(event) {
     "prio": currentPrio,
     "status": taskStatus,
 
-
     "assignedTo": [
       "dummy"
     ],
     "category": "Technical Task",
     "subtasks": [
-      "Strategie entwickeln",
-      "Materialien erstellen",
-      "Kampagne starten",
-    ],
-
+      {
+          "status": "unchecked",
+          "text": "Identify root cause"
+      },
+      {
+          "status": "unchecked",
+          "text": "Implement fix"
+      },
+      {
+          "status": "unchecked",
+          "text": "Test on multiple devices"
+      }
+  ],
   });
   closeAddTaskModal();
 }
@@ -63,6 +70,48 @@ function clearAddTaskForm() {
 }
 
 
+function formValidation() {
+  const inputs = document.querySelectorAll('.singleInputContainer input[required]');
+  let isValid = true;
+  inputs.forEach(input => {
+    const validationText = input.nextElementSibling;
+    if (input.value.trim() === '') {
+      formValidationTrue(input, validationText);
+    } else {
+      formValidationFalse(input, validationText);
+    }
+    formValidationListener(input, validationText);
+  });
+  return isValid;
+}
+
+
+function formValidationTrue(input, validationText) {
+  validationText.style.display = 'block';
+  input.classList.add('formValidationInputBorder');
+  isValid = false;
+}
+
+
+function formValidationFalse(input, validationText) {
+  validationText.style.display = 'none';
+  input.classList.remove('formValidationInputBorder');
+}
+
+
+function formValidationListener(input, validationText) {
+  input.addEventListener('input', function() {
+    if (input.value.trim() !== '') {
+      validationText.style.display = 'none';
+      input.classList.remove('formValidationInputBorder');
+    } else {
+      validationText.style.display = 'block';
+      input.classList.add('formValidationInputBorder');
+    }
+  });
+}
+
+
 function showTaskAddedAnimation() {
   if (window.location.href.endsWith('addtask.html')) {
     const taskAddedBtn = document.getElementById('taskAddedBtn');
@@ -82,7 +131,6 @@ function showTaskAddedAnimationModal(taskAddedBtn) {
   taskAddedBtn.classList.remove('dNone');
   taskAddedBtn.classList.add('show');
   setTimeout(() => {
-      // taskAddedBtn.classList.add('fade-out');
       closeModal();
   }, 1000);
 } 
@@ -95,3 +143,4 @@ async function closeAddTaskModal() {
   updateAllTaskCategories();
   initDragDrop();
 }
+

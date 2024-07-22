@@ -16,6 +16,7 @@
             <div class="singleInputContainer">
                 <div class="redStarAfter">Title</div>
                 <input id="taskTitle" type="text" placeholder="Enter a title" required maxlength="40">
+                <div class="formValidationText" style="display: none;">This field is required</div>
             </div>
             <div class="singleInputContainer">
                 <div>Description</div>
@@ -33,6 +34,7 @@
             <div class="singleInputContainer" onclick="setActualDate()">
                 <div class="redStarAfter">Due date</div>
                 <input id="dateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
+                <div class="formValidationText" style="display: none;">This field is required</div>
             </div>
             <div class="addTaskPrioContainer">
                 <div>Prio</div>
@@ -57,8 +59,9 @@
             </div>
 
             <div class="singleInputContainer">
-                <div>Category</div>
-                <input type="text">
+                <div class="redStarAfter">Category</div>
+                <input id="categoryInput" type="text" required>
+                <div class="formValidationText" style="display: none;">This field is required</div>
             </div>
             <div class="singleInputContainer">
                 <div>Subtasks</div>
@@ -75,7 +78,7 @@
                     <img class="clearFormIconBlue" src="../assets/icons/clearIconBlue.svg">
                 </div>
 
-                <button type="submit" class="createTaskBtn">
+                <button type="submit" id="createTaskBtn" class="createTaskBtn" onclick="return formValidation()">
                     <div>Create Task</div>
                     <img src="../assets/icons/check.svg">
                 </button>

@@ -202,7 +202,8 @@
 }
 
 .modalBottomDeleteContainer,
-.modalBottomEditContainer {
+.modalBottomEditContainer,
+.editBottomContainer {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -280,6 +281,10 @@
   padding: 18px 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.saveTaskEditBtn:hover {
+  background-color: #29ABE2;
 }
 
 .taskEditForm {

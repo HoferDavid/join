@@ -108,6 +108,17 @@ function generatePrioHTML(prio) {
 }
 
 
+async function fetchAddTaskTemplate() {
+    let response = await fetch("../assets/templates/html/addtasktemplate.html");
+    let html = await response.text();
+    return `
+        <div class="addTaskModalContainer">
+          ${html}
+        </div>
+      `;
+  }
+
+
 function generateModalCategoryHTML(category) {
     let modalCategoryHTML = '';
     if (category == 'User Story') {
@@ -169,7 +180,7 @@ function generateOpenOverlayHTML(element) {
                     <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
                 </div>
                 <div class="modalScrollbarWrapper">
-                    <div class="modalHeader">${element.title}</div>
+                    <div id="modalHeader" class="modalHeader">${element.title}</div>
                     <div class="modalDescription" id="modalDescription">${element.description}</div>
                     <div class="modalDateContainer">
                         <div class="modalDateText">Due date:</div>
