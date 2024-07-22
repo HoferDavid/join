@@ -7,6 +7,7 @@ function htmlRenderAddContact() {
     `;
 }
 
+
 function htmlRenderContactLetter(letter) {
   return /*html*/`
     <div class="contactLetter">
@@ -16,6 +17,7 @@ function htmlRenderContactLetter(letter) {
     </div>
   `;
 }
+
 
 function htmlRenderGeneral(contact) {
   return /*html*/`
@@ -31,6 +33,19 @@ function htmlRenderGeneral(contact) {
   `;
 }
 
+
+function htmlRenderContactDetailsEmpty() {
+  return /*html*/`
+    <div id="contactsDetail" class="ttx100">
+      <div class="contactsHeader">
+        <h1>Contacts</h1>
+        <p class="bordered fs20">Better with a Team</p>
+      </div>
+    </div>
+    `;
+}
+
+
 function htmlRenderContactDetails(id) {
   return /*html*/`
     <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')">
@@ -45,10 +60,10 @@ function htmlRenderContactDetails(id) {
     </div>
     <div class="contactOverview">
       <div class="contactBig">
-        ${contacts[id].profilePic}
+        ${contacts[contacts.findIndex(c => c.id == id)].profilePic}
       </div>
       <div>
-        <h2>${contacts[id].name}</h2>
+        <h2>${contacts[contacts.findIndex(c => c.id == id)].name}</h2>
         <div id="editMenu" class="editMenu ts0" onmouseleave="toggleClass('editMenu', 'ts0', 'ts1')">
           <div class="editMenuItem" onclick="openEditContacts(${id})">
             <img class="editMenuButton" src="../assets/icons/edit.svg" alt="pencil">
@@ -65,11 +80,12 @@ function htmlRenderContactDetails(id) {
     </div>
     <p class="fs20">Contact Information</p>
     <h4>Email</h4>
-    <p><a href="${contacts[id].email}">${contacts[id].email}</a></p>
+    <p><a href="${contacts[contacts.findIndex(c => c.id == id)].email}">${contacts[contacts.findIndex(c => c.id == id)].email}</a></p>
     <h4>Phone</h4>
-    <p><a href="${contacts[id].phone}">${contacts[id].phone}</a></p>
+    <p><a href="${contacts[contacts.findIndex(c => c.id == id)].phone}">${contacts[contacts.findIndex(c => c.id == id)].phone}</a></p>
     `;
 }
+
 
 function svgProfilePic(color, initials, height, width) {
   return /*html*/`

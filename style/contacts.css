@@ -338,17 +338,17 @@ h4 {
 }
 
 .down input[type="text"] {
-  background: url('../assets/icons/person.svg') no-repeat right 4px top 4px;
+  background: url('../assets/icons/person.svg') no-repeat right 10px top 50%;
   background-size: 20px 20px;
 }
 
 .down input[type="tel"] {
-  background: url('../assets/icons/call.svg') no-repeat right 4px top 4px;
+  background: url('../assets/icons/call.svg') no-repeat right 10px top 50%;
   background-size: 20px 20px;
 }
 
 .down input[type="email"] {
-  background: url('../assets/icons/mail.svg') no-repeat right 4px top 4px;
+  background: url('../assets/icons/mail.svg') no-repeat right 10px top 50%;
   background-size: 20px 20px;
 }
 

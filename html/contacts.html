@@ -41,7 +41,8 @@
             </div>
             <img src="../assets/img/contacts/emptyProfilPic.svg" alt="empty Profil Picture">
             <div class="workContactContainer down">
-                <form onsubmit="addContacts()" class="contactForm">
+                <form onsubmit="addContacts(); return false
+                ;" class="contactForm">
                     <input id="addName" type="text" placeholder="Name Lastname" value="" required>
                     <input id="addMail" type="email" placeholder="example@example.com" value="" required>
                     <input id="addTel" type="tel" placeholder="+491234567890" pattern="[+][0-9]{6,20}"
@@ -72,31 +73,32 @@
                 <svg></svg>
             </div>
             <div class="workContactContainer down">
-                <form onsubmit="editContacts()" class="contactForm">
+                <form onsubmit="editContacts(); return false;" class="contactForm">
                     <input id="editName" type="text" placeholder="Name Lastname" value="" required>
                     <input id="editMail" type="email" placeholder="example@example.com" value="" required>
                     <input id="editTel" type="tel" placeholder="+491234567890" pattern="[+][0-9]{6,20}"
                         title="Telephon number must have country prefix, phone prefix and phone number." minlength="7"
                         maxlength="17" value="" required>
                     <div class="editButtonContainer">
-                        <button onclick="openDeleteContacts()" class="deleteContactButton">Delete</button>
+                        <button type="button" onclick="openDeleteContacts()" class="deleteContactButton">Delete</button>
                         <button type="submit" class="editContactButton">Save <img src="../assets/icons/check.svg"
                                 alt="check icon"></button>
                     </div>
                 </form>
             </div>
-            <div id="deleteResponse" class="deleteResponse ts0">
-                <div class="deleteQuestion">
-                    <p>Do you really want to delete this entry?</p>
-                    <form onsubmit="deleteContacts()">
-                        <button onclick="toggleClass('deleteResponse', 'ts0', 'ts1')">NO <img
-                                src="../assets/icons/close.svg" alt="close X"></button>
-                        <button type="submit">YES <img src="../assets/icons/check.svg"
-                                alt="check icon"></button></button>
-                    </form>
-                </div>
-            </div>
         </div>
+        <div id="deleteResponse" class="deleteResponse ts0">
+            <div class="deleteQuestion">
+                <p>Do you really want to delete this entry?</p>
+                <form onsubmit="deleteContacts(); return false;">
+                    <button type="button" onclick="toggleClass('deleteResponse', 'ts0', 'ts1')">NO <img
+                            src="../assets/icons/close.svg" alt="close X"></button>
+                    <button type="submit">YES <img src="../assets/icons/check.svg" alt="check icon"></button></button>
+                </form>
+            </div>
+            console.error('Error updating data:', error);
+        </div>
+
 
     </main>
 

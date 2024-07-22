@@ -99,15 +99,18 @@ async function postData(path = "", data = {}) {
 }
 
 
-async function updateData(path = '', data = {}) {
-  let response = await fetch(BASE_URL + path + '.json', {
-    method: 'PUT',
-    header: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  console.log(response);
-  let responseToJson = await response.json();
-  console.log(responseToJson);
+async function updateData(url, data) {
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const updatedData = await response.json();
+    return updatedData;
+  } catch (error) {
+    console.error('Error updating data:', error);
+  }
 }
 
 
