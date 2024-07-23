@@ -125,8 +125,9 @@ input:focus {
   color: #2a3647;
 }
 
-.taskCategoryIcon {
+.taskCategoryIcon:hover {
   cursor: pointer;
+  filter: invert(54%) sepia(69%) saturate(562%) hue-rotate(155deg) brightness(95%) contrast(87%);
 }
 
 .taskDragArea {

@@ -177,7 +177,7 @@ function generateOpenOverlayHTML(element) {
             <div class="modalToDoContent">
                 <div class="modalCategoryContainer">
                     ${modalCategoryHTML}
-                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/clearIcon.svg" alt="">
+                    <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/closeGrey.svg" alt="">
                 </div>
                 <div class="modalScrollbarWrapper">
                     <div id="modalHeader" class="modalHeader">${element.title}</div>
