@@ -60,8 +60,15 @@
 
             <div class="singleInputContainer">
                 <div class="redStarAfter">Category</div>
-                <input id="categoryInput" type="text" required>
+                <div class="categoryInputContainer">
+                    <input id="categoryInput" type="text" required>
+                    <img class="categoryDropdownIcon" src="../assets/icons/arrowdropdown.svg">
+                </div>
                 <div class="formValidationText" style="display: none;">This field is required</div>
+                <div class="categoryDropdown dNone">
+                    <div class="categoryDropdownSingle">Technical Task</div>
+                    <div class="categoryDropdownSingle">User Story</div>
+                </div>
             </div>
             <div class="singleInputContainer">
                 <div>Subtasks</div>
