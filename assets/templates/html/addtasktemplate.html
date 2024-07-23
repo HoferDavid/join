@@ -19,7 +19,12 @@
             </div>
             <div class="singleInputContainer">
                 <div>Assigned to</div>
-                <input type="text">
+                <div id="assignDropdown" class="assignContainer">
+                    <input id="assignSearch" type="search" class="contactsAssignStandard"
+                        value="Select contacts to assign" onclick="toggleDropdown()" readonly>
+                    <div id="contactsToAssign" class="contactsToAssign"></div>
+                </div>
+                <div id="contactsAssigned" class="contactsAssigned"></div>
             </div>
         </div>
 
@@ -61,8 +66,8 @@
             </div>
             <div class="singleInputContainer">
                 <div>Subtasks</div>
-               <input type="text" placeholder="Add new subtask">
-           </div>
+                <input type="text" placeholder="Add new subtask">
+            </div>
 
         </div>
 

@@ -158,3 +158,17 @@ function setActiveTabToAddTask() {
   const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
   changeActive(activeTab);
 }
+
+function toggleDropdown() {
+  document.getElementById('assignDropdown').classList.toggle('open');
+  document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? activateAssignSearch() : deactivateAssignSearch();
+  toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
+}
+
+function activateAssignSearch() {
+
+}
+
+function deactivateAssignSearch() {
+
+}
