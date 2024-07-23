@@ -27,6 +27,7 @@ async function pushNewTask(event) {
     ],
   });
   closeAddTaskModal();
+  setActiveTabToBoard();
 }
 
 
@@ -120,7 +121,7 @@ function showTaskAddedAnimation() {
     setTimeout(() => {
       taskAddedBtn.classList.add('fade-out');
       return window.location.href = "../html/board.html";
-    }, 1000);
+    }, 2000);
   } else {
     showTaskAddedAnimationModal(taskAddedBtn);
   }
@@ -144,3 +145,16 @@ async function closeAddTaskModal() {
   initDragDrop();
 }
 
+
+function setActiveTabToBoard() {
+  const activeTab = document.querySelector('.menuBtn[href="../html/board.html"]');
+  if (activeTab) {
+    changeActive(activeTab);
+  }
+}
+
+
+function setActiveTabToAddTask() {
+  const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
+  changeActive(activeTab);
+}

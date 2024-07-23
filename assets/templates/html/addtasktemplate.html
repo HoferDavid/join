@@ -1,11 +1,6 @@
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../style/fonts.css">
-<link rel="stylesheet" href="../style/addtask.css">
-
-<!-- Content -->
 <section class="addTaskHeaderSection">
     <div>Add Task</div>
-    <img class="addTaskModalClose" onclick="closeModal()" src="../assets/icons/clearIcon.svg">
+    <img class="addTaskModalClose" onclick="closeModal()" src="../assets/icons/closeGrey.svg">
 </section>
 
 <section class="addTaskSection">
@@ -44,7 +39,7 @@
                         <img class="priourgentsmallWhite" src="../assets/icons/priourgentsmallWhite.svg">
                         <img class="priourgentsmall" src="../assets/icons/priourgentsmall.svg">
                     </div>
-                    <div class="prioBtn prioBtnMedium" onclick="setPrio(this)" data-prio="medium">
+                    <div class="prioBtn prioBtnMedium prioBtnMediumActive" onclick="setPrio(this)" data-prio="medium">
                         <div>Medium</div>
                         <img class="priomediumsmallWhite" src="../assets/icons/priomediumsmallWhite.svg">
                         <img class="priomediumsmall" src="../assets/icons/priomediumsmall.svg">
@@ -58,22 +53,17 @@
                 </div>
             </div>
 
+
             <div class="singleInputContainer">
                 <div class="redStarAfter">Category</div>
-                <div class="categoryInputContainer">
-                    <input id="categoryInput" type="text" required>
-                    <img class="categoryDropdownIcon" src="../assets/icons/arrowdropdown.svg">
-                </div>
+                <input id="categoryInput" type="text" required>
                 <div class="formValidationText" style="display: none;">This field is required</div>
-                <div class="categoryDropdown dNone">
-                    <div class="categoryDropdownSingle">Technical Task</div>
-                    <div class="categoryDropdownSingle">User Story</div>
-                </div>
             </div>
             <div class="singleInputContainer">
                 <div>Subtasks</div>
-                <input type="text" placeholder="Add new subtask">
-            </div>
+               <input type="text" placeholder="Add new subtask">
+           </div>
+
         </div>
 
         <div class="bottomContainer">

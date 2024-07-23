@@ -208,8 +208,10 @@ async function openAddTaskOverlay() {
 
 function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
+  activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
   taskStatus = category;
   if (screenWidth < 992) {
+    changeActive(activeTab);
     return window.location.href = "../html/addtask.html";
   } else {
     openAddTaskOverlay();
@@ -248,6 +250,8 @@ function enableTaskEdit(id) {
 }
 
 
+
+// in progress
 function generateTaskEditHTML(id) {
   return /*html*/ `
     <div class="modalToDoContent">
@@ -284,8 +288,7 @@ function generateTaskEditHTML(id) {
           <div>Ok</div>
           <img src="../assets/icons/check.svg">
       </div>
-</div>
-
+    </div>
       </div>
     </div>
   `;

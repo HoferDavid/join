@@ -359,6 +359,8 @@ main.content {
 
 #greetingSummaryMobile{
     display: flex;
+    text-align: center;
+    justify-content: center;
     opacity: 1;
     transition: opacity 1s ease-in-out;  
 

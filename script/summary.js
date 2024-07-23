@@ -5,7 +5,6 @@ let numberOfAwaitFeedback = 0;
 let numberOfDone = 0;
 let urgentTasks = [];
 
-
 async function loadCategory() {
   try {
     let tasksData = await loadData("tasks");
@@ -119,21 +118,92 @@ function showUrgentTask() {
       }
     };
     updateElement('howManyUrgent', 0);
-    updateElement('summUrgentDate', ''); // Clear date if no urgent tasks
+    updateElement('summUrgentDate', ''); 
   }
   console.log("Dringende Aufgaben angezeigt:", urgentTasks);
 }
 
 async function initSummary() {
-  await loadCategory();  
-  await taskAssignment();  
-  showUrgentTask();  
+  if (localStorage.getItem('showGreetings') === 'true') {
+    console.log('Displaying greeting');
+    greetingSummaryMobile(); 
+    localStorage.setItem('showGreetings', 'false'); 
+  }
+
+  await loadCategory();
+  await taskAssignment();
+  showUrgentTask();
 }
+
+function displayGreeting() {
+  if (localStorage.getItem('showGreetings') === 'true') {
+    console.log('Displaying greeting');
+    greetingSummaryMobile();
+    localStorage.setItem('showGreetings', 'false');
+  } else {
+    console.log('showGreetings is not true');
+  }
+}
+
+function greetingSummaryMobile() {
+  if (window.matchMedia("(max-width: 1200px)").matches) {
+    console.log('Mobile view detected');
+    let greetingMobile = document.getElementById('greetingSummaryMobile');
+    let summaryMain = document.getElementById('summaryMain');
+    let greetingTime = greeting();
+    let greetingName = displayGreetingWithName();
+
+    greetingMobile.innerHTML = greetingMobileHTML(greetingTime, greetingName);
+    console.log('Greeting Mobile HTML:', greetingMobile.innerHTML);
+
+    greetingMobile.style.display = 'flex';
+    setTimeout(() => {
+      summaryMain.style.opacity = '0';
+      setTimeout(() => {
+        greetingMobile.classList.add('hide');
+        setTimeout(() => {
+          greetingMobile.style.display = 'none';
+          summaryMain.style.opacity = '1';
+          summaryMain.style.transition = 'opacity 0.9s ease';
+        }, 900);
+      }, 2000);
+    }, 2000);
+  } else {
+    console.log('Mobile view not detected');
+  }
+}
+
+function greetingMobileHTML(greetingTime, greetingName) {
+  return `
+    <div class="summ-greeting-mobile">
+      <h3 class="summ-day-greeting">${greetingTime}</h3>
+      <span class="summ-person-greeting">${greetingName}</span>
+    </div>
+  `;
+}
+
+function greeting() {
+  let now = new Date();
+  let hours = now.getHours();
+  if (hours < 12) {
+    return "Good Morning";
+  } else if (hours < 18) {
+    return "Good Afternoon";
+  } else {
+    return "Good Evening";
+  }
+}
+
+function displayGreetingWithName() {
+  let userName = localStorage.getItem('userName') || 'Guest';
+  return userName;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSummary();
+});
 
 function nextPage() {
   window.location.href = 'board.html';
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  initSummary();
-});
