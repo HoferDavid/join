@@ -13,38 +13,38 @@ async function pushNewTask(event) {
     "category": "Technical Task",
     "subtasks": [
       {
-          "status": "unchecked",
-          "text": "Identify root cause"
+        "status": "unchecked",
+        "text": "Identify root cause"
       },
       {
-          "status": "unchecked",
-          "text": "Implement fix"
+        "status": "unchecked",
+        "text": "Implement fix"
       },
       {
-          "status": "unchecked",
-          "text": "Test on multiple devices"
+        "status": "unchecked",
+        "text": "Test on multiple devices"
       }
-  ],
+    ],
   });
   closeAddTaskModal();
 }
 
 
 function setPrio(element) {
-    const prio = element.getAttribute('data-prio');
-    currentPrio = prio;
-    updatePrioActiveBtn(prio);
+  const prio = element.getAttribute('data-prio');
+  currentPrio = prio;
+  updatePrioActiveBtn(prio);
 }
 
 
 function updatePrioActiveBtn(prio) {
   const buttons = document.querySelectorAll('.prioBtn');
   buttons.forEach(button => {
-      button.classList.remove('prioBtnUrgentActive', 'prioBtnMediumActive', 'prioBtnLowActive');
-      const imgs = button.querySelectorAll('img');
-      imgs.forEach(img => {
-          img.classList.add('hidden');
-      });
+    button.classList.remove('prioBtnUrgentActive', 'prioBtnMediumActive', 'prioBtnLowActive');
+    const imgs = button.querySelectorAll('img');
+    imgs.forEach(img => {
+      img.classList.add('hidden');
+    });
   });
   changeActiveBtn(prio);
 }
@@ -100,7 +100,7 @@ function formValidationFalse(input, validationText) {
 
 
 function formValidationListener(input, validationText) {
-  input.addEventListener('input', function() {
+  input.addEventListener('input', function () {
     if (input.value.trim() !== '') {
       validationText.style.display = 'none';
       input.classList.remove('formValidationInputBorder');
@@ -118,8 +118,8 @@ function showTaskAddedAnimation() {
     taskAddedBtn.classList.remove('dNone');
     taskAddedBtn.classList.add('show');
     setTimeout(() => {
-        taskAddedBtn.classList.add('fade-out');
-        return window.location.href = "../html/board.html";
+      taskAddedBtn.classList.add('fade-out');
+      return window.location.href = "../html/board.html";
     }, 1000);
   } else {
     showTaskAddedAnimationModal(taskAddedBtn);
@@ -131,9 +131,9 @@ function showTaskAddedAnimationModal(taskAddedBtn) {
   taskAddedBtn.classList.remove('dNone');
   taskAddedBtn.classList.add('show');
   setTimeout(() => {
-      closeModal();
+    closeModal();
   }, 1000);
-} 
+}
 
 
 async function closeAddTaskModal() {

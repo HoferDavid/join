@@ -82,11 +82,13 @@ async function editContacts(id = editId) {
   let editName = document.getElementById('editName').value;
   let editEmail = document.getElementById('editMail').value;
   let editTel = document.getElementById('editTel').value;
+  let nameChange = editName != contacts[contacts.findIndex(c => c.id == id)].name;
   contacts[contacts.findIndex(c => c.id == id)].name = editName;
   contacts[contacts.findIndex(c => c.id == id)].email = editEmail;
   contacts[contacts.findIndex(c => c.id == id)].phone = editTel;
   let contact = contacts[contacts.findIndex(c => c.id == id)];
-  let editContact = createContact(contact.id, editName, editEmail, editTel, contact.profilePic, contact.isUser);
+  let editContact = createContact(contact.id, editName, editEmail, editTel, nameChange ? false : contact.profilePic, contact.isUser);
+  contacts[contacts.findIndex(c => c.id == id)].profilePic = editContact.profilePic;
   await updateData(`${BASE_URL}contacts/${id}.json`, editContact);
   toggleClass('editContact', 'tt0', 'tty100');
   refreshPage();

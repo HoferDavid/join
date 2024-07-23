@@ -16,6 +16,7 @@
   height: auto;
   width: 100%;
   transition: all 125ms ease-in-out;
+  overflow-y: auto;
 }
 
 .contactsGeneral {
@@ -93,7 +94,7 @@ a:hover {
 
 h1 {
   font-size: 48px;
-  margin: 48px 0 16px;
+  margin: 32px 0 16px;
 }
 
 .bordered {
@@ -158,13 +159,21 @@ h4 {
 
 .backArrow {
   position: absolute;
-  top: 48px;
+  top: 32px;
   right: 16px;
   height: 32px;
   width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.backArrow:hover>img {
+  transform: scale(1.2);
+}
+
+.backArrow:hover {
+  background-color: unset;
 }
 
 .contactList {
@@ -193,10 +202,19 @@ h4 {
   gap: 8px;
   cursor: pointer;
   margin: 4px 0;
+
 }
 
 .contactList li a {
   font-size: 12px;
+}
+
+.contactList li a,
+.contactList p,
+.contactOverview h2,
+#contactsDetail>p>a {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .contactList li:hover {
