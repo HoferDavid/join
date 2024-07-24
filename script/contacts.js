@@ -21,6 +21,7 @@ async function getContactsData() {
   let loadItem = await loadData('contacts');
   setContactsArray(loadItem);
   sessionStorage.setItem("contacts", JSON.stringify(contacts));
+  return contacts;
 }
 
 

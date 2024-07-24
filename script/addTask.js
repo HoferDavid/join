@@ -154,11 +154,20 @@ function setActiveTabToAddTask() {
 }
 
 
-function toggleDropdown() {
+async function toggleDropdown() {
   document.getElementById('assignDropdown').classList.toggle('open');
   document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? activateAssignSearch() : deactivateAssignSearch();
+  let contactsContainer = document.getElementById('contactsToAssign');
   toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
+  if (document.getElementById('assignSearch').classList.contains('contactsAssignOpen')) {
+    let contactSorted = contacts.length == 0 ? await getContactsData().then(c => [...c]) : [...contacts];
+    contactSorted.sort((a, b) => a.name.localeCompare(b.name));
+    contactSorted.forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
+  } else if (document.getElementById('assignSearch').classList.contains('contactsAssignStandard')) {
+    contactsContainer.innerHTML = '';
+  }
 }
+
 
 
 function activateAssignSearch() {
