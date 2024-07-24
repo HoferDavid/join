@@ -1,5 +1,7 @@
 let currentDraggedElement;
 let currentSearchInput = "";
+let currentTaskStatus;
+
 
 async function initBoard() {
   init();
@@ -271,28 +273,21 @@ function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
   modalContainer.innerHTML = generateTaskEditHTML(taskId);
   let task = tasks.find((task) => task.id === taskId);
+  currentTaskStatus = task.status;
 
   document.getElementById("editTaskTitle").value = task.title;
   document.getElementById("editTaskDescription").value = task.description;
-  document.getElementById("editDateInput").value = setDateFormat(task.date);
-  let actualStatus = task.status;
+  document.getElementById("editDateInput").value = task.date;
   updatePrioActiveBtn(task.prio);
-}
-
-
-function setDateFormat(taskDate) {
-  let dateParts = taskDate.split('/');
-  let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-  return formattedDate;
 }
 
 
 async function saveEditedTask(event, taskId) {
   event.preventDefault();
   await putData(`tasks/${taskId}`, createEditedTask());
-  closeModal();
   tasks = [];
   await pushDataToArray();
+  openOverlay(taskId);
   updateAllTaskCategories();
   initDragDrop();
   applyCurrentSearchFilter();
@@ -305,7 +300,7 @@ function createEditedTask() {
     description: getId('editTaskDescription'),
     date: getId('editDateInput'),
     prio: currentPrio,
-    status: taskStatus,
+    status: currentTaskStatus,
     assignedTo: ["dummy"],
     category: "Technical Task",
     subtasks: [
