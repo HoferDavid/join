@@ -1,18 +1,14 @@
 main.content {
     display: flex;
     
+    
 }
 
 
 
 .summ-main{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
-    min-height: 100vh; 
+  
 }
 
 
@@ -20,7 +16,7 @@ main.content {
     display: flex;
     align-items: center;
     gap: 30px;
-    margin-left: 330px;
+    margin-left: 75px;
     margin-bottom: 55px;
     margin-top: 110px;
 }
@@ -56,6 +52,7 @@ main.content {
     display: flex;
     align-items: center;
     flex-direction: column;
+    
 }
 
 .summ-seperate-mobile{
@@ -71,7 +68,6 @@ main.content {
     width: 100%;
     max-width: 560px;
     height: 562px;
-    margin-left: 328px;
     box-sizing: border-box;
 }
 
@@ -319,31 +315,30 @@ main.content {
 }
 
 .summ-greeting{
-    margin-left: 50px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.greeting-container {
-    position: absolute; 
-    right: 20px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    z-index: 10;
-    
-}
+
 
 .summ-greeting-mobile{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    left: 500px;
-    margin-left: 100px;
-    width: 100%;
-    height: calc(100vh - 178px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; 
+    max-width: 100%;
+    height: auto; 
+    min-height: calc(100vh - 178px); 
     z-index: 1000;
+    padding: 20px; 
+    box-sizing: border-box; 
+
 }
 
 
@@ -359,8 +354,6 @@ main.content {
 
 #greetingSummaryMobile{
     display: flex;
-    text-align: center;
-    justify-content: center;
     opacity: 1;
     transition: opacity 1s ease-in-out;  
 
@@ -370,18 +363,26 @@ main.content {
     font-size: 47px;
     font-weight: 500;
     line-height: 56.4px;
-    text-align: right;
+    text-align: left;
     margin-block-start: 0em;
     margin-block-end: 0em;
     margin: 0;
+    text-align: center;
 }
 
 .summ-person-greeting{
     font-size: 64px;
     font-weight: 700;
     margin-right: 10px;
-    text-align: right;
+    text-align: left;
     color: #29ABE2;
+    text-align: center;
+}
+
+@media (max-width: 1500px){
+    .summ-person-greeting{
+        font-size: 50px;
+    }
 }
 
 @media(max-width:1300px){
@@ -442,16 +443,28 @@ main.content {
 
 @media (max-width: 900px){
     .summ-main{
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+      
+        
 
     }
 
     .headline-summ{
         display: flex;
+        flex-direction: column; 
         justify-content: center;
-        margin-left: 20px;        
-        margin-right: 20px;
-        margin-top: 35px;  
+        align-items: center; 
+        margin: 0 20px 35px; 
+        text-align: center;
+        width: 100%; 
+        box-sizing: border-box; 
     }
 
     .headline-summ-h2{
@@ -459,12 +472,22 @@ main.content {
     }
 
     .summ-2{
-        align-items: flex-start;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        width: 100%; 
+        max-width: 800px; 
+        padding: 0 20px; 
+        box-sizing: border-box; 
+        text-align: center; 
+        
+       
     }
 
     .summ-stats{
         margin-left: 20px;
         margin-right: 20px;
+        
     }
 
     .summ-greeting-mobile{
@@ -510,7 +533,7 @@ main.content {
 
 @media (max-width: 600px){
     .headline-summ-h2{
-        font-size: 40px
+        font-size: 40px;
     }
 
     .summ-info{
@@ -524,7 +547,7 @@ main.content {
     .summ-toDO-info{
         width: 180px;
         height: 128px;
-        padding: 28px 9px;
+        
     }
 
     .summ-done-info{
@@ -552,7 +575,7 @@ main.content {
 
     .summ-stats-under-howmany{
         line-height: 60px;
-        font-size: 50px;
+        
     }
 
     .how-many-dones{
@@ -614,8 +637,7 @@ main.content {
     }
 
     .how-many-todos{
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 16px;
     }
 
     .summ-done-info{
@@ -659,5 +681,46 @@ main.content {
 
     .summ-stats{
         max-width: 300px;
+    }
+}
+
+@media (max-height : 810px){
+    .summ-info-urgent{
+        height: 80px;
+    }
+
+    .headline-summ-h2{
+        line-height: 40px;
+        margin-top: 10px;
+    }
+
+    .summ-done-info{
+        height: 100px;
+    }
+
+    .summ-toDO-info{
+        height: 100px;
+    }
+
+    .summ-stats-urgent{
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .summ-stats-under-container{
+        height: 100px;
+    }
+
+    .summ-seperate{
+        height: 80px;
+    }
+
+    .summ-stats-under-howmany{
+        height: 100px;
+    }
+
+    .summ-stats-under-tasks{
+        height: 100px;
     }
 }
