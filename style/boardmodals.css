@@ -135,15 +135,13 @@
   gap: 16px;
 }
 
-
-
 .modalCloseIcon {
   cursor: pointer;
   height: 32px;
   width: 32px;
 }
 
-.modalCloseIcon:hover{
+.modalCloseIcon:hover {
   background-color: #29abe2;
   border-radius: 50%;
 }
@@ -301,8 +299,6 @@
   max-width: 440px;
 }
 
-
-
 .addTaskModalContainer .bottomContainer {
   display: flex;
   position: fixed;
@@ -340,7 +336,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2A3647;
+  background-color: #2a3647;
   color: white;
   gap: 4px;
   padding: 18px 10px;
@@ -353,16 +349,13 @@
 }
 
 .saveTaskEditBtn:hover {
-  background-color: #29ABE2;
+  background-color: #29abe2;
 }
 
 .taskEditForm {
   display: flex;
   flex-direction: column;
 }
-
-
-
 
 @media (max-width: 427px) {
   .modalContainer {

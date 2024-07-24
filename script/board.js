@@ -14,10 +14,12 @@ async function initBoard() {
   }
 }
 
+
 function initDragDrop() {
   updateAllTaskCategories();
   dragDrop();
 }
+
 
 async function pushDataToArray() {
   try {
@@ -25,7 +27,7 @@ async function pushDataToArray() {
     console.log("tasks Firebase: ", tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
-      let task = await createTask(key, singleTask);
+      let task = await createTaskArray(key, singleTask);
       tasks.push(task);
     }
     console.log("tasks Array: ", tasks);
@@ -34,7 +36,8 @@ async function pushDataToArray() {
   }
 }
 
-async function createTask(key, singleTask) {
+
+async function createTaskArray(key, singleTask) {
   return {
     "id": key,
     "assignedTo": singleTask.assignedTo,
@@ -47,6 +50,7 @@ async function createTask(key, singleTask) {
     "title": singleTask.title,
   };
 }
+
 
 async function updateTaskInFirebase(id, updatedTask) {
   try {
@@ -63,10 +67,12 @@ async function updateTaskInFirebase(id, updatedTask) {
   }
 }
 
+
 function toggleVisibility(id) {
   document.getElementById(id).classList.toggle("dNone");
   return document.getElementById(id);
 }
+
 
 function dragDrop() {
   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
@@ -87,6 +93,7 @@ function dragDrop() {
   });
 }
 
+
 function updateTaskCategories(status, categoryId, noTaskMessage) {
   let taskForSection = tasks.filter((task) => task.status === status);
   let categoryElement = document.getElementById(categoryId);
@@ -104,6 +111,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
   }
 }
 
+
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
@@ -115,13 +123,16 @@ function updateAllTaskCategories() {
   updateTaskCategories("done", "done", "No tasks done");
 }
 
+
 function startDragging(id) {
   currentDraggedElement = id;
 }
 
+
 function allowDrop(ev) {
   ev.preventDefault();
 }
+
 
 async function moveTo(status) {
   let task = tasks.find((task) => task.id == currentDraggedElement);
@@ -132,6 +143,7 @@ async function moveTo(status) {
     await updateTaskInFirebase(task.id, task);
   }
 }
+
 
 function searchTasks(inputValue) {
   emptyDragAreaWhileSearching();
@@ -151,11 +163,13 @@ function searchTasks(inputValue) {
   });
 }
 
+
 function applyCurrentSearchFilter() {
   if (currentSearchInput) {
     searchTasks(currentSearchInput);
   }
 }
+
 
 function emptyDragAreaWhileSearching() {
   let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
@@ -167,6 +181,7 @@ function emptyDragAreaWhileSearching() {
   });
 }
 
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   const overlay = document.getElementById("overlay");
@@ -175,6 +190,7 @@ window.onclick = function (event) {
     closeModal();
   }
 };
+
 
 function closeModal() {
   const overlay = document.getElementById("overlay");
@@ -186,6 +202,7 @@ function closeModal() {
   document.body.classList.remove("modalOpen");
 }
 
+
 function openOverlay(elementId) {
   let element = tasks.find((task) => task.id === elementId);
   let overlay = document.getElementById("overlay");
@@ -193,11 +210,13 @@ function openOverlay(elementId) {
   overlay.style.display = "block";
 }
 
+
 async function openAddTaskOverlay() {
   let addTaskOverlay = document.getElementById("addTaskOverlay");
   addTaskOverlay.innerHTML = await fetchAddTaskTemplate();
   addTaskOverlay.style.display = "block";
 }
+
 
 function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
@@ -210,6 +229,7 @@ function checkScreenWidth(category) {
     openAddTaskOverlay();
   }
 }
+
 
 async function updateSubtaskStatus(taskId, subtaskIndex) {
   let task = tasks.find((task) => task.id === taskId);
@@ -232,6 +252,7 @@ async function updateSubtaskStatus(taskId, subtaskIndex) {
   }
 }
 
+
 function updateSubtasksProgressBar(subtasks, taskId) {
   let checkedAmt = subtasks.filter(
     (subtask) => subtask.status === "checked"
@@ -245,8 +266,56 @@ function updateSubtasksProgressBar(subtasks, taskId) {
   ).innerHTML = `${checkedAmt}/${subtasks.length} Subtasks`;
 }
 
-function enableTaskEdit(id) {
+
+function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
-  modalContainer.innerHTML = generateTaskEditHTML(id);
+  modalContainer.innerHTML = generateTaskEditHTML(taskId);
+  let task = tasks.find((task) => task.id === taskId);
+
+  document.getElementById("editTaskTitle").value = task.title;
+  document.getElementById("editTaskDescription").value = task.description;
+  document.getElementById("editDateInput").value = setDateFormat(task.date);
+  let actualStatus = task.status;
+  updatePrioActiveBtn(task.prio);
 }
+
+
+function setDateFormat(taskDate) {
+  let dateParts = taskDate.split('/');
+  let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+  return formattedDate;
+}
+
+
+async function saveEditedTask(event, taskId) {
+  event.preventDefault();
+  await putData(`tasks/${taskId}`, createEditedTask());
+  closeModal();
+  tasks = [];
+  await pushDataToArray();
+  updateAllTaskCategories();
+  initDragDrop();
+  applyCurrentSearchFilter();
+}
+
+
+function createEditedTask() {
+  return {
+    title: getId('editTaskTitle'),
+    description: getId('editTaskDescription'),
+    date: getId('editDateInput'),
+    prio: currentPrio,
+    status: taskStatus,
+    assignedTo: ["dummy"],
+    category: "Technical Task",
+    subtasks: [
+      { status: "unchecked", text: "Identify root cause" },
+      { status: "unchecked", text: "Implement fix" },
+      { status: "unchecked", text: "Test on multiple devices" }
+    ]
+  };
+}
+
+
+
 

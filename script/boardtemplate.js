@@ -219,83 +219,81 @@ function generateOpenOverlayHTML(element) {
 }
 
 
-function generateTaskEditHTML(id) {
+function generateTaskEditHTML(taskId) {
     return /*html*/ `
-  <div class="modalToDoContent">
-  
-    <div class="editTaskCloseContainer">
-      <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/closeGrey.svg" alt="">
-    </div>
-  
-  
-    <form onsubmit="" class="editTaskForm">
-      <div class="editTaskScrollbarWrapper">
-  
-        <div class="singleInputContainer">
-          <div class="redStarAfter">Title</div>
-          <input id="taskTitle" type="text" placeholder="Enter a title" required maxlength="40">
-          <div class="formValidationText" style="display: none;">This field is required</div>
-        </div>
-  
-        <div class="singleInputContainer">
-          <div>Description</div>
-          <textarea id="taskDescription" placeholder="Enter a Description" maxlength="200"></textarea>
-        </div>
-  
-        <div class="singleInputContainer" onclick="setActualDate()">
-          <div class="redStarAfter">Due date</div>
-          <input id="dateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
-          <div class="formValidationText" style="display: none;">This field is required</div>
-        </div>
-  
-        <div class="editTaskPrioContainer">
-          <div>Priority</div>
-          <div class="prioBtnContainer">
-            <div class="prioBtn prioBtnUrgent" onclick="setPrio(this)" data-prio="urgent">
-              <div>Urgent</div>
-              <img class="priourgentsmallWhite" src="../assets/icons/priourgentsmallWhite.svg">
-              <img class="priourgentsmall" src="../assets/icons/priourgentsmall.svg">
-            </div>
-            <div class="prioBtn prioBtnMedium prioBtnMediumActive" onclick="setPrio(this)" data-prio="medium">
-              <div>Medium</div>
-              <img class="priomediumsmallWhite" src="../assets/icons/priomediumsmallWhite.svg">
-              <img class="priomediumsmall" src="../assets/icons/priomediumsmall.svg">
-            </div>
-            <div class="prioBtn prioBtnLow" onclick="setPrio(this)" data-prio="low">
-              <div>Low</div>
-              <img class="priolowsmallWhite" src="../assets/icons/priolowsmallWhite.svg">
-              <img class="priolowsmall" src="../assets/icons/priolowsmall.svg">
-            </div>
-          </div>
-        </div>
-  
-        <div class="singleInputContainer">
-          <div>Assigned to</div>
-          <div id="assignDropdown" class="assignContainer">
-            <input id="assignSearch" type="search" class="contactsAssignStandard"
-              value="Select contacts to assign" onclick="toggleDropdown()" readonly>
-            <div id="contactsToAssign" class="contactsToAssign"></div>
-          </div>
-          <div id="contactsAssigned" class="contactsAssigned"></div>
-        </div>
+        <div class="modalToDoContent">
     
-        <div class="singleInputContainer">
-          <div>Subtasks</div>
-          <input type="text" placeholder="Add new subtask">
+            <div class="editTaskCloseContainer">
+                <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/closeGrey.svg" alt="">
+            </div>
+    
+            <form onsubmit="return saveEditedTask(event, '${taskId}')" class="editTaskForm">
+                <div class="editTaskScrollbarWrapper">
+        
+                    <div class="singleInputContainer">
+                        <div class="redStarAfter">Title</div>
+                        <input id="editTaskTitle" type="text" placeholder="Enter a title" required maxlength="40">
+                        <div class="formValidationText" style="display: none;">This field is required</div>
+                    </div>
+            
+                    <div class="singleInputContainer">
+                        <div>Description</div>
+                        <textarea id="editTaskDescription" placeholder="Enter a Description" maxlength="200"></textarea>
+                    </div>
+            
+                    <div class="singleInputContainer" onclick="">
+                        <div class="redStarAfter">Due date</div>
+                        <input id="editDateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
+                        <div class="formValidationText" style="display: none;">This field is required</div>
+                    </div>
+            
+                    <div class="editTaskPrioContainer">
+                        <div>Priority</div>
+                    <div class="prioBtnContainer">
+                        <div class="prioBtn prioBtnUrgent" onclick="setPrio(this)" data-prio="urgent">
+                        <div>Urgent</div>
+                            <img class="priourgentsmallWhite" src="../assets/icons/priourgentsmallWhite.svg">
+                            <img class="priourgentsmall" src="../assets/icons/priourgentsmall.svg">
+                        </div>
+                        <div class="prioBtn prioBtnMedium prioBtnMediumActive" onclick="setPrio(this)" data-prio="medium">
+                        <div>Medium</div>
+                            <img class="priomediumsmallWhite" src="../assets/icons/priomediumsmallWhite.svg">
+                            <img class="priomediumsmall" src="../assets/icons/priomediumsmall.svg">
+                        </div>
+                        <div class="prioBtn prioBtnLow" onclick="setPrio(this)" data-prio="low">
+                        <div>Low</div>
+                            <img class="priolowsmallWhite" src="../assets/icons/priolowsmallWhite.svg">
+                            <img class="priolowsmall" src="../assets/icons/priolowsmall.svg">
+                        </div>
+                    </div>
+                    </div>
+            
+                    <div class="singleInputContainer">
+                    <div>Assigned to</div>
+                    <div id="assignDropdown" class="assignContainer">
+                        <input id="assignSearch" type="search" class="contactsAssignStandard"
+                        value="Select contacts to assign" onclick="toggleDropdown()" readonly>
+                        <div id="contactsToAssign" class="contactsToAssign"></div>
+                    </div>
+                        <div id="contactsAssigned" class="contactsAssigned"></div>
+                    </div>
+                
+                    <div class="singleInputContainer">
+                        <div>Subtasks</div>
+                        <input type="text" placeholder="Add new subtask">
+                    </div>
+        
+                </div>
+        
+                <div class="editBottomContainer">
+                    <button type="submit" class="saveTaskEditBtn" onclick="return formValidation()">
+                        <div>Ok</div>
+                        <img src="../assets/icons/check.svg">
+                    </button>
+                </div>
+        
+            </form>
         </div>
-  
-      </div>
-  
-  
-      <div class="editBottomContainer">
-        <div class="saveTaskEditBtn" onclick="">
-          <div>Ok</div>
-          <img src="../assets/icons/check.svg">
-        </div>
-      </div>
-  
-    </form>
-  </div>
-  
     `;
-  }
+}
+

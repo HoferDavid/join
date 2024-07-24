@@ -1,33 +1,27 @@
 async function pushNewTask(event) {
   event.preventDefault();
-  await postData("tasks", {
-    "title": getId('taskTitle'),
-    "description": getId('taskDescription'),
-    "date": getId('dateInput'),
-    "prio": currentPrio,
-    "status": taskStatus,
-
-    "assignedTo": [
-      "dummy"
-    ],
-    "category": "Technical Task",
-    "subtasks": [
-      {
-        "status": "unchecked",
-        "text": "Identify root cause"
-      },
-      {
-        "status": "unchecked",
-        "text": "Implement fix"
-      },
-      {
-        "status": "unchecked",
-        "text": "Test on multiple devices"
-      }
-    ],
-  });
+  await postData("tasks", createNewtask());
   closeAddTaskModal();
   setActiveTabToBoard();
+}
+
+
+function createNewtask() {
+  return {
+    title: getId('taskTitle'),
+    description: getId('taskDescription'),
+    date: getId('dateInput'),
+    prio: currentPrio,
+    status: taskStatus,
+
+    assignedTo: ["dummy"],
+    category: "Technical Task",
+    subtasks: [
+      { status: "unchecked", text: "Identify root cause" },
+      { status: "unchecked", text: "Implement fix" },
+      { status: "unchecked", text: "Test on multiple devices" }
+    ]
+  };
 }
 
 
@@ -159,11 +153,13 @@ function setActiveTabToAddTask() {
   changeActive(activeTab);
 }
 
+
 function toggleDropdown() {
   document.getElementById('assignDropdown').classList.toggle('open');
   document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? activateAssignSearch() : deactivateAssignSearch();
   toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
 }
+
 
 function activateAssignSearch() {
 

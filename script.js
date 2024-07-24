@@ -87,14 +87,27 @@ async function postData(path = "", data = {}) {
   try {
     let response = await fetch(BASE_URL + path + ".json", {
       method: "POST",
-      header: {
-        "Content-Type": " application/json",
-      },
+      header: { "Content-Type": " application/json" },
       body: JSON.stringify(data),
     });
     return await response.json();
   } catch (error) {
     console.error("dh Error posting data:", error);
+  }
+}
+
+
+// Maybe combine the following 2 Functions and delete 1 of them
+async function putData(path = "", data = {}) {
+  try {
+    let response = await fetch(BASE_URL + path + ".json", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error posting data:", error);
   }
 }
 
@@ -125,6 +138,7 @@ async function deleteTask(id) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const guestLoginButton = document.getElementById('guestLogin');
