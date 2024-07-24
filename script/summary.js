@@ -167,7 +167,7 @@ function greetingSummaryMobile() {
           summaryMain.style.transition = 'opacity 0.9s ease';
         }, 900);
       }, 2000);
-    }, 2000);
+    })
   } else {
     console.log('Mobile view not detected');
   }
@@ -186,11 +186,11 @@ function greeting() {
   let now = new Date();
   let hours = now.getHours();
   if (hours < 12) {
-    return "Good Morning";
+    return "Good Morning,";
   } else if (hours < 18) {
-    return "Good Afternoon";
+    return "Good Afternoon,";
   } else {
-    return "Good Evening";
+    return "Good Evening,";
   }
 }
 
