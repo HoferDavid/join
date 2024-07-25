@@ -1,3 +1,5 @@
+let assignedContacts = [];
+
 async function pushNewTask(event) {
   event.preventDefault();
   await postData("tasks", createNewtask());
@@ -177,7 +179,7 @@ function saveSubtask() {
   let subtaskList = document.getElementById('subtaskList');
   let inputText = document.getElementById('subtaskInput').value.trim();
   if (inputText === '') {
-      return;
+    return;
   }
   let subtaskItem = document.createElement('div');
   subtaskItem.classList.add('addedTaskContainer');
@@ -196,9 +198,9 @@ function editSubtask(editIcon) {
   subtaskText.classList.add('dNone');
   editInput.classList.remove('dNone');
   editInput.focus();
-  editInput.addEventListener('blur', function() { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
-  editInput.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') { saveEditedSubtask(subtaskItem, subtaskText, editInput); }
+  editInput.addEventListener('blur', function () { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
+  editInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') { saveEditedSubtask(subtaskItem, subtaskText, editInput); }
   });
 }
 
@@ -225,6 +227,24 @@ function getSubtasks() {
   return subtasks;
 }
 
+function contactAssign(id, event) {
+  event.stopPropagation();
+  let contactLabel = document.getElementById(`contact${id}`).parentElement;
+  contactLabel.classList.toggle('contactsToAssignCheck');
+  if (contactLabel.classList.contains('contactsToAssignCheck')) {
+    assignedContacts.push(contacts[contacts.findIndex(c => c.id == id)]);
+    renderAssignedContacts();
+  } else {
+    assignedContacts.splice(assignedContacts.findIndex(c => c.id == id), 1);
+    renderAssignedContacts();
+  }
+}
+
+function renderAssignedContacts() {
+  let assignedContactsContainer = document.getElementById('contactsAssigned');
+  assignedContactsContainer.innerHTML = '';
+  assignedContacts.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);
+}
 
 function activateAssignSearch() {
 

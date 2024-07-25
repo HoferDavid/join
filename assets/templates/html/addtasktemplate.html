@@ -22,9 +22,9 @@
                 <div id="assignDropdown" class="assignContainer">
                     <input id="assignSearch" type="search" class="contactsAssignStandard"
                         value="Select contacts to assign" onclick="toggleDropdown()" readonly>
+                    <div id="contactsAssigned" class="contactsAssigned"></div>
                     <div id="contactsToAssign" class="contactsToAssign"></div>
                 </div>
-                <div id="contactsAssigned" class="contactsAssigned"></div>
             </div>
         </div>
 
@@ -68,7 +68,8 @@
             <div class="singleInputContainer">
                 <div>Subtasks</div>
                 <div class="subtasksInputContainer" onclick="addNewSubtask()">
-                    <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="30">
+                    <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask"
+                        maxlength="30">
                     <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
                     <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
                         <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">
