@@ -474,7 +474,7 @@ input:focus {
 
 .subtasksInputContainer {
   position: relative;
-  width: 396px;
+  max-width: 440px;
   height: 38px;
 }
 
@@ -499,6 +499,20 @@ input:focus {
 
 .addedTaskIconContainer .icon {
   cursor: pointer;
+}
+
+.subtaskItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+  height: 48px;
+  /* display: list-item; */
+}
+
+.subtaskItem:hover {
+  background-color: rgb(245, 245, 245);
+  border-radius: 12px;
 }
 
 

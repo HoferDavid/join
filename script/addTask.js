@@ -218,6 +218,16 @@ function deleteSubtask(deleteIcon) {
 }
 
 
+
+
+function deleteSubtaskEdit(deleteIcon) {
+  let subtaskItem = deleteIcon.closest('.subtaskItem');
+  subtaskItem.remove();
+}
+
+
+
+
 function getSubtasks() {
   const subtaskItems = document.querySelectorAll('.addedTaskContainer .subtaskItemText');
   let subtasks = [];

@@ -220,6 +220,24 @@ function generateOpenOverlayHTML(element) {
 
 
 function generateTaskEditHTML(taskId) {
+    let task = tasks.find(task => task.id === taskId);
+    let subtaskHTML = '';
+    
+    if (task.subtasks && task.subtasks.length > 0) {
+        task.subtasks.forEach((subtask, index) => {
+            subtaskHTML += /*html*/ `
+                <li class="subtaskItem" id="subtask-${index}">
+                    <span>${subtask.text}</span>
+                    <div class="addedTaskIconContainer">
+                        <img class="icon" src="../assets/icons/pencilDarkBlue.svg" onclick="editSubtask(this)">
+                        <div class="subtaskInputSeperator"></div>
+                        <img class="icon" src="../assets/icons/delete.svg" onclick="deleteSubtaskEdit(this)">
+                    </div>
+                </li>
+            `;
+        });
+    }
+
     return /*html*/ `
         <div class="modalToDoContent">
     
@@ -278,11 +296,22 @@ function generateTaskEditHTML(taskId) {
                         <div id="contactsAssigned" class="contactsAssigned"></div>
                     </div>
                 
+
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
-                        <input type="text" placeholder="Add new subtask">
+                        <div class="subtasksInputContainer" onclick="addNewSubtask()">
+                            <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="30">
+                            <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
+                            <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
+                                <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">
+                                <div class="subtaskInputSeperator"></div>
+                                <img onclick="saveSubtask()" class="icon" src="../assets/icons/checkBlackBig.svg">
+                            </div>
+                        </div>
+                        <div id="editSubtaskList">${subtaskHTML}</div>
                     </div>
-        
+
+
                 </div>
         
                 <div class="editBottomContainer">
@@ -296,4 +325,5 @@ function generateTaskEditHTML(taskId) {
         </div>
     `;
 }
+
 
