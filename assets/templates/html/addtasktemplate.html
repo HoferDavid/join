@@ -58,16 +58,27 @@
                 </div>
             </div>
 
-
             <div class="singleInputContainer">
                 <div class="redStarAfter">Category</div>
                 <input id="categoryInput" type="text" required>
                 <div class="formValidationText" style="display: none;">This field is required</div>
             </div>
+
+
             <div class="singleInputContainer">
                 <div>Subtasks</div>
-                <input type="text" placeholder="Add new subtask">
+                <div class="subtasksInputContainer" onclick="addNewSubtask()">
+                    <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="30">
+                    <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
+                    <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
+                        <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">
+                        <div class="subtaskInputSeperator"></div>
+                        <img onclick="saveSubtask()" class="icon" src="../assets/icons/checkBlackBig.svg">
+                    </div>
+                </div>
+                <div id="subtaskList" class="subtaskList"></div>
             </div>
+
 
         </div>
 

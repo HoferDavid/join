@@ -78,18 +78,14 @@ function toggleVisibility(id) {
 
 function dragDrop() {
   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
-    todoContainer.addEventListener("dragstart", (e) => {
-      e.target.classList.add("tilted");
+    todoContainer.addEventListener("dragstart", (e) => { e.target.classList.add("tilted");
       startDragging(e.target.id);
     });
-    todoContainer.addEventListener("dragend", (e) => {
-      e.target.classList.remove("tilted");
+    todoContainer.addEventListener("dragend", (e) => { e.target.classList.remove("tilted");
     });
   });
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.addEventListener("dragover", allowDrop);
-    zone.addEventListener("drop", (e) => {
-      e.preventDefault();
+  document.querySelectorAll(".dropzone").forEach((zone) => { zone.addEventListener("dragover", allowDrop);
+    zone.addEventListener("drop", (e) => { e.preventDefault();
       moveTo(zone.id);
     });
   });
@@ -100,7 +96,6 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
   let taskForSection = tasks.filter((task) => task.status === status);
   let categoryElement = document.getElementById(categoryId);
   categoryElement.innerHTML = "";
-
   if (taskForSection.length > 0) {
     taskForSection.forEach((element) => {
       categoryElement.innerHTML += generateTodoHTML(element);
@@ -117,11 +112,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
-  updateTaskCategories(
-    "awaitFeedback",
-    "awaitFeedback",
-    "No tasks await feedback"
-  );
+  updateTaskCategories("awaitFeedback", "awaitFeedback", "No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");
 }
 
@@ -157,9 +148,7 @@ function searchTasks(inputValue) {
     if (titleElement || descriptionElement) {
       const title = titleElement.textContent.trim().toLowerCase();
       const description = descriptionElement.textContent.trim().toLowerCase();
-      const isVisible =
-        title.includes(currentSearchInput) ||
-        description.includes(currentSearchInput);
+      const isVisible = title.includes(currentSearchInput) || description.includes(currentSearchInput);
       taskCard.style.display = isVisible ? "block" : "none";
     }
   });
@@ -239,14 +228,10 @@ async function updateSubtaskStatus(taskId, subtaskIndex) {
     let subtask = task.subtasks[subtaskIndex];
     if (subtask) {
       subtask.status = subtask.status === "checked" ? "unchecked" : "checked";
-      let subtaskCheckbox = document.getElementById(
-        `subtaskCheckbox${subtaskIndex}`
-      );
+      let subtaskCheckbox = document.getElementById(`subtaskCheckbox${subtaskIndex}`);
       if (subtaskCheckbox) {
         subtaskCheckbox.src =
-          subtask.status === "checked"
-            ? "../assets/icons/checkboxchecked.svg"
-            : "../assets/icons/checkbox.svg";
+          subtask.status === "checked" ? "../assets/icons/checkboxchecked.svg" : "../assets/icons/checkbox.svg";
       }
       updateSubtasksProgressBar(task.subtasks, taskId);
       await updateTaskInFirebase(taskId, task);
@@ -301,6 +286,8 @@ function createEditedTask() {
     date: getId('editDateInput'),
     prio: currentPrio,
     status: currentTaskStatus,
+
+    
     assignedTo: ["dummy"],
     category: "Technical Task",
     subtasks: [

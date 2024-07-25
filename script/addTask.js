@@ -13,14 +13,10 @@ function createNewtask() {
     date: getId('dateInput'),
     prio: currentPrio,
     status: taskStatus,
+    subtasks: getSubtasks(),
 
     assignedTo: ["dummy"],
     category: "Technical Task",
-    subtasks: [
-      { status: "unchecked", text: "Identify root cause" },
-      { status: "unchecked", text: "Implement fix" },
-      { status: "unchecked", text: "Test on multiple devices" }
-    ]
   };
 }
 
@@ -109,22 +105,18 @@ function formValidationListener(input, validationText) {
 
 function showTaskAddedAnimation() {
   if (window.location.href.endsWith('addtask.html')) {
-    const taskAddedBtn = document.getElementById('taskAddedBtn');
-    taskAddedBtn.classList.remove('dNone');
-    taskAddedBtn.classList.add('show');
+    toggleClass('taskAddedBtn', 'dNone', 'show');
     setTimeout(() => {
-      taskAddedBtn.classList.add('fade-out');
       return window.location.href = "../html/board.html";
     }, 2000);
   } else {
-    showTaskAddedAnimationModal(taskAddedBtn);
+    showTaskAddedAnimationModal();
   }
 }
 
 
-function showTaskAddedAnimationModal(taskAddedBtn) {
-  taskAddedBtn.classList.remove('dNone');
-  taskAddedBtn.classList.add('show');
+function showTaskAddedAnimationModal() {
+  toggleClass('taskAddedBtn', 'dNone', 'show');
   setTimeout(() => {
     closeModal();
   }, 1000);
@@ -168,6 +160,70 @@ async function toggleDropdown() {
   }
 }
 
+
+function addNewSubtask() {
+  toggleClass('subtaskIconContainer', 'dNone', 'showClass');
+  toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
+  document.getElementById('subtaskInput').focus();
+}
+
+
+function clearSubtaskInput() {
+  document.getElementById('subtaskInput').value = '';
+}
+
+
+function saveSubtask() {
+  let subtaskList = document.getElementById('subtaskList');
+  let inputText = document.getElementById('subtaskInput').value.trim();
+  if (inputText === '') {
+      return;
+  }
+  let subtaskItem = document.createElement('div');
+  subtaskItem.classList.add('addedTaskContainer');
+  subtaskItem.innerHTML = generateSaveSubtaskHTML(inputText);
+  subtaskList.appendChild(subtaskItem);
+  document.getElementById('subtaskInput').value = '';
+  toggleClass('subtaskIconContainer', 'dNone', 'showClass');
+  toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
+}
+
+
+function editSubtask(editIcon) {
+  let subtaskItem = editIcon.closest('.addedTaskContainer');
+  let subtaskText = subtaskItem.querySelector('.subtaskItemText');
+  let editInput = subtaskItem.querySelector('.editSubtaskInput');
+  subtaskText.classList.add('dNone');
+  editInput.classList.remove('dNone');
+  editInput.focus();
+  editInput.addEventListener('blur', function() { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
+  editInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') { saveEditedSubtask(subtaskItem, subtaskText, editInput); }
+  });
+}
+
+
+function saveEditedSubtask(subtaskItem, subtaskText, editInput) {
+  subtaskText.textContent = editInput.value.trim();
+  subtaskText.classList.remove('dNone');
+  editInput.classList.add('dNone');
+}
+
+
+function deleteSubtask(deleteIcon) {
+  let subtaskItem = deleteIcon.closest('.addedTaskContainer');
+  subtaskItem.remove();
+}
+
+
+function getSubtasks() {
+  const subtaskItems = document.querySelectorAll('.addedTaskContainer .subtaskItemText');
+  let subtasks = [];
+  subtaskItems.forEach(item => {
+    subtasks.push({ status: "unchecked", text: item.innerHTML });
+  });
+  return subtasks;
+}
 
 
 function activateAssignSearch() {
