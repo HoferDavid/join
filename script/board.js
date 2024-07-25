@@ -257,6 +257,7 @@ function updateSubtasksProgressBar(subtasks, taskId) {
 function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
   modalContainer.innerHTML = generateTaskEditHTML(taskId);
+
   let task = tasks.find((task) => task.id === taskId);
   currentTaskStatus = task.status;
 
@@ -267,9 +268,11 @@ function enableTaskEdit(taskId) {
 }
 
 
+
+
 async function saveEditedTask(event, taskId) {
   event.preventDefault();
-  await putData(`tasks/${taskId}`, createEditedTask());
+  await putData(`tasks/${taskId}`, createEditedTask(taskId));
   tasks = [];
   await pushDataToArray();
   openOverlay(taskId);
@@ -279,25 +282,42 @@ async function saveEditedTask(event, taskId) {
 }
 
 
-function createEditedTask() {
-  return {
-    title: getId('editTaskTitle'),
-    description: getId('editTaskDescription'),
-    date: getId('editDateInput'),
-    prio: currentPrio,
-    status: currentTaskStatus,
 
-    
-    assignedTo: ["dummy"],
-    category: "Technical Task",
-    subtasks: [
-      { status: "unchecked", text: "Identify root cause" },
-      { status: "unchecked", text: "Implement fix" },
-      { status: "unchecked", text: "Test on multiple devices" }
-    ]
+function createEditedTask(taskId) {
+  let originalTask = tasks.find(task => task.id === taskId);
+  
+  if (!originalTask) {
+      console.error('Task with ID ' + taskId + ' not found.');
+      return;
+  }
+
+  let subtasks = [];
+
+  document.querySelectorAll('#editSubtaskList .subtaskItem').forEach((subtaskItem, index) => {
+      const subtaskText = subtaskItem.querySelector('span').innerText;
+      let status = 'unchecked';
+
+      if (originalTask.subtasks && originalTask.subtasks[index]) {
+          status = originalTask.subtasks[index].status ? originalTask.subtasks[index].status : 'unchecked';
+      }
+
+      subtasks.push({
+          text: subtaskText,
+          status: status
+      });
+  });
+
+  return {
+      title: document.getElementById('editTaskTitle').value,
+      description: document.getElementById('editTaskDescription').value,
+      date: document.getElementById('editDateInput').value,
+      prio: currentPrio,
+      status: currentTaskStatus,
+      subtasks: subtasks,
+      assignedTo: originalTask.assignedTo,
+      category: originalTask.category,
   };
 }
-
 
 
 
