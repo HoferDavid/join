@@ -3,7 +3,7 @@
     <img class="addTaskModalClose" onclick="closeModal()" src="../assets/icons/closeGrey.svg">
 </section>
 
-<section class="addTaskSection">
+<section class="addTaskSection" onclick="checkOutsideAssign(event)">
 
     <form onsubmit="return pushNewTask(event)" class="addTaskForm">
 
@@ -21,7 +21,11 @@
                 <div>Assigned to</div>
                 <div id="assignDropdown" class="assignContainer">
                     <input id="assignSearch" type="search" class="contactsAssignStandard"
-                        value="Select contacts to assign" onclick="toggleDropdown()" readonly>
+                        value="Select contacts to assign" onclick="toggleDropdown()" oninput="assignSearchInput()"
+                        placeholder="Search contacts" readonly>
+                    <div class="imgContainer" onclick="toggleDropdown()">
+                        <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
+                    </div>
                     <div id="contactsAssigned" class="contactsAssigned"></div>
                     <div id="contactsToAssign" class="contactsToAssign"></div>
                 </div>
@@ -61,6 +65,13 @@
             <div class="singleInputContainer">
                 <div class="redStarAfter">Category</div>
                 <input id="categoryInput" type="text" required>
+                <div class="select-wrapper">
+                    <select name="category" id="category" required>
+                        <option disabled selected hidden value="">Select task category</option>
+                        <option value="Technical Task">Technical Task</option>
+                        <option value="User Story">User Story</option>
+                    </select>
+                </div>
                 <div class="formValidationText" style="display: none;">This field is required</div>
             </div>
 

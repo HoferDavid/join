@@ -302,14 +302,30 @@ input:focus {
   width: 100%;
 }
 
-.contactsAssignStandard {
-  background: white url('../assets/icons/arrowdropdown.svg') no-repeat right 10px top 50%;
-  background-size: 10px 10px;
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 38px;
+  width: 38px;
+  cursor: pointer;
+  z-index: 6;
 }
 
+.imgContainer>img {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  transform-origin: center;
+}
+
+
 .contactsAssignOpen {
-  background: white url('../assets/icons/arrow_drop_down.svg') no-repeat right 10px top 50%;
-  background-size: 10px 10px;
   z-index: 5;
   position: fixed;
   top: 0;
@@ -515,6 +531,62 @@ input:focus {
   border-radius: 12px;
 }
 
+/* Container für das Select-Element */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+select#category {
+  appearance: none;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 10px 20px;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Das benutzerdefinierte Pfeilsymbol */
+.select-wrapper::after {
+  content: '';
+  background: url('../assets/icons/arrowdropdown.svg') no-repeat center center;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Drehung des Pfeilsymbols beim Fokus */
+.select-wrapper select#category:focus+.select-wrapper::after,
+.select-wrapper select#category:focus-within+.select-wrapper::after {
+  background: url('../assets/icons/arrow_drop_down.svg') no-repeat center center;
+}
+
+select#category:focus {
+  border: 1px solid #29abe2;
+}
+
+select#category option {
+  padding: 4px 8px;
+}
+
+select#category option:hover {
+  background-color: #29abe2;
+  color: white;
+}
+
+select#category::placeholder {
+  color: #d1d1d1;
+  font-family: "Inter";
+}
 
 
 @media (max-width: 374px) {

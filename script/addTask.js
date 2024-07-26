@@ -148,19 +148,6 @@ function setActiveTabToAddTask() {
 }
 
 
-async function toggleDropdown() {
-  document.getElementById('assignDropdown').classList.toggle('open');
-  document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? activateAssignSearch() : deactivateAssignSearch();
-  let contactsContainer = document.getElementById('contactsToAssign');
-  toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
-  if (document.getElementById('assignSearch').classList.contains('contactsAssignOpen')) {
-    let contactSorted = contacts.length == 0 ? await getContactsData().then(c => [...c]) : [...contacts];
-    contactSorted.sort((a, b) => a.name.localeCompare(b.name));
-    contactSorted.forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
-  } else if (document.getElementById('assignSearch').classList.contains('contactsAssignStandard')) {
-    contactsContainer.innerHTML = '';
-  }
-}
 
 
 function addNewSubtask() {
@@ -218,14 +205,10 @@ function deleteSubtask(deleteIcon) {
 }
 
 
-
-
 function deleteSubtaskEdit(deleteIcon) {
   let subtaskItem = deleteIcon.closest('.subtaskItem');
   subtaskItem.remove();
 }
-
-
 
 
 function getSubtasks() {
@@ -250,16 +233,60 @@ function contactAssign(id, event) {
   }
 }
 
+
+async function toggleDropdown() {
+  document.getElementById('assignDropdown').classList.toggle('open');
+  document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? await openAssignDropdown() : closeAssignDropdown();
+  toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
+}
+
+
+function checkOutsideAssign(event) {
+  let assignMenu = document.getElementById('assignDropdown');
+  if (assignMenu.classList.contains('open') && !assignMenu.contains(event.target)) {
+    toggleDropdown();
+  };
+}
+
+
 function renderAssignedContacts() {
   let assignedContactsContainer = document.getElementById('contactsAssigned');
   assignedContactsContainer.innerHTML = '';
   assignedContacts.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);
 }
 
-function activateAssignSearch() {
 
+async function openAssignDropdown() {
+  let searchInput = document.getElementById('assignSearch');
+  let contactsContainer = document.getElementById('contactsToAssign');
+  let contactSorted = contacts.length == 0 ? await getContactsData().then(c => [...c]) : [...contacts];
+  contactSorted.sort((a, b) => a.name.localeCompare(b.name));
+  contactSorted.forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
+  document.getElementById('assignDropArrow').style.transform = 'rotate(180deg)';
+  searchInput.value = '';
+  searchInput.removeAttribute('readonly');
+  searchInput.removeAttribute('onclick');
+  document.addEventListener('click', checkOutsideAssign);
 }
 
-function deactivateAssignSearch() {
 
+function closeAssignDropdown() {
+  let searchInput = document.getElementById('assignSearch');
+  let contactsContainer = document.getElementById('contactsToAssign');
+  contactsContainer.innerHTML = '';
+  document.getElementById('assignDropArrow').style.transform = 'rotate(0deg)';
+  searchInput.value = 'Select contacts to assign';
+  searchInput.setAttribute('readonly', true);
+  searchInput.setAttribute('onclick', 'toggleDropdown()');
+  document.removeEventListener('click', checkOutsideAssign);
+};
+
+async function assignSearchInput() {
+  let searchInput = document.getElementById('assignSearch');
+  let contactsContainer = document.getElementById('contactsToAssign');
+  let searchText = searchInput.value.toLowerCase();
+  contactsContainer.innerHTML = '';
+  let contactSorted = contacts.length == 0 ? await getContactsData().then(c => [...c]) : [...contacts];
+  contactSorted.sort((a, b) => a.name.localeCompare(b.name));
+  contactSorted.filter(c => c.name.toLowerCase().includes(searchText)).forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
 }
