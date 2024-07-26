@@ -148,9 +148,14 @@ function setActiveTabToAddTask() {
 
 
 function addNewSubtask() {
-  toggleClass('subtaskIconContainer', 'dNone', 'showClass');
-  toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
-  document.getElementById('subtaskInput').focus();
+  let input = document.getElementById('subtaskInput').value.length;
+  if (input > 0) {
+    document.getElementById('subtaskIconContainer').classList.remove('dNone');
+    document.getElementById('subtaskPlusIcon').classList.add('dNone');
+  } else {
+    document.getElementById('subtaskIconContainer').classList.add('dNone')
+    document.getElementById('subtaskPlusIcon').classList.remove('dNone');
+  }
 }
 
 

@@ -270,7 +270,7 @@
 .addTaskModalContainer .addTaskHeaderSection {
   display: flex;
   justify-content: space-between;
-  margin: 48px 32px 32px 32px;
+  margin: 12px 32px 0px 32px;
 }
 
 .addTaskModalContainer .addTaskSection {
@@ -302,7 +302,7 @@
 .addTaskModalContainer .bottomContainer {
   display: flex;
   position: fixed;
-  padding: 0px 0px 96px 0px;
+  padding: 0px 0px 48px 0px;
   background-color: white;
 }
 
@@ -473,7 +473,7 @@
 
 @media (min-width: 1200px) {
   .addTaskModalContainer .addTaskHeaderSection {
-    margin: 48px 96px 32px 96px;
+    margin: 12px 96px 0px 96px;
   }
 
   .addTaskModalContainer {
