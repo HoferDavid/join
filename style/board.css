@@ -348,6 +348,7 @@ input:focus {
     display: block;
     overflow: unset;
     overflow-y: unset;
+    min-height: 100vh;
   }
 
   .taskCategoryContainer {

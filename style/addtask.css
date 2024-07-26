@@ -517,13 +517,29 @@ input:focus {
   cursor: pointer;
 }
 
+.subtaskList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 4px 16px;
+}
+
 .subtaskItem {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 16px;
+  padding-left: 16px;
   height: 48px;
-  /* display: list-item; */
+}
+
+.subtaskItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .subtaskItem:hover {

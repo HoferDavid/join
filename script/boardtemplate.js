@@ -222,16 +222,17 @@ function generateOpenOverlayHTML(element) {
 function generateTaskEditHTML(taskId) {
     let task = tasks.find(task => task.id === taskId);
     let subtaskHTML = '';
-    
+
     if (task.subtasks && task.subtasks.length > 0) {
         task.subtasks.forEach((subtask, index) => {
             subtaskHTML += /*html*/ `
                 <li class="subtaskItem" id="subtask-${index}">
-                    <span>${subtask.text}</span>
+                    <span class="subtaskItemText">${subtask.text}</span>
+                    <input type="text" class="editSubtaskInput dNone" value="${subtask.text}" max-length="20"/>
                     <div class="addedTaskIconContainer">
                         <img class="icon" src="../assets/icons/pencilDarkBlue.svg" onclick="editSubtask(this)">
                         <div class="subtaskInputSeperator"></div>
-                        <img class="icon" src="../assets/icons/delete.svg" onclick="deleteSubtaskEdit(this)">
+                        <img class="icon" src="../assets/icons/delete.svg" onclick="deleteSubtask(this)">
                     </div>
                 </li>
             `;
@@ -240,31 +241,31 @@ function generateTaskEditHTML(taskId) {
 
     return /*html*/ `
         <div class="modalToDoContent">
-    
+
             <div class="editTaskCloseContainer">
                 <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/closeGrey.svg" alt="">
             </div>
-    
+
             <form onsubmit="return saveEditedTask(event, '${taskId}')" class="editTaskForm">
                 <div class="editTaskScrollbarWrapper">
-        
+
                     <div class="singleInputContainer">
                         <div class="redStarAfter">Title</div>
                         <input id="editTaskTitle" type="text" placeholder="Enter a title" required maxlength="40">
                         <div class="formValidationText" style="display: none;">This field is required</div>
                     </div>
-            
+
                     <div class="singleInputContainer">
                         <div>Description</div>
                         <textarea id="editTaskDescription" placeholder="Enter a Description" maxlength="200"></textarea>
                     </div>
-            
+
                     <div class="singleInputContainer" onclick="">
                         <div class="redStarAfter">Due date</div>
                         <input id="editDateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
                         <div class="formValidationText" style="display: none;">This field is required</div>
                     </div>
-            
+
                     <div class="editTaskPrioContainer">
                         <div>Priority</div>
                     <div class="prioBtnContainer">
@@ -285,7 +286,7 @@ function generateTaskEditHTML(taskId) {
                         </div>
                     </div>
                     </div>
-            
+
                     <div class="singleInputContainer">
                     <div>Assigned to</div>
                     <div id="assignDropdown" class="assignContainer">
@@ -295,7 +296,6 @@ function generateTaskEditHTML(taskId) {
                     </div>
                         <div id="contactsAssigned" class="contactsAssigned"></div>
                     </div>
-                
 
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
@@ -308,22 +308,19 @@ function generateTaskEditHTML(taskId) {
                                 <img onclick="saveSubtask()" class="icon" src="../assets/icons/checkBlackBig.svg">
                             </div>
                         </div>
-                        <div id="editSubtaskList">${subtaskHTML}</div>
+                        <div id="subtaskList">${subtaskHTML}</div>
                     </div>
 
-
                 </div>
-        
+
                 <div class="editBottomContainer">
                     <button type="submit" class="saveTaskEditBtn" onclick="return formValidation()">
                         <div>Ok</div>
                         <img src="../assets/icons/check.svg">
                     </button>
                 </div>
-        
+
             </form>
         </div>
     `;
 }
-
-

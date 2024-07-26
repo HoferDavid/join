@@ -1,5 +1,6 @@
 let assignedContacts = [];
 
+
 async function pushNewTask(event) {
   event.preventDefault();
   await postData("tasks", createNewtask());
@@ -35,9 +36,7 @@ function updatePrioActiveBtn(prio) {
   buttons.forEach(button => {
     button.classList.remove('prioBtnUrgentActive', 'prioBtnMediumActive', 'prioBtnLowActive');
     const imgs = button.querySelectorAll('img');
-    imgs.forEach(img => {
-      img.classList.add('hidden');
-    });
+    imgs.forEach(img => { img.classList.add('hidden'); });
   });
   changeActiveBtn(prio);
 }
@@ -148,8 +147,6 @@ function setActiveTabToAddTask() {
 }
 
 
-
-
 function addNewSubtask() {
   toggleClass('subtaskIconContainer', 'dNone', 'showClass');
   toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
@@ -165,13 +162,12 @@ function clearSubtaskInput() {
 function saveSubtask() {
   let subtaskList = document.getElementById('subtaskList');
   let inputText = document.getElementById('subtaskInput').value.trim();
-  if (inputText === '') {
-    return;
-  }
+  if (inputText === '') { return; }
+  let index = subtaskList.children.length;
+  let subtaskHTML = generateSaveSubtaskHTML(inputText, index);
   let subtaskItem = document.createElement('div');
-  subtaskItem.classList.add('addedTaskContainer');
-  subtaskItem.innerHTML = generateSaveSubtaskHTML(inputText);
-  subtaskList.appendChild(subtaskItem);
+  subtaskItem.innerHTML = subtaskHTML;
+  subtaskList.appendChild(subtaskItem.firstElementChild);
   document.getElementById('subtaskInput').value = '';
   toggleClass('subtaskIconContainer', 'dNone', 'showClass');
   toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
@@ -179,16 +175,12 @@ function saveSubtask() {
 
 
 function editSubtask(editIcon) {
-  let subtaskItem = editIcon.closest('.addedTaskContainer');
+  let subtaskItem = editIcon.closest('.subtaskItem');
   let subtaskText = subtaskItem.querySelector('.subtaskItemText');
   let editInput = subtaskItem.querySelector('.editSubtaskInput');
   subtaskText.classList.add('dNone');
   editInput.classList.remove('dNone');
-  editInput.focus();
   editInput.addEventListener('blur', function () { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
-  editInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') { saveEditedSubtask(subtaskItem, subtaskText, editInput); }
-  });
 }
 
 
@@ -200,12 +192,6 @@ function saveEditedSubtask(subtaskItem, subtaskText, editInput) {
 
 
 function deleteSubtask(deleteIcon) {
-  let subtaskItem = deleteIcon.closest('.addedTaskContainer');
-  subtaskItem.remove();
-}
-
-
-function deleteSubtaskEdit(deleteIcon) {
   let subtaskItem = deleteIcon.closest('.subtaskItem');
   subtaskItem.remove();
 }
@@ -214,11 +200,10 @@ function deleteSubtaskEdit(deleteIcon) {
 function getSubtasks() {
   const subtaskItems = document.querySelectorAll('.addedTaskContainer .subtaskItemText');
   let subtasks = [];
-  subtaskItems.forEach(item => {
-    subtasks.push({ status: "unchecked", text: item.innerHTML });
-  });
+  subtaskItems.forEach(item => { subtasks.push({ status: "unchecked", text: item.innerText }); });
   return subtasks;
 }
+
 
 function contactAssign(id, event) {
   event.stopPropagation();
@@ -280,6 +265,7 @@ function closeAssignDropdown() {
   searchInput.setAttribute('onclick', 'toggleDropdown()');
   document.removeEventListener('click', checkOutsideAssign);
 };
+
 
 async function assignSearchInput() {
   let searchInput = document.getElementById('assignSearch');
