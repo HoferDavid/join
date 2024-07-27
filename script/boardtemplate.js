@@ -220,7 +220,7 @@ function generateTaskEditHTML(taskId) {
             subtaskHTML += /*html*/ `
                 <li class="subtaskItem" id="subtask-${index}">
                     <span class="subtaskItemText">${subtask.text}</span>
-                    <input type="text" class="editSubtaskInput dNone" value="${subtask.text}" max-length="20"/>
+                    <input type="text" class="editSubtaskInput dNone" value="${subtask.text}" maxlength="80"/>
                     <div class="addedTaskIconContainer">
                         <img class="icon" src="../assets/icons/pencilDarkBlue.svg" onclick="editSubtask(this)">
                         <div class="subtaskInputSeperator"></div>
@@ -243,13 +243,13 @@ function generateTaskEditHTML(taskId) {
 
                     <div class="singleInputContainer">
                         <div class="redStarAfter">Title</div>
-                        <input id="editTaskTitle" type="text" placeholder="Enter a title" required maxlength="40">
+                        <input id="editTaskTitle" type="text" placeholder="Enter a title" required maxlength="80">
                         <div class="formValidationText" style="display: none;">This field is required</div>
                     </div>
 
                     <div class="singleInputContainer">
                         <div>Description</div>
-                        <textarea id="editTaskDescription" placeholder="Enter a Description" maxlength="200"></textarea>
+                        <textarea id="editTaskDescription" placeholder="Enter a Description" maxlength="240"></textarea>
                     </div>
 
                     <div class="singleInputContainer" onclick="">
@@ -295,7 +295,7 @@ function generateTaskEditHTML(taskId) {
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
                         <div class="subtasksInputContainer" onkeydown="addNewSubtask()">
-                            <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="30">
+                            <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="80">
                             <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
                             <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
                                 <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">

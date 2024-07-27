@@ -59,6 +59,8 @@ function clearAddTaskForm() {
   document.getElementById('taskDescription').value = '';
   document.getElementById('dateInput').value = '';
   updatePrioActiveBtn('');
+  document.getElementById('subtaskInput').value = '';
+  clearSubtaskList();
 }
 
 
@@ -194,6 +196,11 @@ function saveEditedSubtask(subtaskItem, subtaskText, editInput) {
   subtaskText.textContent = editInput.value.trim();
   subtaskText.classList.remove('dNone');
   editInput.classList.add('dNone');
+}
+
+
+function clearSubtaskList() {
+  document.getElementById('subtaskList').innerHTML = '';
 }
 
 

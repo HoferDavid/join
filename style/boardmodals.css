@@ -228,6 +228,7 @@
   gap: 16px;
   padding: 6px 16px;
   cursor: pointer;
+  word-break: break-all;
 }
 
 .modalSubtasksSingle:hover {
