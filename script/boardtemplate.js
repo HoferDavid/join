@@ -1,12 +1,3 @@
-// Dummy Codes to visualize User Badges
-function getRandomColor(badgeColors) {
-    return badgeColors[Math.floor(Math.random() * badgeColors.length)];
-}
-
-const badgeColors = ['rgb(255, 121, 0)', 'rgb(29, 215, 193)', 'rgb(71, 47, 138)', 'rgb(255, 187, 43)', 'rgb(252, 113, 255)', 'rgb(110, 82, 255)', 'rgb(148, 38, 255)', 'rgb(255, 69, 70)'];
-// Code above only for testing purposes
-
-
 function generateTodoHTML(element) {
     let categoryHTML = generateCategoryHTML(element.category);
     let titleHTML = generateTitleHTML(element.title);
@@ -69,7 +60,7 @@ function generateDescriptionHTML(description) {
 function generateSubtasksHTML(subtasks, id) {
     let subtasksHTML = "";
     if (subtasks && subtasks.length > 0) {
-      subtasksHTML = /*html*/ `
+        subtasksHTML = /*html*/ `
         <div class="toDoSubtasksContainer">
             <div class="subtasksProgressbar">
                 <div id="subtasksProgressbarProgress${id}" class="subtasksProgressbarProgress" style="width: 0%;" role="progressbar"></div>
@@ -83,10 +74,11 @@ function generateSubtasksHTML(subtasks, id) {
 
 function generateAssignedToHTML(assignedTo) {
     let assignedToHTML = '';
+    if (!assignedTo) {
+        return '';
+    }
     for (let i = 0; i < Math.min(assignedTo.length, 4); i++) {
-        const color = getRandomColor(badgeColors);
-        const initials = assignedTo[i].match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
-        assignedToHTML += `<div class="assignedToBadge" style="background-color: ${color};">${initials}</div>`;
+        assignedToHTML += `<div class="assignedToBadge">${assignedTo[i].profilePic}</div>`;
     }
     if (assignedTo.length > 4) {
         assignedToHTML += `<div class="assignedToMoreBadge">...</div>`;
@@ -100,10 +92,10 @@ function generatePrioHTML(prio) {
     if (prio == 'urgent') {
         prioHTML = `<img src="../assets/icons/priourgent.png">`;
     } else if (prio == 'medium') {
-            prioHTML = `<img src="../assets/icons/priomedium.png">`;
-        } else {
-            prioHTML = `<img src="../assets/icons/priolow.png">`;
-        }
+        prioHTML = `<img src="../assets/icons/priomedium.png">`;
+    } else {
+        prioHTML = `<img src="../assets/icons/priolow.png">`;
+    }
     return prioHTML;
 }
 
@@ -116,7 +108,7 @@ async function fetchAddTaskTemplate() {
           ${html}
         </div>
       `;
-  }
+}
 
 
 function generateModalCategoryHTML(category) {
@@ -131,14 +123,13 @@ function generateModalCategoryHTML(category) {
 
 
 function generateModalAssignedToHTML(assignedTo) {
+    if (!assignedTo) return '';
     let modalAssignedToHTML = '';
     for (let i = 0; i < assignedTo.length; i++) {
-        const initials = assignedTo[i].match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
-        const color = getRandomColor(badgeColors);
-        modalAssignedToHTML += /*html*/ `
+        modalAssignedToHTML += /*html*/`
             <div class="modalAssignedToSingle">
-                <div class="modalAssignedToBadge" style="background-color: ${color};">${initials}</div>
-                <div>${assignedTo[i]}</div>
+                ${assignedTo[i].profilePic}
+                ${assignedTo[i].name}
             </div>
         `;
     }
@@ -222,6 +213,7 @@ function generateOpenOverlayHTML(element) {
 function generateTaskEditHTML(taskId) {
     let task = tasks.find(task => task.id === taskId);
     let subtaskHTML = '';
+    assignedContacts = !task.assignedTo ? [] : task.assignedTo.forEach(t => assignedContacts.push(t));
 
     if (task.subtasks && task.subtasks.length > 0) {
         task.subtasks.forEach((subtask, index) => {
@@ -288,14 +280,17 @@ function generateTaskEditHTML(taskId) {
                     </div>
 
                     <div class="singleInputContainer">
-                    <div>Assigned to</div>
-                    <div id="assignDropdown" class="assignContainer">
-                        <input id="assignSearch" type="search" class="contactsAssignStandard"
-                        value="Select contacts to assign" onclick="toggleDropdown()" readonly>
-                        <div id="contactsToAssign" class="contactsToAssign"></div>
-                    </div>
+                        <div>Assigned to</div>
+                        <div id="assignDropdown" class="assignContainer">
+                            <input id="assignSearch" type="search" class="contactsAssignStandard"
+                                value="Select contacts to assign" onclick="toggleDropdown()" oninput="assignSearchInput()"
+                                placeholder="Search contacts" readonly>
+                        <div class="imgContainer" onclick="toggleDropdown()">
+                            <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
+                        </div>
                         <div id="contactsAssigned" class="contactsAssigned"></div>
-                    </div>
+                        <div id="contactsToAssign" class="contactsToAssign"></div>
+                </div>
 
                     <div class="singleInputContainer">
                         <div>Subtasks</div>

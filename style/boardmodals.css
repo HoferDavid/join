@@ -14,6 +14,7 @@
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -189,6 +190,11 @@
   gap: 8px;
 }
 
+.modalAssignedToContainer svg {
+  height: 42px;
+  width: 42px;
+}
+
 .modalAssignedToSingle {
   display: flex;
   align-items: center;
@@ -257,8 +263,7 @@
 
 .modalBottomDeleteContainer:hover,
 .modalBottomEditContainer:hover {
-  filter: invert(54%) sepia(69%) saturate(562%) hue-rotate(155deg)
-    brightness(95%) contrast(87%);
+  filter: invert(54%) sepia(69%) saturate(562%) hue-rotate(155deg) brightness(95%) contrast(87%);
 }
 
 .modalBottomSeparator {
@@ -399,11 +404,9 @@
   }
 }
 
-@media (min-width: 576px) {
-}
+@media (min-width: 576px) {}
 
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 @media (max-width: 991px) {
   .addTaskModalContainer {

@@ -78,14 +78,18 @@ function toggleVisibility(id) {
 
 function dragDrop() {
   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
-    todoContainer.addEventListener("dragstart", (e) => { e.target.classList.add("tilted");
+    todoContainer.addEventListener("dragstart", (e) => {
+      e.target.classList.add("tilted");
       startDragging(e.target.id);
     });
-    todoContainer.addEventListener("dragend", (e) => { e.target.classList.remove("tilted");
+    todoContainer.addEventListener("dragend", (e) => {
+      e.target.classList.remove("tilted");
     });
   });
-  document.querySelectorAll(".dropzone").forEach((zone) => { zone.addEventListener("dragover", allowDrop);
-    zone.addEventListener("drop", (e) => { e.preventDefault();
+  document.querySelectorAll(".dropzone").forEach((zone) => {
+    zone.addEventListener("dragover", allowDrop);
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault();
       moveTo(zone.id);
     });
   });
@@ -263,6 +267,7 @@ function enableTaskEdit(taskId) {
   document.getElementById("editTaskDescription").value = task.description;
   document.getElementById("editDateInput").value = task.date;
   updatePrioActiveBtn(task.prio);
+  renderAssignedContacts();
 }
 
 
@@ -283,12 +288,12 @@ function createEditedTask(taskId) {
   if (!originalTask) { return; }
   let subtasks = [];
   document.querySelectorAll('#subtaskList .subtaskItem').forEach((subtaskItem, index) => {
-      const subtaskText = subtaskItem.querySelector('span').innerText;
-      let status = 'unchecked';
-      if (originalTask.subtasks && originalTask.subtasks[index]) {
-          status = originalTask.subtasks[index].status ? originalTask.subtasks[index].status : 'unchecked';
-      }
-      subtasks.push({ text: subtaskText, status: status });
+    const subtaskText = subtaskItem.querySelector('span').innerText;
+    let status = 'unchecked';
+    if (originalTask.subtasks && originalTask.subtasks[index]) {
+      status = originalTask.subtasks[index].status ? originalTask.subtasks[index].status : 'unchecked';
+    }
+    subtasks.push({ text: subtaskText, status: status });
   });
   return createEditedTaskReturn(subtasks, originalTask);
 }
@@ -302,7 +307,7 @@ function createEditedTaskReturn(subtasks, originalTask) {
     prio: currentPrio,
     status: currentTaskStatus,
     subtasks: subtasks,
-    assignedTo: originalTask.assignedTo,
+    assignedTo: assignedContacts ? assignedContacts : [],
     category: originalTask.category,
   };
 }

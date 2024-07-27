@@ -64,9 +64,9 @@
 
             <div class="singleInputContainer">
                 <div class="redStarAfter">Category</div>
-                <input id="categoryInput" type="text" required>
                 <div class="select-wrapper">
-                    <select name="category" id="category" required>
+                    <select name="category" id="category" onclick="toggleDropdownArrow()" onblur="toggleDropdownArrow()"
+                        required>
                         <option disabled selected hidden value="">Select task category</option>
                         <option value="Technical Task">Technical Task</option>
                         <option value="User Story">User Story</option>

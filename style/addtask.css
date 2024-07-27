@@ -303,23 +303,24 @@ input:focus {
 
 .imgContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   position: absolute;
   top: 0;
   right: 0;
+  padding-right: 20px;
   height: 38px;
-  width: 38px;
+  width: 20%;
   cursor: pointer;
   z-index: 6;
 }
 
 .imgContainer>img {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  right: 16px;
-  top: 12px;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  right: 0;
+  top: 0;
   transform-origin: center;
 }
 
@@ -333,7 +334,7 @@ input:focus {
 
 .contactsToAssign {
   position: absolute;
-  top: 38px;
+  top: 40px;
   left: 0;
   background-color: white;
   z-index: 3;
@@ -344,6 +345,7 @@ input:focus {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  border-radius: 10px;
 }
 
 .contactsToAssign label {
@@ -548,7 +550,6 @@ input:focus {
   border-radius: 12px;
 }
 
-/* Container für das Select-Element */
 .select-wrapper {
   position: relative;
   display: inline-block;
@@ -556,6 +557,7 @@ input:focus {
 }
 
 select#category {
+  height: 38px;
   appearance: none;
   background-color: white;
   border-radius: 10px;
@@ -567,24 +569,22 @@ select#category {
   cursor: pointer;
 }
 
-/* Das benutzerdefinierte Pfeilsymbol */
+
 .select-wrapper::after {
   content: '';
   background: url('../assets/icons/arrowdropdown.svg') no-repeat center center;
+  background-size: 12px 12px;
   position: absolute;
   top: 50%;
-  right: 16px;
+  right: 0;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  width: 48px;
+  height: 100%;
   pointer-events: none;
-  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Drehung des Pfeilsymbols beim Fokus */
-.select-wrapper select#category:focus+.select-wrapper::after,
-.select-wrapper select#category:focus-within+.select-wrapper::after {
-  background: url('../assets/icons/arrow_drop_down.svg') no-repeat center center;
+.select-wrapper.openDropdown::after {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 select#category:focus {
@@ -592,12 +592,13 @@ select#category:focus {
 }
 
 select#category option {
-  padding: 4px 8px;
+  padding: 8px 8px;
 }
 
 select#category option:hover {
-  background-color: #29abe2;
+  background-color: #2A3647;
   color: white;
+  box-shadow: 0 0 10px 10px #2A3647 inset;
 }
 
 select#category::placeholder {
@@ -691,14 +692,19 @@ select#category::placeholder {
     width: 136px;
   }
 
-  input {
+  input,
+  .imgContainer,
+  select#category,
+  .subtasksInputContainer,
+  .subtasksInputContainer input {
     height: 48px;
   }
 
   input,
   textarea,
   .prioBtnContainer,
-  ::placeholder {
+  ::placeholder,
+  select#category {
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;
@@ -709,6 +715,10 @@ select#category::placeholder {
     position: fixed;
     padding: 0px 0px 96px 0px;
     width: 930px;
+  }
+
+  .contactsToAssign {
+    top: 48px;
   }
 }
 

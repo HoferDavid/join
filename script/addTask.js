@@ -18,8 +18,8 @@ function createNewtask() {
     status: taskStatus,
     subtasks: getSubtasks(),
 
-    assignedTo: ["dummy"],
-    category: "Technical Task",
+    assignedTo: assignedContacts,
+    category: document.getElementById('category').value,
   };
 }
 
@@ -153,7 +153,7 @@ function addNewSubtask() {
     document.getElementById('subtaskIconContainer').classList.remove('dNone');
     document.getElementById('subtaskPlusIcon').classList.add('dNone');
   } else {
-    document.getElementById('subtaskIconContainer').classList.add('dNone')
+    document.getElementById('subtaskIconContainer').classList.add('dNone');
     document.getElementById('subtaskPlusIcon').classList.remove('dNone');
   }
 }
@@ -185,6 +185,7 @@ function editSubtask(editIcon) {
   let editInput = subtaskItem.querySelector('.editSubtaskInput');
   subtaskText.classList.add('dNone');
   editInput.classList.remove('dNone');
+  editInput.focus();
   editInput.addEventListener('blur', function () { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
 }
 
@@ -203,7 +204,7 @@ function deleteSubtask(deleteIcon) {
 
 
 function getSubtasks() {
-  const subtaskItems = document.querySelectorAll('.addedTaskContainer .subtaskItemText');
+  const subtaskItems = document.querySelectorAll('.subtaskList .subtaskItemText');
   let subtasks = [];
   subtaskItems.forEach(item => { subtasks.push({ status: "unchecked", text: item.innerText }); });
   return subtasks;
@@ -280,4 +281,10 @@ async function assignSearchInput() {
   let contactSorted = contacts.length == 0 ? await getContactsData().then(c => [...c]) : [...contacts];
   contactSorted.sort((a, b) => a.name.localeCompare(b.name));
   contactSorted.filter(c => c.name.toLowerCase().includes(searchText)).forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
+}
+
+function toggleDropdownArrow() {
+  let selectElement = document.getElementById('category');
+  let selectWrapper = selectElement.closest('.select-wrapper');
+  selectWrapper.classList.toggle('openDropdown');
 }
