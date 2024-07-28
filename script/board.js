@@ -29,6 +29,9 @@ async function pushDataToArray() {
     console.log("tasks Firebase: ", tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
+      if (!singleTask) {
+        continue;
+      }
       let task = await createTaskArray(key, singleTask);
       tasks.push(task);
     }
