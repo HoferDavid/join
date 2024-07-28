@@ -434,11 +434,15 @@ input:focus {
   cursor: pointer;
 }
 
-.open {
-  height: 240px;
+.assignContainer {
   border: 1px solid #d1d1d1;
   border-radius: 10px;
   background-color: white;
+  height: 38px;
+}
+
+.open {
+  height: 240px !important;
 }
 
 .open>.contactsToAssign {
@@ -563,6 +567,10 @@ input:focus {
   display: inline-block;
   height: 38px;
   overflow: hidden;
+  transition: all 125ms ease-in-out;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .select-wrapper input[type="text"] {
@@ -578,9 +586,6 @@ input:focus {
 
 .select-wrapperOpen {
   height: auto !important;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
 }
 
 .select-wrapper p {
@@ -684,7 +689,7 @@ input:focus {
 
   input,
   .imgContainer,
-  select#category,
+  .assignContainer,
   .subtasksInputContainer,
   .select-wrapper {
     height: 48px;
@@ -693,8 +698,7 @@ input:focus {
   input,
   textarea,
   .prioBtnContainer,
-  ::placeholder,
-  select#category {
+  ::placeholder {
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;

@@ -238,9 +238,11 @@ async function toggleDropdown() {
   toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
 }
 
-function toggleCategoryDropdown(this) {
+function toggleCategoryDropdown(e, value) {
+  e.stopPropagation();
   let input = document.getElementById('categoryInput');
-  input.value = this.parentElement.classList.contains('select-wrapperOpen') ? this.value : '';
+  let wrapper = document.getElementById('selectWrapper');
+  input.value = wrapper.classList.contains('select-wrapperOpen') ? value : '';
   document.getElementById('selectWrapper').classList.toggle('select-wrapperOpen');
 }
 
