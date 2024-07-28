@@ -127,7 +127,7 @@ async function addContacts(id = editId) {
   let addName = document.getElementById('addName').value;
   let addEmail = document.getElementById('addMail').value;
   let addTel = document.getElementById('addTel').value;
-  let newContact = createContact(id, addName, addEmail, addTel, null, false);
+  let newContact = createContact(id, addName, addEmail, addTel, false, false);
   try {
     await updateData(`${BASE_URL}contacts/${id}.json`, newContact);
     contacts.push(pushToContacts(newContact));
@@ -140,14 +140,15 @@ async function addContacts(id = editId) {
 }
 
 
-function createContact(id, name, email, phone, profilePic, isUser) {
+async function createContact(id, name, email, phone, profilePic, isUser) {
   return {
-    'id': id,
+    'id': id ? id : contacts.length == 0 ? await getContactsData().then(contacts => contacts[contacts.length - 1].id + 1) : contacts[contacts.length - 1].id + 1,
     'name': name,
     'mail': email,
     'number': phone,
     'profilePic': profilePic ? profilePic : generateSvgCircleWithInitials(name, 120, 120),
-    'isUser': isUser ? true : false
+    'isUser': isUser ? true : false,
+    'firstLetters': filterFirstLetters(name)
   };
 }
 
@@ -159,8 +160,13 @@ function pushToContacts(contact) {
     email: contact.mail,
     phone: contact.number,
     profilePic: contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
-    isUser: contact.isUser
+    isUser: contact.isUser,
+    firstLetters: filterFirstLetters(contact.name)
   };
+}
+
+function filterFirstLetters(name) {
+  return name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
 }
 
 

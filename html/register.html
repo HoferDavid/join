@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../style/register.css">
     <link rel="stylesheet" href="../style/fonts.css">
 
-     
 
-  
+
+
 
 </head>
 
@@ -37,7 +37,7 @@
                     <input class="font-size-sign-up" id="userName" required type="text" placeholder="Name"
                         autocomplete="name" class="username">
                     <input class="font-size-sign-up" id="userEmail" required type="email" placeholder="Email"
-                        autocomplete="username">
+                        autocomplete="email">
                     <input class="font-size-sign-up" id="password" required type="password" placeholder="Password"
                         autocomplete="new-password">
                     <input class="font-size-sign-up" id="confirmPassword" required type="password"
@@ -68,8 +68,8 @@
     </div>
 
     <footer class="footer">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="imprint.html">Legal Notice</a>
+        <a href="privacy.html" target="_blank">Privacy Policy</a>
+        <a href="imprint.html" target="_blank">Legal Notice</a>
     </footer>
 
     <script type="module">
@@ -96,9 +96,12 @@
         window.firebaseDatabase = database;
     </script>
 
-   
+
     <script type="module" src="../script/register.js"></script>
-    <script type="module" src="../script/userbgcolor.js"></script>
+    <script src="../script/userbgcolor.js"></script>
+    <script src="../script/contacts.js"></script>
+    <script src="../script/contactsTemplate.js"></script>
+    <script src="../script.js"></script>
 
 
 </body>

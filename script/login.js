@@ -10,21 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const passwordInput = document.getElementById('passwordInput');
         const rememberMeCheckbox = document.querySelector("#rememberMe");
 
-        
+
         if (localStorage.getItem('rememberMe') === 'true') {
             emailInput.value = localStorage.getItem('email');
             passwordInput.value = localStorage.getItem('password');
             rememberMeCheckbox.checked = true;
         }
 
-        
+
         setupPasswordToggle(passwordInput);
     }
 });
 
 
 document.getElementById('loginButton').addEventListener('click', async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const email = document.getElementById('emailInput').value.trim();
     const password = document.getElementById('passwordInput').value;
@@ -32,6 +32,7 @@ document.getElementById('loginButton').addEventListener('click', async (event) =
 
     try {
         await signInWithEmailAndPassword(auth, email, password);
+        await getContactsData();
         handleLoginSuccess(rememberMe);
     } catch (error) {
         console.error('Login fehlgeschlagen:', error);
@@ -46,20 +47,24 @@ document.getElementById('guestLogin').addEventListener('click', () => {
 
 
 function handleLoginSuccess(rememberMe) {
-    const currentUser = { email: document.getElementById('emailInput').value };
+    let userMail = document.getElementById('emailInput').value.trim();
+    currentUser = contacts[contacts.findIndex(c => c.email === userMail)];
     if (rememberMe) {
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
     } else {
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
     }
-    window.location.href = './html/summary.html'; 
+    window.location.href = './html/summary.html';
 }
 
 function handleGuestLogin() {
-    const guestUser = { name: "Guest" };
+    const guestUser = {
+        name: "Guest",
+        firstLetters: "G"
+    };
     sessionStorage.setItem('currentUser', JSON.stringify(guestUser));
-    localStorage.clear(); 
-    window.location.href = './html/summary.html'; 
+    localStorage.clear();
+    window.location.href = './html/summary.html';
 }
 
 function showError(message) {
@@ -115,7 +120,7 @@ function setupPasswordToggle(passwordInputField) {
     }
 
     function updateBackgroundImage() {
-        const image = isPasswordVisible ? "password_off.png" : "password_off.png";
+        const image = isPasswordVisible ? "visibility.png" : "password_off.png";
         passwordInputField.style.backgroundImage = `url('../assets/icons/${image}')`;
     }
 }

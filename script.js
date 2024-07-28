@@ -1,4 +1,5 @@
 let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/';
+let currentUser = JSON.parse(localStorage.getItem('currentUser')) || JSON.parse(sessionStorage.getItem('currentUser')) || null;
 let activeTab = sessionStorage.getItem('activeTab') || '';
 let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
 let tasks = [];
@@ -9,6 +10,7 @@ let taskStatus = 'toDo';
 async function init() {
   await includeHTML();
   setActive();
+  checkCurrentUser();
 }
 
 
@@ -49,6 +51,25 @@ function setActive() {
       btn.classList.add("menuBtnActive");
     }
   });
+}
+
+function checkCurrentUser() {
+  const menuUserContainer = document.getElementById('menuUserContainer');
+  const headerUserContainer = document.getElementById('headerUserContainer');
+  const headerUserBadge = document.getElementById('headerUserBadge');
+
+  if (!currentUser) {
+    menuUserContainer.classList.add('d-none');
+    headerUserContainer.classList.add('d-none');
+  } else if (currentUser && currentUser.name === 'Guest') {
+    menuUserContainer.classList.remove('d-none');
+    headerUserContainer.classList.remove('d-none');
+    headerUserBadge.innerHTML = currentUser.firstLetters;
+  } else if (currentUser) {
+    menuUserContainer.classList.remove('d-none');
+    headerUserContainer.classList.remove('d-none');
+    headerUserBadge.innerHTML = currentUser.firstLetters;
+  }
 }
 
 

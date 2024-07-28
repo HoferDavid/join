@@ -12,31 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function submitData(event) {
     event.preventDefault();
-    
+
     const name = document.getElementById('userName').value.trim();
     const email = document.getElementById('userEmail').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
     hideErrorMessages();
-   
+
     if (!await validateForm(password, confirmPassword, email)) {
-        return; 
+        return;
     }
-       
+
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-
-        const userData = createUserData(name, email);
-        const contact = createContactData(name, email);
-        await saveUserData(user.uid, userData);
-        await saveContactData(user.uid, contact);
+        const contact = await createContact(false, name, email, 'Please add phone number', false, true);
+        await updateData(`${BASE_URL}contacts/${contact.id}.json`, contact);
+        contacts.push(pushToContacts(contact));
+        sessionStorage.setItem("contacts", JSON.stringify(contacts));
 
         showSuccessPopup();
-       
+
         setTimeout(() => {
-            window.location.href = "/index.html"; 
+            window.location.href = "/index.html";
         }, 2000);
     } catch (error) {
         console.error("Error creating user:", error);
@@ -54,39 +53,20 @@ function hideErrorMessages() {
     document.getElementById('emailExistsMessage').style.display = 'none';
 }
 
-function createUserData(name, email) {
-    return {
-        name,
-        email,
-        password,  
-        bgNameColor: toAssignColorNameLogo(),
-        firstLetters: filterFirstLetters(name)
-    };
-}
-
-function createContactData(name, email) {
-    return {
-        name,
-        email,
-        phone: "Telefon/Mobilnummer",
-        bgNameColor: toAssignColorNameLogo(),
-        firstLetters: filterFirstLetters(name)
-    };
-}
 
 async function validateForm(password, confirmPassword, email) {
     const criteriaMessage = document.getElementById('criteriaMessage');
     const errorMessage = document.getElementById('errorMessage');
     const emailExistsMessage = document.getElementById('emailExistsMessage');
-    
+
     if (!isValidPassword(password)) {
         criteriaMessage.style.display = 'block';
         return false;
-    }    
+    }
     if (password !== confirmPassword) {
         errorMessage.style.display = 'block';
         return false;
-    }    
+    }
     if (await emailExists(email)) {
         emailExistsMessage.style.display = 'block';
         return false;
@@ -96,28 +76,12 @@ async function validateForm(password, confirmPassword, email) {
 
 async function emailExists(email) {
     try {
-        const userSnapshot = await get(ref(database, 'users/'));
+        const userSnapshot = await get(ref(database, 'contacts/'));
         const users = userSnapshot.val() || {};
-        return Object.values(users).some(user => user.email === email);
+        return Object.values(users).some(user => ((user.email === email) && (user.isUser === true)));
     } catch (error) {
         console.error("Error checking email existence:", error);
         return false;
-    }
-}
-
-async function saveUserData(userId, userData) {
-    try {
-        await set(ref(database, 'users/' + userId), userData);
-    } catch (error) {
-        console.error("Error saving user data:", error);
-    }
-}
-
-async function saveContactData(userId, contact) {
-    try {
-        await set(ref(database, 'contacts/' + userId), contact);
-    } catch (error) {
-        console.error("Error saving contact data:", error);
     }
 }
 
@@ -135,19 +99,19 @@ function setupPasswordFieldToggle(inputFieldId) {
         passwordInputField.focus();
         clickCount++;
     });
-    
+
     passwordInputField.addEventListener("focus", () => updateBackgroundImage(passwordInputField, passwordInputField.type === "text"));
-    passwordInputField.addEventListener("blur", () => resetState(passwordInputField));
+    passwordInputField.addEventListener("blur", () => { resetState(passwordInputField); clickCount = 0; });
 }
 
 function updateBackgroundImage(field, isVisible) {
-    const image = isVisible ? "password_input.png" : "password_off.png";
+    const image = isVisible ? "visibility.png" : "password_off.png";
     field.style.backgroundImage = `url('../assets/icons/${image}')`;
 }
 
 function resetState(field) {
     field.type = "password";
-    updateBackgroundImage(field, false);
+    field.style.backgroundImage = "url('../assets/icons/password_input.png')";
 }
 
 function isValidPassword(password) {
@@ -155,14 +119,6 @@ function isValidPassword(password) {
     return regex.test(password);
 }
 
-function filterFirstLetters(name) {
-    return name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-}
-
-function toAssignColorNameLogo() {
-    const userNameColor = ["#FF5733", "#33FF57", "#3357FF"]; 
-    return userNameColor[Math.floor(Math.random() * userNameColor.length)];
-}
 
 function showSuccessPopup() {
     const popup = document.getElementById('successPopup');

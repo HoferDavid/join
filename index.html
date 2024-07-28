@@ -37,9 +37,13 @@
         window.firebaseAuth = auth;
         window.firebaseDatabase = database;
     </script>
-    
+    <script type="module" src="script/login.js"></script>
+    <script src="script/contacts.js"></script>
+    <script src="script/contactsTemplate.js"></script>
+    <script src="script.js"></script>
 
-   
+
+
 
 </head>
 
@@ -74,7 +78,8 @@
                             </div>
                         </div>
 
-                        <div id="error-message" style="color: red; display: none;">Ups, wrong e-mail adress or password!
+                        <div id="error-message" style="color: red; display: none;">Ups, wrong e-mail address or
+                            password!
                             Try again.</div>
 
                         <label class="checkbox">
@@ -102,11 +107,9 @@
         </footer>
     </div>
 
-   
 
-    <script type="module" src="../script/login.js"></script>
-    <script type="module" src="../script/register.js"></script>
-    <script type="module" src="../script.js"></script>
+
+
 
 </body>
 

@@ -45,6 +45,10 @@ body {
   }
 }
 
+.d-none {
+  display: none !important;
+}
+
 .ts0 {
   transform: scale(0);
 }
@@ -189,7 +193,7 @@ body {
 
 .menuLinks {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   height: inherit;
 }
