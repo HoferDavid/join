@@ -217,6 +217,7 @@ function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
   activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
   taskStatus = category;
+  localStorage.setItem('taskCategory', category);
   if (screenWidth < 992) {
     changeActive(activeTab);
     return (window.location.href = "../html/addtask.html");
@@ -224,6 +225,16 @@ function checkScreenWidth(category) {
     openAddTaskOverlay();
   }
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const category = localStorage.getItem('taskCategory');
+  if (category) {
+    console.log(`Category: ${category}`);
+    localStorage.removeItem('taskCategory');
+  }
+});
+
 
 
 async function updateSubtaskStatus(taskId, subtaskIndex) {

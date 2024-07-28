@@ -122,7 +122,7 @@ function showTaskAddedAnimationModal() {
   toggleClass('taskAddedBtn', 'dNone', 'show');
   setTimeout(() => {
     closeModal();
-  }, 1000);
+  }, 2000);
 }
 
 

@@ -468,6 +468,9 @@
 
   .addTaskModalContainer .bottomContainer {
     width: 928px;
+    padding: 0px 0px 96px 0px;
+    position: fixed;
+    top: auto;
   }
 
   .saveTaskEditBtn {
