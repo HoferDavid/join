@@ -379,6 +379,7 @@ main.content {
     text-align: center;
 }
 
+
 @media (max-width: 1500px){
     .summ-person-greeting{
         font-size: 50px;

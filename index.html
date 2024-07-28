@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../style/login.css">
 
     <script type="module">
-        // Firebase configuration
+      
         const firebaseConfig = {
             apiKey: "AIzaSyAVuunbXTGr2CljBpc6fitx4--oaLEfEsE",
             authDomain: "join-273.firebaseapp.com",
@@ -23,7 +23,7 @@
             appId: "1:180936491276:web:9d04962cf61d639e138929"
         };
 
-        // Initialize Firebase
+       
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
         import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
         import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
@@ -32,7 +32,7 @@
         const auth = getAuth(app);
         const database = getDatabase(app);
 
-        // Make Firebase available globally
+        
         window.firebaseApp = app;
         window.firebaseAuth = auth;
         window.firebaseDatabase = database;

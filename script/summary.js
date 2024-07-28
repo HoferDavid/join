@@ -126,7 +126,7 @@ function showUrgentTask() {
 async function initSummary() {
   if (localStorage.getItem('showGreetings') === 'true') {
     console.log('Displaying greeting');
-    greetingSummaryMobile(); 
+    greetingSummary(); 
     localStorage.setItem('showGreetings', 'false'); 
   }
 
@@ -138,20 +138,22 @@ async function initSummary() {
 function displayGreeting() {
   if (localStorage.getItem('showGreetings') === 'true') {
     console.log('Displaying greeting');
-    greetingSummaryMobile();
+    greetingSummary();
     localStorage.setItem('showGreetings', 'false');
   } else {
     console.log('showGreetings is not true');
   }
 }
 
-function greetingSummaryMobile() {
+function greetingSummary() {
+  let greetingTime = greeting();
+  let greetingName = displayGreetingWithName();
+
+  
   if (window.matchMedia("(max-width: 1200px)").matches) {
     console.log('Mobile view detected');
     let greetingMobile = document.getElementById('greetingSummaryMobile');
     let summaryMain = document.getElementById('summaryMain');
-    let greetingTime = greeting();
-    let greetingName = displayGreetingWithName();
 
     greetingMobile.innerHTML = greetingMobileHTML(greetingTime, greetingName);
     console.log('Greeting Mobile HTML:', greetingMobile.innerHTML);
@@ -168,8 +170,12 @@ function greetingSummaryMobile() {
         }, 900);
       }, 2000);
     })
-  } else {
-    console.log('Mobile view not detected');
+  } else { 
+    console.log('Desktop view detected');
+    let greetingDesktop = document.getElementById('greetingSumm');
+    let greetingNameDesktop = document.getElementById('greetingNameDesktop');
+    greetingDesktop.innerText = greetingTime;
+    greetingNameDesktop.innerText = greetingName;
   }
 }
 
@@ -203,7 +209,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initSummary();
 });
 
+async function initSummary() {
+  await loadCategory();
+  await taskAssignment();
+  showUrgentTask();
+  displayGreeting();
+}
+
 function nextPage() {
   window.location.href = 'board.html';
 }
-
