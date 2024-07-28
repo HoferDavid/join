@@ -122,7 +122,7 @@ function showTaskAddedAnimationModal() {
   toggleClass('taskAddedBtn', 'dNone', 'show');
   setTimeout(() => {
     closeModal();
-  }, 1000);
+  }, 2000);
 }
 
 
@@ -236,6 +236,12 @@ async function toggleDropdown() {
   document.getElementById('assignDropdown').classList.toggle('open');
   document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? await openAssignDropdown() : closeAssignDropdown();
   toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
+}
+
+function toggleCategoryDropdown(this) {
+  let input = document.getElementById('categoryInput');
+  input.value = this.parentElement.classList.contains('select-wrapperOpen') ? this.value : '';
+  document.getElementById('selectWrapper').classList.toggle('select-wrapperOpen');
 }
 
 
