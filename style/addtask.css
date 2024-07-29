@@ -592,6 +592,7 @@ input:focus {
   position: relative;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 .select-wrapper input[type="text"]::placeholder {
@@ -600,7 +601,7 @@ input:focus {
 }
 
 .select-wrapperOpen {
-  height: auto !important;
+  height: 180px !important;
 }
 
 .select-wrapper p {

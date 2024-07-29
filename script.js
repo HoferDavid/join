@@ -57,7 +57,7 @@ function setActive() {
 function checkCurrentUser() {
   const menuUserContainer = document.getElementById('menuUserContainer');
   const headerUserContainer = document.getElementById('headerUserContainer');
-  const headerUserBadge = document.getElementById('headerUserBadge');
+  const headerUserBadge = document.querySelectorAll('.headerUserBadge');
 
   if (!currentUser) {
     menuUserContainer.classList.add('d-none');
@@ -69,7 +69,7 @@ function checkCurrentUser() {
   } else if (currentUser) {
     menuUserContainer.classList.remove('d-none');
     headerUserContainer.classList.remove('d-none');
-    headerUserBadge.innerHTML = currentUser.firstLetters;
+    headerUserBadge.forEach(b => b.innerHTML = currentUser.firstLetters);
   }
 }
 
