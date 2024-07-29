@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+.d-None {
+  display: none;
+}
+
 .showClass {
   display: flex;
 }
@@ -184,7 +188,6 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   background-color: #f6f7f8;
-  z-index: 10;
 }
 
 .btnContainer {
@@ -271,7 +274,7 @@ input:focus {
   gap: 16px;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
   position: fixed;
-  bottom: -100px;
+  bottom: -100%;
   left: 50%;
   transform: translateX(-50%);
   transition: bottom 0.5s ease-out;
@@ -752,5 +755,9 @@ input:focus {
 
   .bottomContainer {
     width: 978px;
+  }
+
+  .taskAddedBtn {
+    left: 558px;
   }
 }
