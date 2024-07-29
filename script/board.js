@@ -26,7 +26,6 @@ function initDragDrop() {
 async function pushDataToArray() {
   try {
     let tasksData = await loadData("tasks");
-    console.log("tasks Firebase: ", tasksData);
     for (const key in tasksData) {
       const singleTask = tasksData[key];
       if (!singleTask) {
@@ -35,7 +34,6 @@ async function pushDataToArray() {
       let task = await createTaskArray(key, singleTask);
       tasks.push(task);
     }
-    console.log("tasks Array: ", tasks);
   } catch (error) {
     console.error("dh Error pushing tasks to array:", error);
   }

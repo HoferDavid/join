@@ -285,12 +285,14 @@ function generateTaskEditHTML(taskId) {
                             <input id="assignSearch" type="search" class="contactsAssignStandard"
                                 value="Select contacts to assign" onclick="toggleDropdown()" oninput="assignSearchInput()"
                                 placeholder="Search contacts" readonly>
-                        <div class="imgContainer" onclick="toggleDropdown()">
-                            <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
+                            <div class="imgContainer" onclick="toggleDropdown()">
+                                <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
+                            </div>
+                            <div id="contactsAssigned" class="contactsAssigned"></div>
+                            <div id="contactsToAssign" class="contactsToAssign"></div>
                         </div>
-                        <div id="contactsAssigned" class="contactsAssigned"></div>
-                        <div id="contactsToAssign" class="contactsToAssign"></div>
-                </div>
+                    </div>
+
 
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
@@ -319,3 +321,35 @@ function generateTaskEditHTML(taskId) {
         </div>
     `;
 }
+
+
+
+
+
+
+{/* <div class="singleInputContainer">
+<div>Assigned to</div>
+<div id="assignDropdown" class="assignContainer">
+    <input id="assignSearch" type="search" class="contactsAssignStandard"
+        value="Select contacts to assign" onclick="toggleDropdown()" oninput="assignSearchInput()"
+        placeholder="Search contacts" readonly>
+<div class="imgContainer" onclick="toggleDropdown()">
+    <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
+</div>
+<div id="contactsAssigned" class="contactsAssigned"></div>
+<div id="contactsToAssign" class="contactsToAssign"></div>
+</div>
+
+<div class="singleInputContainer">
+<div>Subtasks</div>
+<div class="subtasksInputContainer" onkeydown="addNewSubtask()">
+    <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="80">
+    <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
+    <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
+        <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">
+        <div class="subtaskInputSeperator"></div>
+        <img onclick="saveSubtask()" class="icon" src="../assets/icons/checkBlackBig.svg">
+    </div>
+</div>
+<div id="subtaskList">${subtaskHTML}</div>
+</div> */}
