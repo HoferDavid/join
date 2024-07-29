@@ -57,22 +57,6 @@ async function createTaskArray(key, singleTask) {
 }
 
 
-async function updateTaskInFirebase(id, updatedTask) {
-  try {
-    let response = await fetch(`${BASE_URL}tasks/${id}.json`, {
-      method: "PUT",
-      header: {
-        "Content-Type": " application/json",
-      },
-      body: JSON.stringify(updatedTask),
-    });
-    return await response.json();
-  } catch (error) {
-    console.error("dh Error putting data:", error);
-  }
-}
-
-
 function toggleVisibility(id) {
   document.getElementById(id).classList.toggle("dNone");
   return document.getElementById(id);
@@ -140,7 +124,7 @@ async function moveTo(status) {
     task.status = status;
     initDragDrop();
     applyCurrentSearchFilter();
-    await updateTaskInFirebase(task.id, task);
+    await updateData(`${BASE_URL}tasks/${task.id}.json`, task);
   }
 }
 
@@ -252,7 +236,7 @@ async function updateSubtaskStatus(taskId, subtaskIndex) {
           subtask.status === "checked" ? "../assets/icons/checkboxchecked.svg" : "../assets/icons/checkbox.svg";
       }
       updateSubtasksProgressBar(task.subtasks, taskId);
-      await updateTaskInFirebase(taskId, task);
+      await updateData(`${BASE_URL}tasks/${taskId}.json`, task);
     }
   }
 }
@@ -287,7 +271,7 @@ function enableTaskEdit(taskId) {
 
 async function saveEditedTask(event, taskId) {
   event.preventDefault();
-  await putData(`tasks/${taskId}`, createEditedTask(taskId));
+  await updateData(`${BASE_URL}tasks/${taskId}.json`, createEditedTask(taskId));
   tasks = [];
   await pushDataToArray();
   openOverlay(taskId);
