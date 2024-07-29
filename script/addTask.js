@@ -19,7 +19,7 @@ function createNewtask() {
     subtasks: getSubtasks(),
 
     assignedTo: assignedContacts,
-    category: document.getElementById('category').value,
+    category: document.getElementById('categoryInput').value,
   };
 }
 
@@ -242,8 +242,10 @@ function toggleCategoryDropdown(e, value) {
   e.stopPropagation();
   let input = document.getElementById('categoryInput');
   let wrapper = document.getElementById('selectWrapper');
+  let arrow = document.getElementById('categoryDropArrow');
   input.value = wrapper.classList.contains('select-wrapperOpen') ? value : '';
   document.getElementById('selectWrapper').classList.toggle('select-wrapperOpen');
+  wrapper.classList.contains('select-wrapperOpen') ? arrow.style.transform = 'rotate(180deg)' : arrow.style.transform = 'rotate(0deg)';
 }
 
 
@@ -298,8 +300,4 @@ async function assignSearchInput() {
   contactSorted.filter(c => c.name.toLowerCase().includes(searchText)).forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
 }
 
-function toggleDropdownArrow() {
-  let selectElement = document.getElementById('category');
-  let selectWrapper = selectElement.closest('.select-wrapper');
-  selectWrapper.classList.toggle('openDropdown');
-}
+
