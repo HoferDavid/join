@@ -12,6 +12,9 @@ async function loadCategory() {
     urgentTasks = [];
     for (const key in tasksData) {
       const task = tasksData[key];
+      if (!task) {
+        continue;
+      }
       numberOfBoard.push({
         "id": key,
         "assignedTo": task.assignedTo,
@@ -70,7 +73,7 @@ function getTaskCounts() {
 }
 
 async function taskAssignment() {
-  const counts = getTaskCounts(); 
+  const counts = getTaskCounts();
 
   const updateElement = (id, value) => {
     const el = document.getElementById(id);
@@ -90,7 +93,7 @@ async function taskAssignment() {
   console.log("Zusammenfassung gerendert.");
 }
 
-function showUrgentTask() {    
+function showUrgentTask() {
   if (urgentTasks && urgentTasks.length > 0) {
     urgentTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
     const updateElement = (id, value) => {
@@ -102,11 +105,11 @@ function showUrgentTask() {
       }
     };
     updateElement('howManyUrgent', urgentTasks.length);
-    
+
     let date = new Date(urgentTasks[0].date);
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     let formattedDate = date.toLocaleDateString('de-DE', options);
-    
+
     updateElement('summUrgentDate', formattedDate);
   } else {
     const updateElement = (id, value) => {
@@ -118,7 +121,7 @@ function showUrgentTask() {
       }
     };
     updateElement('howManyUrgent', 0);
-    updateElement('summUrgentDate', ''); 
+    updateElement('summUrgentDate', '');
   }
   console.log("Dringende Aufgaben angezeigt:", urgentTasks);
 }
@@ -126,8 +129,8 @@ function showUrgentTask() {
 async function initSummary() {
   if (localStorage.getItem('showGreetings') === 'true') {
     console.log('Displaying greeting');
-    greetingSummary(); 
-    localStorage.setItem('showGreetings', 'false'); 
+    greetingSummary();
+    localStorage.setItem('showGreetings', 'false');
   }
 
   await loadCategory();
@@ -149,7 +152,7 @@ function greetingSummary() {
   let greetingTime = greeting();
   let greetingName = displayGreetingWithName();
 
-  
+
   if (window.matchMedia("(max-width: 1200px)").matches) {
     console.log('Mobile view detected');
     let greetingMobile = document.getElementById('greetingSummaryMobile');
@@ -169,8 +172,8 @@ function greetingSummary() {
           summaryMain.style.transition = 'opacity 0.9s ease';
         }, 900);
       }, 2000);
-    })
-  } else { 
+    });
+  } else {
     console.log('Desktop view detected');
     let greetingDesktop = document.getElementById('greetingSumm');
     let greetingNameDesktop = document.getElementById('greetingNameDesktop');
@@ -201,7 +204,7 @@ function greeting() {
 }
 
 function displayGreetingWithName() {
-  let userName = localStorage.getItem('userName') || 'Guest';
+  let userName = currentUser.name;
   return userName;
 }
 
