@@ -61,7 +61,7 @@ async function loginButtonClick(event) {
     const rememberMe = document.getElementById('rememberMe').checked;
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        setCurrentUser(email);
+        await setCurrentUser(email);
         handleRememberMe(rememberMe);
         continueToSummary();
     } catch (error) {

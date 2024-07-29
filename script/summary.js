@@ -130,7 +130,7 @@ async function initSummary() {
   if (localStorage.getItem('showGreetings') === 'true') {
     console.log('Displaying greeting');
     greetingSummary();
-    localStorage.setItem('showGreetings', 'false');
+    // localStorage.setItem('showGreetings', 'false');
   }
 
   await loadCategory();
@@ -142,7 +142,7 @@ function displayGreeting() {
   if (localStorage.getItem('showGreetings') === 'true') {
     console.log('Displaying greeting');
     greetingSummary();
-    localStorage.setItem('showGreetings', 'false');
+    // localStorage.setItem('showGreetings', 'false');
   } else {
     console.log('showGreetings is not true');
   }
