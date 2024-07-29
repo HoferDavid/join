@@ -8,10 +8,37 @@
     <link rel="icon" href="../assets/icons/logoBlue.svg" />
     <link rel="stylesheet" href="../style/register.css">
     <link rel="stylesheet" href="../style/fonts.css">
+    <!-- <link rel="stylesheet" href="../style.css"> -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAVuunbXTGr2CljBpc6fitx4--oaLEfEsE",
+            authDomain: "join-273.firebaseapp.com",
+            databaseURL: "https://join-273-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "join-273",
+            storageBucket: "join-273.appspot.com",
+            messagingSenderId: "180936491276",
+            appId: "1:180936491276:web:9d04962cf61d639e138929"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        window.firebaseApp = app;
+        window.firebaseAuth = auth;
+        window.firebaseDatabase = database;
+    </script>
 
 
-
-
+    <script type="module" src="../script/register.js"></script>
+    <script src="../script/contacts.js"></script>
+    <script src="../script/contactsTemplate.js"></script>
+    <script src="../script.js"></script>
 
 </head>
 
@@ -72,36 +99,7 @@
         <a href="imprint.html" target="_blank">Legal Notice</a>
     </footer>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAVuunbXTGr2CljBpc6fitx4--oaLEfEsE",
-            authDomain: "join-273.firebaseapp.com",
-            databaseURL: "https://join-273-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "join-273",
-            storageBucket: "join-273.appspot.com",
-            messagingSenderId: "180936491276",
-            appId: "1:180936491276:web:9d04962cf61d639e138929"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const database = getDatabase(app);
-
-        window.firebaseApp = app;
-        window.firebaseAuth = auth;
-        window.firebaseDatabase = database;
-    </script>
-
-
-    <script type="module" src="../script/register.js"></script>
-    <script src="../script/userbgcolor.js"></script>
-    <script src="../script/contacts.js"></script>
-    <script src="../script/contactsTemplate.js"></script>
-    <script src="../script.js"></script>
 
 
 </body>
