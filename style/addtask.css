@@ -26,6 +26,12 @@
   line-height: 19.2px;
 }
 
+.inputContainer {
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+}
+
 .inputContainerTop {
   display: flex;
   flex-direction: column;
@@ -667,6 +673,11 @@ input:focus {
     line-height: 24px;
   }
 
+  .inputContainer {
+    flex-direction: row;
+    gap: 24px;
+  }
+
   .inputContainerBottom,
   .inputContainerTop {
     width: 440px;
@@ -677,12 +688,8 @@ input:focus {
   }
 
   .addTaskHeaderSection {
-    margin: 48px 0px 32px 24px;
-  }
-
-  .addTaskForm {
-    flex-direction: row;
-    gap: 24px;
+    margin: 48px 0px 32px 96px;
+    justify-content: flex-start;
   }
 
   .prioBtnContainer {
@@ -715,9 +722,7 @@ input:focus {
 
   .bottomContainer {
     display: flex;
-    position: fixed;
-    width: 930px;
-    padding: 0px 0px 96px 0px;
+    width: 100%;
   }
 
   .contactsToAssign {
@@ -731,13 +736,16 @@ input:focus {
   }
 
   .addTaskHeaderSection {
-    justify-content: flex-start;
     margin: 48px 0px 32px 96px;
   }
 
   .addTaskForm {
     justify-content: flex-start;
     padding-left: 96px;
+  }
+
+  .inputContainer {
+    flex-direction: row;
     gap: 48px;
   }
 
