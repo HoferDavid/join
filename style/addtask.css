@@ -517,12 +517,14 @@ input:focus {
   padding: 4px 16px;
 }
 
-.addedTaskIconContainer {
+.addedTaskIconContainer,
+.addedTaskIconContainerEdit {
   display: flex;
   gap: 4px;
 }
 
-.addedTaskIconContainer .icon {
+.addedTaskIconContainer .icon,
+.addedTaskIconContainerEdit .icon {
   cursor: pointer;
 }
 
@@ -551,6 +553,13 @@ input:focus {
   color: black;
   font-size: 20px;
   line-height: 1;
+}
+
+.subtaskItem input {
+  width: 100%;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #29ABE2;
 }
 
 .subtaskItem:hover {
