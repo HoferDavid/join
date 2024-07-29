@@ -17,7 +17,6 @@ function createNewtask() {
     prio: currentPrio,
     status: taskStatus,
     subtasks: getSubtasks(),
-
     assignedTo: assignedContacts,
     category: document.getElementById('categoryInput').value,
   };
@@ -127,11 +126,17 @@ function showTaskAddedAnimationModal() {
 
 
 async function closeAddTaskModal() {
-  showTaskAddedAnimation();
-  tasks = [];
-  await pushDataToArray();
-  updateAllTaskCategories();
-  initDragDrop();
+  if (activeTab == 'Add Task') {
+    showTaskAddedAnimation();
+    tasks = [];
+    await pushDataToArray();
+  } else {
+    showTaskAddedAnimation();
+    tasks = [];
+    await pushDataToArray();
+    updateAllTaskCategories();
+    initDragDrop();
+  }
 }
 
 
