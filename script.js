@@ -119,21 +119,6 @@ async function postData(path = "", data = {}) {
 }
 
 
-// Maybe combine the following 2 Functions and delete 1 of them
-async function putData(path = "", data = {}) {
-  try {
-    let response = await fetch(BASE_URL + path + ".json", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-    return await response.json();
-  } catch (error) {
-    console.error("Error posting data:", error);
-  }
-}
-
-
 async function updateData(url, data) {
   try {
     const response = await fetch(url, {
@@ -141,8 +126,7 @@ async function updateData(url, data) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-    const updatedData = await response.json();
-    return updatedData;
+    return await response.json();
   } catch (error) {
     console.error('Error updating data:', error);
   }
