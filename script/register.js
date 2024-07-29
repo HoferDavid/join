@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
-import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
 
 const auth = getAuth();
 const database = getDatabase();
@@ -51,10 +51,7 @@ async function submitData(event) {
     hideErrorMessages();
     if (!await validateForm(password, confirmPassword, email)) return;
     try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        await createNewContact(name, email);
-        showSuccessPopup();
-        setTimeout(() => window.location.href = "/index.html", 2000);
+        await signUp(name, email, password);
     } catch (error) {
         submitDataErrorHandling(error);
     }
@@ -70,20 +67,21 @@ async function validateForm(password, confirmPassword, email) {
     const criteriaMessage = document.getElementById('criteriaMessage');
     const errorMessage = document.getElementById('errorMessage');
     const emailExistsMessage = document.getElementById('emailExistsMessage');
-
     if (!isValidPassword(password)) {
-        criteriaMessage.style.display = 'block';
-        return false;
+        return returnLoginError(criteriaMessage);
     }
     if (password !== confirmPassword) {
-        errorMessage.style.display = 'block';
-        return false;
+        return returnLoginError(errorMessage);
     }
     if (await emailExists(email)) {
-        emailExistsMessage.style.display = 'block';
-        return false;
+        return returnLoginError(emailExistsMessage);
     }
     return true;
+}
+
+function returnLoginError(errorWindow) {
+    errorWindow.style.display = 'block';
+    return false;
 }
 
 function isValidPassword(password) {
@@ -93,13 +91,26 @@ function isValidPassword(password) {
 
 async function emailExists(email) {
     try {
-        const userSnapshot = await get(ref(database, 'contacts/'));
+        const userSnapshot = await get(child(ref(database), `contacts`));
         const users = userSnapshot.val() || {};
-        return Object.values(users).some(user => ((user.email === email) && (user.isUser === true)));
+        for (const key in users) {
+            if (!users[key]) {
+                continue;
+            }
+            if (users[key].mail.toLowerCase() === email.toLowerCase() && users[key].isUser) {
+                return false;
+            }
+        }
     } catch (error) {
-        console.error("Error checking email existence:", error);
         return false;
     }
+}
+
+async function signUp(name, email, password) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await createNewContact(name, email);
+    showSuccessPopup();
+    setTimeout(() => window.location.href = "/index.html", 1500);
 }
 
 async function createNewContact(name, email) {
@@ -118,7 +129,6 @@ function showSuccessPopup() {
 }
 
 function submitDataErrorHandling(error) {
-    console.error("Error creating user:", error);
     if (error.code === 'auth/email-already-in-use') {
         showError("emailExistsMessage");
     } else {
