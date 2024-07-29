@@ -156,7 +156,7 @@ function setActiveTabToAddTask() {
 
 function addNewSubtask() {
   let input = document.getElementById('subtaskInput').value.length;
-  if (input > 0) {
+  if (input > -1) {
     document.getElementById('subtaskIconContainer').classList.remove('dNone');
     document.getElementById('subtaskPlusIcon').classList.add('dNone');
   } else {
@@ -181,13 +181,26 @@ function saveSubtask() {
   subtaskItem.innerHTML = subtaskHTML;
   subtaskList.appendChild(subtaskItem.firstElementChild);
   document.getElementById('subtaskInput').value = '';
-  toggleClass('subtaskIconContainer', 'dNone', 'showClass');
-  toggleClass('subtaskPlusIcon', 'dNone', 'showClass');
+  document.getElementById('subtaskIconContainer').classList.add('dNone');
+  document.getElementById('subtaskPlusIcon').classList.remove('dNone');
 }
 
 
+document.addEventListener('click', function(event) {
+  const input = document.getElementById('subtaskInput');
+  const iconContainer = document.getElementById('subtaskIconContainer');
+  const plusIcon = document.getElementById('subtaskPlusIcon');
+  if (input && iconContainer && plusIcon) {
+      if (!input.contains(event.target) && !iconContainer.contains(event.target) && !plusIcon.contains(event.target)) {
+          iconContainer.classList.add('dNone');
+          plusIcon.classList.remove('dNone');
+      }
+  }
+});
+
+
 function editSubtask(editIcon) {
-  let subtaskItem = editIcon.closest('.subtaskItem');
+  let subtaskItem = editIcon.closest('.subtaskEditList');
   let subtaskText = subtaskItem.querySelector('.subtaskItemText');
   let editInput = subtaskItem.querySelector('.editSubtaskInput');
   subtaskText.classList.add('dNone');
@@ -210,7 +223,7 @@ function clearSubtaskList() {
 
 
 function deleteSubtask(deleteIcon) {
-  let subtaskItem = deleteIcon.closest('.subtaskItem');
+  let subtaskItem = deleteIcon.closest('.subtaskEditList');
   subtaskItem.remove();
 }
 
