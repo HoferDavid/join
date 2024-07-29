@@ -53,6 +53,7 @@ function setActive() {
   });
 }
 
+
 function checkCurrentUser() {
   const menuUserContainer = document.getElementById('menuUserContainer');
   const headerUserContainer = document.getElementById('headerUserContainer');
