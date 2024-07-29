@@ -690,7 +690,6 @@ input:focus {
 
   .addTaskHeaderSection {
     margin: 48px 0px 32px 96px;
-    justify-content: flex-start;
   }
 
   .prioBtnContainer {
@@ -738,6 +737,7 @@ input:focus {
 
   .addTaskHeaderSection {
     margin: 48px 0px 32px 96px;
+    justify-content: flex-start;
   }
 
   .addTaskForm {
