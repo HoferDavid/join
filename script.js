@@ -145,14 +145,20 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function logOut() {
+  sessionStorage.clear(currentUser);
+  localStorage.clear(currentUser);
+  window.location.href = '../index.html';
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  const guestLoginButton = document.getElementById('guestLogin');
-  if (guestLoginButton) {
-    guestLoginButton.addEventListener('click', () => {
-      console.log('Guest login geklickt');
-      localStorage.setItem('showGreetings', 'true');
-      window.location.href = 'html/summary.html'; // Weiterleiten zu summary.html
-    });
-  }
-});
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const guestLoginButton = document.getElementById('guestLogin');
+//   if (guestLoginButton) {
+//     guestLoginButton.addEventListener('click', () => {
+//       console.log('Guest login geklickt');
+//       localStorage.setItem('showGreetings', 'true');
+//       window.location.href = 'html/summary.html'; // Weiterleiten zu summary.html
+//     });
+//   }
+// });

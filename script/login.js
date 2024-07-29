@@ -56,7 +56,7 @@ function togglePasswordVisibility() {
 
 async function loginButtonClick(event) {
     event.preventDefault();
-    const email = document.getElementById('emailInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim().toLowerCase();
     const password = document.getElementById('passwordInput').value;
     const rememberMe = document.getElementById('rememberMe').checked;
     try {
@@ -78,7 +78,7 @@ async function setCurrentUser(email) {
             if (!users[key]) {
                 continue;
             }
-            if (users[key].mail === email && users[key].isUser) {
+            if (users[key].mail.toLowerCase() === email && users[key].isUser) {
                 currentUser = users[key];
                 break;
             }
