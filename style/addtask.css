@@ -444,7 +444,6 @@ input:focus {
 }
 
 .assignContainer {
-  border: 1px solid #d1d1d1;
   border-radius: 10px;
   background-color: white;
   height: 38px;
@@ -589,7 +588,6 @@ ul {
   height: 38px;
   overflow: hidden;
   transition: all 125ms ease-in-out;
-  border: 1px solid #d1d1d1;
   border-radius: 10px;
   background-color: white;
 }

@@ -256,6 +256,7 @@ async function toggleDropdown() {
   toggleClass('assignSearch', 'contactsAssignStandard', 'contactsAssignOpen');
 }
 
+
 function toggleCategoryDropdown(e, value) {
   e.stopPropagation();
   let input = document.getElementById('categoryInput');

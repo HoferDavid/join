@@ -38,6 +38,7 @@ async function includeHTML() {
 
 function changeActive(link) {
   let linkBtn = document.querySelectorAll(".menuBtn");
+  let menuLegalLinks = document.querySelectorAll('.menuLegalLinks');
   linkBtn.forEach(btn => btn.classList.remove("menuBtnActive"));
   activeTab = link.innerText;
   sessionStorage.setItem("activeTab", activeTab);
