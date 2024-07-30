@@ -138,12 +138,20 @@ body {
   margin-left: 115px;
 }
 
-label {
+.checkbox-img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px; 
+}
+
+
+label.checkbox {
   display: inline-flex;
   align-items: center;
   margin-top: 20px;
   margin-left: 152px;
   margin-bottom: 32px;
+  cursor: pointer; 
 }
 
 .form-container {

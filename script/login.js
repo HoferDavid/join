@@ -6,19 +6,25 @@ const database = getDatabase();
 const emailInput = document.getElementById('emailInput');
 const passwordInput = document.getElementById('passwordInput');
 const rememberMeCheckbox = document.querySelector("#rememberMe");
+const checkboxImg = document.getElementById('checkbox');
 let isPasswordVisible = false;
 let clickCount = -1;
 
+
 function initLogin() {
-    if (document.getElementById('login-form')) {
-        if (localStorage.getItem('rememberMe') === 'true') {
+        if (document.getElementById('login-form')) {
+            const rememberMe = localStorage.getItem('rememberMe') === 'true';
             emailInput.value = localStorage.getItem('email');
             passwordInput.value = localStorage.getItem('password');
-            rememberMeCheckbox.checked = true;
-        }
+            checkboxImg.src = rememberMe ? '../assets/icons/check2.png' : '../assets/icons/check1.png';
+            rememberMeCheckbox.checked = rememberMe;
+    
         setupPasswordToggle();
     }
-};
+
+    checkboxImg.addEventListener('click', checkBoxClicked);
+}
+
 
 function setupPasswordToggle() {
     passwordInput.addEventListener("click", changeVisibility);
@@ -113,6 +119,22 @@ function handleGuestLogin() {
     continueToSummary();
 }
 
+function checkBoxClicked() {
+    const isChecked = localStorage.getItem('rememberMe') === 'true';
+    const newCheckedState = !isChecked;
+    checkboxImg.src = newCheckedState ? '../assets/icons/check2.png' : '../assets/icons/check1.png';
+    localStorage.setItem('rememberMe', newCheckedState ? 'true' : 'false');
+    
+    if (newCheckedState) {
+        localStorage.setItem('email', emailInput.value);
+        localStorage.setItem('password', passwordInput.value);
+    } else {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+    }
+
+    rememberMeCheckbox.checked = newCheckedState;
+}
 
 document.getElementById('loginButton').addEventListener('click', loginButtonClick);
 document.getElementById('guestLogin').addEventListener('click', handleGuestLogin);
