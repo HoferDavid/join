@@ -171,6 +171,10 @@ body {
   cursor: pointer;
 }
 
+a {
+  word-break: break-all;
+}
+
 .headerMenuContainer a:hover {
   color: #29abe2;
 }
