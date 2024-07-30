@@ -11,24 +11,25 @@
     <link rel="stylesheet" href="../style/fonts.css">
     <link rel="stylesheet" href="../style/summary.css">
 
-    <script src="../script.js"></script>
-    <script src="../script/summary.js"></script>
     <script src="../script/board.js"></script>
     <script src="../script/boardtemplate.js"></script>
     <script src="../script/dragDropTouch.js"></script>
     <script src="../script/addTask.js"></script>
-    
-    
+    <script src="../script/miscTemplate.js"></script>
+    <script src="../script/summary.js"></script>
+    <script src="../script.js"></script>
+
+
 
 </head>
 
-<body onload="init()">
-    
+<body onload="initSummary()">
+
     <header w3-include-html="../assets/templates/html/header.html" class="header"></header>
-    
+
     <main class="content contentSection">
         <div id="greetingSummaryMobile"></div>
-             <div class="summ-main" id="summaryMain">
+        <div class="summ-main" id="summaryMain">
             <div class="summ-2">
                 <div class="headline-summ">
                     <h2 class="headline-summ-h2">Join 360</h2>
@@ -57,7 +58,7 @@
                         </div>
                     </div>
 
-                    <div class="summ-stats-urgent"onclick="nextPage()" >
+                    <div class="summ-stats-urgent" onclick="nextPage()">
                         <div class="summ-info-urgent">
                             <img src="../assets/icons/summary-urgent-logo.png">
                             <div class="summ-info">
@@ -65,7 +66,7 @@
                                 <span class="how-many-todos">Urgent</span>
                             </div>
                         </div>
-            
+
                         <div class="summ-urgent-seperate"></div>
                         <div class="summ-urgent-date-container">
                             <span id="summUrgentDate" class="summ-urgent-date"></span>
@@ -73,11 +74,11 @@
                         </div>
                     </div>
                     <div class="summ-stats-under">
-                        <div class="summ-stats-under-container" onclick="nextPage()"> 
+                        <div class="summ-stats-under-container" onclick="nextPage()">
                             <span id="howManyTaskInBoard" class="summ-stats-under-howmany">0</span>
                             <span class="summ-stats-under-tasks">Tasks in board</span>
                         </div>
-                        <div class="summ-stats-under-container"onclick="nextPage()" >
+                        <div class="summ-stats-under-container" onclick="nextPage()">
                             <span id="howManyInProgress" class="summ-stats-under-howmany">0</span>
                             <span class="summ-stats-under-tasks">Tasks in Progress</span>
                         </div>
@@ -89,16 +90,16 @@
                 </div>
 
                 <div class="rotate-warning"></div>
-                </div>
             </div>
-            <div id="greetingSummDesktop" class="summ-greeting">
-                <h3 id="greetingSumm" class="summ-day-greeting">Good Day,</h3>
-                <span id="greetingNameDesktop" class="summ-person-greeting">Guest</span>
-            </div>
+        </div>
+        <div id="greetingSummDesktop" class="summ-greeting">
+            <h3 id="greetingSumm" class="summ-day-greeting">Good Day,</h3>
+            <span id="greetingNameDesktop" class="summ-person-greeting">Guest</span>
+        </div>
     </main>
 
     <nav w3-include-html="../assets/templates/html/menu.html" class="menu"></nav>
-    
+
 </body>
 
 </html>

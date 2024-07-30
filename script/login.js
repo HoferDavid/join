@@ -65,7 +65,6 @@ async function loginButtonClick(event) {
         handleRememberMe(rememberMe);
         continueToSummary();
     } catch (error) {
-        console.error('Login failed:', error);
         showError('Oops, wrong email address or password! Try it again.');
     }
 }
@@ -97,7 +96,7 @@ function handleRememberMe(rememberMe) {
 }
 
 function continueToSummary() {
-    localStorage.setItem('showGreetings', 'true');
+    sessionStorage.setItem('activeTab', 'Summary');
     window.location.href = './html/summary.html';
 }
 
