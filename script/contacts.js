@@ -64,6 +64,12 @@ function renderContactsDetails(id = '') {
   details.innerHTML = contacts.find(c => (c.id == editId)) && (editId != -1) ? htmlRenderContactDetails(editId) : htmlRenderContactDetailsEmpty();
 }
 
+function makeContactActive(c) {
+  let activeContact = document.querySelector('.activeContact');
+  activeContact ? activeContact.classList.remove('activeContact') : null;
+  c.classList.add('activeContact');
+}
+
 
 function openEditContacts(id) {
   editId = id;

@@ -217,7 +217,8 @@ h4 {
   word-break: break-word;
 }
 
-.contactList li:hover {
+.contactList li:hover,
+.activeContact {
   background-color: #2a3647;
   color: white;
   border-radius: 20px;
