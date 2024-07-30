@@ -22,6 +22,12 @@ p {
   margin: 16px 0;
 }
 
+a,
+.wordBreak {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
 .backArrow {
   position: absolute;
   top: 40px;

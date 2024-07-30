@@ -171,11 +171,6 @@ body {
   cursor: pointer;
 }
 
-a,
-.wordBreak {
-  word-break: break-all;
-}
-
 .headerMenuContainer a:hover {
   color: #29abe2;
 }
@@ -282,7 +277,6 @@ a,
   text-decoration: none;
   cursor: pointer;
   align-items: center;
-  justify-content: center;
 }
 
 .menuLegalContainer .menuBtn:hover {

@@ -55,6 +55,48 @@ function setActive() {
 }
 
 
+function removeActiveTab() {
+  let linkBtn = document.querySelectorAll(".menuBtn");
+  linkBtn.forEach(btn => {
+    activeTab = activeTab == '' ? document.querySelector('h1').innerText.toLowerCase() : activeTab;
+    if (btn.innerText.toLowerCase() != activeTab) {
+      btn.classList.remove("menuBtnActive");
+    }
+  });
+}
+
+
+function setActiveTab(link) {
+  const activeTab = document.querySelector(link);
+  if (activeTab) {
+    changeActive(activeTab);
+  }
+}
+
+
+function updatePrioActiveBtn(prio) {
+  const buttons = document.querySelectorAll('.prioBtn');
+  buttons.forEach(button => {
+    button.classList.remove('prioBtnUrgentActive', 'prioBtnMediumActive', 'prioBtnLowActive');
+    const imgs = button.querySelectorAll('img');
+    imgs.forEach(img => { img.classList.add('hidden'); });
+  });
+  changeActiveBtn(prio);
+}
+
+
+function changeActiveBtn(prio) {
+  const activeButton = document.querySelector(`.prioBtn[data-prio="${prio}"]`);
+  if (activeButton) {
+    activeButton.classList.add(`prioBtn${capitalize(prio)}Active`);
+    const whiteIcon = activeButton.querySelector(`.prio${prio}smallWhite`);
+    if (whiteIcon) {
+      whiteIcon.classList.remove('hidden');
+    }
+  }
+}
+
+
 function checkCurrentUser() {
   const menuUserContainer = document.getElementById('menuUserContainer');
   const headerUserContainer = document.getElementById('headerUserContainer');

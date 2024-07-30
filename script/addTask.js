@@ -5,7 +5,7 @@ async function pushNewTask(event) {
   event.preventDefault();
   await postData("tasks", createNewtask());
   closeAddTaskModal();
-  setActiveTabToBoard();
+  setActiveTab('.menuBtn[href="../html/board.html"]');
 }
 
 
@@ -27,29 +27,6 @@ function setPrio(element) {
   const prio = element.getAttribute('data-prio');
   currentPrio = prio;
   updatePrioActiveBtn(prio);
-}
-
-
-function updatePrioActiveBtn(prio) {
-  const buttons = document.querySelectorAll('.prioBtn');
-  buttons.forEach(button => {
-    button.classList.remove('prioBtnUrgentActive', 'prioBtnMediumActive', 'prioBtnLowActive');
-    const imgs = button.querySelectorAll('img');
-    imgs.forEach(img => { img.classList.add('hidden'); });
-  });
-  changeActiveBtn(prio);
-}
-
-
-function changeActiveBtn(prio) {
-  const activeButton = document.querySelector(`.prioBtn[data-prio="${prio}"]`);
-  if (activeButton) {
-    activeButton.classList.add(`prioBtn${capitalize(prio)}Active`);
-    const whiteIcon = activeButton.querySelector(`.prio${prio}smallWhite`);
-    if (whiteIcon) {
-      whiteIcon.classList.remove('hidden');
-    }
-  }
 }
 
 
@@ -137,20 +114,6 @@ async function closeAddTaskModal() {
     updateAllTaskCategories();
     initDragDrop();
   }
-}
-
-
-function setActiveTabToBoard() {
-  const activeTab = document.querySelector('.menuBtn[href="../html/board.html"]');
-  if (activeTab) {
-    changeActive(activeTab);
-  }
-}
-
-
-function setActiveTabToAddTask() {
-  const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
-  changeActive(activeTab);
 }
 
 

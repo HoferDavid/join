@@ -215,7 +215,6 @@ function checkScreenWidth(category) {
 document.addEventListener('DOMContentLoaded', () => {
   const category = localStorage.getItem('taskCategory');
   if (category) {
-    console.log(`Category: ${category}`);
     localStorage.removeItem('taskCategory');
   }
 });

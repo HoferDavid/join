@@ -537,8 +537,6 @@ input:focus {
 .subtaskList {
   display: flex;
   flex-direction: column;
-  list-style: none;
-  padding: 4px 16px;
   max-height: 140px;
   overflow-y: scroll;
 }
