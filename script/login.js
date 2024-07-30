@@ -102,7 +102,7 @@ function handleRememberMe(rememberMe) {
 }
 
 function continueToSummary() {
-    sessionStorage.setItem('activeTab', 'Summary');
+    sessionStorage.setItem('activeTab', 'summary');
     window.location.href = './html/summary.html';
 }
 

@@ -95,8 +95,12 @@
     </div>
 
     <footer class="footer">
-        <a href="privacy.html" target="_blank">Privacy Policy</a>
-        <a href="imprint.html" target="_blank">Legal Notice</a>
+        <a href="privacy.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
+            target="_blank">Privacy
+            Policy</a>
+        <a href="imprint.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
+            target="_blank">Legal
+            Notice</a>
     </footer>
 
 

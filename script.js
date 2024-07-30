@@ -38,9 +38,8 @@ async function includeHTML() {
 
 function changeActive(link) {
   let linkBtn = document.querySelectorAll(".menuBtn");
-  let menuLegalLinks = document.querySelectorAll('.menuLegalLinks');
   linkBtn.forEach(btn => btn.classList.remove("menuBtnActive"));
-  activeTab = link.innerText;
+  activeTab = link.innerText.toLowerCase(); //
   sessionStorage.setItem("activeTab", activeTab);
 }
 
@@ -48,7 +47,8 @@ function changeActive(link) {
 function setActive() {
   let linkBtn = document.querySelectorAll(".menuBtn");
   linkBtn.forEach(btn => {
-    if (btn.innerText === activeTab) {
+    activeTab = activeTab == '' ? document.querySelector('h1').innerText.toLowerCase() : activeTab;
+    if (btn.innerText.toLowerCase() === activeTab) {
       btn.classList.add("menuBtnActive");
     }
   });
@@ -153,13 +153,3 @@ function logOut() {
 }
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const guestLoginButton = document.getElementById('guestLogin');
-//   if (guestLoginButton) {
-//     guestLoginButton.addEventListener('click', () => {
-//       console.log('Guest login geklickt');
-//       localStorage.setItem('showGreetings', 'true');
-//       window.location.href = 'html/summary.html'; // Weiterleiten zu summary.html
-//     });
-//   }
-// });
