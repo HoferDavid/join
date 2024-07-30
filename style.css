@@ -171,7 +171,8 @@ body {
   cursor: pointer;
 }
 
-a {
+a,
+.wordBreak {
   word-break: break-all;
 }
 
