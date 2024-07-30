@@ -121,5 +121,5 @@ function showUrgentTask() {
 
 function nextPage() {
   window.location.href = 'board.html';
-  sessionStorage.setItem('activeTab', 'Board');
+  sessionStorage.setItem('activeTab', 'board');
 }

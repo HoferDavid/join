@@ -86,7 +86,7 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
   let categoryElement = document.getElementById(categoryId);
   categoryElement.innerHTML = "";
   if (taskForSection.length > 0) {
-    taskForSection.forEach((element) => {  
+    taskForSection.forEach((element) => {
       categoryElement.innerHTML += generateTodoHTML(element);
       if (element.subtasks && element.subtasks.length > 0) {
         updateSubtasksProgressBar(element.subtasks, element.id);

@@ -178,5 +178,4 @@ function generateSvgCircleWithInitials(name, width, height) {
 }
 
 
-/*TODO - Check if new contact is user */
 /*TODO - check if mail is doubled */
