@@ -1,16 +1,7 @@
-main.content {
+main.content,
+.summ-main {
     display: flex;
-    
-    
 }
-
-
-
-.summ-main{
-    display: flex;
-  
-}
-
 
 .headline-summ{
     display: flex;
@@ -30,7 +21,6 @@ main.content {
     margin-block-start: 0em;
     margin-block-end: 0em;
     white-space: nowrap;
-    
 }
 
 .summ-seperate{
@@ -52,7 +42,6 @@ main.content {
     display: flex;
     align-items: center;
     flex-direction: column;
-    
 }
 
 .summ-seperate-mobile{
@@ -60,8 +49,7 @@ main.content {
     gap: 0px;
     border: 3px ;
     border: 3px solid #29ABE2;
-    display: none;
-    
+    display: none; 
 }
 
 .summ-stats{
@@ -71,7 +59,7 @@ main.content {
     box-sizing: border-box;
 }
 
-.summ-toDO-info{
+.summ-toDO-info {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,23 +92,6 @@ main.content {
     text-align: left;
 }
 
-.summ-toDO-info .summ-pencil-toDO{
-    display: block;
-
-}
-
-.summ-toDO-info .summ-pencil-unvisible{
-    display: none;
-}
-
-.summ-toDO-info:hover .summ-pencil-toDO{
-    display: none;
-}
-
-.summ-toDO-info:hover .summ-pencil-unvisible{
-    display: block;
-}
-
 .summ-done-info{
     display: flex;
     align-items: center;
@@ -134,21 +105,6 @@ main.content {
     transition: transform 200ms ease-in-out;
 }
 
-.summ-toDO-info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    background-color: #FFFFFF;
-    border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    width: 264px;
-    height: 168px;
-    transition: transform 200ms ease-in-out;
-    padding: 38px 19px;
-    box-sizing: border-box;
-}
-
 .summ-done-info:hover{
     cursor: pointer;
     background-color: #2A3647;
@@ -156,21 +112,20 @@ main.content {
     transform: scale(1.03);
 }
 
-.summ-done-info .summ-todo-cheking{
+.summ-done-info .summ-todo-cheking,
+.summ-done-info:hover .summ-todo-hover-cheking,
+.summ-toDO-info .summ-pencil-toDO,
+.summ-toDO-info:hover .summ-pencil-unvisible {
     display: block;
 }
 
-.summ-done-info .summ-todo-hover-cheking{
+.summ-done-info .summ-todo-hover-cheking,
+.summ-done-info:hover .summ-todo-cheking,
+.summ-toDO-info .summ-pencil-unvisible,
+.summ-toDO-info:hover .summ-pencil-toDO {
     display: none;
 }
 
-.summ-done-info:hover .summ-todo-cheking{
-    display: none;
-}
-
-.summ-done-info:hover .summ-todo-hover-cheking{
-    display: block;
-}
 
 .summ-open-info{
     display: flex;
@@ -321,8 +276,6 @@ main.content {
     justify-content: center;
 }
 
-
-
 .summ-greeting-mobile{
     display: flex;
     flex-direction: column;
@@ -338,9 +291,7 @@ main.content {
     z-index: 1000;
     padding: 20px; 
     box-sizing: border-box; 
-
 }
-
 
 .fade-out {
     opacity: 0;
@@ -348,7 +299,6 @@ main.content {
 }
 
 #greetingSummaryMobile.hide {
-  
     opacity: 0;
 }
 
@@ -356,7 +306,6 @@ main.content {
     display: flex;
     opacity: 1;
     transition: opacity 1s ease-in-out;  
-
 }
 
 .summ-day-greeting{
@@ -393,11 +342,8 @@ main.content {
 }
 
 @media (max-width: 1300px){
-    .headline-summ{
-        margin-left: 275px;
-    }
-
-    .summ-stats{
+    .headline-summ,
+    .summ-stats {
         margin-left: 275px;
     }
 
@@ -411,28 +357,20 @@ main.content {
         display: block;
     }
 
-    .headline-summ{
-        margin-left: 328px;
-    }
-
-    .summ-stats{
+    .headline-summ,
+    .summ-stats {
         margin-left: 328px;
     }
 
     .summ-greeting{
         display: none;
-
     }
 }
 
 @media (max-width: 960px){
-    .headline-summ{
+    .headline-summ,
+    .summ-stats {
         margin-left: 275px;
-    }
-
-    .summ-stats{
-        margin-left: 275px;
-        
     }
 }
 
@@ -448,13 +386,9 @@ main.content {
         flex-direction: column;
         justify-content: center; 
         align-items: center; 
-        height: 100vh; 
         margin: 0; 
         padding: 0; 
         box-sizing: border-box; 
-      
-        
-
     }
 
     .headline-summ{
@@ -468,7 +402,7 @@ main.content {
         box-sizing: border-box; 
     }
 
-    .headline-summ-h2{
+    .headline-summ-h2 {
         font-size: 60px;
     }
 
@@ -480,15 +414,12 @@ main.content {
         max-width: 800px; 
         padding: 0 20px; 
         box-sizing: border-box; 
-        text-align: center; 
-        
-       
+        text-align: center;   
     }
 
     .summ-stats{
         margin-left: 20px;
-        margin-right: 20px;
-        
+        margin-right: 20px; 
     }
 
     .summ-greeting-mobile{
@@ -501,11 +432,8 @@ main.content {
         width: 150px;
     }
 
-    .summ-toDO-info{
-        width: 230px;
-    }
-
-    .summ-done-info{
+    .summ-toDO-info,
+    .summ-done-info {
         width: 230px;
     }
 
@@ -522,11 +450,6 @@ main.content {
         margin-bottom: 25px;
     }
 
-    .summ-stats{
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-
     .summ-seperate-mobile{
         display: block;
     }
@@ -541,14 +464,9 @@ main.content {
         font-size: 20px;
     }
 
-    .summ-stats{
-        max-width: 400px;
-    }
-
     .summ-toDO-info{
         width: 180px;
         height: 128px;
-        
     }
 
     .summ-done-info{
@@ -576,7 +494,6 @@ main.content {
 
     .summ-stats-under-howmany{
         line-height: 60px;
-        
     }
 
     .how-many-dones{
@@ -623,16 +540,8 @@ main.content {
         margin-top: 20px;
     }
 
-    .summ-stats{
-        max-width: 320px;
-    }
-
-    .how-many-dones{
-        font-size: 30px;
-        line-height: 40px;
-    }
-
-    .summ-stats-under-howmany{
+    .how-many-dones,
+    .summ-stats-under-howmany {
         font-size: 30px;
         line-height: 40px;
     }
@@ -641,12 +550,8 @@ main.content {
         font-size: 16px;
     }
 
-    .summ-done-info{
-        width: 140px;
-        height: 108px;
-    }
-
-    .summ-toDO-info{
+    .summ-done-info,
+    .summ-toDO-info {
         width: 140px;
         height: 108px;
     }
@@ -672,11 +577,8 @@ main.content {
         width: 120px;
     }
 
-    .summ-done-info{
-        width: 140px;
-    }
-
-    .summ-toDO-info{
+    .summ-done-info,
+    .summ-toDO-info {
         width: 140px;
     }
 
@@ -686,7 +588,8 @@ main.content {
 }
 
 @media (max-height : 810px){
-    .summ-info-urgent{
+    .summ-info-urgent,
+    .summ-seperate {
         height: 80px;
     }
 
@@ -695,33 +598,17 @@ main.content {
         margin-top: 10px;
     }
 
-    .summ-done-info{
-        height: 100px;
-    }
-
-    .summ-toDO-info{
-        height: 100px;
-    }
-
     .summ-stats-urgent{
         height: 100px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
 
-    .summ-stats-under-container{
-        height: 100px;
-    }
-
-    .summ-seperate{
-        height: 80px;
-    }
-
-    .summ-stats-under-howmany{
-        height: 100px;
-    }
-
-    .summ-stats-under-tasks{
+    .summ-done-info,
+    .summ-toDO-info,
+    .summ-stats-under-container,
+    .summ-stats-under-howmany,
+    .summ-stats-under-tasks {
         height: 100px;
     }
 }

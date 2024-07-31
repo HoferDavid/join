@@ -38,11 +38,11 @@ function greeting() {
   let now = new Date();
   let hours = now.getHours();
   if (hours < 12) {
-    return "Good Morning,";
+    return "Good morning,";
   } else if (hours < 18) {
-    return "Good Afternoon,";
+    return "Good afternoon,";
   } else {
-    return "Good Evening,";
+    return "Good evening,";
   }
 }
 
