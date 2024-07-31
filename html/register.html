@@ -78,7 +78,11 @@
 
                 <div class="accept-policy">
                     <input type="checkbox" id="privacy-policy" required>
-                    <label for="privacy-policy">I accept the <a href="privacy.html">Privacy policy</a></label>
+                    <label for="privacy-policy">I accept the
+                        <a href="privacy.html"
+                            onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
+                            target="_blank">Privacy Policy</a>
+                    </label>
                 </div>
 
                 <div class="signup-btn-headsection">
