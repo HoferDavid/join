@@ -62,12 +62,15 @@ function renderContactsDetails(id = '') {
   let details = document.getElementById('contactsDetail');
   editId = id;
   details.innerHTML = contacts.find(c => (c.id == editId)) && (editId != -1) ? htmlRenderContactDetails(editId) : htmlRenderContactDetailsEmpty();
+  makeContactActive(id);
 }
 
-function makeContactActive(c) {
+function makeContactActive(id = editId) {
+  let contactLabel = `contact${id}`;
+  let contact = document.getElementById(contactLabel);
   let activeContact = document.querySelector('.activeContact');
   activeContact ? activeContact.classList.remove('activeContact') : null;
-  c.classList.add('activeContact');
+  contact ? contact.classList.add('activeContact') : null;
 }
 
 
@@ -133,7 +136,7 @@ async function addContacts(id = editId) {
   let addName = document.getElementById('addName').value;
   let addEmail = document.getElementById('addMail').value;
   let addTel = document.getElementById('addTel').value;
-  let newContact = createContact(id, addName, addEmail, addTel, false, false);
+  let newContact = await createContact(id, addName, addEmail, addTel, false, false);
   try {
     await updateData(`${BASE_URL}contacts/${id}.json`, newContact);
     contacts.push(pushToContacts(newContact));
@@ -161,13 +164,13 @@ async function createContact(id, name, email, phone, profilePic, isUser) {
 
 function pushToContacts(contact) {
   return {
-    id: contact.id,
-    name: contact.name,
-    email: contact.mail,
-    phone: contact.number,
-    profilePic: contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
-    isUser: contact.isUser,
-    firstLetters: filterFirstLetters(contact.name)
+    'id': contact.id,
+    'name': contact.name,
+    'email': contact.mail,
+    'phone': contact.number,
+    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
+    'isUser': contact.isUser,
+    'firstLetters': filterFirstLetters(contact.name)
   };
 }
 

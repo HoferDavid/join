@@ -21,7 +21,7 @@ function htmlRenderContactLetter(letter) {
 
 function htmlRenderGeneral(contact) {
   return /*html*/`
-    <li onclick="toggleClass('contactsDetail', 'tt0', 'ttx100'); renderContactsDetails(${contact.id}); makeContactActive(this)">
+    <li id="contact${contact.id}" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100'); renderContactsDetails(${contact.id})">
       <div class="contactSmall">
         ${contact.profilePic}
       </div>
