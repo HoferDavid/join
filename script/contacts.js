@@ -85,6 +85,7 @@ function openEditContacts(id) {
   tel.value = contacts[contacts.findIndex(c => c.id == id)].phone;
   profilePic.innerHTML = contacts[contacts.findIndex(c => c.id == id)].profilePic;
   toggleClass('editContact', 'tt0', 'tty100');
+  activateOutsideCheck('editContact');
 }
 
 
@@ -129,6 +130,7 @@ function openAddContacts() {
   email.value = '';
   tel.value = '';
   toggleClass('addContact', 'tt0', 'tty100');
+  activateOutsideCheck('addContact');
 }
 
 
@@ -184,6 +186,19 @@ function generateSvgCircleWithInitials(name, width, height) {
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   const initials = name.split(' ').map(word => word[0]).join('').toUpperCase();
   return svgProfilePic(randomColor, initials, height, width);
+}
+
+function activateOutsideCheck(modalName) {
+  document.addEventListener('mousedown', function () { checkOutsideModal(modalName); });
+}
+
+function checkOutsideModal(modalName) {
+  let modal = document.getElementById(modalName);
+  if (modal.classList.contains('tt0') && !modal.contains(event.target)) {
+    toggleClass(modalName, 'tt0', 'tty100');
+    document.removeEventListener('click', function () { checkOutsideModal(modalName); });
+
+  };
 }
 
 
