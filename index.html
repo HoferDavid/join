@@ -48,65 +48,69 @@
 </head>
 
 <body>
-    <div class="rotate-warning"></div>
+    <div class="content">
+        <div class="rotate-warning"></div>
 
-    <header>
-        <img id="logo" src="./assets/icons/logoBlue.svg">
-    </header>
-
-    <main>
-        <section id="login-form-container">
+        <header>
+            <img id="logo" src="./assets/icons/logoBlue.svg">
+    
             <div class="signup-section-upside">
                 <span>Not a Join user?</span>
                 <button class="signup-button" onclick="window.location.href='html/register.html';">
                     Sign Up
                 </button>
             </div>
-
-            <form class="form-container" id="login-form">
-                <div class="headline">
-                    <div>Log in</div>
-                    <div class="underline"></div>
-                </div>
-
-
-                <div class="login-field">
-                    <input id="emailInput" required type="email" placeholder="Email" autocomplete="email">
-                    <input id="passwordInput" required type="password" placeholder="Password" autocomplete="current-password">
-                </div>
-
-
-                <div id="error-message" style="color: red; display: none;">
-                    Ups, wrong e-mail address or password! Try again.
-                </div>
-
-                <label class="checkbox">
-                    <input type="checkbox" id="rememberMe" style="display:none;">
-                    <img src="../assets/icons/check1.png" id="checkbox" class="checkbox-img">
-                    <span>Remember me</span>
-                </label>
-                <div class="button-section-for-entry">
-                    <button type="button" id="loginButton" class="login-signup-button">Log in</button>
-                    <button type="button" id="guestLogin" class="guest-login-button">Guest Log in</button>
-                </div>
-            </form>
-        </section>
-
-        <section class="signup-section-lowside">
-            <span>Not a Join user?</span>
-            <button class="signup-button" onclick="window.location.href='html/register.html';">
-                Sign Up
-            </button>
-        </section>
-    </main>
-
-
-    <footer>
-        <a href="html/privacy.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase());"
-            target="_blank">Privacy Policy</a>
-        <a href="html/imprint.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
-            target="_blank">Legal Notice</a>
-    </footer>
+        </header>
+    
+    
+        <main>
+            <section id="login-form-container">
+                <form class="form-container" id="login-form">
+                    <div class="headline">
+                        <div>Log in</div>
+                        <div class="underline"></div>
+                    </div>
+    
+    
+                    <div class="login-field">
+                        <input id="emailInput" required type="email" placeholder="Email" autocomplete="email">
+                        <input id="passwordInput" required type="password" placeholder="Password" autocomplete="current-password">
+                    </div>
+    
+    
+                    <div id="error-message" style="color: red; display: none;">
+                        Ups, wrong e-mail address or password! Try again.
+                    </div>
+    
+                    <label class="checkbox">
+                        <input type="checkbox" id="rememberMe" style="display:none;">
+                        <img src="../assets/icons/check1.png" id="checkbox" class="checkbox-img">
+                        <span>Remember me</span>
+                    </label>
+                    <div class="button-section-for-entry">
+                        <button type="button" id="loginButton" class="login-signup-button">Log in</button>
+                        <button type="button" id="guestLogin" class="guest-login-button">Guest Log in</button>
+                    </div>
+                </form>
+            </section>
+    
+            <section class="signup-section-lowside">
+                <span>Not a Join user?</span>
+                <button class="signup-button" onclick="window.location.href='html/register.html';">
+                    Sign Up
+                </button>
+            </section>
+        </main>
+    
+    
+        <footer>
+            <a href="html/privacy.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase());"
+                target="_blank">Privacy Policy</a>
+            <a href="html/imprint.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
+                target="_blank">Legal Notice</a>
+        </footer>
+    
+    </div>
 
 
 </body>
