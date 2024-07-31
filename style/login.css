@@ -15,8 +15,8 @@ body {
 }
 
 #logo {
-  width: 100px;
-  height: 121px;
+  width: 64px;
+  height: 78px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,10 +26,10 @@ body {
 
 #logo {
   width: 100px;
-  height: 121px;
+  height: 120px;
   position: absolute;
   top: 80px;
-  left: 77px;
+  left: 80px;
 }
 
 @keyframes logoMove {
@@ -50,8 +50,8 @@ body {
   }
 
   100% {
-    top: 80px;
-    left: 77px;
+    top: 38px;
+    left: 38px;
     transform: translate(0, 0);
   }
 }
@@ -231,13 +231,10 @@ label.checkbox {
 }
 
 .signup-section-upside {
-  /* position: fixed;
-  top: 64px;
-  right: 120px; */
   display: flex;
   align-items: center;
   gap: 36px;
-  margin-right: 80px;
+  margin-right: 120px;
   justify-content: flex-end;
   opacity: 0;
   animation: fadeIn 3s forwards 0.5s;
@@ -316,28 +313,12 @@ footer a:hover {
     top: 37px;
     left: 38px;
   }
-
-  /* @keyframes logoMove {
-    0% {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 274px;
-      height: 334px;
-    }
-
-    100% {
-      top: 37px;
-      left: 38px;
-      transform: translate(0, 0);
-    }
-  } */
 }
 
 @media (min-width: 769px) {
-  /* .content {
-    align-items: unset;
-  } */
+  header {
+    margin-bottom: 80px;
+  }
 
   .signup-section-lowside {
     display: none;
@@ -365,222 +346,11 @@ footer a:hover {
   .login-signup-button {
     width: 110px;
   }
-}
 
-@media (min-width: 1440px) {
-  /* body {
-    width: 1440px;
-  } */
-}
-
-
-
-
-
-
-@media (max-width: 450px) {
-  /* .form-container {
-    width: 280px;
+  #logo {
+    width: 100px;
+    height: 122px;
   }
-
-
-
-  footer {
-    gap: 16px;
-  }
-
-  label span {
-    font-size: 15px;
-  } */
-}
-
-@media (max-height: 740px) {
-  /* #logo {
-    width: 44px;
-    height: 58px;
-  }
-
-  .form-container {
-    margin-top: 80px;
-  }
-
-  footer {
-    bottom: 10px;
-  }
-
- */
-}
-
-/* .signup-section-lowside {
-    display: block; */
-*/
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-
-  /* #error-message {
-    font-size: 12px;
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  } */
-
-
-
-
-  /* .maincontainer-inputfield {
-    width: 100%;
-    height: 152px;
-    margin-top: 0;
-  }
-
-  .login-field input {
-    width: calc(100% - 32px);
-    box-sizing: border-box;
-    height: 48px;
-    border-radius: 10px;
-    border: 1px solid #D1D1D1;
-    padding: 13px 21px;
-  } */
-
-
-
-  /* .login-field {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 0px;
-  }
-
-  label {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-top: 16px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-  }
-
-  label input {
-    margin-left: 32px;
-  }
-
-
-
-  .button-section-for-entry {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    gap: 21px;
-  }
-
-  .login-signup-button {
-    width: 180px;
-    height: 51px;
-  }
-
-  .guest-login-button {
-    width: 180px;
-    height: 51px;
-  }
-
-
-
-  .signup-button {
-    width: 104px;
-    height: 49px;
-    margin-left: 0px;
-  }
-
-  #emailInput {
-    margin-bottom: 32px;
-  } */
-
-
-
-
-
-@media (max-height: 810px) {
-  /* #logo {
-    width: 54px;
-    height: 68px;
-  } */
-
-  /* #error-message {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  } */
-
-  /* .form-container {
-    margin-top: 100px;
-  }
-
-
-
-  .headline h1 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }
-
-  .underline {
-    margin-bottom: 10px;
-  }
-
-  .form-container {
-    height: 470px;
-  }
-
-
-
-  label {
-    margin-top: 25px;
-  }
-
-  .button-section-for-entry {
-    margin-top: 20px;
-  } */
-
-  /* @keyframes logoMove {
-    0% {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 274px;
-      height: 334px;
-    }
-
-    100% {
-      top: 10px;
-      left: 10px;
-      transform: translate(0, 0);
-    }
-  } */
-}
-
-@media (max-height: 900px) {
-  /* #error-message {
-    font-size: 10px;
-    margin-left: 0px;
-  } */
-
-  /* 
-
-  .form-container {
-    margin-top: 130px;
-  }
-
- */
-
-  /*   */
-
-  /* #logo {
-  width: 54px;
-  height: 68px;
-}
 
   @keyframes logoMove {
     0% {
@@ -590,11 +360,19 @@ footer a:hover {
       width: 274px;
       height: 334px;
     }
-
+  
+    30% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 274px;
+      height: 334px;
+    }
+  
     100% {
-      top: 30px;
-      left: 30px;
+      top: 80px;
+      left: 80px;
       transform: translate(0, 0);
     }
-  } */
+  }
 }
