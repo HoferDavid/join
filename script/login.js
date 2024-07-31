@@ -3,26 +3,22 @@ import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs
 
 const auth = getAuth();
 const database = getDatabase();
-const emailInput = document.getElementById('emailInput');
 const passwordInput = document.getElementById('passwordInput');
-const rememberMeCheckbox = document.querySelector("#rememberMe");
-const checkboxImg = document.getElementById('checkbox');
 let isPasswordVisible = false;
 let clickCount = -1;
 
 
 function initLogin() {
-        if (document.getElementById('login-form')) {
-            const rememberMe = localStorage.getItem('rememberMe') === 'true';
-            emailInput.value = localStorage.getItem('email');
-            passwordInput.value = localStorage.getItem('password');
-            checkboxImg.src = rememberMe ? '../assets/icons/check2.png' : '../assets/icons/check1.png';
-            rememberMeCheckbox.checked = rememberMe;
-    
+    if (document.getElementById('login-form')) {
+        let rememberMe = localStorage.getItem('rememberMe') === 'true';
+        if (rememberMe) {
+            document.getElementById('emailInput').value = localStorage.getItem('email');
+            document.getElementById('passwordInput').value = localStorage.getItem('password');
+            document.getElementById('checkbox').src = rememberMe ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+            document.getElementById('rememberMe').checked = rememberMe;
+        }
         setupPasswordToggle();
     }
-
-    checkboxImg.addEventListener('click', checkBoxClicked);
 }
 
 
@@ -92,14 +88,18 @@ async function setCurrentUser(email) {
 }
 
 function handleRememberMe(rememberMe) {
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
     if (rememberMe) {
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        localStorage.setItem('email', document.getElementById('emailInput').value);
+        localStorage.setItem('password', document.getElementById('passwordInput').value);
         localStorage.setItem('rememberMe', 'true');
     } else {
-        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         localStorage.removeItem('rememberMe');
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
     }
 }
+
 
 function continueToSummary() {
     sessionStorage.setItem('activeTab', 'summary');
@@ -120,22 +120,12 @@ function handleGuestLogin() {
 }
 
 function checkBoxClicked() {
-    const isChecked = localStorage.getItem('rememberMe') === 'true';
-    const newCheckedState = !isChecked;
-    checkboxImg.src = newCheckedState ? '../assets/icons/check2.png' : '../assets/icons/check1.png';
-    localStorage.setItem('rememberMe', newCheckedState ? 'true' : 'false');
-    
-    if (newCheckedState) {
-        localStorage.setItem('email', emailInput.value);
-        localStorage.setItem('password', passwordInput.value);
-    } else {
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-    }
-
-    rememberMeCheckbox.checked = newCheckedState;
+    const checkedState = document.getElementById('rememberMe').checked;
+    const checkboxImg = document.getElementById('checkbox');
+    checkboxImg.src = checkedState ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
 }
 
+document.getElementById('rememberMe').addEventListener('click', checkBoxClicked);
 document.getElementById('loginButton').addEventListener('click', loginButtonClick);
 document.getElementById('guestLogin').addEventListener('click', handleGuestLogin);
 document.addEventListener("DOMContentLoaded", initLogin);

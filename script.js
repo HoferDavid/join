@@ -189,8 +189,8 @@ function capitalize(str) {
 }
 
 function logOut() {
-  sessionStorage.clear(currentUser);
-  localStorage.clear(currentUser);
+  sessionStorage.removeItem('currentUser');
+  localStorage.removeItem('currentUser');
   window.location.href = '../index.html';
 }
 
