@@ -404,9 +404,11 @@
   }
 }
 
-@media (min-width: 576px) {}
-
-@media (min-width: 768px) {}
+@media (max-height: 680px) {
+  #overlay {
+    top: 32px;
+  }
+}
 
 @media (max-width: 991px) {
   .addTaskModalContainer {
