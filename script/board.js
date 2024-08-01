@@ -257,12 +257,13 @@ function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
   modalContainer.innerHTML = generateTaskEditHTML(taskId);
   let task = tasks.find((task) => task.id === taskId);
+  assignedContacts = task.assignedTo;
   currentTaskStatus = task.status;
   document.getElementById("editTaskTitle").value = task.title;
   document.getElementById("editTaskDescription").value = task.description;
   document.getElementById("editDateInput").value = task.date;
   updatePrioActiveBtn(task.prio);
-  renderAssignedContacts(task.assignedTo);
+  renderAssignedContacts();
 }
 
 
