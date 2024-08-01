@@ -23,7 +23,7 @@ function greetingSummary() {
   let greetingTime = greeting();
   let greetingName = currentUser.name;
 
-  if (window.matchMedia("(max-width: 1200px)").matches) {
+  if (window.matchMedia("(max-width: 1199.8px)").matches) {
     let greetingMobile = document.getElementById('greetingSummaryMobile');
     let summaryMain = document.getElementById('summaryMain');
     greetingMobile.innerHTML = greetingMobileHTML(greetingTime, greetingName);
