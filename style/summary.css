@@ -377,6 +377,10 @@ main.content {
         width: 40%;
     }
 
+    #greetingSummaryMobile {
+        display: none;
+    }
+
     .headline-summ {
         flex-direction: row;
         align-items: center;
