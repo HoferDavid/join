@@ -3,18 +3,26 @@ main.content,
     display: flex;
 }
 
-.headline-summ{
+.summ-2 {
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 30px;
-    margin-left: 75px;
-    margin-bottom: 55px;
-    margin-top: 110px;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.headline-summ-h2{
+
+.headline-summ {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.headline-summ-h2 {
     color: #000000;
-    font-size: 61px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 73.2px;
     text-align: left;
@@ -23,94 +31,105 @@ main.content,
     white-space: nowrap;
 }
 
-.summ-seperate{
+.summ-seperate {
     width: 0px;
     height: 60px;
     border: 3px solid #29ABE2;
 }
 
-.summ-info{
+.summ-info {
     color: #2A3647;
-    font-size: 27px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 32.4px;
     text-align: left;
+    overflow-wrap: break-word;
     white-space: nowrap;
 }
 
-.summ-2{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
-.summ-seperate-mobile{
+.summ-seperate-mobile {
     width: 90px;
     gap: 0px;
-    border: 3px ;
+    border: 3px;
     border: 3px solid #29ABE2;
-    display: none; 
+    display: none;
 }
 
-.summ-stats{
+.summ-stats {
     width: 100%;
     max-width: 560px;
-    height: 562px;
+    height: 100%;
     box-sizing: border-box;
 }
 
-.summ-toDO-info {
+.topContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 33%;
+}
+
+.summ-info-field {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
     background-color: #FFFFFF;
-    border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #0000001A;
-    width: 264px;
-    height: 168px;
-    transition: transform 200ms ease-in-out;
-    padding: 38px 19px;
+    transition: transform 125ms ease-in-out;
+    border-radius: 10px;
+    gap: 8px;
     box-sizing: border-box;
+    padding: 8px;
+    overflow: hidden;
 }
 
-.summ-pencil-unvisible{
-    display: block;
-}
-
-.summ-toDO-info:hover{
+.summ-info-field:hover {
     cursor: pointer;
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.03);
 }
 
-.how-many-done{
+.summ-info-field img {
+    height: 50%;
+    width: auto;
+}
+
+.summ-toDO-info {
+    width: 50%;
+    height: 100%;
+}
+
+.summ-pencil-unvisible {
+    display: block;
+}
+
+/* .summ-toDO-info:hover {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    transform: scale(1.03);
+} */
+
+.how-many-done {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
 }
 
-.summ-done-info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    background-color: #FFFFFF;
-    border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    width: 264px;
-    height: 168px;
-    transition: transform 200ms ease-in-out;
+.summ-done-info {
+    width: 50%;
+    height: 100%;
 }
 
-.summ-done-info:hover{
+/* .summ-done-info:hover {
     cursor: pointer;
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.03);
-}
+} */
 
 .summ-done-info .summ-todo-cheking,
 .summ-done-info:hover .summ-todo-hover-cheking,
@@ -127,68 +146,49 @@ main.content,
 }
 
 
-.summ-open-info{
+.summ-open-info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.how-many-dones{
-    font-size: 64px;
+.how-many-dones {
+    font-size: 32px;
     font-weight: 600;
     line-height: 76.8px;
     text-align: center;
 }
 
-.how-many-done{
-    font-size: 20px;
+.how-many-done {
+    font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
 }
 
-.summ-stats-urgent{
-    background-color: #FFFFFF;
+.summ-stats-urgent {
     width: 100%;
-    height: 168px;
-    gap: 61px;
-    border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 61px;
-    margin-top: 28px;
-    margin-bottom: 28px;
-    transition: transform 200ms ease-in-out;
-    padding-top: 28px;
-    padding-right: 48px;
-    padding-bottom: 28px;
-    padding-left: 48px;
-    box-sizing: border-box;
+    height: 33%;
 }
 
-.summ-stats-urgent:hover,
+/* .summ-stats-urgent:hover,
 .summ-stats-urgent:hover .summ-urgent-date,
 .summ-stats-urgent:hover .summ-urgent-date-deadline,
 .summ-stats-urgent:hover #howManyUrgent,
-.summ-stats-urgent:hover .how-many-todos{
+.summ-stats-urgent:hover .how-many-todos {
     cursor: pointer;
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.03);
-}
+} */
 
 .summ-stats-urgent:hover #howManyUrgent {
     color: #FFFFFF;
 }
 
-.summ-info-urgent{
+.summ-info-urgent {
     display: flex;
     align-items: center;
-    width: 130px;
-    height: 96px;
     gap: 18px;
 }
 
@@ -198,19 +198,19 @@ main.content,
     align-items: center;
 }
 
-.summ-urgent-seperate{
+.summ-urgent-seperate {
     margin-left: 40px;
     height: 60px;
     border: 1px solid #29abe2;
-    
+
 }
 
-.summ-urgent-date-container{
+.summ-urgent-date-container {
     display: flex;
     flex-direction: column;
 }
 
-.summ-urgent-date{
+.summ-urgent-date {
     font-size: 21px;
     font-weight: 700;
     line-height: 25.2px;
@@ -218,7 +218,7 @@ main.content,
     color: #2A3647;
 }
 
-.summ-urgent-date-deadline{
+.summ-urgent-date-deadline {
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
@@ -226,57 +226,50 @@ main.content,
     color: #2A3647;
 }
 
-.summ-stats-under{
+.summ-stats-under {
     display: flex;
     text-align: center;
     justify-content: space-between
 }
 
-.summ-stats-under-container{
-    padding: 25px;
-    box-sizing: border-box;
-    width: 168px;
-    height: 168px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    border-radius: 30px;
+.summ-stats-under-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 100ms ease-in-out;
+    justify-content: space-between;
+    width: 100%;
+    height: 33%;
 }
 
-.summ-stats-under-container:hover,
-.summ-stats-under-container:hover .summ-stats-under-tasks{
+.summ-stats-under-container>.summ-info-field {
+    width: 33%;
+}
+
+/* .summ-stats-under-container:hover,
+.summ-stats-under-container:hover .summ-stats-under-tasks {
     cursor: pointer;
     background-color: #2A3647;
     color: #FFFFFF;
     transform: scale(1.05);
-}
+} */
 
-.summ-stats-under-howmany{
-    font-size: 64px;
+.summ-stats-under-howmany {
+    font-size: 32px;
     font-weight: 600;
-    line-height: 76.8px;
     text-align: center;
 }
 
-.summ-stats-under-tasks{
-    font-size: 21px;
+.summ-stats-under-tasks {
+    font-size: 12px;
     font-weight: 400;
-    line-height: 25.2px;
     color: #2A3647;
 }
 
-.summ-greeting{
-    margin-left: 30px;
-    display: flex;
+.summ-greeting {
+    display: none;
     flex-direction: column;
     justify-content: center;
 }
 
-.summ-greeting-mobile{
+.summ-greeting-mobile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -284,31 +277,39 @@ main.content,
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%; 
+    width: 90%;
     max-width: 100%;
-    height: auto; 
-    min-height: calc(100vh - 178px); 
+    height: auto;
+    min-height: calc(100vh - 178px);
     z-index: 1000;
-    padding: 20px; 
-    box-sizing: border-box; 
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .fade-out {
     opacity: 0;
-    transition: opacity 1s ease-out; 
+    transition: opacity 1s ease-out;
 }
 
 #greetingSummaryMobile.hide {
     opacity: 0;
 }
 
-#greetingSummaryMobile{
+#greetingSummaryMobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 1;
-    transition: opacity 1s ease-in-out;  
+    transition: opacity 1s ease-in-out;
 }
 
-.summ-day-greeting{
+.summ-day-greeting {
     font-size: 47px;
     font-weight: 500;
     line-height: 56.4px;
@@ -319,7 +320,7 @@ main.content,
     text-align: center;
 }
 
-.summ-person-greeting{
+.summ-person-greeting {
     font-size: 64px;
     font-weight: 700;
     margin-right: 10px;
@@ -328,14 +329,32 @@ main.content,
     text-align: center;
 }
 
+/*ANCHOR Media Query
+X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap*/
 
-@media (max-width: 1500px){
-    .summ-person-greeting{
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {}
+
+@media (max-width: 1500px) {
+    .summ-person-greeting {
         font-size: 50px;
     }
 }
 
-@media(max-width:1300px){
+/* @media(max-width:1300px){
     .summ-person-greeting{
         font-size: 50px;
     }
@@ -611,4 +630,4 @@ main.content,
     .summ-stats-under-tasks {
         height: 100px;
     }
-}
+} */
