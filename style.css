@@ -284,6 +284,11 @@ body {
   color: #29abe2;
 }
 
+.logoContainer:hover {
+  background-color: unset;
+  transform: scale(1.1);
+}
+
 /*ANCHOR Media Query
 X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap*/
