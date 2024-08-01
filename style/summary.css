@@ -325,6 +325,7 @@ main.content {
 @media (min-width: 576px) {
     .summ-2 {
         padding: 24px;
+        margin-top: 24px;
     }
 
     .headline-summ {
@@ -343,7 +344,7 @@ main.content {
     }
 
     .headline-summ-h2 {
-        font-size: 40px;
+        font-size: 48px;
     }
 
     .summ-info-urgent,
@@ -353,16 +354,23 @@ main.content {
 
     .summ-stats-under-howmany,
     .how-many-dones {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     .summ-urgent-date,
-    .summ-info {
+    .summ-info,
+    .how-many-done {
+        font-size: 24px;
+    }
+
+    .summ-urgent-date-deadline,
+    .summ-stats-under-tasks {
         font-size: 20px;
     }
 
-    .summ-urgent-date-deadline {
-        font-size: 16px;
+    .summ-info-field img {
+        height: 72px;
+        width: auto;
     }
 }
 
