@@ -257,7 +257,7 @@ function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
   modalContainer.innerHTML = generateTaskEditHTML(taskId);
   let task = tasks.find((task) => task.id === taskId);
-  assignedContacts = task.assignedTo;
+  assignedContacts = task.assignedTo ? task.assignedTo : [];
   currentTaskStatus = task.status;
   document.getElementById("editTaskTitle").value = task.title;
   document.getElementById("editTaskDescription").value = task.description;
