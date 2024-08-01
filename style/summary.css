@@ -10,6 +10,8 @@ main.content,
     align-items: center;
     flex-direction: column;
     overflow: hidden;
+    padding: 8px;
+    gap: 8px;
 }
 
 
@@ -41,10 +43,7 @@ main.content,
     color: #2A3647;
     font-size: 16px;
     font-weight: 400;
-    line-height: 32.4px;
     text-align: left;
-    overflow-wrap: break-word;
-    white-space: nowrap;
 }
 
 
@@ -61,6 +60,10 @@ main.content,
     max-width: 560px;
     height: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .topContainer {
@@ -68,6 +71,7 @@ main.content,
     justify-content: space-between;
     width: 100%;
     height: 33%;
+    gap: 8px;
 }
 
 .summ-info-field {
@@ -229,7 +233,8 @@ main.content,
 .summ-stats-under {
     display: flex;
     text-align: center;
-    justify-content: space-between
+    justify-content: space-between;
+
 }
 
 .summ-stats-under-container {
@@ -237,6 +242,7 @@ main.content,
     justify-content: space-between;
     width: 100%;
     height: 33%;
+    gap: 8px;
 }
 
 .summ-stats-under-container>.summ-info-field {
@@ -348,11 +354,11 @@ No media query for `xs` since this is the default in Bootstrap*/
 /*XX-Large devices (larger desktops, 1400px and up)*/
 @media (min-width: 1400px) {}
 
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
     .summ-person-greeting {
         font-size: 50px;
     }
-}
+} */
 
 /* @media(max-width:1300px){
     .summ-person-greeting{
