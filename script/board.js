@@ -1,6 +1,7 @@
 let currentDraggedElement;
-let currentSearchInput = "";
+let currentSearchInput = '';
 let currentTaskStatus;
+let currentTaskCategory = '';
 
 
 async function initBoard() {
@@ -202,7 +203,7 @@ function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
   activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
   taskStatus = category;
-  localStorage.setItem('taskCategory', category);
+  sessionStorage.setItem('taskCategory', category);
   if (screenWidth < 992) {
     changeActive(activeTab);
     return (window.location.href = "../html/addtask.html");

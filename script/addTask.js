@@ -3,6 +3,7 @@ let assignedContacts = [];
 
 async function pushNewTask(event) {
   event.preventDefault();
+  taskStatus = sessionStorage.getItem('taskCategory');
   await postData("tasks", createNewtask());
   closeAddTaskModal();
   setActiveTab('.menuBtn[href="../html/board.html"]');
@@ -103,7 +104,7 @@ function showTaskAddedAnimationModal() {
 
 
 async function closeAddTaskModal() {
-  if (activeTab == 'add task' || 'addtask' || 'Add Task') {
+  if (activeTab == 'add task') {
     showTaskAddedAnimation();
     tasks = [];
     await pushDataToArray();
