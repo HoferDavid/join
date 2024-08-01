@@ -139,17 +139,14 @@ async function addContacts(id = editId) {
   let addEmail = document.getElementById('addMail').value;
   let addTel = document.getElementById('addTel').value;
   let newContact = await createContact(id, addName, addEmail, addTel, false, false);
-  try {
+  if (checkAlreadyExists(newContact)) {
     await updateData(`${BASE_URL}contacts/${id}.json`, newContact);
     contacts.push(pushToContacts(newContact));
     sessionStorage.setItem("contacts", JSON.stringify(contacts));
     toggleClass('addContact', 'tt0', 'tty100');
     refreshPage();
-  } catch (error) {
-    console.error(error);
   }
 }
-
 
 async function createContact(id, name, email, phone, profilePic, isUser) {
   return {
@@ -174,6 +171,15 @@ function pushToContacts(contact) {
     'isUser': contact.isUser,
     'firstLetters': filterFirstLetters(contact.name)
   };
+}
+
+function checkAlreadyExists(contact) {
+  let warningMessage = document.querySelectorAll('.warning');
+  warningMessage.forEach(warning => warning.classList.add('d-none'));
+  if (contacts.findIndex(c => { (c.name === contact.name) && (c.id != contact.id); }) > -1 || contacts.findIndex(c => { (c.email === contact.mail) && (c.id != contact.id); })) {
+    warningMessage.forEach(warning => warning.classList.remove('d-none'));
+    return false;
+  }
 }
 
 function filterFirstLetters(name) {

@@ -7,7 +7,6 @@ let currentTaskCategory = '';
 async function initBoard() {
   init();
   try {
-    await loadData();
     await pushDataToArray();
     updateAllTaskCategories();
     initDragDrop();
@@ -28,16 +27,31 @@ async function pushDataToArray() {
   try {
     let tasksData = await loadData("tasks");
     for (const key in tasksData) {
-      const singleTask = tasksData[key];
+      let singleTask = tasksData[key];
       if (!singleTask) {
         continue;
       }
       let task = await createTaskArray(key, singleTask);
+      task = await checkDeletedUser(task);
       tasks.push(task);
     }
   } catch (error) {
     console.error("dh Error pushing tasks to array:", error);
   }
+}
+
+async function checkDeletedUser(loadedTask) {
+  contacts = contacts.length == 0 ? await getContactsData() : contacts;
+  if (loadedTask.assignedTo) {
+    for (let i = loadedTask.assignedTo.length - 1; i >= 0; i--) {
+      const c = loadedTask.assignedTo[i];
+      if (contacts.findIndex(cont => cont.id === c.id) === -1) {
+        loadedTask.assignedTo.splice(i, 1);
+        await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
+      }
+    }
+  }
+  return loadedTask;
 }
 
 

@@ -39,10 +39,12 @@
                 <h2>Add contact</h2>
                 <p class="bordered">Tasks are better with a team!</p>
             </div>
-            <img src="../assets/img/contacts/emptyProfilPic.svg" alt="empty Profil Picture">
+            <div id="addProfilePic" class="addProfilePic">
+                <img src="../assets/img/contacts/emptyProfilPic.svg" alt="empty Profil Picture">
+            </div>
             <div class="workContactContainer down">
-                <form onsubmit="addContacts(); return false
-                ;" class="contactForm">
+                <form onsubmit="addContacts(); return false;" class="contactForm">
+                    <div class="warning d-none">Name or E-Mail already in use</div>
                     <input id="addName" type="text" placeholder="Name Lastname" value=""
                         pattern="[A-Z][a-zA-Z]+(\s[A-Z][a-zA-Z]+)+"
                         title="Please enter a valid name (e.g., Max Mustermann)" minlength="5" maxlength="40" required>
@@ -74,11 +76,10 @@
                 <img src="../assets/icons/logowhite.svg" alt="logo white">
                 <h2 class="bordered">Edit contact</h2>
             </div>
-            <div id="editProfilePic" class="editProfilePic">
-                <svg></svg>
-            </div>
+            <div id="editProfilePic" class="editProfilePic"></div>
             <div class="workContactContainer down">
                 <form onsubmit="editContacts(); return false;" class="contactForm">
+                    <div class="warning d-none">Name or E-Mail already in use</div>
                     <input id="editName" type="text" placeholder="Name Lastname" value=""
                         pattern="[A-Z][a-zA-Z]+(\s[A-Z][a-zA-Z]+)+"
                         title="Please enter a valid name (e.g., Max Mustermann)" minlength="5" maxlength="40" required>
@@ -106,7 +107,6 @@
                     <button type="submit">YES <img src="../assets/icons/check.svg" alt="check icon"></button></button>
                 </form>
             </div>
-            console.error('Error updating data:', error);
         </div>
 
 

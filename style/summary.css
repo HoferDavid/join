@@ -114,6 +114,15 @@ main.content {
 
 .under-container span {
     text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    width: 100%;
+}
+
+.under-container span:first-child {
+    align-items: flex-end;
 }
 
 .summ-info-field:hover span {

@@ -31,7 +31,7 @@
 
 .workContact {
   z-index: 3;
-  height: auto;
+  height: 84%;
   max-height: 600px;
   width: 98%;
   max-width: 1200px;
@@ -323,15 +323,26 @@ h4 {
   display: none;
 }
 
-.editProfilePic {
+.editProfilePic,
+.addProfilePic {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  height: 120px;
-  width: 120px;
+  height: 96px;
+  width: 96px;
+}
+
+.addProfilePic>img {
+  object-fit: contain;
+  height: 100%;
+  width: auto;
+}
+
+.warning {
+  color: red;
 }
 
 .down {
@@ -514,7 +525,15 @@ No media query for `xs` since this is the default in Bootstrap*/
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+
+  .editProfilePic,
+  .addProfilePic {
+
+    height: 120px;
+    width: 120px;
+  }
+}
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
