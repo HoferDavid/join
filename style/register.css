@@ -180,6 +180,10 @@ form button:hover {
     cursor: pointer;
 }
 
+form button:disabled {
+    opacity: 0.3;
+}
+
 .footer a {
     margin: 0 10px;
     text-decoration: none;

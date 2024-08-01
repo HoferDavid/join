@@ -143,6 +143,8 @@ function showError(messageId) {
 function checkBoxClicked() {
     const checkedState = document.getElementById('privacy-policy').checked;
     const checkboxImg = document.getElementById('checkbox');
+    const submitButton = document.getElementById('signup-btn');
+    submitButton.disabled = !checkedState;
     checkboxImg.src = checkedState ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
 }
 
