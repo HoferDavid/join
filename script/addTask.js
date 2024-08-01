@@ -239,7 +239,7 @@ function checkOutsideAssign(event) {
 }
 
 
-function renderAssignedContacts() {
+function renderAssignedContacts(assignedContacts) {
   let assignedContactsContainer = document.getElementById('contactsAssigned');
   assignedContactsContainer.innerHTML = '';
   assignedContacts.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);

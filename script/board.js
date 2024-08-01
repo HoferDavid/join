@@ -262,7 +262,7 @@ function enableTaskEdit(taskId) {
   document.getElementById("editTaskDescription").value = task.description;
   document.getElementById("editDateInput").value = task.date;
   updatePrioActiveBtn(task.prio);
-  renderAssignedContacts();
+  renderAssignedContacts(task.assignedTo);
 }
 
 

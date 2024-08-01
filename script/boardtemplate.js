@@ -291,9 +291,9 @@ function generateTaskEditHTML(taskId) {
                             <div class="imgContainer" onclick="toggleDropdown()">
                                 <img id="assignDropArrow" src="../assets/icons/arrowdropdown.svg" alt="">
                             </div>
-                            <div id="contactsAssigned" class="contactsAssigned"></div>
                             <div id="contactsToAssign" class="contactsToAssign"></div>
                         </div>
+                        <div id="contactsAssigned" class="contactsAssigned"></div>
                     </div>
 
 
