@@ -149,15 +149,15 @@ function saveSubtask() {
 }
 
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   const input = document.getElementById('subtaskInput');
   const iconContainer = document.getElementById('subtaskIconContainer');
   const plusIcon = document.getElementById('subtaskPlusIcon');
   if (input && iconContainer && plusIcon) {
-      if (!input.contains(event.target) && !iconContainer.contains(event.target) && !plusIcon.contains(event.target)) {
-          iconContainer.classList.add('dNone');
-          plusIcon.classList.remove('dNone');
-      }
+    if (!input.contains(event.target) && !iconContainer.contains(event.target) && !plusIcon.contains(event.target)) {
+      iconContainer.classList.add('dNone');
+      plusIcon.classList.remove('dNone');
+    }
   }
 });
 
@@ -239,10 +239,10 @@ function checkOutsideAssign(event) {
 }
 
 
-function renderAssignedContacts(assignedContacts) {
+function renderAssignedContacts(assignedCont = assignedContacts) {
   let assignedContactsContainer = document.getElementById('contactsAssigned');
   assignedContactsContainer.innerHTML = '';
-  assignedContacts.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);
+  assignedCont.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);
 }
 
 
