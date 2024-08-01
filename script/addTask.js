@@ -103,7 +103,7 @@ function showTaskAddedAnimationModal() {
 
 
 async function closeAddTaskModal() {
-  if (activeTab == 'Add Task') {
+  if (activeTab == 'add task') {
     showTaskAddedAnimation();
     tasks = [];
     await pushDataToArray();
