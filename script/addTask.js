@@ -118,7 +118,8 @@ async function closeAddTaskModal() {
 }
 
 
-function addNewSubtask() {
+function addNewSubtask(event) {
+  handleKeyDown(event)
   let input = document.getElementById('subtaskInput').value.length;
   if (input > -1) {
     document.getElementById('subtaskIconContainer').classList.remove('dNone');
@@ -126,6 +127,14 @@ function addNewSubtask() {
   } else {
     document.getElementById('subtaskIconContainer').classList.add('dNone');
     document.getElementById('subtaskPlusIcon').classList.remove('dNone');
+  }
+}
+
+
+function handleKeyDown(event) {
+  if (event.key === 'Enter') {
+      event.preventDefault();
+      saveSubtask();
   }
 }
 
@@ -282,5 +291,8 @@ async function assignSearchInput() {
   contactSorted.sort((a, b) => a.name.localeCompare(b.name));
   contactSorted.filter(c => c.name.toLowerCase().includes(searchText)).forEach(c => contactsContainer.innerHTML += htmlRenderContactsAssign(c));
 }
+
+
+
 
 

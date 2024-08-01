@@ -84,7 +84,7 @@
 
                 <div class="singleInputContainer">
                     <div>Subtasks</div>
-                    <div class="subtasksInputContainer" onkeydown="addNewSubtask()">
+                    <div class="subtasksInputContainer" onkeydown="addNewSubtask(event)">
                         <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask"
                             maxlength="80">
                         <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
@@ -95,7 +95,6 @@
                         </div>
                     </div>
                     <ul id="subtaskList" class="subtaskList"></ul>
-                    <!-- <div id="subtaskList" class="subtaskList"></div> -->
                 </div>
             </div>
         </div>
