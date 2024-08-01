@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <link rel="stylesheet" href="../style.css">
     <link rel="icon" href="../assets/icons/logoBlue.svg" />
     <link rel="stylesheet" href="../style/register.css">
     <link rel="stylesheet" href="../style/fonts.css">
-    <!-- <link rel="stylesheet" href="../style.css"> -->
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
@@ -43,13 +43,11 @@
 </head>
 
 <body>
-    <header>
+    <div class="head">
         <img class="logo" src="../assets/icons/logoBlue.svg">
-    </header>
-    <div class="rotate-warning">
     </div>
     <div class="main-wrapper">
-        <main class="signup-form">
+        <div class="main signup-form">
             <div class="form-header">
                 <button class="back-btn" onclick="window.location.href='/index.html';">
                     <img class="blue-back-button" src="../assets/icons/arrow-left-line.svg">
@@ -69,27 +67,26 @@
                         autocomplete="new-password">
                     <input class="font-size-sign-up" id="confirmPassword" required type="password"
                         placeholder="Confirm Password" autocomplete="new-password" class="input-field-confirm-pw">
-                </div>
-
-                <span id="errorMessage" class="error">Ups! Your password don't match</span>
-                <span id="criteriaMessage" class="error">Password must contain at least one uppercase letter, one
-                    number, and one special character.</span>
-                <span id="emailExistsMessage" class="error">This email address is already registered.</span>
-
-                <div class="accept-policy">
-                    <input type="checkbox" id="privacy-policy" required>
-                    <label for="privacy-policy">I accept the
+                    <label for="privacy-policy" class="accept-policy">
+                        <input type="checkbox" id="privacy-policy" name="privacy-policy" style="display:none;" />
+                        <img src="../assets/icons/checkbox.svg" id="checkbox" class="checkbox-img" />
+                        I accept the
                         <a href="privacy.html"
                             onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
                             target="_blank">Privacy Policy</a>
                     </label>
                 </div>
+                <span id="privacyCheck" class="error">You have to accept the privacy policy to sign up</span>
+                <span id="errorMessage" class="error">Oops! Your password don't match</span>
+                <span id="criteriaMessage" class="error">Password criteria: Must contain at least one uppercase letter,
+                    one digit, one special character (@$!%*?&.,:), and be at least 8 characters long.</span>
+                <span id="emailExistsMessage" class="error">This email address is already registered.</span>
 
                 <div class="signup-btn-headsection">
                     <button type="submit" class="signup-btn">Sign up</button>
                 </div>
             </form>
-        </main>
+        </div>
     </div>
 
     <div id="successPopup" class="popup">
@@ -98,14 +95,14 @@
         </div>
     </div>
 
-    <footer class="footer">
+    <div class="footer">
         <a href="privacy.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
             target="_blank">Privacy
             Policy</a>
         <a href="imprint.html" onclick="sessionStorage.setItem('activeTab', this.innerHTML.toLowerCase())"
             target="_blank">Legal
             Notice</a>
-    </footer>
+    </div>
 
 
 

@@ -64,20 +64,20 @@ function hideErrorMessages() {
 }
 
 async function validateForm(password, confirmPassword, email) {
-    const criteriaMessage = document.getElementById('criteriaMessage');
-    const errorMessage = document.getElementById('errorMessage');
-    const emailExistsMessage = document.getElementById('emailExistsMessage');
-    if (!isValidPassword(password)) {
-        return returnLoginError(criteriaMessage);
+    if (!document.getElementById('privacy-policy').checked) {
+        return returnLoginError(document.getElementById('privacyCheck'));
     }
     if (password !== confirmPassword) {
-        return returnLoginError(errorMessage);
+        return returnLoginError(document.getElementById('errorMessage'));
+    }
+    if (!isValidPassword(password)) {
+        return returnLoginError(document.getElementById('criteriaMessage'));
     }
     if (await emailExists(email)) {
-        return returnLoginError(emailExistsMessage);
-    }
-    return true;
+        return returnLoginError(document.getElementById('emailExistsMessage'));
+    } return true;
 }
+
 
 function returnLoginError(errorWindow) {
     errorWindow.style.display = 'block';
@@ -140,4 +140,11 @@ function showError(messageId) {
     document.getElementById(messageId).style.display = 'block';
 }
 
+function checkBoxClicked() {
+    const checkedState = document.getElementById('privacy-policy').checked;
+    const checkboxImg = document.getElementById('checkbox');
+    checkboxImg.src = checkedState ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+}
+
+document.getElementById('privacy-policy').addEventListener('click', checkBoxClicked);
 document.addEventListener('DOMContentLoaded', initRegister);
