@@ -31,7 +31,7 @@ main.content {
     gap: 8px;
     position: relative;
     top: 16px;
-    left: 16px;
+    padding-left: 16px;
 }
 
 .headline-summ-h2 {
@@ -159,6 +159,7 @@ main.content {
 .summ-toDO-info:hover .summ-pencil-toDO {
     display: none;
 }
+
 
 
 .summ-open-info {
@@ -330,7 +331,7 @@ main.content {
         flex-direction: row;
         align-items: center;
         top: 24px;
-        left: 24px;
+        padding-left: 24px;
     }
 
     .summ-seperate {
@@ -379,8 +380,7 @@ main.content {
     .headline-summ {
         flex-direction: row;
         align-items: center;
-
-        left: 40px;
+        padding-left: 40px;
     }
 }
 
