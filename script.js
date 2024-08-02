@@ -4,13 +4,14 @@ let activeTab = sessionStorage.getItem('activeTab') || '';
 let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
 let tasks = [];
 let currentPrio = 'medium';
-let taskStatus = sessionStorage.getItem('taskCategory') || '';
+
 
 
 async function init() {
   await includeHTML();
   setActive();
   checkCurrentUser();
+  sessionStorage.setItem('taskCategory', 'toDo');
 }
 
 
@@ -25,7 +26,7 @@ async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
     const element = includeElements[i];
-    file = element.getAttribute("w3-include-html"); // "includes/nav.html"
+    file = element.getAttribute("w3-include-html");
     let resp = await fetch(file);
     if (resp.ok) {
       element.innerHTML = await resp.text();
@@ -39,8 +40,9 @@ async function includeHTML() {
 function changeActive(link) {
   let linkBtn = document.querySelectorAll(".menuBtn");
   linkBtn.forEach(btn => btn.classList.remove("menuBtnActive"));
-  activeTab = link.innerText.toLowerCase(); //
+  activeTab = link.innerText.toLowerCase();
   sessionStorage.setItem("activeTab", activeTab);
+  sessionStorage.getItem('taskCategory');
   setActive();
 }
 

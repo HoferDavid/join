@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let currentSearchInput = '';
 let currentTaskStatus;
-let currentTaskCategory = '';
+// let currentTaskCategory = '';
 
 
 async function initBoard() {
@@ -235,14 +235,15 @@ async function openAddTaskOverlay() {
 
 function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
-  activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
-  taskStatus = category;
+  const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
+  const taskStatus = category;
   sessionStorage.setItem('taskCategory', category);
   if (screenWidth < 992) {
-    changeActive(activeTab);
-    return (window.location.href = "../html/addtask.html");
+      changeActive(activeTab);
+      // Nur Weiterleitung durchführen, ohne `window.onload` zu definieren
+      window.location.href = "../html/addtask.html";
   } else {
-    openAddTaskOverlay();
+      openAddTaskOverlay();
   }
 }
 
