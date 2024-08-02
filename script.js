@@ -11,7 +11,9 @@ async function init() {
   await includeHTML();
   setActive();
   checkCurrentUser();
-  sessionStorage.setItem('taskCategory', 'toDo');
+  if (!sessionStorage.getItem('taskCategory')) {
+    sessionStorage.setItem('taskCategory', 'toDo');
+  }
 }
 
 
