@@ -147,7 +147,8 @@ input:focus {
   background: transparent;
 }
 
-.noTaskPlaceholder {
+.noTaskPlaceholder,
+.noTasksFound {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,6 +162,12 @@ input:focus {
   color: #a8a8a8;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
   margin: 16px 0px;
+}
+
+.noTasksFound {
+  position: fixed;
+  left: 50%;
+  top: 50%;
 }
 
 .todoContainer {

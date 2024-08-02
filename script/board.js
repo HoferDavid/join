@@ -142,10 +142,14 @@ async function moveTo(status) {
 }
 
 
+
+
+
 function searchTasks(inputValue) {
   emptyDragAreaWhileSearching();
   currentSearchInput = inputValue.toLowerCase();
   const taskCards = document.querySelectorAll(".todoContainer");
+  let anyVisibleTask = false;
   taskCards.forEach((taskCard) => {
     const titleElement = taskCard.querySelector(".toDoHeader");
     const descriptionElement = taskCard.querySelector(".toDoDescription");
@@ -154,8 +158,12 @@ function searchTasks(inputValue) {
       const description = descriptionElement.textContent.trim().toLowerCase();
       const isVisible = title.includes(currentSearchInput) || description.includes(currentSearchInput);
       taskCard.style.display = isVisible ? "block" : "none";
+      if (isVisible) {
+        anyVisibleTask = true;
+      }
     }
   });
+  updateNoTasksFoundVisibility(anyVisibleTask);
 }
 
 
@@ -166,18 +174,29 @@ function applyCurrentSearchFilter() {
 }
 
 
+function updateNoTasksFoundVisibility(anyVisibleTask) {
+  const noTasksFound = document.getElementById('noTasksFound');
+  if (anyVisibleTask) {
+    noTasksFound.classList.add('dNone');
+  } else {
+    noTasksFound.classList.remove('dNone');
+  }
+}
+
+
 function emptyDragAreaWhileSearching() {
   let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
   dragAreas.forEach((dragArea) => {
-    if (dragArea.classList.contains("noTaskPlaceholder")) {
-      dragArea.classList.remove("noTaskPlaceholder");
-      dragArea.innerHTML = "";
-    }
+    dragArea.classList.add('dNone'); 
   });
 }
 
 
-// When the user clicks anywhere outside of the modal, close it
+
+
+
+
+
 window.onclick = function (event) {
   const overlay = document.getElementById("overlay");
   const addTaskOverlay = document.getElementById("addTaskOverlay");
@@ -234,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('taskCategory');
   }
 });
-
 
 
 async function updateSubtaskStatus(taskId, subtaskIndex) {
