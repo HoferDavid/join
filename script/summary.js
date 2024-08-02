@@ -12,8 +12,8 @@ let counts = {
 };
 
 async function initSummary() {
-  greetingSummary();
   init();
+  greetingSummary();
   await loadCategory();
   taskAssignment();
   showUrgentTask();

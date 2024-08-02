@@ -99,22 +99,32 @@ function changeActiveBtn(prio) {
 
 
 function checkCurrentUser() {
+  const forbiddenContent = document.querySelectorAll('.forbiddenContent');
   const menuUserContainer = document.getElementById('menuUserContainer');
   const headerUserContainer = document.getElementById('headerUserContainer');
   const headerUserBadge = document.querySelectorAll('.headerUserBadge');
 
   if (!currentUser) {
-    menuUserContainer.classList.add('d-none');
-    headerUserContainer.classList.add('d-none');
+    noUserContent(forbiddenContent, menuUserContainer, headerUserContainer);
   } else if (currentUser && currentUser.name === 'Guest') {
-    menuUserContainer.classList.remove('d-none');
-    headerUserContainer.classList.remove('d-none');
+    userContent(forbiddenContent, menuUserContainer, headerUserContainer);
     headerUserBadge.innerHTML = currentUser.firstLetters;
   } else if (currentUser) {
-    menuUserContainer.classList.remove('d-none');
-    headerUserContainer.classList.remove('d-none');
+    userContent(forbiddenContent, menuUserContainer, headerUserContainer);
     headerUserBadge.forEach(b => b.innerHTML = currentUser.firstLetters);
   }
+}
+
+function noUserContent(forbiddenContent, menuUserContainer, headerUserContainer) {
+  forbiddenContent.forEach(content => content.classList.add('d-none'));
+  menuUserContainer.classList.add('d-none');
+  headerUserContainer.classList.add('d-none');
+}
+
+function userContent(forbiddenContent, menuUserContainer, headerUserContainer) {
+  forbiddenContent.forEach(content => content.classList.remove('d-none'));
+  menuUserContainer.classList.remove('d-none');
+  headerUserContainer.classList.remove('d-none');
 }
 
 
