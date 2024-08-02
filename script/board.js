@@ -208,6 +208,7 @@ function openOverlay(elementId) {
 
 async function openAddTaskOverlay() {
   let addTaskOverlay = document.getElementById("addTaskOverlay");
+  assignedContacts = [];
   addTaskOverlay.innerHTML = await fetchAddTaskTemplate();
   addTaskOverlay.style.display = "block";
 }

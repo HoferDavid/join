@@ -41,6 +41,7 @@ function changeActive(link) {
   linkBtn.forEach(btn => btn.classList.remove("menuBtnActive"));
   activeTab = link.innerText.toLowerCase(); //
   sessionStorage.setItem("activeTab", activeTab);
+  setActive();
 }
 
 
