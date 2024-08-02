@@ -175,13 +175,20 @@ async function updateData(url, data) {
   }
 }
 
+function deleteTask(id) {
+  toggleClass('deleteResponse', 'ts0', 'ts1');
+  document.getElementById('deleteResponse').innerHTML = openDeleteTaskSureHtml(id);
+}
 
-async function deleteTask(id) {
+
+async function deleteTaskSure(id) {
+  toggleClass('deleteResponse', 'ts0', 'ts1');
   await deleteData(`tasks/${id}`);
   tasks = tasks.filter((task) => task.id !== id);
   closeModal();
   initDragDrop();
 }
+
 
 
 function capitalize(str) {

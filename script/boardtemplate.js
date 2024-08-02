@@ -324,3 +324,19 @@ function generateTaskEditHTML(taskId) {
         </div>
     `;
 }
+
+function openDeleteTaskSureHtml(id) {
+    return /*html*/`
+        <div class="deleteQuestion">
+            <p>Do you really want to delete this entry?</p>
+            <form onsubmit="deleteTaskSure('${id}'); return false;">
+                <button type="button" onclick="toggleClass('deleteResponse', 'ts0', 'ts1')">NO 
+                    <img src="../assets/icons/close.svg" alt="close X">
+                </button>
+                <button type="submit">YES 
+                    <img src="../assets/icons/check.svg" alt="check icon">
+                </button>
+            </form>
+        </div>
+    `;
+}
