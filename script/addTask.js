@@ -16,7 +16,7 @@ function createNewtask() {
     description: getId('taskDescription'),
     date: getId('dateInput'),
     prio: currentPrio,
-    status: taskStatus,
+    status: sessionStorage.getItem('taskCategory'),
     subtasks: getSubtasks(),
     assignedTo: assignedContacts,
     category: document.getElementById('categoryInput').value,
