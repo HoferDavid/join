@@ -3,7 +3,7 @@ let assignedContacts = [];
 
 async function pushNewTask(event) {
   event.preventDefault();
-  taskStatus = sessionStorage.getItem('taskCategory');
+  taskStatus = sessionStorage.getItem('taskCategory') ? 'taskCategory' : 'toDo';
   await postData("tasks", createNewtask());
   closeAddTaskModal();
   setActiveTab('.menuBtn[href="../html/board.html"]');
