@@ -6,7 +6,6 @@ let tasks = [];
 let currentPrio = 'medium';
 
 
-
 async function init() {
   await includeHTML();
   setActive();
@@ -119,11 +118,13 @@ function checkCurrentUser() {
   }
 }
 
+
 function noUserContent(forbiddenContent, menuUserContainer, headerUserContainer) {
   forbiddenContent.forEach(content => content.classList.add('d-none'));
   menuUserContainer.classList.add('d-none');
   headerUserContainer.classList.add('d-none');
 }
+
 
 function userContent(forbiddenContent, menuUserContainer, headerUserContainer) {
   forbiddenContent.forEach(content => content.classList.remove('d-none'));
@@ -190,6 +191,7 @@ async function updateData(url, data) {
   }
 }
 
+
 function deleteTask(id) {
   toggleClass('deleteResponse', 'ts0', 'ts1');
   document.getElementById('deleteResponse').innerHTML = openDeleteTaskSureHtml(id);
@@ -203,7 +205,6 @@ async function deleteTaskSure(id) {
   closeModal();
   initDragDrop();
 }
-
 
 
 function capitalize(str) {

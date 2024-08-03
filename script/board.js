@@ -1,9 +1,18 @@
 let currentDraggedElement;
 let currentSearchInput = '';
 let currentTaskStatus;
-// let currentTaskCategory = '';
 
 
+/**
+ * Initializes the board by performing necessary setup tasks.
+ * 
+ * This includes initializing the board, pushing data to an array, 
+ * updating all task categories, initializing drag and drop functionality,
+ * and applying the current search filter. If any error occurs during the 
+ * initialization, it is logged to the console.
+ * 
+ * @async @function
+ */
 async function initBoard() {
   init();
   try {
@@ -17,12 +26,22 @@ async function initBoard() {
 }
 
 
+/**
+ * Initializes the drag and drop functionality by updating all task categories 
+ * and setting up the drag and drop handlers.
+ */
 function initDragDrop() {
   updateAllTaskCategories();
   dragDrop();
 }
 
 
+/**
+ * Pushes data to an array by loading tasks data, creating task arrays, 
+ * checking for deleted users, and adding tasks to the global tasks array.
+ * 
+ * @async @function
+ */
 async function pushDataToArray() {
   try {
     let tasksData = await loadData("tasks");
@@ -40,6 +59,14 @@ async function pushDataToArray() {
   }
 }
 
+
+/**
+ * Checks if any assigned users to the task are deleted and updates the task accordingly.
+ * 
+ * @async
+ * @param {Object} loadedTask - The task object to check.
+ * @returns {Promise<Object>} The updated task object.
+ */
 async function checkDeletedUser(loadedTask) {
   contacts = contacts.length == 0 ? await getContactsData() : contacts;
   if (loadedTask.assignedTo) {
@@ -55,6 +82,14 @@ async function checkDeletedUser(loadedTask) {
 }
 
 
+/**
+ * Creates a task array from the given key and task data.
+ * 
+ * @async
+ * @param {string} key - The task ID.
+ * @param {Object} singleTask - The task data.
+ * @returns {Promise<Object>} The created task object.
+ */
 async function createTaskArray(key, singleTask) {
   return {
     "id": key,
@@ -70,12 +105,21 @@ async function createTaskArray(key, singleTask) {
 }
 
 
+/**
+ * Toggles the visibility of an element with the given ID.
+ * 
+ * @param {string} id - The ID of the element.
+ * @returns {HTMLElement} The toggled element.
+ */
 function toggleVisibility(id) {
   document.getElementById(id).classList.toggle("dNone");
   return document.getElementById(id);
 }
 
 
+/**
+ * Sets up drag and drop functionality for task containers.
+ */
 function dragDrop() {
   document.querySelectorAll(".todoContainer").forEach((todoContainer) => {
     todoContainer.addEventListener("dragstart", (e) => {
@@ -88,6 +132,12 @@ function dragDrop() {
   });
 }
 
+
+/**
+ * Starts dragging an element with the given ID.
+ * 
+ * @param {string} id - The ID of the element to drag.
+ */
 function startDragging(id) {
   currentDraggedElement = id;
   document.querySelectorAll(".taskDragArea").forEach((zone) => {
@@ -95,6 +145,12 @@ function startDragging(id) {
   });
 }
 
+
+/**
+ * Allows dropping of elements by preventing the default event behavior.
+ * 
+ * @param {Event} ev - The dragover event.
+ */
 function allowDrop(ev) {
   let dropTarget = ev.target;
   let allowDropTarget = document.querySelectorAll('.taskDragArea');
@@ -106,6 +162,13 @@ function allowDrop(ev) {
   });
 }
 
+
+/**
+ * Moves a task to a new status and updates the board accordingly.
+ * 
+ * @async
+ * @param {string} status - The new status of the task.
+ */
 async function moveTo(status) {
   document.querySelectorAll(".taskDragArea").forEach((zone) => {
     zone.classList.add("highlighted");
@@ -119,12 +182,20 @@ async function moveTo(status) {
   }
 }
 
+
+/**
+ * Removes drag-related highlights from all task drop areas.
+ */
 function dragEnd() {
   document.querySelectorAll('.taskDragArea').forEach((zone) => {
     zone.classList.remove('highlighted', 'highlightedBackground');
   });
 }
 
+
+/**
+ * Removes drag-related background highlights from all task drop areas.
+ */
 function dragLeave() {
   document.querySelectorAll('.taskDragArea').forEach((zone) => {
     zone.classList.remove('highlightedBackground');
@@ -132,6 +203,13 @@ function dragLeave() {
 }
 
 
+/**
+ * Updates the task categories based on the status and renders them in the specified category element.
+ * 
+ * @param {string} status - The status of the tasks to update.
+ * @param {string} categoryId - The ID of the category element to update.
+ * @param {string} noTaskMessage - The message to display if there are no tasks.
+ */
 function updateTaskCategories(status, categoryId, noTaskMessage) {
   let taskForSection = tasks.filter((task) => task.status === status);
   let categoryElement = document.getElementById(categoryId);
@@ -149,6 +227,9 @@ function updateTaskCategories(status, categoryId, noTaskMessage) {
 }
 
 
+/**
+ * Updates all task categories by calling updateTaskCategories for each status.
+ */
 function updateAllTaskCategories() {
   updateTaskCategories("toDo", "toDo", "No tasks to do");
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
@@ -157,15 +238,11 @@ function updateAllTaskCategories() {
 }
 
 
-
-
-
-
-
-
-
-
-
+/**
+ * Searches for tasks based on the input value and updates the visibility of tasks accordingly.
+ * 
+ * @param {string} inputValue - The search input value.
+ */
 function searchTasks(inputValue) {
   emptyDragAreaWhileSearching(inputValue);
   currentSearchInput = inputValue.toLowerCase();
@@ -188,6 +265,9 @@ function searchTasks(inputValue) {
 }
 
 
+/**
+ * Applies the current search filter to update the visibility of tasks.
+ */
 function applyCurrentSearchFilter() {
   if (currentSearchInput) {
     searchTasks(currentSearchInput);
@@ -195,6 +275,11 @@ function applyCurrentSearchFilter() {
 }
 
 
+/**
+ * Updates the visibility of the "no tasks found" message based on whether any tasks are visible.
+ * 
+ * @param {boolean} anyVisibleTask - Whether any tasks are visible.
+ */
 function updateNoTasksFoundVisibility(anyVisibleTask) {
   const noTasksFound = document.getElementById('noTasksFound');
   if (anyVisibleTask) {
@@ -205,6 +290,11 @@ function updateNoTasksFoundVisibility(anyVisibleTask) {
 }
 
 
+/**
+ * Toggles the visibility of the drag areas while searching for tasks.
+ * 
+ * @param {string} searchValue - The search input value.
+ */
 function emptyDragAreaWhileSearching(searchValue) {
   if (searchValue === '') {
     let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
@@ -220,11 +310,11 @@ function emptyDragAreaWhileSearching(searchValue) {
 }
 
 
-
-
-
-
-
+/**
+ * Closes the modal if outside the overlay or add task overlay is clicked.
+ * 
+ * @param {MouseEvent} event - The mouse click event.
+ */
 window.onclick = function (event) {
   const overlay = document.getElementById("overlay");
   const addTaskOverlay = document.getElementById("addTaskOverlay");
@@ -234,6 +324,9 @@ window.onclick = function (event) {
 };
 
 
+/**
+ * Closes the modal by hiding the overlay and add task overlay elements.
+ */
 function closeModal() {
   const overlay = document.getElementById("overlay");
   const addTaskOverlay = document.getElementById("addTaskOverlay");
@@ -245,6 +338,11 @@ function closeModal() {
 }
 
 
+/**
+ * Opens the overlay with the content for the task with the given ID.
+ * 
+ * @param {string} elementId - The ID of the task to open.
+ */
 function openOverlay(elementId) {
   let element = tasks.find((task) => task.id === elementId);
   let overlay = document.getElementById("overlay");
@@ -253,6 +351,11 @@ function openOverlay(elementId) {
 }
 
 
+/**
+ * Opens the add task overlay and sets up the necessary content.
+ * 
+ * @async @function
+ */
 async function openAddTaskOverlay() {
   let addTaskOverlay = document.getElementById("addTaskOverlay");
   assignedContacts = [];
@@ -261,6 +364,11 @@ async function openAddTaskOverlay() {
 }
 
 
+/**
+ * Checks the screen width and either changes the active tab or opens the add task overlay.
+ * 
+ * @param {string} category - The task category.
+ */
 function checkScreenWidth(category) {
   const screenWidth = window.innerWidth;
   const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
@@ -268,7 +376,6 @@ function checkScreenWidth(category) {
   sessionStorage.setItem('taskCategory', category);
   if (screenWidth < 992) {
     changeActive(activeTab);
-    // Nur Weiterleitung durchführen, ohne `window.onload` zu definieren
     window.location.href = "../html/addtask.html";
   } else {
     openAddTaskOverlay();
@@ -276,6 +383,9 @@ function checkScreenWidth(category) {
 }
 
 
+/**
+ * Removes the task category from local storage if it exists.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   const category = localStorage.getItem('taskCategory');
   if (category) {
@@ -284,6 +394,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/**
+ * Updates the status of a subtask and updates the corresponding task.
+ * 
+ * @async
+ * @param {string} taskId - The ID of the task.
+ * @param {number} subtaskIndex - The index of the subtask to update.
+ */
 async function updateSubtaskStatus(taskId, subtaskIndex) {
   let task = tasks.find((task) => task.id === taskId);
   if (task) {
@@ -302,6 +419,12 @@ async function updateSubtaskStatus(taskId, subtaskIndex) {
 }
 
 
+/**
+ * Updates the progress bar for the subtasks of a task.
+ * 
+ * @param {Object[]} subtasks - The list of subtasks.
+ * @param {string} taskId - The ID of the task.
+ */
 function updateSubtasksProgressBar(subtasks, taskId) {
   let checkedAmt = subtasks.filter(
     (subtask) => subtask.status === "checked"
@@ -316,6 +439,11 @@ function updateSubtasksProgressBar(subtasks, taskId) {
 }
 
 
+/**
+ * Enables editing of a task by populating the edit modal with the task's data.
+ * 
+ * @param {string} taskId - The ID of the task to edit.
+ */
 function enableTaskEdit(taskId) {
   let modalContainer = document.getElementById("modalContainer");
   modalContainer.innerHTML = generateTaskEditHTML(taskId);
@@ -330,6 +458,13 @@ function enableTaskEdit(taskId) {
 }
 
 
+/**
+ * Saves the edited task and updates the board accordingly.
+ * 
+ * @async
+ * @param {Event} event - The form submission event.
+ * @param {string} taskId - The ID of the task to save.
+ */
 async function saveEditedTask(event, taskId) {
   event.preventDefault();
   await updateData(`${BASE_URL}tasks/${taskId}.json`, createEditedTask(taskId));
@@ -342,6 +477,12 @@ async function saveEditedTask(event, taskId) {
 }
 
 
+/**
+ * Creates an edited task object from the form inputs and original task data.
+ * 
+ * @param {string} taskId - The ID of the task to edit.
+ * @returns {Object} The edited task object.
+ */
 function createEditedTask(taskId) {
   let originalTask = tasks.find(task => task.id === taskId);
   if (!originalTask) { return; }
@@ -358,6 +499,13 @@ function createEditedTask(taskId) {
 }
 
 
+/**
+ * Helper function to create the edited task object.
+ * 
+ * @param {Object[]} subtasks - The updated subtasks.
+ * @param {Object} originalTask - The original task object.
+ * @returns {Object} The edited task object.
+ */
 function createEditedTaskReturn(subtasks, originalTask) {
   return {
     title: document.getElementById('editTaskTitle').value,

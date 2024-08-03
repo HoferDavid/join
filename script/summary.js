@@ -12,7 +12,6 @@ let counts = {
 };
 
 
-
 /**
  * The function `initSummary` initializes, greets, loads categories, assigns tasks, and shows urgent
  * tasks asynchronously.
@@ -24,7 +23,6 @@ async function initSummary() {
   taskAssignment();
   showUrgentTask();
 }
-
 
 
 /**
