@@ -176,7 +176,7 @@ async function closeAddTaskModal() {
  * @param {Event} event - The event triggered by adding a subtask.
  */
 function addNewSubtask(event) {
-  handleKeyDown(event)
+  handleKeyDown(event);
   let input = document.getElementById('subtaskInput').value.length;
   if (input > -1) {
     document.getElementById('subtaskIconContainer').classList.remove('dNone');

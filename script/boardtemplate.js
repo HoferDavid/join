@@ -393,8 +393,8 @@ function generateTaskEditHTML(taskId) {
 
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
-                        <div class="subtasksInputContainer" onclick="addNewSubtask()">
-                            <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="80">
+                        <div class="subtasksInputContainer" onclick="addNewSubtask(event)">
+                            <input id="subtaskInput" class="subtasksInput" type="text" placeholder="Add new subtask" maxlength="80" onkeydown="handleKeyDown(event)">
                             <img id="subtaskPlusIcon" class="subtaskPlusIcon" src="../assets/icons/addBlack.svg">
                             <div id="subtaskIconContainer" class="subtaskIconContainer dNone">
                                 <img onclick="clearSubtaskInput()" class="icon" src="../assets/icons/delete.svg">
