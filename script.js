@@ -6,6 +6,10 @@ let tasks = [];
 let currentPrio = 'medium';
 
 
+/**
+ * Initializes the application by including HTML, setting the active tab, and checking the current user.
+ * If 'taskCategory' isn't set in session storage, it'll get set to 'toDo'.
+ */
 async function init() {
   await includeHTML();
   setActive();
@@ -16,6 +20,9 @@ async function init() {
 }
 
 
+/**
+ * Sets the minimum date for date inputs to the current date.
+ */
 function setActualDate() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('dateInput').setAttribute('min', today);
@@ -23,6 +30,9 @@ function setActualDate() {
 }
 
 
+/**
+ * Includes HTML from external files into elements with the 'w3-include-html' attribute.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
@@ -38,6 +48,11 @@ async function includeHTML() {
 }
 
 
+/**
+ * Changes the active tab to the specified link.
+ * 
+ * @param {Element} link - The link element that was clicked.
+ */
 function changeActive(link) {
   let linkBtn = document.querySelectorAll(".menuBtn");
   linkBtn.forEach(btn => btn.classList.remove("menuBtnActive"));
@@ -48,6 +63,9 @@ function changeActive(link) {
 }
 
 
+/**
+ * Sets the active tab based on the current active tab in session storage.
+ */
 function setActive() {
   let linkBtn = document.querySelectorAll(".menuBtn");
   linkBtn.forEach(btn => {
@@ -59,6 +77,9 @@ function setActive() {
 }
 
 
+/**
+ * Removes the active class from all tabs except the current active tab.
+ */
 function removeActiveTab() {
   let linkBtn = document.querySelectorAll(".menuBtn");
   linkBtn.forEach(btn => {
@@ -70,6 +91,11 @@ function removeActiveTab() {
 }
 
 
+/**
+ * Sets the active tab to the specified link.
+ * 
+ * @param {string} link - The selector for the link element to set as active.
+ */
 function setActiveTab(link) {
   const activeTab = document.querySelector(link);
   if (activeTab) {
@@ -78,6 +104,11 @@ function setActiveTab(link) {
 }
 
 
+/**
+ * Updates the active priority button based on the specified priority.
+ * 
+ * @param {string} prio - The priority level to set as active.
+ */
 function updatePrioActiveBtn(prio) {
   const buttons = document.querySelectorAll('.prioBtn');
   buttons.forEach(button => {
@@ -89,6 +120,11 @@ function updatePrioActiveBtn(prio) {
 }
 
 
+/**
+ * Changes the active button based on the specified priority.
+ * 
+ * @param {string} prio - The priority level to set as active.
+ */
 function changeActiveBtn(prio) {
   const activeButton = document.querySelector(`.prioBtn[data-prio="${prio}"]`);
   if (activeButton) {
@@ -101,12 +137,14 @@ function changeActiveBtn(prio) {
 }
 
 
+/**
+ * Checks the current user and updates the UI based on the user's status.
+ */
 function checkCurrentUser() {
   const forbiddenContent = document.querySelectorAll('.forbiddenContent');
   const menuUserContainer = document.getElementById('menuUserContainer');
   const headerUserContainer = document.getElementById('headerUserContainer');
   const headerUserBadge = document.querySelectorAll('.headerUserBadge');
-
   if (!currentUser) {
     noUserContent(forbiddenContent, menuUserContainer, headerUserContainer);
   } else if (currentUser && currentUser.name === 'Guest') {
@@ -119,6 +157,13 @@ function checkCurrentUser() {
 }
 
 
+/**
+ * Hides content for users who are not logged in.
+ * 
+ * @param {NodeList} forbiddenContent - The content elements to hide.
+ * @param {Element} menuUserContainer - The user menu container element.
+ * @param {Element} headerUserContainer - The user header container element.
+ */
 function noUserContent(forbiddenContent, menuUserContainer, headerUserContainer) {
   forbiddenContent.forEach(content => content.classList.add('d-none'));
   menuUserContainer.classList.add('d-none');
@@ -126,6 +171,13 @@ function noUserContent(forbiddenContent, menuUserContainer, headerUserContainer)
 }
 
 
+/**
+ * Shows content for users who are logged in.
+ * 
+ * @param {NodeList} forbiddenContent - The content elements to show.
+ * @param {Element} menuUserContainer - The user menu container element.
+ * @param {Element} headerUserContainer - The user header container element.
+ */
 function userContent(forbiddenContent, menuUserContainer, headerUserContainer) {
   forbiddenContent.forEach(content => content.classList.remove('d-none'));
   menuUserContainer.classList.remove('d-none');
@@ -133,6 +185,13 @@ function userContent(forbiddenContent, menuUserContainer, headerUserContainer) {
 }
 
 
+/**
+ * Toggles between two classes on a specified element.
+ * 
+ * @param {string} menu - The ID of the element to toggle classes on.
+ * @param {string} className1 - The first class to toggle.
+ * @param {string} className2 - The second class to toggle.
+ */
 function toggleClass(menu, className1, className2) {
   let edit = document.getElementById(menu);
   edit.classList.toggle(className1);
@@ -140,11 +199,23 @@ function toggleClass(menu, className1, className2) {
 }
 
 
+/**
+ * Gets the value of an element by its ID.
+ * 
+ * @param {string} id - The ID of the element to get the value from.
+ * @returns {string} The value of the element.
+ */
 function getId(id) {
   return document.getElementById(id).value;
 }
 
 
+/**
+ * Loads data from a specified path in the database.
+ * 
+ * @param {string} [path=''] - The path to load data from.
+ * @returns {Promise<Object>} The loaded data.
+ */
 async function loadData(path = '') {
   try {
     let response = await fetch(BASE_URL + path + ".json");
@@ -156,6 +227,12 @@ async function loadData(path = '') {
 }
 
 
+/**
+ * Deletes data from a specified path in the database.
+ * 
+ * @param {string} [path=''] - The path to delete data from.
+ * @returns {Promise<Object>} The response from the delete request.
+ */
 async function deleteData(path = '') {
   let response = await fetch(BASE_URL + path + '.json', {
     method: 'DELETE',
@@ -164,6 +241,13 @@ async function deleteData(path = '') {
 }
 
 
+/**
+ * Posts data to a specified path in the database.
+ * 
+ * @param {string} [path=''] - The path to post data to.
+ * @param {Object} [data={}] - The data to post.
+ * @returns {Promise<Object>} The response from the post request.
+ */
 async function postData(path = "", data = {}) {
   try {
     let response = await fetch(BASE_URL + path + ".json", {
@@ -178,6 +262,13 @@ async function postData(path = "", data = {}) {
 }
 
 
+/**
+ * Updates data at a specified URL in the database.
+ * 
+ * @param {string} url - The URL to update data at.
+ * @param {Object} data - The data to update.
+ * @returns {Promise<Object>} The response from the update request.
+ */
 async function updateData(url, data) {
   try {
     const response = await fetch(url, {
@@ -192,12 +283,22 @@ async function updateData(url, data) {
 }
 
 
+/**
+ * Displays a confirmation modal to delete a task.
+ * 
+ * @param {number} id - The ID of the task to delete.
+ */
 function deleteTask(id) {
   toggleClass('deleteResponse', 'ts0', 'ts1');
   document.getElementById('deleteResponse').innerHTML = openDeleteTaskSureHtml(id);
 }
 
 
+/**
+ * Deletes a task after confirmation and updates the task list.
+ * 
+ * @param {number} id - The ID of the task to delete.
+ */
 async function deleteTaskSure(id) {
   toggleClass('deleteResponse', 'ts0', 'ts1');
   await deleteData(`tasks/${id}`);
@@ -207,11 +308,20 @@ async function deleteTaskSure(id) {
 }
 
 
+/**
+ * Capitalizes the first letter of a string.
+ * 
+ * @param {string} str - The string to capitalize.
+ * @returns {string} The capitalized string.
+ */
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 
+/**
+ * Logs out the current user and redirects to the login page.
+ */
 function logOut() {
   sessionStorage.removeItem('currentUser');
   localStorage.removeItem('currentUser');
