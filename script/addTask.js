@@ -1,6 +1,12 @@
 let assignedContacts = [];
 
 
+/**
+ * Asynchronously pushes a new task to the server and handles the task form submission.
+ * 
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>}
+ */
 async function pushNewTask(event) {
   event.preventDefault();
   await postData("tasks", createNewtask());
@@ -9,6 +15,11 @@ async function pushNewTask(event) {
 }
 
 
+/**
+ * Creates a new task object with the form data.
+ * 
+ * @returns {Object} The new task object.
+ */
 function createNewtask() {
   return {
     title: getId('taskTitle'),
@@ -23,6 +34,11 @@ function createNewtask() {
 }
 
 
+/**
+ * Sets the priority for a task.
+ * 
+ * @param {HTMLElement} element - The element that triggered the priority setting.
+ */
 function setPrio(element) {
   const prio = element.getAttribute('data-prio');
   currentPrio = prio;
@@ -30,6 +46,9 @@ function setPrio(element) {
 }
 
 
+/**
+ * Clears the add task form fields.
+ */
 function clearAddTaskForm() {
   document.getElementById('taskTitle').value = '';
   document.getElementById('taskDescription').value = '';
@@ -40,6 +59,11 @@ function clearAddTaskForm() {
 }
 
 
+/**
+ * Validates the form inputs.
+ * 
+ * @returns {boolean} True if all required inputs are valid, false otherwise.
+ */
 function formValidation() {
   const inputs = document.querySelectorAll('.singleInputContainer input[required]');
   let isValid = true;
@@ -56,6 +80,12 @@ function formValidation() {
 }
 
 
+/**
+ * Displays validation error for an input.
+ * 
+ * @param {HTMLInputElement} input - The input element to validate.
+ * @param {HTMLElement} validationText - The validation message element.
+ */
 function formValidationTrue(input, validationText) {
   validationText.style.display = 'block';
   input.classList.add('formValidationInputBorder');
@@ -63,12 +93,24 @@ function formValidationTrue(input, validationText) {
 }
 
 
+/**
+ * Hides validation error for an input.
+ * 
+ * @param {HTMLInputElement} input - The input element to validate.
+ * @param {HTMLElement} validationText - The validation message element.
+ */
 function formValidationFalse(input, validationText) {
   validationText.style.display = 'none';
   input.classList.remove('formValidationInputBorder');
 }
 
 
+/**
+ * Adds an input event listener to handle real-time validation.
+ * 
+ * @param {HTMLInputElement} input - The input element to validate.
+ * @param {HTMLElement} validationText - The validation message element.
+ */
 function formValidationListener(input, validationText) {
   input.addEventListener('input', function () {
     if (input.value.trim() !== '') {
@@ -82,6 +124,9 @@ function formValidationListener(input, validationText) {
 }
 
 
+/**
+ * Shows the task added animation and redirects to the board page.
+ */
 function showTaskAddedAnimation() {
   if (window.location.href.endsWith('addtask.html')) {
     toggleClass('taskAddedBtn', 'd-None', 'show');
@@ -94,6 +139,9 @@ function showTaskAddedAnimation() {
 }
 
 
+/**
+ * Shows the task added animation in a modal.
+ */
 function showTaskAddedAnimationModal() {
   toggleClass('taskAddedBtn', 'd-None', 'show');
   setTimeout(() => {
@@ -102,6 +150,11 @@ function showTaskAddedAnimationModal() {
 }
 
 
+/**
+ * Closes the add task modal and handles the task submission animation.
+ * 
+ * @returns {Promise<void>}
+ */
 async function closeAddTaskModal() {
   if (activeTab == 'add task') {
     showTaskAddedAnimation();
@@ -117,6 +170,11 @@ async function closeAddTaskModal() {
 }
 
 
+/**
+ * Handles the addition of a new subtask.
+ * 
+ * @param {Event} event - The event triggered by adding a subtask.
+ */
 function addNewSubtask(event) {
   handleKeyDown(event)
   let input = document.getElementById('subtaskInput').value.length;
@@ -130,6 +188,11 @@ function addNewSubtask(event) {
 }
 
 
+/**
+ * Handles the 'Enter' key event for saving a subtask.
+ * 
+ * @param {KeyboardEvent} event - The keyboard event.
+ */
 function handleKeyDown(event) {
   if (event.key === 'Enter') {
       event.preventDefault();
@@ -138,11 +201,17 @@ function handleKeyDown(event) {
 }
 
 
+/**
+ * Clears the subtask input field.
+ */
 function clearSubtaskInput() {
   document.getElementById('subtaskInput').value = '';
 }
 
 
+/**
+ * Saves a subtask to the subtask list.
+ */
 function saveSubtask() {
   let subtaskList = document.getElementById('subtaskList');
   let inputText = document.getElementById('subtaskInput').value.trim();
@@ -158,6 +227,9 @@ function saveSubtask() {
 }
 
 
+/**
+ * Toggles the visibility of the subtask icons based on click events outside the subtask input.
+ */
 document.addEventListener('click', function (event) {
   const input = document.getElementById('subtaskInput');
   const iconContainer = document.getElementById('subtaskIconContainer');
@@ -171,6 +243,11 @@ document.addEventListener('click', function (event) {
 });
 
 
+/**
+ * Enables the editing of a subtask.
+ * 
+ * @param {HTMLElement} editIcon - The edit icon element that was clicked.
+ */
 function editSubtask(editIcon) {
   let subtaskItem = editIcon.closest('.subtaskEditList');
   let subtaskText = subtaskItem.querySelector('.subtaskItemText');
@@ -178,28 +255,47 @@ function editSubtask(editIcon) {
   subtaskText.classList.add('dNone');
   editInput.classList.remove('dNone');
   editInput.focus();
-  editInput.addEventListener('blur', function () { saveEditedSubtask(subtaskItem, subtaskText, editInput); });
+  editInput.addEventListener('blur', function () { saveEditedSubtask(subtaskText, editInput); });
 }
 
 
-function saveEditedSubtask(subtaskItem, subtaskText, editInput) {
+/**
+ * Saves the edited subtask.
+ * 
+ * @param {HTMLElement} subtaskText - The subtask text element.
+ * @param {HTMLInputElement} editInput - The edit input element.
+ */
+function saveEditedSubtask(subtaskText, editInput) {
   subtaskText.textContent = editInput.value.trim();
   subtaskText.classList.remove('dNone');
   editInput.classList.add('dNone');
 }
 
 
+/**
+ * Clears the subtask list.
+ */
 function clearSubtaskList() {
   document.getElementById('subtaskList').innerHTML = '';
 }
 
 
+/**
+ * Deletes a subtask.
+ * 
+ * @param {HTMLElement} deleteIcon - The delete icon element that was clicked.
+ */
 function deleteSubtask(deleteIcon) {
   let subtaskItem = deleteIcon.closest('.subtaskEditList');
   subtaskItem.remove();
 }
 
 
+/**
+ * Gets the subtasks from the subtask list.
+ * 
+ * @returns {Array<Object>} An array of subtask objects.
+ */
 function getSubtasks() {
   const subtaskItems = document.querySelectorAll('.subtaskList .subtaskItemText');
   let subtasks = [];
@@ -208,6 +304,12 @@ function getSubtasks() {
 }
 
 
+/**
+ * Assigns or unassigns a contact to/from a task.
+ * 
+ * @param {number} id - The contact ID.
+ * @param {Event} event - The click event.
+ */
 function contactAssign(id, event) {
   event.stopPropagation();
   let contactLabel = document.getElementById(`contact${id}`).parentElement;
@@ -222,6 +324,11 @@ function contactAssign(id, event) {
 }
 
 
+/**
+ * Toggles the assign dropdown menu.
+ * 
+ * @returns {Promise<void>}
+ */
 async function toggleDropdown() {
   document.getElementById('assignDropdown').classList.toggle('open');
   document.getElementById('assignSearch').classList.contains('contactsAssignStandard') ? await openAssignDropdown() : closeAssignDropdown();
@@ -229,6 +336,12 @@ async function toggleDropdown() {
 }
 
 
+/**
+ * Toggles the category dropdown menu.
+ * 
+ * @param {Event} e - The click event.
+ * @param {string} value - The value to set for the category input.
+ */
 function toggleCategoryDropdown(e, value) {
   e.stopPropagation();
   let input = document.getElementById('categoryInput');
@@ -240,6 +353,11 @@ function toggleCategoryDropdown(e, value) {
 }
 
 
+/**
+ * Checks for clicks outside the assign menu to close it.
+ * 
+ * @param {Event} event - The click event.
+ */
 function checkOutsideAssign(event) {
   let assignMenu = document.getElementById('assignDropdown');
   if (assignMenu.classList.contains('open') && !assignMenu.contains(event.target)) {
@@ -248,6 +366,9 @@ function checkOutsideAssign(event) {
 }
 
 
+/**
+ * Renders the assigned contacts.
+ */
 function renderAssignedContacts() {
   let assignedContactsContainer = document.getElementById('contactsAssigned');
   assignedContactsContainer.innerHTML = '';
@@ -255,6 +376,11 @@ function renderAssignedContacts() {
 }
 
 
+/**
+ * Opens the assign dropdown menu.
+ * 
+ * @returns {Promise<void>}
+ */
 async function openAssignDropdown() {
   let searchInput = document.getElementById('assignSearch');
   let contactsContainer = document.getElementById('contactsToAssign');
@@ -269,6 +395,9 @@ async function openAssignDropdown() {
 }
 
 
+/**
+ * Closes the assign dropdown menu.
+ */
 function closeAssignDropdown() {
   let searchInput = document.getElementById('assignSearch');
   let contactsContainer = document.getElementById('contactsToAssign');
@@ -281,6 +410,9 @@ function closeAssignDropdown() {
 };
 
 
+/**
+ * Filters and displays contacts based on the search input.
+ */
 async function assignSearchInput() {
   let searchInput = document.getElementById('assignSearch');
   let contactsContainer = document.getElementById('contactsToAssign');

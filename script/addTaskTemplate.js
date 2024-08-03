@@ -1,3 +1,12 @@
+/**
+ * Generates HTML for assigning contacts to a task.
+ * 
+ * @param {Object} contact - The contact object.
+ * @param {number} contact.id - The ID of the contact.
+ * @param {string} contact.name - The name of the contact.
+ * @param {string} contact.profilePic - The profile picture HTML of the contact.
+ * @returns {string} The HTML string for the contact assignment.
+ */
 function htmlRenderContactsAssign(contact) {
   return /*html*/`
     <label for="contact${contact.id}" ${assignedContacts.findIndex(c => c.name == contact.name) != -1 ? 'class= "contactsToAssignCheck"' : ''}>
@@ -10,6 +19,13 @@ function htmlRenderContactsAssign(contact) {
 }
 
 
+/**
+ * Generates HTML for a subtask.
+ * 
+ * @param {string} inputText - The text of the subtask.
+ * @param {number} index - The index of the subtask.
+ * @returns {string} The HTML string for the subtask.
+ */
 function generateSaveSubtaskHTML(inputText, index) {
   return /*html*/`
       <li class="subtaskEditList" id="subtask-${index}" ondblclick="editSubtask(this)">
