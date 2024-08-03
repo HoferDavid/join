@@ -142,6 +142,15 @@ input:focus {
   overflow-y: hidden;
 }
 
+.highlighted {
+  border: 1px dashed #a8a8a8;
+  border-radius: 10px;
+}
+
+.highlightedBackground {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 ::-webkit-scrollbar {
   height: 2px;
   background: transparent;
@@ -404,6 +413,10 @@ input:focus {
 }
 
 @media (min-width: 1200px) {
+  .boardContentSection {
+    overflow-y: hidden;
+  }
+
   .headerSection {
     display: flex;
     width: 964px;
@@ -411,18 +424,27 @@ input:focus {
 
   .taskSection {
     display: flex;
-    padding-bottom: 64px;
+    justify-content: space-between;
+    padding-bottom: 32px;
+    overflow: auto hidden;
   }
 
   .taskDragArea {
-    display: block;
-    overflow: unset;
-    overflow-y: unset;
-    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: unset;
+    padding: 16px 0;
   }
 
   .taskCategoryContainer {
     align-items: center;
+    height: 100%;
+    min-width: 280px;
+    overflow: hidden;
   }
 
   .taskCategoryHeader {
@@ -431,6 +453,13 @@ input:focus {
     font-weight: 700;
     line-height: 24px;
     color: #42526e;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+  .todoContainer {
+    margin: 0;
   }
 
   .taskCategoryIcon {
@@ -457,10 +486,6 @@ input:focus {
     flex-direction: row;
     padding-bottom: 64px;
     padding: 0px 16px 32px 64px;
-  }
-
-  .taskDragArea {
-    display: block;
   }
 
   .taskCategoryContainer {

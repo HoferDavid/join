@@ -30,11 +30,11 @@
       <div class="headerPlusBtn">
         <div>Board</div>
         <a href="../html/addtask.html" class="addTaskBtnMobile" onclick="checkScreenWidth('toDo')">
-          <img src="../assets/icons/add.svg"/>
+          <img src="../assets/icons/add.svg" />
         </a>
       </div>
       <div class="searchBtnContainer">
-        <input class="searchInput" oninput="searchTasks(this.value)" maxlength="40" type="text"
+        <input class="searchInput" oninput="searchTasks(this.value)" onblur="" maxlength="40" type="text"
           placeholder="Find Task" />
         <div class="addTaskBtnDesktop" onclick="checkScreenWidth('toDo')">
           <div class="addTaskBtnDesktopText">Add task</div>
@@ -46,7 +46,8 @@
 
       <div id="noTasksFound" class="noTasksFound dNone">No tasks found</div>
 
-      <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+      <div class="taskCategoryContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)"
+        ondragleave="dragLeave()">
         <div class="taskCategoryHeader">
           <div>To do</div>
           <img class="taskCategoryIcon" onclick="checkScreenWidth('toDo')"
@@ -55,7 +56,8 @@
         <div class="taskDragArea" id="toDo"></div>
       </div>
 
-      <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+      <div class="taskCategoryContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"
+        ondragleave="dragLeave()">
         <div class="taskCategoryHeader">
           <div>In progress</div>
           <img class="taskCategoryIcon" onclick="checkScreenWidth('inProgress')"
@@ -64,7 +66,8 @@
         <div class="taskDragArea" id="inProgress"></div>
       </div>
 
-      <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
+      <div class="taskCategoryContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"
+        ondragleave="dragLeave()">
         <div class="taskCategoryHeader">
           <div>Await Feedback</div>
           <img class="taskCategoryIcon" onclick="checkScreenWidth('awaitFeedback')"
@@ -73,7 +76,8 @@
         <div class="taskDragArea" id="awaitFeedback"></div>
       </div>
 
-      <div class="taskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+      <div class="taskCategoryContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)"
+        ondragleave="dragLeave()">
         <div class="taskCategoryHeader">
           <div>Done</div>
         </div>

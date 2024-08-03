@@ -86,12 +86,48 @@ function dragDrop() {
       e.target.classList.remove("tilted");
     });
   });
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.addEventListener("dragover", allowDrop);
-    zone.addEventListener("drop", (e) => {
-      e.preventDefault();
-      moveTo(zone.id);
-    });
+}
+
+function startDragging(id) {
+  currentDraggedElement = id;
+  document.querySelectorAll(".taskDragArea").forEach((zone) => {
+    zone.classList.add("highlighted");
+  });
+}
+
+function allowDrop(ev) {
+  let dropTarget = ev.target;
+  let allowDropTarget = document.querySelectorAll('.taskDragArea');
+  allowDropTarget.forEach(t => {
+    if (t == dropTarget || t.contains(dropTarget)) {
+      ev.preventDefault();
+      t.classList.add('highlightedBackground');
+    }
+  });
+}
+
+async function moveTo(status) {
+  document.querySelectorAll(".taskDragArea").forEach((zone) => {
+    zone.classList.add("highlighted");
+  });
+  let task = tasks.find((task) => task.id == currentDraggedElement);
+  if (task && status != "") {
+    task.status = status;
+    initDragDrop();
+    applyCurrentSearchFilter();
+    await updateData(`${BASE_URL}tasks/${task.id}.json`, task);
+  }
+}
+
+function dragEnd() {
+  document.querySelectorAll('.taskDragArea').forEach((zone) => {
+    zone.classList.remove('highlighted', 'highlightedBackground');
+  });
+}
+
+function dragLeave() {
+  document.querySelectorAll('.taskDragArea').forEach((zone) => {
+    zone.classList.remove('highlightedBackground');
   });
 }
 
@@ -121,32 +157,17 @@ function updateAllTaskCategories() {
 }
 
 
-function startDragging(id) {
-  currentDraggedElement = id;
-}
 
 
-function allowDrop(ev) {
-  ev.preventDefault();
-}
 
 
-async function moveTo(status) {
-  let task = tasks.find((task) => task.id == currentDraggedElement);
-  if (task && status != "") {
-    task.status = status;
-    initDragDrop();
-    applyCurrentSearchFilter();
-    await updateData(`${BASE_URL}tasks/${task.id}.json`, task);
-  }
-}
 
 
 
 
 
 function searchTasks(inputValue) {
-  emptyDragAreaWhileSearching();
+  emptyDragAreaWhileSearching(inputValue);
   currentSearchInput = inputValue.toLowerCase();
   const taskCards = document.querySelectorAll(".todoContainer");
   let anyVisibleTask = false;
@@ -184,11 +205,18 @@ function updateNoTasksFoundVisibility(anyVisibleTask) {
 }
 
 
-function emptyDragAreaWhileSearching() {
-  let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
-  dragAreas.forEach((dragArea) => {
-    dragArea.classList.add('dNone'); 
-  });
+function emptyDragAreaWhileSearching(searchValue) {
+  if (searchValue === '') {
+    let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
+    dragAreas.forEach((dragArea) => {
+      dragArea.classList.remove('dNone');
+    });
+  } else {
+    let dragAreas = document.querySelectorAll(".noTaskPlaceholder");
+    dragAreas.forEach((dragArea) => {
+      dragArea.classList.add('dNone');
+    });
+  }
 }
 
 
@@ -239,11 +267,11 @@ function checkScreenWidth(category) {
   const taskStatus = category;
   sessionStorage.setItem('taskCategory', category);
   if (screenWidth < 992) {
-      changeActive(activeTab);
-      // Nur Weiterleitung durchführen, ohne `window.onload` zu definieren
-      window.location.href = "../html/addtask.html";
+    changeActive(activeTab);
+    // Nur Weiterleitung durchführen, ohne `window.onload` zu definieren
+    window.location.href = "../html/addtask.html";
   } else {
-      openAddTaskOverlay();
+    openAddTaskOverlay();
   }
 }
 
