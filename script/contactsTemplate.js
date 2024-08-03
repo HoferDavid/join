@@ -1,3 +1,8 @@
+/**
+ * Returns HTML for adding a new contact.
+ * 
+ * @returns {string} - HTML string for adding a new contact.
+ */
 function htmlRenderAddContact() {
   return /*html*/`
     <div class="moreIcon" onclick="openAddContacts()">
@@ -8,6 +13,12 @@ function htmlRenderAddContact() {
 }
 
 
+/**
+ * Returns HTML for rendering a contact letter section.
+ * 
+ * @param {string} letter - The letter to render.
+ * @returns {string} - HTML string for the contact letter section.
+ */
 function htmlRenderContactLetter(letter) {
   return /*html*/`
     <div class="contactLetter">
@@ -19,6 +30,12 @@ function htmlRenderContactLetter(letter) {
 }
 
 
+/**
+ * Returns HTML for rendering a general contact entry.
+ * 
+ * @param {Object} contact - The contact object.
+ * @returns {string} - HTML string for the contact entry.
+ */
 function htmlRenderGeneral(contact) {
   return /*html*/`
     <li id="contact${contact.id}" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100'); renderContactsDetails(${contact.id})">
@@ -34,6 +51,11 @@ function htmlRenderGeneral(contact) {
 }
 
 
+/**
+ * Returns HTML for rendering an empty contact details section.
+ * 
+ * @returns {string} - HTML string for the empty contact details section.
+ */
 function htmlRenderContactDetailsEmpty() {
   return /*html*/`
     <div id="contactsDetail" class="ttx100">
@@ -46,6 +68,12 @@ function htmlRenderContactDetailsEmpty() {
 }
 
 
+/**
+ * Returns HTML for rendering the details of a specified contact.
+ * 
+ * @param {number|string} id - The ID of the contact.
+ * @returns {string} - HTML string for the contact details.
+ */
 function htmlRenderContactDetails(id) {
   return /*html*/`
     <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')">
@@ -87,6 +115,15 @@ function htmlRenderContactDetails(id) {
 }
 
 
+/**
+ * Returns an SVG string for a profile picture with the specified color and initials.
+ * 
+ * @param {string} color - The background color of the profile picture.
+ * @param {string} initials - The initials to display in the profile picture.
+ * @param {number} height - The height of the SVG.
+ * @param {number} width - The width of the SVG.
+ * @returns {string} - SVG string for the profile picture.
+ */
 function svgProfilePic(color, initials, height, width) {
   return /*html*/`
     <svg class="profilePic" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">
