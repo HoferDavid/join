@@ -1,3 +1,16 @@
+/**
+ * Generates the HTML for a todo item.
+ * 
+ * @param {Object} element - The todo item object.
+ * @param {string} element.id - The ID of the todo item.
+ * @param {string} element.category - The category of the todo item.
+ * @param {string} element.title - The title of the todo item.
+ * @param {string} element.description - The description of the todo item.
+ * @param {Array} element.subtasks - The subtasks of the todo item.
+ * @param {Array} element.assignedTo - The assigned users to the todo item.
+ * @param {string} element.prio - The priority of the todo item.
+ * @returns {string} The generated HTML string for the todo item.
+ */
 function generateTodoHTML(element) {
     let categoryHTML = generateCategoryHTML(element.category);
     let titleHTML = generateTitleHTML(element.title);
@@ -24,6 +37,12 @@ function generateTodoHTML(element) {
 }
 
 
+/**
+ * Generates the HTML for the category badge.
+ * 
+ * @param {string} category - The category of the todo item.
+ * @returns {string} The generated HTML string for the category badge.
+ */
 function generateCategoryHTML(category) {
     let categoryHTML = '';
     if (category == 'User Story') {
@@ -35,6 +54,12 @@ function generateCategoryHTML(category) {
 }
 
 
+/**
+ * Generates the HTML for the title of the todo item.
+ * 
+ * @param {string} title - The title of the todo item.
+ * @returns {string} The generated HTML string for the title.
+ */
 function generateTitleHTML(title) {
     let titleHTML = '';
     if (title.length < 20) {
@@ -46,6 +71,12 @@ function generateTitleHTML(title) {
 }
 
 
+/**
+ * Generates the HTML for the description of the todo item.
+ * 
+ * @param {string} description - The description of the todo item.
+ * @returns {string} The generated HTML string for the description.
+ */
 function generateDescriptionHTML(description) {
     let descriptionHTML = '';
     if (description.length < 60) {
@@ -57,6 +88,13 @@ function generateDescriptionHTML(description) {
 }
 
 
+/**
+ * Generates the HTML for the subtasks of the todo item.
+ * 
+ * @param {Array} subtasks - The subtasks of the todo item.
+ * @param {string} id - The ID of the todo item.
+ * @returns {string} The generated HTML string for the subtasks.
+ */
 function generateSubtasksHTML(subtasks, id) {
     let subtasksHTML = "";
     if (subtasks && subtasks.length > 0) {
@@ -72,6 +110,12 @@ function generateSubtasksHTML(subtasks, id) {
 }
 
 
+/**
+ * Generates the HTML for the assigned users of the todo item.
+ * 
+ * @param {Array} assignedTo - The assigned users to the todo item.
+ * @returns {string} The generated HTML string for the assigned users.
+ */
 function generateAssignedToHTML(assignedTo) {
     let assignedToHTML = '';
     if (!assignedTo) {
@@ -87,6 +131,12 @@ function generateAssignedToHTML(assignedTo) {
 }
 
 
+/**
+ * Generates the HTML for the priority icon of the todo item.
+ * 
+ * @param {string} prio - The priority of the todo item.
+ * @returns {string} The generated HTML string for the priority icon.
+ */
 function generatePrioHTML(prio) {
     let prioHTML = '';
     if (prio == 'urgent') {
@@ -100,6 +150,11 @@ function generatePrioHTML(prio) {
 }
 
 
+/**
+ * Fetches the HTML template for adding a new task.
+ * 
+ * @returns {Promise<string>} A promise that resolves to the HTML string for the add task template.
+ */
 async function fetchAddTaskTemplate() {
     let response = await fetch("../assets/templates/html/addtasktemplate.html");
     let html = await response.text();
@@ -111,6 +166,12 @@ async function fetchAddTaskTemplate() {
 }
 
 
+/**
+ * Generates the HTML for the category badge in the modal.
+ * 
+ * @param {string} category - The category of the todo item.
+ * @returns {string} The generated HTML string for the category badge in the modal.
+ */
 function generateModalCategoryHTML(category) {
     let modalCategoryHTML = '';
     if (category == 'User Story') {
@@ -122,6 +183,12 @@ function generateModalCategoryHTML(category) {
 }
 
 
+/**
+ * Generates the HTML for the assigned users in the modal.
+ * 
+ * @param {Array} assignedTo - The assigned users to the todo item.
+ * @returns {string} The generated HTML string for the assigned users in the modal.
+ */
 function generateModalAssignedToHTML(assignedTo) {
     if (!assignedTo) return '';
     let modalAssignedToHTML = '';
@@ -137,6 +204,13 @@ function generateModalAssignedToHTML(assignedTo) {
 }
 
 
+/**
+ * Generates the HTML for the subtasks in the modal.
+ * 
+ * @param {Object} element - The todo item object.
+ * @param {Array} element.subtasks - The subtasks of the todo item.
+ * @returns {string} The generated HTML string for the subtasks in the modal.
+ */
 function generateModalSubtasksHTML(element) {
     let modalSubtasksHTML = "";
     if (element.subtasks) {
@@ -157,6 +231,20 @@ function generateModalSubtasksHTML(element) {
 }
 
 
+/**
+ * Generates the HTML for opening the overlay of a todo item.
+ * 
+ * @param {Object} element - The todo item object.
+ * @param {string} element.id - The ID of the todo item.
+ * @param {string} element.category - The category of the todo item.
+ * @param {string} element.title - The title of the todo item.
+ * @param {string} element.description - The description of the todo item.
+ * @param {Array} element.subtasks - The subtasks of the todo item.
+ * @param {Array} element.assignedTo - The assigned users to the todo item.
+ * @param {string} element.prio - The priority of the todo item.
+ * @param {string} element.date - The due date of the todo item.
+ * @returns {string} The generated HTML string for the todo item overlay.
+ */
 function generateOpenOverlayHTML(element) {
     let modalCategoryHTML = generateModalCategoryHTML(element.category);
     let priority = element.prio.charAt(0).toUpperCase() + element.prio.slice(1);
@@ -210,6 +298,12 @@ function generateOpenOverlayHTML(element) {
 }
 
 
+/**
+ * Generates the HTML for editing a task.
+ * 
+ * @param {string} taskId - The ID of the task to be edited.
+ * @returns {string} The generated HTML string for editing the task.
+ */
 function generateTaskEditHTML(taskId) {
     let task = tasks.find(task => task.id === taskId);
     let subtaskHTML = '';
@@ -325,6 +419,13 @@ function generateTaskEditHTML(taskId) {
     `;
 }
 
+
+/**
+ * Generates the HTML for the delete confirmation dialog.
+ * 
+ * @param {string} id - The ID of the task to be deleted.
+ * @returns {string} The generated HTML string for the delete confirmation dialog.
+ */
 function openDeleteTaskSureHtml(id) {
     return /*html*/`
         <div class="deleteQuestion">
