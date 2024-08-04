@@ -62,11 +62,11 @@ async function checkDeletedUser(loadedTask) {
   if (loadedTask.assignedTo) {
     for (let i = loadedTask.assignedTo.length - 1; i >= 0; i--) {
       let c = loadedTask.assignedTo[i];
-      if (contacts.findIndex(cont => cont.id === c.id) === -1) {
+      if (contacts.findIndex(cont => cont.id === c.id) === c) {
         loadedTask.assignedTo.splice(i, 1);
         await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
-      } if (contacts.findIndex(cont => cont === c) === -1) {
-        c = contacts[contacts.findIndex(cont => cont.id === c.id)];
+      } if (contacts[contacts.findIndex(cont => cont.id === c.id)] !== c) {
+        loadedTask.assignedTo[i] = contacts[contacts.findIndex(cont => cont.id === c.id)];
         await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
       }
     }
@@ -96,15 +96,15 @@ function updateAllTaskCategories() {
  */
 async function createTaskArray(key, singleTask) {
   let task = {
-      "id": key,
-      "assignedTo": singleTask.assignedTo,
-      "category": singleTask.category,
-      "date": singleTask.date,
-      "description": singleTask.description,
-      "prio": singleTask.prio,
-      "status": singleTask.status,
-      "subtasks": singleTask.subtasks,
-      "title": singleTask.title,
+    "id": key,
+    "assignedTo": singleTask.assignedTo,
+    "category": singleTask.category,
+    "date": singleTask.date,
+    "description": singleTask.description,
+    "prio": singleTask.prio,
+    "status": singleTask.status,
+    "subtasks": singleTask.subtasks,
+    "title": singleTask.title,
   };
   return task;
 }
