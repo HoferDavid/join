@@ -76,7 +76,7 @@ function htmlRenderContactDetailsEmpty() {
  */
 function htmlRenderContactDetails(id) {
   return /*html*/`
-    <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1')">
+    <div class="moreIcon" onclick="toggleClass('editMenu', 'ts0', 'ts1'),  activateOutsideCheck('editMenu', 'ts1', 'ts0')">
       <img src="../assets/icons/more_vert.svg" alt="3 points vert">
     </div>
     <a class="backArrow" onclick="toggleClass('contactsDetail', 'tt0', 'ttx100')">
@@ -92,7 +92,7 @@ function htmlRenderContactDetails(id) {
       </div>
       <div>
         <h2>${contacts[contacts.findIndex(c => c.id == id)].name}</h2>
-        <div id="editMenu" class="editMenu ts0" onmouseleave="toggleClass('editMenu', 'ts0', 'ts1')">
+        <div id="editMenu" class="editMenu ts0">
           <div class="editMenuItem" onclick="openEditContacts(${id})">
             <img class="editMenuButton" src="../assets/icons/edit.svg" alt="pencil">
             <img class="editMenuButton hoverEffectIcon" src="../assets/icons/editBlue.svg" alt="blue pencil">

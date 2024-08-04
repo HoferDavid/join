@@ -110,31 +110,6 @@ function makeContactActive(id = editId) {
 
 
 /**
- * Adds an event listener to check for clicks outside the specified modal and closes the modal if clicked outside.
- * 
- * @param {string} modalName - The ID of the modal to check.
- */
-function activateOutsideCheck(modalName) {
-  document.addEventListener('mousedown', function () { checkOutsideModal(modalName); });
-}
-
-
-/**
- * Checks if a click event occurred outside the specified modal and closes the modal if it did.
- * 
- * @param {string} modalName - The ID of the modal to check.
- */
-function checkOutsideModal(modalName) {
-  let modal = document.getElementById(modalName);
-  if (modal.classList.contains('tt0') && !modal.contains(event.target)) {
-    toggleClass(modalName, 'tt0', 'tty100');
-    document.removeEventListener('click', function () { checkOutsideModal(modalName); });
-
-  };
-}
-
-
-/**
  * Opens the add contact modal with empty input fields.
  */
 function openAddContacts() {
@@ -146,7 +121,7 @@ function openAddContacts() {
   email.value = '';
   tel.value = '';
   toggleClass('addContact', 'tt0', 'tty100');
-  activateOutsideCheck('addContact');
+  activateOutsideCheck('addContact', 'tt0', 'tty100');
 }
 
 
@@ -221,7 +196,7 @@ function openEditContacts(id) {
   tel.value = contacts[contacts.findIndex(c => c.id == id)].phone;
   profilePic.innerHTML = contacts[contacts.findIndex(c => c.id == id)].profilePic;
   toggleClass('editContact', 'tt0', 'tty100');
-  activateOutsideCheck('editContact');
+  activateOutsideCheck('editContact', 'tt0', 'tty100');
 }
 
 

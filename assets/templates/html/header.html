@@ -2,7 +2,9 @@
   <a href class="logoContainer">
     <img src="../assets/icons/logoBlue.svg" />
   </a>
-  <div class="headerUserBadge" onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1')">G</div>
+  <div class="headerUserBadge"
+    onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1'); activateOutsideCheck('headerMenuContainer', 'ts1', 'ts0')">
+    G</div>
 </div>
 
 <div class="headerContainerDesktop" id="headerContainerDesktop">
@@ -10,7 +12,9 @@
     <div class="headerText">Kanban Project Management Tool</div>
     <div class="headerRightContainer" id="headerUserContainer">
       <a class="headerHelpIcon" href="../html/help.html"><img src="../assets/icons/help.svg"></a>
-      <div class="headerUserBadge" id="headerUserBadge" onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1')">G
+      <div class="headerUserBadge" id="headerUserBadge"
+        onclick="toggleClass('headerMenuContainer', 'ts0', 'ts1'); activateOutsideCheck('headerMenuContainer', 'ts1', 'ts0')">
+        G
       </div>
     </div>
   </div>

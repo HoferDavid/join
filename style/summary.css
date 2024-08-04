@@ -383,6 +383,7 @@ main.content {
     }
 }
 
+
 @media (min-width: 1200px) {
     .summ-2 {
         padding: 40px;
@@ -405,7 +406,7 @@ main.content {
     }
 }
 
-/*Medium devices (tablets, 768px and up)*/
+
 @media (min-height: 800px) {
     .headline-summ-h2 {
         font-size: 48px;
@@ -432,7 +433,7 @@ main.content {
     }
 }
 
-/*Large devices (desktops, 992px and up)*/
+
 @media (min-height: 960px) {
     .headline-summ-h2 {
         font-size: 56px;
@@ -451,5 +452,13 @@ main.content {
     }
 }
 
-/*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: 1400px) {}
+
+@media (min-width: 1400px) {
+    .summ-person-greeting {
+        font-size: 56px;
+    }
+
+    .summ-day-greeting {
+        font-size: 40px;
+    }
+}

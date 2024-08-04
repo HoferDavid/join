@@ -329,3 +329,34 @@ function logOut() {
 }
 
 
+/**
+ * Activates a mousedown event listener to check if the user has clicked outside a specified modal element.
+ * If the user has clicked outside the modal and the modal has the specified class,
+ * the function toggles the classes of the modal to hide it.
+ *
+ * @param {string} modalName - The ID of the modal element.
+ * @param {string} class1 - The class to check if the modal has.
+ * @param {string} class2 - The class to toggle if the modal should be hidden.
+ */
+function activateOutsideCheck(modalName, class1, class2) {
+  document.addEventListener('mousedown', function () { checkOutsideModal(modalName, class1, class2); });
+}
+
+
+
+/**
+ * Checks if the user has clicked outside a specified modal element.
+ * If the user has clicked outside the modal and the modal has the specified class,
+ * the function toggles the classes of the modal to hide it.
+ * 
+ * @param {string} modalName - The ID of the modal element.
+ * @param {string} class1 - The class to check if the modal has.
+ * @param {string} class2 - The class to toggle if the modal should be hidden.
+ */
+function checkOutsideModal(modalName, class1, class2) {
+  let modal = document.getElementById(modalName);
+  if (modal.classList.contains(class1) && !modal.contains(event.target)) {
+    toggleClass(modalName, class1, class2);
+    document.removeEventListener('click', function () { checkOutsideModal(modalName); });
+  };
+}

@@ -500,12 +500,7 @@
 
   .addTaskModalContainer .inputContainer {
     gap: 48px;
-}
-}
-
-@media (min-width: 1440px) {
-  .modalContainer,
-  .addTaskModalContainer {
-    left: 720px;
   }
 }
+
+@media (min-width: 1440px) {}
