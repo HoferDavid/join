@@ -228,7 +228,7 @@ async function signUp(name, email, password) {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await createNewContact(name, email);
     showSuccessPopup();
-    setTimeout(() => window.location.href = "/index.html", 1500);
+    setTimeout(() => window.location.href = "../index.html", 1500);
 }
 
 
