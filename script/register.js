@@ -256,7 +256,7 @@ function showSuccessPopup() {
     const popup = document.getElementById('successPopup');
     popup.style.display = 'block';
     popup.addEventListener('click', () => {
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     });
 }
 

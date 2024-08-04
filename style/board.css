@@ -5,7 +5,6 @@
 .boardContentSection {
   display: flex;
   flex-direction: column;
-  max-width: 1208px;
   height: 100%;
 }
 
@@ -425,9 +424,9 @@ input:focus {
 
   .taskSection {
     display: flex;
-    justify-content: space-between;
     padding-bottom: 32px;
     overflow: auto hidden;
+    gap: 16px;
   }
 
   .taskDragArea {
@@ -485,8 +484,8 @@ input:focus {
 
   .taskSection {
     flex-direction: row;
-    padding-bottom: 64px;
-    padding: 0px 16px 32px 64px;
+    padding: 0px 64px 32px;
+    gap: 32px;
   }
 
   .taskCategoryContainer {

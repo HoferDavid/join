@@ -1,7 +1,6 @@
 body {
     background-color: #F6F7F8;
     height: 100dvh;
-    max-height: 1024px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -213,12 +212,10 @@ form button:disabled {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
+    margin: auto;
     width: 312px;
-    height: 74px;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    height: auto;
 }
 
 .popup-content {
@@ -226,8 +223,9 @@ form button:disabled {
     border-radius: 10px;
     border: 1px solid #888;
     width: 312px;
-    height: 74px;
+    padding: 24px;
     text-align: center;
+    font-size: 20px;
     color: white;
 }
 
@@ -290,7 +288,18 @@ form button:disabled {
 
 }
 
-/*X-Large devices (large desktops, 1200px and up)*/
+
+@media (min-width: 1400px) {
+    .logo {
+        position: relative;
+        width: 80px;
+        height: 100px;
+        top: 24px;
+        left: 24px;
+    }
+}
+
+
 @media (min-height: 720px) {
     .head {
         padding-top: 32px;
@@ -302,7 +311,7 @@ form button:disabled {
     }
 }
 
-/*XX-Large devices (larger desktops, 1400px and up)*/
+
 @media (min-height: 800px) {
     .head {
         padding-top: 40px;
@@ -313,7 +322,7 @@ form button:disabled {
     }
 
     .signup-headline h1 {
-        font-size: 52px;
+        font-size: 48px;
     }
 
 }
@@ -325,5 +334,6 @@ form button:disabled {
 
     .signup-headline h1 {
         font-size: 64px;
+        margin-top: 32px;
     }
 }

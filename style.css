@@ -16,7 +16,6 @@ body {
     "content content"
     "menu menu";
   height: 100dvh;
-  max-width: 1440px;
 }
 
 * {
@@ -121,7 +120,6 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1208px;
   padding: 20px 40px 20px 116px;
   z-index: 50;
 }

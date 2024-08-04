@@ -824,4 +824,14 @@ No media query for `xs` since this is the default in Bootstrap*/
     gap: 24px;
   }
 
+  .contactsGeneral {
+    padding: 16px 32px;
+  }
+
+  #contactsDetail {
+    flex: 1;
+    width: 100%;
+    padding: 16px 0 0 64px;
+  }
+
 }
