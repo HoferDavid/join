@@ -21,7 +21,7 @@ async function initBoard() {
     initDragDrop();
     applyCurrentSearchFilter();
   } catch (error) {
-    console.error("dh Initialisation error:", error);
+    console.error("Initialisation error:", error);
   }
 }
 
@@ -43,7 +43,7 @@ async function pushDataToArray() {
       tasks.push(task);
     }
   } catch (error) {
-    console.error("dh Error pushing tasks to array:", error);
+    console.error("Error pushing tasks to array:", error);
   }
 }
 
@@ -83,6 +83,30 @@ function updateAllTaskCategories() {
   updateTaskCategories("inProgress", "inProgress", "No tasks in progress");
   updateTaskCategories("awaitFeedback", "awaitFeedback", "No tasks await feedback");
   updateTaskCategories("done", "done", "No tasks done");
+}
+
+
+/**
+ * Creates a task array from the given key and task data.
+ * 
+ * @async
+ * @param {string} key - The task ID.
+ * @param {Object} singleTask - The task data.
+ * @returns {Promise<Object>} The created task object.
+ */
+async function createTaskArray(key, singleTask) {
+  let task = {
+      "id": key,
+      "assignedTo": singleTask.assignedTo,
+      "category": singleTask.category,
+      "date": singleTask.date,
+      "description": singleTask.description,
+      "prio": singleTask.prio,
+      "status": singleTask.status,
+      "subtasks": singleTask.subtasks,
+      "title": singleTask.title,
+  };
+  return task;
 }
 
 

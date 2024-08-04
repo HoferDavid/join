@@ -134,22 +134,6 @@ function toggleCategoryDropdown(e, value) {
 
 
 /**
- * Toggles the visibility of the subtask icons based on click events outside the subtask input.
- */
-document.addEventListener('click', function (event) {
-  const input = document.getElementById('subtaskInput');
-  const iconContainer = document.getElementById('subtaskIconContainer');
-  const plusIcon = document.getElementById('subtaskPlusIcon');
-  if (input && iconContainer && plusIcon) {
-    if (!input.contains(event.target) && !iconContainer.contains(event.target) && !plusIcon.contains(event.target)) {
-      iconContainer.classList.add('dNone');
-      plusIcon.classList.remove('dNone');
-    }
-  }
-});
-
-
-/**
  * Handles the addition of a new subtask.
  * 
  * @param {Event} event - The event triggered by adding a subtask.

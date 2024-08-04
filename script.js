@@ -222,7 +222,7 @@ async function loadData(path = '') {
     let responseAsJson = await response.json();
     return responseAsJson;
   } catch (error) {
-    console.error("dh Error fetching data:", error);
+    console.error("Error fetching data:", error);
   }
 }
 
@@ -257,7 +257,7 @@ async function postData(path = "", data = {}) {
     });
     return await response.json();
   } catch (error) {
-    console.error("dh Error posting data:", error);
+    console.error("Error posting data:", error);
   }
 }
 

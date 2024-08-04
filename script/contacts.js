@@ -187,6 +187,25 @@ function checkAlreadyExists(contact) {
 
 
 /**
+ * Converts a raw contact object to the internal contact format.
+ * 
+ * @param {Object} contact - The raw contact object.
+ * @returns {Object} - The converted contact object.
+ */
+function pushToContacts(contact) {
+  return {
+    'id': contact.id,
+    'name': contact.name,
+    'email': contact.mail,
+    'phone': contact.number,
+    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
+    'isUser': contact.isUser,
+    'firstLetters': filterFirstLetters(contact.name)
+  };
+}
+
+
+/**
  * Opens the edit contact modal with the details of the specified contact.
  * 
  * @param {number|string} id - The ID of the contact to edit.

@@ -135,25 +135,6 @@ function svgProfilePic(color, initials, height, width) {
 
 
 /**
- * Converts a raw contact object to the internal contact format.
- * 
- * @param {Object} contact - The raw contact object.
- * @returns {Object} - The converted contact object.
- */
-function pushToContacts(contact) {
-  return {
-    'id': contact.id,
-    'name': contact.name,
-    'email': contact.mail,
-    'phone': contact.number,
-    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
-    'isUser': contact.isUser,
-    'firstLetters': filterFirstLetters(contact.name)
-  };
-}
-
-
-/**
  * Creates a contact object with the specified details.
  * 
  * @param {number|string} id - The ID of the contact.
