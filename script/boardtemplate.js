@@ -441,3 +441,26 @@ function openDeleteTaskSureHtml(id) {
         </div>
     `;
 }
+
+
+/**
+ * Creates a task array from the given key and task data.
+ * 
+ * @async
+ * @param {string} key - The task ID.
+ * @param {Object} singleTask - The task data.
+ * @returns {Promise<Object>} The created task object.
+ */
+async function createTaskArray(key, singleTask) {
+    return {
+        "id": key,
+        "assignedTo": singleTask.assignedTo,
+        "category": singleTask.category,
+        "date": singleTask.date,
+        "description": singleTask.description,
+        "prio": singleTask.prio,
+        "status": singleTask.status,
+        "subtasks": singleTask.subtasks,
+        "title": singleTask.title,
+    };
+}

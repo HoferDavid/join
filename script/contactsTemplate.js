@@ -132,3 +132,46 @@ function svgProfilePic(color, initials, height, width) {
     </svg>
   `;
 }
+
+
+/**
+ * Converts a raw contact object to the internal contact format.
+ * 
+ * @param {Object} contact - The raw contact object.
+ * @returns {Object} - The converted contact object.
+ */
+function pushToContacts(contact) {
+  return {
+    'id': contact.id,
+    'name': contact.name,
+    'email': contact.mail,
+    'phone': contact.number,
+    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
+    'isUser': contact.isUser,
+    'firstLetters': filterFirstLetters(contact.name)
+  };
+}
+
+
+/**
+ * Creates a contact object with the specified details.
+ * 
+ * @param {number|string} id - The ID of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} [profilePic] - The profile picture of the contact.
+ * @param {boolean} [isUser] - Indicates if the contact is a user.
+ * @returns {Object} - The created contact object.
+ */
+async function createContact(id, name, email, phone, profilePic, isUser) {
+  return {
+    'id': id ? id : contacts.length == 0 ? await getContactsData().then(contacts => contacts[contacts.length - 1].id + 1) : contacts[contacts.length - 1].id + 1,
+    'name': name,
+    'mail': email,
+    'number': phone,
+    'profilePic': profilePic ? profilePic : generateSvgCircleWithInitials(name, 120, 120),
+    'isUser': isUser ? true : false,
+    'firstLetters': filterFirstLetters(name)
+  };
+}
