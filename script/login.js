@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
 
 
@@ -78,9 +78,11 @@ function togglePasswordVisibility() {
 
 
 /**
- * Handles the login button click event, authenticating the user and managing the "remember me" functionality.
- * 
- * @param {Event} event - The click event on the login button.
+ * The function `loginButtonClick` handles user login by capturing email and password inputs, signing
+ * in with Firebase authentication, and displaying errors if any.
+ * @param event - The `event` parameter in the `loginButtonClick` function represents the event that
+ * occurred, such as a button click. In this case, the function is used to handle the click event of a
+ * login button. By calling `event.preventDefault()`, the default action of the event (in this case,
  */
 async function loginButtonClick(event) {
     event.preventDefault();
@@ -89,34 +91,42 @@ async function loginButtonClick(event) {
     const rememberMe = document.getElementById('rememberMe').checked;
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        await setCurrentUser(email);
+        await setCurrentUser(email, userCredential);
         handleRememberMe(rememberMe);
         continueToSummary();
     } catch (error) {
-        showError('Oops, wrong email address or password! Try it again.');
+        showError(error);
     }
 }
 
 
 /**
- * Sets the current user based on the provided email by fetching user data from the database.
- * 
- * @param {string} email - The email of the user.
+ * The function `setCurrentUser` asynchronously sets the current user based on their email address and
+ * user credentials, deleting the user if not found.
+ * @param email - The `email` parameter is a string that represents the email address of the user you
+ * want to set as the current user.
+ * @param userCredential - The `userCredential` parameter is typically an object that contains
+ * information about the user who is currently authenticated. It may include details such as the user's
+ * unique identifier, email address, display name, and other relevant information provided by the
+ * authentication service. This object is usually obtained after a user successfully logs in
+ * @returns If a user with the provided email address and isUser flag is found in the contacts data,
+ * the currentUser object representing that user is returned. If no user is found, an error is thrown
+ * with the message 'No user found with the provided email address.'
  */
-async function setCurrentUser(email) {
+async function setCurrentUser(email, userCredential) {
     const userSnapshot = await get(child(ref(database), `contacts`));
     if (userSnapshot.exists()) {
         const users = userSnapshot.val();
         for (const key in users) {
-            if (!users[key]) {
-                continue;
-            }
+            if (!users[key]) continue;
             if (users[key].mail.toLowerCase() === email && users[key].isUser) {
                 currentUser = users[key];
-                break;
+                return true;
             }
         }
     }
+    deleteUser(userCredential.user);
+    throw new Error('No user found with the provided email address.');
 }
 
 
@@ -147,14 +157,16 @@ function continueToSummary() {
     window.location.href = 'html/summary.html';
 }
 
+
 /**
- * Displays an error message to the user.
- * 
- * @param {string} message - The error message to display.
+ * The function `showError` displays a specific error message on the webpage based on the type of error
+ * received.
+ * @param error - The `error` parameter is an object that contains information about an error that
+ * occurred in the code. It likely has a `message` property that provides a description of the error.
  */
-function showError(message) {
+function showError(error) {
     const errorMessageElement = document.getElementById('error-message');
-    errorMessageElement.textContent = message;
+    errorMessageElement.textContent = error.message.includes('auth/invalid-credential') ? 'Oops, wrong email address or password! Try it again.' : error.message;
     errorMessageElement.style.display = 'block';
 }
 

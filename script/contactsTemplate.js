@@ -30,11 +30,17 @@ function htmlRenderContactLetter(letter) {
 }
 
 
+
 /**
- * Returns HTML for rendering a general contact entry.
- * 
- * @param {Object} contact - The contact object.
- * @returns {string} - HTML string for the contact entry.
+ * The `htmlRenderGeneral` function generates HTML markup for displaying contact information in a list
+ * format.
+ * @param contact - The `htmlRenderGeneral` function is a JavaScript function that generates HTML
+ * markup for rendering a contact in a list. It takes a `contact` object as a parameter and uses
+ * template literals to create the HTML structure.
+ * @returns The function `htmlRenderGeneral` is returning an HTML template string that represents a
+ * contact item. The template includes the contact's profile picture, name (with a conditional check
+ * for the current user), and email address wrapped in list item (`<li>`) tags. The list item has an
+ * `id` attribute based on the contact's `id` and an `onclick` event that triggers a function
  */
 function htmlRenderGeneral(contact) {
   return /*html*/`
@@ -43,7 +49,7 @@ function htmlRenderGeneral(contact) {
         ${contact.profilePic}
       </div>
       <div>
-        <p class="fs20">${contact.name}</p>
+        <p class="fs20">${contact.name} ${contact.id === currentUser.id ? '(you)' : ''}</p>
         <p><a>${contact.email}</a></p>
       </div>
     </li>

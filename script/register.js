@@ -115,29 +115,33 @@ async function submitData(event) {
 }
 
 
+
 /**
- * The function `hideErrorMessages` hides error messages on a webpage by setting their display style to
- * 'none'.
+ * The function `hideErrorMessages` hides error messages displayed on a webpage by setting their
+ * display style to 'none'.
  */
 function hideErrorMessages() {
-    document.getElementById('errorMessage').style.display = 'none';
+    document.getElementById('passwordErrorMessage').style.display = 'none';
+    document.getElementById('mailErrorMessage').style.display = 'none';
     document.getElementById('criteriaMessage').style.display = 'none';
     document.getElementById('emailExistsMessage').style.display = 'none';
 }
 
 
+
 /**
- * The function `validateForm` checks if the privacy policy is checked, if the passwords match and meet
- * criteria, and if the email already exists before returning an error or true.
+ * The function `validateForm` checks if the password matches the confirmation, meets password
+ * criteria, and if the email is valid and doesn't already exist, returning an error message if any
+ * condition fails.
  * @param password - The `validateForm` function you provided checks various conditions before allowing
- * a user to submit a form. The parameters it takes are `password`, `confirmPassword`, and `email`.
- * @param confirmPassword - The `confirmPassword` parameter is used to confirm the password entered by
- * the user. It should match the `password` parameter to ensure that the user has entered the correct
- * password.
- * @param email - The `email` parameter in the `validateForm` function is used to check if the provided
- * email already exists in the system. The function `emailExists(email)` is an asynchronous function
- * that checks if the email already exists in the database. If the email exists, it will return an
- * error message.
+ * a user to submit a form. The `password` parameter is used to store the password input provided by
+ * the user.
+ * @param confirmPassword - The `confirmPassword` parameter in the `validateForm` function is used to
+ * confirm that the user has entered the correct password by comparing it with the original password
+ * input. If the `password` and `confirmPassword` values do not match, an error message is displayed to
+ * the user.
+ * @param email - The `email` parameter in the `validateForm` function is used to pass the email input
+ * value that the user enters in a form for validation.
  * @returns The `validateForm` function is returning either an error message element (if a validation
  * check fails) or `true` if all validation checks pass.
  */
@@ -145,17 +149,17 @@ async function validateForm(password, confirmPassword, email) {
     if (!document.getElementById('privacy-policy').checked) {
         return returnLoginError(document.getElementById('privacyCheck'));
     }
-    if (password !== confirmPassword) {
-        return returnLoginError(document.getElementById('errorMessage'));
+    if (!isValidEmail(email)) {
+        return returnLoginError(document.getElementById('mailErrorMessage'));
+    }
+    if (await emailExists(email)) {
+        return returnLoginError(document.getElementById('emailExistsMessage'));
     }
     if (!isValidPassword(password)) {
         return returnLoginError(document.getElementById('criteriaMessage'));
     }
-    if (!isValidEmail(email)) {
-        return returnLoginError(document.getElementById('errorMessage'));
-    }
-    if (await emailExists(email)) {
-        return returnLoginError(document.getElementById('emailExistsMessage'));
+    if (password !== confirmPassword) {
+        return returnLoginError(document.getElementById('passwordErrorMessage'));
     } return true;
 }
 

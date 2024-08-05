@@ -229,27 +229,40 @@ async function editContacts(id = editId) {
 
 
 /**
- * Opens the delete contact confirmation modal for the specified contact.
- * 
- * @param {number|string} [id=editId] - The ID of the contact to delete.
+ * The function `openDeleteContacts` prompts the user with a confirmation message based on the type of
+ * account being deleted.
+ * @param [id] - The `id` parameter in the `openDeleteContacts` function is used to specify the ID of
+ * the contact that you want to delete. If no `id` is provided when calling the function, it will
+ * default to the value of `editId`.
  */
 function openDeleteContacts(id = editId) {
   editId = id;
+  let response = document.querySelector('#deleteResponse>.deleteQuestion>p');
+  if (id === currentUser.id) {
+    response.textContent = 'Are you sure you want to delete your own account?';
+  } else if (contacts[contacts.findIndex(c => c.id == id)].isUser) {
+    response.textContent = 'Are you sure you want to delete this user\'s account?';
+  } else {
+    response.textContent = 'Are you sure you want to delete this contact?';
+  };
   toggleClass('deleteResponse', 'ts0', 'ts1');
 }
 
 
 /**
- * Deletes the specified contact from the contacts list and updates the database.
- * 
- * @param {number|string} [id=editId] - The ID of the contact to delete.
+ * The function `deleteContacts` removes a contact from a list, deletes the contact data from a server,
+ * updates the session storage, toggles a class in the DOM, and logs out the current user or refreshes
+ * the page.
+ * @param [id] - The `id` parameter in the `deleteContacts` function is used to specify the ID of the
+ * contact that needs to be deleted. If no `id` is provided when calling the function, it defaults to
+ * the value of `editId`.
  */
 async function deleteContacts(id = editId) {
   contacts.splice(contacts.findIndex(c => c.id == id), 1);
   await deleteData(`contacts/${id}`);
   sessionStorage.setItem("contacts", JSON.stringify(contacts));
   toggleClass('deleteResponse', 'ts0', 'ts1');
-  refreshPage();
+  id === currentUser.id ? logOut() : refreshPage();
 }
 
 
