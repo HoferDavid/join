@@ -3,6 +3,7 @@ JavaScript SDK version 10.12.4. */
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
 
+
 const auth = getAuth();
 const database = getDatabase();
 let clickCount1 = 0;
@@ -150,6 +151,9 @@ async function validateForm(password, confirmPassword, email) {
     if (!isValidPassword(password)) {
         return returnLoginError(document.getElementById('criteriaMessage'));
     }
+    if (!isValidEmail(email)) {
+        return returnLoginError(document.getElementById('errorMessage'));
+    }
     if (await emailExists(email)) {
         return returnLoginError(document.getElementById('emailExistsMessage'));
     } return true;
@@ -182,6 +186,22 @@ function returnLoginError(errorWindow) {
 function isValidPassword(password) {
     const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.,:])[A-Za-z\d@$!%*?&.,:]{8,}$/;
     return regex.test(password);
+}
+
+
+/**
+ * Checks if the provided email address is in a valid format,
+ * ending with a period followed by letters, e.g., `.com`, `.org`, etc.
+ * 
+ * The email address must contain at least one `@` symbol and a period,
+ * and the period must be followed by letters.
+ * 
+ * @param {string} email - The email address to be validated.
+ * @returns {boolean} - Returns `true` if the email address matches the valid format, otherwise returns `false`.
+ */
+function isValidEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]+$/;
+    return regex.test(email);
 }
 
 
