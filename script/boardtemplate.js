@@ -33,7 +33,8 @@ function generateTodoHTML(element) {
                     ${prioHTML}
                 </div>
             </div>
-        </div>`;
+        </div>
+    `;
 }
 
 
@@ -125,7 +126,8 @@ function generateAssignedToHTML(assignedTo) {
         assignedToHTML += `<div class="assignedToBadge">${assignedTo[i].profilePic}</div>`;
     }
     if (assignedTo.length > 4) {
-        assignedToHTML += `<div class="assignedToMoreBadge">...</div>`;
+        let assignedNum = assignedTo.length - 4;
+        assignedToHTML += `<div class="assignedToMoreBadge">+${assignedNum}</div>`;
     }
     return assignedToHTML;
 }
@@ -322,7 +324,6 @@ function generateTaskEditHTML(taskId) {
                             <img class="icon" src="../assets/icons/delete.svg" onclick="deleteSubtask(this)">
                         </div>
                     </div>
-
                 </li>
             `;
         });
@@ -330,31 +331,25 @@ function generateTaskEditHTML(taskId) {
 
     return /*html*/ `
         <div class="modalToDoContent">
-
             <div class="editTaskCloseContainer">
                 <img class="modalCloseIcon" onclick="closeModal()" src="../assets/icons/closeGrey.svg" alt="">
             </div>
-
             <form onsubmit="return saveEditedTask(event, '${taskId}')" class="editTaskForm">
                 <div class="editTaskScrollbarWrapper">
-
                     <div class="singleInputContainer">
                         <div class="redStarAfter">Title</div>
                         <input id="editTaskTitle" type="text" placeholder="Enter a title" required maxlength="80">
                         <div class="formValidationText" style="display: none;">This field is required</div>
                     </div>
-
                     <div class="singleInputContainer">
                         <div>Description</div>
                         <textarea id="editTaskDescription" placeholder="Enter a Description" maxlength="240"></textarea>
                     </div>
-
                     <div class="singleInputContainer" onclick="">
                         <div class="redStarAfter">Due date</div>
                         <input id="editDateInput" class="dateInput" type="date" placeholder="dd/mm/yyyy" required>
                         <div class="formValidationText" style="display: none;">This field is required</div>
                     </div>
-
                     <div class="editTaskPrioContainer">
                         <div>Priority</div>
                     <div class="prioBtnContainer">
@@ -375,7 +370,6 @@ function generateTaskEditHTML(taskId) {
                         </div>
                     </div>
                     </div>
-
                     <div class="singleInputContainer">
                         <div>Assigned to</div>
                         <div id="assignDropdown" class="assignContainer">
@@ -389,8 +383,6 @@ function generateTaskEditHTML(taskId) {
                         </div>
                         <div id="contactsAssigned" class="contactsAssigned"></div>
                     </div>
-
-
                     <div class="singleInputContainer">
                         <div>Subtasks</div>
                         <div class="subtasksInputContainer" onclick="addNewSubtask(event)">
@@ -404,16 +396,13 @@ function generateTaskEditHTML(taskId) {
                         </div>
                         <ul id="subtaskList">${subtaskHTML}</ul>
                     </div>
-
                 </div>
-
                 <div class="editBottomContainer">
                     <button type="submit" class="saveTaskEditBtn" onclick="return formValidation()">
                         <div>Ok</div>
                         <img src="../assets/icons/check.svg">
                     </button>
                 </div>
-
             </form>
         </div>
     `;
