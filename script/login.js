@@ -18,7 +18,7 @@ function initLogin() {
         if (rememberMe) {
             document.getElementById('emailInput').value = localStorage.getItem('email');
             document.getElementById('passwordInput').value = localStorage.getItem('password');
-            document.getElementById('checkbox').src = rememberMe ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+            document.getElementById('checkbox').src = rememberMe ? 'assets/icons/checkboxchecked.svg' : 'assets/icons/checkbox.svg';
             document.getElementById('rememberMe').checked = rememberMe;
         }
         setupPasswordToggle();
@@ -60,7 +60,7 @@ function changeVisibility(e) {
  */
 function resetState() {
     passwordInput.type = "password";
-    passwordInput.style.backgroundImage = "url('../assets/icons/password_input.png')";
+    passwordInput.style.backgroundImage = "url('assets/icons/password_input.png')";
     clickCount = -1;
     isPasswordVisible = false;
 }
@@ -72,7 +72,7 @@ function resetState() {
 function togglePasswordVisibility() {
     passwordInput.type = isPasswordVisible ? "text" : "password";
     const image = isPasswordVisible ? "visibility.png" : "password_off.png";
-    passwordInput.style.backgroundImage = `url('../assets/icons/${image}')`;
+    passwordInput.style.backgroundImage = `url('assets/icons/${image}')`;
     isPasswordVisible = !isPasswordVisible;
 }
 
@@ -144,7 +144,7 @@ function handleRememberMe(rememberMe) {
  */
 function continueToSummary() {
     sessionStorage.setItem('activeTab', 'summary');
-    window.location.href = './html/summary.html';
+    window.location.href = 'html/summary.html';
 }
 
 /**
@@ -176,7 +176,7 @@ function handleGuestLogin() {
 function checkBoxClicked() {
     const checkedState = document.getElementById('rememberMe').checked;
     const checkboxImg = document.getElementById('checkbox');
-    checkboxImg.src = checkedState ? '../assets/icons/checkboxchecked.svg' : '../assets/icons/checkbox.svg';
+    checkboxImg.src = checkedState ? 'assets/icons/checkboxchecked.svg' : 'assets/icons/checkbox.svg';
 }
 
 document.getElementById('rememberMe').addEventListener('click', checkBoxClicked);

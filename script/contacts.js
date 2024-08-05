@@ -154,10 +154,14 @@ async function addContacts(id = editId) {
 function checkAlreadyExists(contact) {
   let warningMessage = document.querySelectorAll('.warning');
   warningMessage.forEach(warning => warning.classList.add('d-none'));
-  if (contacts.findIndex(c => { (c.name === contact.name) && (c.id != contact.id); }) > -1 || contacts.findIndex(c => { (c.email === contact.mail) && (c.id != contact.id); })) {
-    warningMessage.forEach(warning => warning.classList.remove('d-none'));
-    return false;
+  for (let i = 0; i < contacts.length; i++) {
+    const c = contacts[i];
+    if ((c.name === contact.name) && (c.id != contact.id) || (c.email === contact.mail) && (c.id != contact.id)) {
+      warningMessage.forEach(warning => warning.classList.remove('d-none'));
+      return false;
+    }
   }
+  return true;
 }
 
 
@@ -214,11 +218,13 @@ async function editContacts(id = editId) {
   contacts[contacts.findIndex(c => c.id == id)].email = editEmail;
   contacts[contacts.findIndex(c => c.id == id)].phone = editTel;
   let contact = contacts[contacts.findIndex(c => c.id == id)];
-  let editContact = await createContact(contact.id, editName, editEmail, editTel, nameChange ? false : contact.profilePic, contact.isUser);
-  contacts[contacts.findIndex(c => c.id == id)].profilePic = editContact.profilePic;
-  await updateData(`${BASE_URL}contacts/${id}.json`, editContact);
-  toggleClass('editContact', 'tt0', 'tty100');
-  refreshPage();
+  if (checkAlreadyExists(contact)) {
+    let editContact = await createContact(contact.id, editName, editEmail, editTel, nameChange ? false : contact.profilePic, contact.isUser);
+    contacts[contacts.findIndex(c => c.id == id)].profilePic = editContact.profilePic;
+    await updateData(`${BASE_URL}contacts/${id}.json`, editContact);
+    toggleClass('editContact', 'tt0', 'tty100');
+    refreshPage();
+  }
 }
 
 

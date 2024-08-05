@@ -60,12 +60,13 @@ async function pushDataToArray() {
 async function checkDeletedUser(loadedTask) {
   contacts = contacts.length == 0 ? await getContactsData() : contacts;
   if (loadedTask.assignedTo) {
-    for (let i = loadedTask.assignedTo.length - 1; i >= 0; i--) {
+    for (let i = loadedTask.assignedTo[loadedTask.assignedTo.length - 1].id; i >= 0; i--) {
       let c = loadedTask.assignedTo[i];
-      if (contacts.findIndex(cont => cont.id === c.id) === c) {
+      if (!c) continue;
+      if (contacts.findIndex(cont => cont.id === c.id) === -1) {
         loadedTask.assignedTo.splice(i, 1);
         await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
-      } if (contacts[contacts.findIndex(cont => cont.id === c.id)] !== c) {
+      } else if (contacts[contacts.findIndex(cont => cont.id === c.id)] !== c) {
         loadedTask.assignedTo[i] = contacts[contacts.findIndex(cont => cont.id === c.id)];
         await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
       }
