@@ -311,8 +311,7 @@ function showTaskAddedAnimation() {
   if (window.location.href.endsWith('addtask.html')) {
     toggleClass('taskAddedBtn', 'd-None', 'show');
     setTimeout(() => {
-      return window.location.href = "../html/board.html";
-    }, 2000);
+      return window.location.href = "../html/board.html"; }, 2000);
   } else {
     showTaskAddedAnimationModal();
   }
@@ -324,9 +323,7 @@ function showTaskAddedAnimation() {
  */
 function showTaskAddedAnimationModal() {
   toggleClass('taskAddedBtn', 'd-None', 'show');
-  setTimeout(() => {
-    closeModal();
-  }, 2000);
+  setTimeout(() => { closeModal(); }, 2000);
 }
 
 
