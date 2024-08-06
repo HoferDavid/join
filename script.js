@@ -303,8 +303,10 @@ async function deleteTaskSure(id) {
   toggleClass('deleteResponse', 'ts0', 'ts1');
   await deleteData(`tasks/${id}`);
   tasks = tasks.filter((task) => task.id !== id);
+  sessionStorage.setItem("tasks", JSON.stringify(tasks));
   closeModal();
   initDragDrop();
+  initCheckData();
 }
 
 
