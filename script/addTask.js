@@ -274,7 +274,6 @@ async function pushNewTask(event) {
   let newTask = createNewtask();
   await postData("tasks", newTask);
   closeAddTaskModal();
-  setActiveTab('.menuBtn[href="../html/board.html"]');
 }
 
 
@@ -306,7 +305,8 @@ async function closeAddTaskModal() {
   if (activeTab == 'add task') {
     showTaskAddedAnimation();
     tasks = [];
-    await initCheckData();
+    setActiveTab('.menuBtn[href="../html/board.html"]');
+    sessionStorage.removeItem('tasks');
   } else {
     showTaskAddedAnimation();
     tasks = [];

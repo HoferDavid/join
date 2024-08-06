@@ -27,8 +27,8 @@ async function initBoard() {
  * again.
  */
 async function initCheckData() {
+  document.querySelector('.loader').classList.toggle('dNone');
   if (tasks.length > 0) {
-    document.querySelector('.loader').classList.toggle('dNone');
     for (let i = 0; i < tasks.length; i++) {
       tasks[i] = await checkDeletedUser(tasks[i]);
     }
@@ -295,6 +295,9 @@ async function moveTo(status) {
     initDragDrop();
     applyCurrentSearchFilter();
     await updateData(`${BASE_URL}tasks/${task.id}.json`, task);
+    let taskIndex = tasks.findIndex(t => task.id === t.id);
+    tasks.splice(taskIndex, 1, await createTaskArray(task.id, task));
+    sessionStorage.setItem("tasks", JSON.stringify(tasks));
   }
 }
 
