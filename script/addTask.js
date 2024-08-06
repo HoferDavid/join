@@ -94,13 +94,23 @@ function contactAssign(id, event) {
 }
 
 
+
 /**
- * Renders the assigned contacts.
+ * The function `renderAssignedContacts` renders assigned contacts in a container, displaying profile
+ * pictures for the first 6 contacts and a placeholder for any additional contacts.
  */
 function renderAssignedContacts() {
   let assignedContactsContainer = document.getElementById('contactsAssigned');
   assignedContactsContainer.innerHTML = '';
-  assignedContacts.forEach(c => assignedContactsContainer.innerHTML += c.profilePic);
+  for (let i = 0; i < assignedContacts.length; i++) {
+    const contact = assignedContacts[i];
+    if (i <= 5) {
+      assignedContactsContainer.innerHTML += contact.profilePic;
+    } else {
+      assignedContactsContainer.innerHTML += svgProfilePic('#2a3748', `+${assignedContacts.length - 5}`, 120, 120);
+      break;
+    }
+  }
 }
 
 
@@ -311,7 +321,8 @@ function showTaskAddedAnimation() {
   if (window.location.href.endsWith('addtask.html')) {
     toggleClass('taskAddedBtn', 'd-None', 'show');
     setTimeout(() => {
-      return window.location.href = "../html/board.html"; }, 2000);
+      return window.location.href = "../html/board.html";
+    }, 2000);
   } else {
     showTaskAddedAnimationModal();
   }
