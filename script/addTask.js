@@ -309,7 +309,7 @@ async function closeAddTaskModal() {
     sessionStorage.removeItem('tasks');
   } else {
     showTaskAddedAnimation();
-    tasks = [];
+    sessionStorage.removeItem('tasks');
     await initCheckData();
     updateAllTaskCategories();
     initDragDrop();
