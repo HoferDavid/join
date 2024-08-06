@@ -28,14 +28,17 @@ async function getContactsData() {
 
 
 /**
- * Populates the contacts array with the loaded contact data.
- * 
- * @param {Array} loadItem - An array of loaded contact data.
+ * This function processes the loaded contact data and adds it to the contacts array.
+ * It checks for duplicate entries and ensures that only unique contacts are added.
+ * @param {Array} loadItem - The loaded contact data from storage.
+ * @returns {void}
  */
 function setContactsArray(loadItem) {
   for (let i = 0; i < loadItem.length; i++) {
     const element = loadItem[i];
-    !element || contacts.push(pushToContacts(element));
+    if (!element) continue;
+    if (contacts.findIndex(c => c.id === element.id) > -1) continue;
+    else contacts.push(pushToContacts(element));
   }
 }
 
@@ -166,20 +169,33 @@ function checkAlreadyExists(contact) {
 
 
 /**
- * Converts a raw contact object to the internal contact format.
- * 
- * @param {Object} contact - The raw contact object.
- * @returns {Object} - The converted contact object.
+ * Transforms a contact object into a new object with specific properties and values.
+ * If the contact does not have a profile picture, a new one is generated using the contact's name.
+ * @param {Object} contact - The contact object to transform.
+ * @property {string} contact.mail - The email of the contact.
+ * @property {string} contact.name - The name of the contact.
+ * @property {number} contact.id - The ID of the contact.
+ * @property {boolean} contact.isUser - Indicates whether the contact is a user.
+ * @property {string} contact.profilePic - The profile picture of the contact.
+ * @property {string} contact.number - The phone number of the contact.
+ * @returns {Object} - A new object with the following properties:
+ * @property {string} email - The email of the contact.
+ * @property {string} firstLetters - The initials of the contact's name.
+ * @property {number} id - The ID of the contact.
+ * @property {boolean} isUser - Indicates whether the contact is a user.
+ * @property {string} name - The name of the contact.
+ * @property {string} profilePic - The profile picture of the contact. If not provided, a new one is generated.
+ * @property {string} phone - The phone number of the contact.
  */
 function pushToContacts(contact) {
   return {
-    'id': contact.id,
-    'name': contact.name,
     'email': contact.mail,
-    'phone': contact.number,
-    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
+    'firstLetters': filterFirstLetters(contact.name),
+    'id': contact.id,
     'isUser': contact.isUser,
-    'firstLetters': filterFirstLetters(contact.name)
+    'name': contact.name,
+    'profilePic': contact.profilePic ? contact.profilePic : generateSvgCircleWithInitials(contact.name, 120, 120),
+    'phone': contact.number,
   };
 }
 

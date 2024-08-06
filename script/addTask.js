@@ -261,15 +261,18 @@ function getSubtasks() {
 }
 
 
+
 /**
- * Asynchronously pushes a new task to the server and handles the task form submission.
- * 
- * @param {Event} event - The form submission event.
- * @returns {Promise<void>}
+ * The function `pushNewTask` handles the process of creating a new task, posting it to a server, and
+ * then closing the add task modal.
+ * @param event - The `event` parameter in the `pushNewTask` function is an event object that
+ * represents the event that was triggered, such as a form submission or a button click. In this case,
+ * the function is used to handle the form submission event when a new task is being added.
  */
 async function pushNewTask(event) {
   event.preventDefault();
-  await postData("tasks", createNewtask());
+  let newTask = createNewtask();
+  await postData("tasks", newTask);
   closeAddTaskModal();
   setActiveTab('.menuBtn[href="../html/board.html"]');
 }
@@ -294,20 +297,20 @@ function createNewtask() {
 }
 
 
+
 /**
- * Closes the add task modal and handles the task submission animation.
- * 
- * @returns {Promise<void>}
+ * The function `closeAddTaskModal` closes the add task modal, shows a task added animation,
+ * initializes data checking, updates task categories, and initializes drag and drop functionality.
  */
 async function closeAddTaskModal() {
   if (activeTab == 'add task') {
     showTaskAddedAnimation();
     tasks = [];
-    await pushDataToArray();
+    await initCheckData();
   } else {
     showTaskAddedAnimation();
     tasks = [];
-    await pushDataToArray();
+    await initCheckData();
     updateAllTaskCategories();
     initDragDrop();
   }

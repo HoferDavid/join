@@ -2,7 +2,7 @@ let BASE_URL = 'https://join-273-default-rtdb.europe-west1.firebasedatabase.app/
 let currentUser = JSON.parse(localStorage.getItem('currentUser')) || JSON.parse(sessionStorage.getItem('currentUser')) || null;
 let activeTab = sessionStorage.getItem('activeTab') || '';
 let contacts = JSON.parse(sessionStorage.getItem('contact')) || [];
-let tasks = [];
+let tasks = JSON.parse(sessionStorage.getItem('tasks')) || [];
 let currentPrio = 'medium';
 
 

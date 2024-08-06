@@ -140,25 +140,42 @@ function svgProfilePic(color, initials, height, width) {
 }
 
 
+
 /**
- * Creates a contact object with the specified details.
- * 
- * @param {number|string} id - The ID of the contact.
+ * Creates a new contact object with the provided details.
+ *
+ * @param {number} [id] - The unique identifier for the contact. If not provided, it will be generated based on the existing contacts.
  * @param {string} name - The name of the contact.
- * @param {string} email - The email of the contact.
+ * @param {string} email - The email address of the contact.
  * @param {string} phone - The phone number of the contact.
- * @param {string} [profilePic] - The profile picture of the contact.
- * @param {boolean} [isUser] - Indicates if the contact is a user.
- * @returns {Object} - The created contact object.
+ * @param {string} [profilePic] - The SVG string for the contact's profile picture. If not provided, a default profile picture will be generated.
+ * @param {boolean} [isUser] - Indicates whether the contact is the current user. If not provided, it will default to false.
+ *
+ * @returns {Promise<Object>} - A promise that resolves to the newly created contact object.
+ *
+ * @example
+ * createContact(1, 'John Doe', 'johndoe@example.com', '1234567890', '<svg>...</svg>', true)
+ *   .then(contact => console.log(contact));
+ *
+ * // Output:
+ * // {
+ * //   firstLetters: 'JD',
+ * //   id: 1,
+ * //   isUser: true,
+ * //   mail: 'johndoe@example.com',
+ * //   name: 'John Doe',
+ * //   number: '+1234567890',
+ * //   profilePic: '<svg>...</svg>'
+ * // }
  */
 async function createContact(id, name, email, phone, profilePic, isUser) {
   return {
+    'firstLetters': filterFirstLetters(name),
     'id': id ? id : contacts.length == 0 ? await getContactsData().then(contacts => contacts[contacts.length - 1].id + 1) : contacts[contacts.length - 1].id + 1,
-    'name': name,
+    'isUser': isUser ? true : false,
     'mail': email,
+    'name': name,
     'number': phone,
     'profilePic': profilePic ? profilePic : generateSvgCircleWithInitials(name, 120, 120),
-    'isUser': isUser ? true : false,
-    'firstLetters': filterFirstLetters(name)
   };
 }

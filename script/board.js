@@ -3,21 +3,16 @@ let currentSearchInput = '';
 let currentTaskStatus;
 
 
+
 /**
- * Initializes the board by performing necessary setup tasks.
- * 
- * This includes initializing the board, pushing data to an array, 
- * updating all task categories, initializing drag and drop functionality,
- * and applying the current search filter. If any error occurs during the 
- * initialization, it is logged to the console.
- * 
- * @async @function
+ * The `initBoard` function initializes the board by setting up tasks, checking data, storing tasks in
+ * session storage, enabling drag and drop functionality, and applying search filters.
  */
 async function initBoard() {
   init();
   try {
-    await pushDataToArray();
-    updateAllTaskCategories();
+    await initCheckData();
+    sessionStorage.setItem("tasks", JSON.stringify(tasks));
     initDragDrop();
     applyCurrentSearchFilter();
   } catch (error) {
@@ -27,14 +22,32 @@ async function initBoard() {
 
 
 /**
- * Pushes data to an array by loading tasks data, creating task arrays, 
- * checking for deleted users, and adding tasks to the global tasks array.
- * 
- * @async @function
+ * The function `initCheckData` checks if there are tasks, toggles a loader, processes tasks by
+ * checking for deleted users, or pushes data to an array if no tasks exist, and toggles the loader
+ * again.
+ */
+async function initCheckData() {
+  if (tasks.length > 0) {
+    document.querySelector('.loader').classList.toggle('dNone');
+    for (let i = 0; i < tasks.length; i++) {
+      tasks[i] = await checkDeletedUser(tasks[i]);
+    }
+  } else {
+    await pushDataToArray();
+  }
+  document.querySelector('.loader').classList.toggle('dNone');
+}
+
+
+
+/**
+ * The function `pushDataToArray` asynchronously loads data for tasks, processes each task, and pushes
+ * them into an array while handling errors.
  */
 async function pushDataToArray() {
   try {
     let tasksData = await loadData("tasks");
+    tasks = [];
     for (const key in tasksData) {
       let singleTask = tasksData[key];
       if (!singleTask) continue;
@@ -48,31 +61,76 @@ async function pushDataToArray() {
 }
 
 
+
 /**
- * The function `checkDeletedUser` checks if any assigned user in a task has been deleted from the
- * contacts list and updates the task accordingly.
+ * The function `checkDeletedUser` checks if a user has been deleted and updates the task accordingly.
  * @param loadedTask - `loadedTask` is an object representing a task that has been loaded. It may
- * contain information about the task, including the `assignedTo` property which is an array of users
- * assigned to the task.
- * @returns The `loadedTask` object is being returned after checking and updating the `assignedTo`
- * array based on the contacts data.
+ * contain information such as the task details, assigned users, etc.
+ * @returns The function `checkDeletedUser` is returning the `updatedTask` after performing some checks
+ * and updates.
  */
 async function checkDeletedUser(loadedTask) {
-  contacts = contacts.length == 0 ? await getContactsData() : contacts;
+  contacts.length == 0 ? await getContactsData() : null;
+  let updatedTask = loadedTask;
   if (loadedTask.assignedTo) {
-    for (let i = loadedTask.assignedTo[loadedTask.assignedTo.length - 1].id; i >= 0; i--) {
-      let c = loadedTask.assignedTo[i];
-      if (!c) continue;
-      if (contacts.findIndex(cont => cont.id === c.id) === -1) {
-        loadedTask.assignedTo.splice(i, 1);
-        await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
-      } else if (contacts[contacts.findIndex(cont => cont.id === c.id)] !== c) {
-        loadedTask.assignedTo[i] = contacts[contacts.findIndex(cont => cont.id === c.id)];
-        await updateData(`${BASE_URL}tasks/${loadedTask.id}.json`, loadedTask);
-      }
+    let highestId = updatedTask.assignedTo.reduce((maxId, user) => {
+      return Math.max(maxId, user.id);
+    }, -Infinity);
+    updatedTask = await checkContactChange(updatedTask, highestId);
+  }
+  return updatedTask;
+}
+
+
+/**
+ * The function `checkContactChange` iterates through assigned contacts in an updated task, removes any
+ * contacts not found in the contacts array, and updates existing contacts if they have changed.
+ * @param updatedTask - The `updatedTask` parameter is an object representing a task that has been
+ * updated with new information. It contains an array called `assignedTo` which likely holds contact
+ * information for the task assignees.
+ * @param highestId - The `highestId` parameter in the `checkContactChange` function is used as the
+ * starting point for iterating over the `updatedTask.assignedTo` array. It helps in determining the
+ * range of indices to check for changes in the assigned contacts. The loop starts from `highestId` and
+ * iter
+ * @returns The `updatedTask` object is being returned after checking for any changes in the
+ * `assignedTo` array and updating it if necessary.
+ */
+async function checkContactChange(updatedTask, highestId) {
+  for (let i = highestId; i >= 0; i--) {
+    let c = updatedTask.assignedTo[i];
+    if (!c) continue;
+    if (contacts.findIndex(cont => cont.id === c.id) === -1) {
+      updatedTask.assignedTo.splice(i, 1);
+      await updateData(`${BASE_URL}tasks/${updatedTask.id}/assignedTo.json`, updatedTask.assignedTo);
+    } else if (compareContact(c)) {
+      updatedTask.assignedTo[i] = contacts[contacts.findIndex(cont => cont.id === c.id)];
+      await updateData(`${BASE_URL}tasks/${updatedTask.id}/assignedTo.json`, updatedTask.assignedTo);
     }
   }
-  return loadedTask;
+  return updatedTask;
+}
+
+
+/**
+ * The function `compareContact` checks if the properties of a given contact object differ from the
+ * corresponding properties of a contact in an array.
+ * @param contact - The `compareContact` function is designed to compare the properties of a given
+ * `contact` object with the corresponding properties of a contact in an array named `contacts`. The
+ * function checks if any of the properties (`name`, `email`, `phone`, `profilePic`, `firstLetters`) of
+ * the
+ * @returns The `compareContact` function is returning a boolean value indicating whether any of the
+ * properties (name, email, phone, profilePic, firstLetters) of the contact object passed as an
+ * argument are different from the corresponding properties of the contact object in the `contacts`
+ * array with the same `id`.
+ */
+function compareContact(contact) {
+  return (
+    contacts[contacts.findIndex(cont => cont.id === contact.id)].name !== contact.name ||
+    contacts[contacts.findIndex(cont => cont.id === contact.id)].email !== contact.email ||
+    contacts[contacts.findIndex(cont => cont.id === contact.id)].phone !== contact.phone ||
+    contacts[contacts.findIndex(cont => cont.id === contact.id)].profilePic !== contact.profilePic ||
+    contacts[contacts.findIndex(cont => cont.id === contact.id)].firstLetters !== contact.firstLetters
+  );
 }
 
 
@@ -324,39 +382,5 @@ function emptyDragAreaWhileSearching(searchValue) {
     dragAreas.forEach((dragArea) => {
       dragArea.classList.add('dNone');
     });
-  }
-}
-
-
-/**
- * Updates the visibility of the "no tasks found" message based on whether any tasks are visible.
- * 
- * @param {boolean} anyVisibleTask - Whether any tasks are visible.
- */
-function updateNoTasksFoundVisibility(anyVisibleTask) {
-  const noTasksFound = document.getElementById('noTasksFound');
-  if (anyVisibleTask) {
-    noTasksFound.classList.add('dNone');
-  } else {
-    noTasksFound.classList.remove('dNone');
-  }
-}
-
-
-/**
- * Checks the screen width and either changes the active tab or opens the add task overlay.
- * 
- * @param {string} category - The task category.
- */
-function checkScreenWidth(category) {
-  const screenWidth = window.innerWidth;
-  const activeTab = document.querySelector('.menuBtn[href="../html/addtask.html"]');
-  const taskStatus = category;
-  sessionStorage.setItem('taskCategory', category);
-  if (screenWidth < 992) {
-    changeActive(activeTab);
-    window.location.href = "../html/addtask.html";
-  } else {
-    openAddTaskOverlay();
   }
 }
